@@ -7,7 +7,7 @@
 int main()
 {
     sf::Texture playerTexture;
-    playerTexture.loadFromFile("StickFig.png");
+    playerTexture.loadFromFile("polygon.png");
 
     sf::Sprite playerSprite;
     playerSprite.setTexture(playerTexture);
@@ -19,9 +19,9 @@ int main()
     sf::Vector2i mouse;
     float angle;
     sf::Vector2f playerPosition;
-    double a, b;
+    double x, y;
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "you can see me!");
     while (window.isOpen())
     {
         sf::Event event;
@@ -31,11 +31,11 @@ int main()
                 window.close();
         }
         playerPosition = playerSprite.getPosition();
-        a = mouse.x - playerPosition.x;
-        b = mouse.y - playerPosition.y;
+        x = mouse.x - playerPosition.x;
+        y = mouse.y - playerPosition.y;
 
         mouse = sf::Mouse::getPosition(window);
-        angle = -atan2( a , b) * 180 / 3.14;
+        angle = -atan2( x , y) * 180 / 3.14;
         playerSprite.setRotation(angle);
         window.clear(sf::Color::White);
         window.draw(playerSprite);
