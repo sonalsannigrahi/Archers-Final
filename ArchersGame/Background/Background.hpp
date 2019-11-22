@@ -14,10 +14,10 @@
 
 class Background{
 private:
-    sf::RenderWindow* window;
 public:
-    Background(sf::RenderWindow* gameWindow){
-        window = gameWindow;
+    sf::RenderWindow* window;
+    
+    Background(){
     }
     
     void updateFrame(double time);

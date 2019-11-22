@@ -10,9 +10,8 @@
 
 void Background::updateFrame(double time) {
     sf::Texture texture;
-    if (!texture.loadFromFile("/Users/sunho/Documents/Bachelor 2/CSE201/Archers/ArchersGame/Background/Asset/cute_image.jpg")) {
-        return EXIT_FAILURE;
-    }
+    texture.loadFromFile("Background/Asset/bgimg.jpg");
+    //std::cout << "Yo i was here" << std::endl;
     sf::Sprite sprite(texture);
     window -> draw(sprite);
 }
