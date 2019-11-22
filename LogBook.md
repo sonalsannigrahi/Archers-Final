@@ -16,3 +16,5 @@ Sunho Hwang - This week we began planning on the general game design and what it
 Minh Tuan Nguyen - Divided the team into smaller subteams for specific tasks, created a basic game class. Next week, we will set up basic classes (ie. background, water, ground).
 
 Hoang Anh Ngo - This week, I began to research on how to create splash screen/main menu screen and Game over screen. Start implementing the first lines of code for the Splash screen state. Next week, creating functions/buttons for the screens and start to think of the graphics.
+
+Tarcisio Teixeira - This week, after setting everything up, I began planning the encryption of data and the structures to save them. Next week I plan to create an encryption class.
