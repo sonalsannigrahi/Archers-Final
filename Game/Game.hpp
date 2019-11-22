@@ -3,11 +3,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "GameConstants.cpp"
+#include "GameFPS.cpp"
 
 class Game {
     private:
         // Add constants to the class
         GameConstants gameConstants = GameConstants();
+        GameFPS gameFPS = GameFPS();
         // All other classes
         // ...
 
