@@ -26,3 +26,5 @@ Maelys Solal - This week I focused on setting up the VM and getting familiar wit
 Alice Aubert - This week I helped set up the Trello and get everyone on the github repository. With the character player team we outlined the basic elements we wanted to include in the player and arrow class. I then has a existential break down trying and failing to install both the virtual machine and Xcode. Next week I will try to get one of them to work. 
 
 Zhang Xingjian & Saba Tavdgiridze - We analyzed how to detect intersection for objects and resolve them. Next week, we will write the part of the code which is responsible for that part of the game.
+
+Jiwon Park - This week I looked over SFML libraries how to draw 2D figures on window to start working on implementing basic classes such as game map.
