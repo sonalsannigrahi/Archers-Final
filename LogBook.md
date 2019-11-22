@@ -12,3 +12,5 @@ Our initial goal, which we will begin implementing next week, is to add gravitat
 Alexandre Hirsch - This week, I began researching the menu class of our SFML game. In the following weeks, I will work on implementing it and other aspects of the HUD.
 
 Sunho Hwang - This week we began planning on the general game design and what it would require. Our first goal would be to figure out the game map, the animations required, etc.
+
+Minh Tuan Nguyen - Divided the team into smaller subteams for specific tasks, created a basic game class. Next week, we will set up basic classes (ie. background, water, ground).
