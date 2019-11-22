@@ -3,11 +3,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "GameConstants.cpp"
+#include "../Background/Background.hpp"
 
 class Game {
     private:
         // Add constants to the class
         GameConstants gameConstants = GameConstants();
+        Background gameBackground = Background(window);
         // All other classes
         // ...
 
