@@ -18,3 +18,5 @@ Minh Tuan Nguyen - Divided the team into smaller subteams for specific tasks, cr
 Hoang Anh Ngo - This week, I began to research on how to create splash screen/main menu screen and Game over screen. Start implementing the first lines of code for the Splash screen state. Next week, creating functions/buttons for the screens and start to think of the graphics.
 
 Tarcisio Teixeira - This week, after setting everything up, I began planning the encryption of data and the structures to save them. Next week I plan to create an encryption class.
+
+Sonal Sannigrahi- I have implemented a version of controlling the angle of the bow movement using the cursor. Still under testing and debugging. Next week, I will look into more functionalities of the characters involved.
