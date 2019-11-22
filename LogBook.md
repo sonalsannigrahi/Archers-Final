@@ -24,3 +24,5 @@ Sonal Sannigrahi - I have implemented a version of controlling the angle of the 
 Maelys Solal - This week I focused on setting up the VM and getting familiar with SFML. I began thinking about the Character, Opponent and Weapon classes. Next week, I will start implementing them and I will also continue learning about SFML. 
 
 Alice Aubert - This week I helped set up the Trello and get everyone on the github repository. With the character player team we outlined the basic elements we wanted to include in the player and arrow class. I then has a existential break down trying and failing to install both the virtual machine and Xcode. Next week I will try to get one of them to work. 
+
+Zhang Xingjian & Saba Tavdgiridze - We analyzed how to detect intersection for objects and resolve them. Next week, we will write the part of the code which is responsible for that part of the game.
