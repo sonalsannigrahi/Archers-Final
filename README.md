@@ -38,7 +38,7 @@ This is a 2d archer game, where the user controls an immobile player character w
   Renom,
   Lopes,
   Zhang,
-  Saba
+  Tavdgiridze
 
 #### HUD:
   Hirsch
