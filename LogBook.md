@@ -19,4 +19,8 @@ Hoang Anh Ngo - This week, I began to research on how to create splash screen/ma
 
 Tarcisio Teixeira - This week, after setting everything up, I began planning the encryption of data and the structures to save them. Next week I plan to create an encryption class.
 
-Sonal Sannigrahi- I have implemented a version of controlling the angle of the bow movement using the cursor. Still under testing and debugging. Next week, I will look into more functionalities of the characters involved.
+Sonal Sannigrahi - I have implemented a version of controlling the angle of the bow movement using the cursor. Still under testing and debugging. Next week, I will look into more functionalities of the characters involved.
+
+Maelys Solal - This week I focused on setting up the VM and getting familiar with SFML. I began thinking about the Character, Opponent and Weapon classes. Next week, I will start implementing them and I will also continue learning about SFML. 
+
+Alice Aubert - 
