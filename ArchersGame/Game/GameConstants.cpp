@@ -1,5 +1,5 @@
 class GameConstants{
     public:
-        int WINDOW_HEIGHT = 480;
-        int WINDOW_WIDTH = 640;
+        int WINDOW_HEIGHT = 600;
+        int WINDOW_WIDTH = 900;
 };

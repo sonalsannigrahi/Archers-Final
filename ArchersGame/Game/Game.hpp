@@ -9,7 +9,7 @@ class Game {
     private:
         // Add constants to the class
         GameConstants gameConstants = GameConstants();
-        Background gameBackground = Background(window);
+        Background gameBackground = Background();
         // All other classes
         // ...
 

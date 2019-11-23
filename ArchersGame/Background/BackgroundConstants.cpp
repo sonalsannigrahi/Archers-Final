@@ -6,4 +6,4 @@
 //  Copyright © 2019 Sunho Hwang. All rights reserved.
 //
 
-#include <stdio.h>
+#include <iostream>

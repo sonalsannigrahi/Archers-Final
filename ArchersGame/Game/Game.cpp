@@ -5,6 +5,9 @@ Game::Game(){
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
 
+    // Send window to Background
+    gameBackground.window = window;
+
     // Start game
     std::cout << "Starting Game ..." << std::endl;
     StartGame();
@@ -47,13 +50,15 @@ void Game::UpdateFrame(){
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
     
+    // Draw Background
+    gameBackground.updateFrame(time);
+    //std::cout << "Yo i was here" << std::endl;
 
     // Change circle's color
     circle -> setFillColor(sf::Color(0, 255, 0, int((double (elapsedTime) / CLOCKS_PER_SEC) * 25) % 256));
     window -> draw(*circle);
     
-    // Draw Background
-    gameBackground.updateFrame(time);
+    // std::cout << "Yo i was here" << std::endl;
 }
 
 void Game::EndGame(){
