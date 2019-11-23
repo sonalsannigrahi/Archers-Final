@@ -10,7 +10,7 @@
 
 void Background::updateFrame(double time) {
     sf::Texture texture;
-    if (!texture.loadFromFile("/Users/sunho/Documents/Bachelor 2/CSE201/Archers/ArchersGame/Background/Asset/cute_image.jpg")) {
+    if (!texture.loadFromFile("/Users/sunho/Documents/Bachelor 2/CSE201/Archers/ArchersGame/Background/Asset/cache_4103024296.jpg")) {
         return EXIT_FAILURE;
     }
     sf::Sprite sprite(texture);
