@@ -15,7 +15,7 @@ int main()
     playerSprite.setOrigin(50,50);
     playerSprite.setPosition(400,300);
     playerSprite.setRotation(0);
-
+    /*need to add while/if statement */
     sf::Vector2i mouse;
     float angle;
     sf::Vector2f playerPosition;
