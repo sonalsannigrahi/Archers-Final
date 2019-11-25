@@ -10,7 +10,10 @@ Background.o: Background/Background.cpp Background/Background.hpp BackgroundCons
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o Background.o
+GameFPS.o: Game/GameFPS.cpp
+	$(CXX) -c Game/GameFPS.cpp
+
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
