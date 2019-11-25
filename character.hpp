@@ -19,6 +19,14 @@ private:
     double getX() const;
     double getY() const;
 
+    //smfl objects for graphics
+    sf::CircleShape head;
+    sf::RectangleShape body;
+    sf::RectangleShape left_arm;
+    sf::RectangleShape right_arm;
+    sf::RectangleShape left_leg;
+    sf::RectangleShape right_leg;
+
     /* only add these functions if we need to change the position of the character
     more useful for the opponent class
     // set position functions
@@ -32,5 +40,6 @@ private:
     */
 
     // draw character function
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-}
+};
