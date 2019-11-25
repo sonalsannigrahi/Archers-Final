@@ -1,3 +1,5 @@
+/* Author: sonal sannigrahi */
+
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <math.h>
