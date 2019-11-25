@@ -10,14 +10,17 @@ private:
 
     double xPosition, yPosition;
 
-private:
+public:
 
     // constructor
-    Character(float health = 1, double x, double y);
+    Character(double x, double y);
 
     // get position functions
     double getX() const;
     double getY() const;
+
+    // get health function
+    float getHealth();
 
     //smfl objects for graphics
     sf::CircleShape head;

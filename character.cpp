@@ -1,6 +1,6 @@
 #include "character.hpp"
 
-Character::Character(float health = 1, double x, double y) {
+Character::Character(double x, double y) {
     this->health = health;
     this->xPosition = x;
     this->yPosition = y;
@@ -12,4 +12,8 @@ double Character::getX() const {
 
 double Character::getY() const {
     return yPosition;
+}
+
+float Character::getHealth() {
+    return health;
 }

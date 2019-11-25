@@ -1,6 +1,6 @@
 #include "opponent.hpp"
 
-Opponent::Opponent(float health = 1, double x, double y) {
+Opponent::Opponent(double x, double y) {
     this->health = health;
     this->xPosition = x;
     this->yPosition = y;
@@ -25,4 +25,8 @@ void Opponent::setY(double y) {
 void Opponent::setPosition(double x, double y) {
     setX(double x);
     setY(double y);
+}
+
+float Opponent::getHealth() {
+    return health;
 }

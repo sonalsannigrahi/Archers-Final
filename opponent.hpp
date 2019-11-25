@@ -10,10 +10,10 @@ private:
 
     double xPosition, yPosition;
 
-private:
+public:
 
     // constructor
-    Opponent(float health = 1, double x, double y);
+    Opponent(double x, double y);
 
     // get position functions
     double getX() const;
@@ -24,6 +24,10 @@ private:
     void setX(double x);
     void setY(double y);
     void setPosition(double x, double y);
+
+
+    // get health function
+    float getHealth();
 
     /* update function
     what type? and what should it do?
