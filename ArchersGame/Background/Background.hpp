@@ -14,11 +14,13 @@
 
 class Background{
 private:
-public:
     sf::RenderWindow* window;
+public:
     
     Background(){
     }
     
+    void setWindow(sf::RenderWindow* gameWindow);
+
     void updateFrame(double time);
 };
