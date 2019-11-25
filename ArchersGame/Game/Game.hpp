@@ -2,9 +2,11 @@
 #include <ctime>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+
 #include "GameConstants.cpp"
 #include "GameFPS.cpp"
 #include "../Background/Background.hpp"
+#include "../Water/Water.hpp"
 
 class Game {
     private:
@@ -12,7 +14,7 @@ class Game {
         GameConstants gameConstants = GameConstants();
         GameFPS gameFPS = GameFPS();
         Background gameBackground = Background();
-
+        Water gameWater = Water();
         // All other classes
         // ...
 

@@ -14,11 +14,12 @@
 
 class Water{
 private:
-public:
     sf::RenderWindow* window;
+public:
     
     Water(){
     }
     
+    void setWindow(sf::RenderWindow* gameWindow);
     void updateFrame(double time);
 };

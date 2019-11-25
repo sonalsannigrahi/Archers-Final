@@ -5,8 +5,9 @@ Game::Game(){
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
 
-    // Send window to Background
-    gameBackground.window = window;
+    // Send window to other classes
+    gameBackground.setWindow(window);
+    gameWater.setWindow(window);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;

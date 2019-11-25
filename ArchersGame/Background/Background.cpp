@@ -8,6 +8,10 @@
 
 #include "Background.hpp"
 
+void Background::setWindow(sf::RenderWindow* gameWindow){
+    window = gameWindow;
+}
+
 void Background::updateFrame(double time) {
     sf::Texture texture;
     texture.loadFromFile("Background/Asset/bgimg.jpg");

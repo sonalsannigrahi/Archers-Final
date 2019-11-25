@@ -8,6 +8,10 @@
 
 #include "Water.hpp"
 
+void Water::setWindow(sf::RenderWindow* gameWindow){
+    window = gameWindow;
+}
+
 void Water::updateFrame(double time) {
     
 }
