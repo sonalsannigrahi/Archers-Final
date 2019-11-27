@@ -15,6 +15,7 @@
 class Water{
 private:
     sf::RenderWindow* window;
+    WaterConstants waterconstants = WaterConstants();
 public:
     
     Water(){
