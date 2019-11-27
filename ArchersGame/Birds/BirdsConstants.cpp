@@ -6,4 +6,19 @@
 //  Copyright © 2019 Sunho Hwang. All rights reserved.
 //
 
-#include <stdio.h>
+#include <string>
+
+
+class BirdsConstants {
+public:
+    double changetime = 0.05;
+    std::string filename[10];
+    int filenamelen = 10;
+    
+    BirdsConstants(){
+        for (int i=0; i< 10; i++) {
+            filename[i] = "bird" + std::to_string(i+1) + ".png";
+            
+        }
+    }
+};

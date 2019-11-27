@@ -14,7 +14,10 @@
 
 class Birds{
 private:
+    BirdsConstants birdconstant = BirdsConstants();
     sf::RenderWindow* window;
+    double counter = 0;
+    int current = 0;
 public:
     
     Birds(){
