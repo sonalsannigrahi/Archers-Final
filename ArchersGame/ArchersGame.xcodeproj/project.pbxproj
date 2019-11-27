@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7B545FB238EE1D50058C812 /* ballon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B545FA238EE1D50058C812 /* ballon2.png */; };
+		C7B545FE238EE1EE0058C812 /* Balloon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7B545FC238EE1EE0058C812 /* Balloon.cpp */; };
+		C7B54600238EE1FF0058C812 /* BalloonConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7B545FF238EE1FF0058C812 /* BalloonConstants.cpp */; };
 		C7BEB4B123887DF2007A32CC /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B023887DF2007A32CC /* cute_image.jpg */; };
 		C7BEB4B323887DF2007A32CC /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B223887DF2007A32CC /* nice_music.ogg */; };
 		C7BEB4B523887DF2007A32CC /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B423887DF2007A32CC /* sansation.ttf */; };
@@ -36,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7B545FA238EE1D50058C812 /* ballon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballon2.png; sourceTree = "<group>"; };
+		C7B545FC238EE1EE0058C812 /* Balloon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Balloon.cpp; sourceTree = "<group>"; };
+		C7B545FD238EE1EE0058C812 /* Balloon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Balloon.hpp; sourceTree = "<group>"; };
+		C7B545FF238EE1FF0058C812 /* BalloonConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BalloonConstants.cpp; sourceTree = "<group>"; };
 		C7BEB4A523887DF2007A32CC /* ArchersGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchersGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BEB4A923887DF2007A32CC /* ArchersGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ArchersGame-Info.plist"; path = "../ArchersGame-Info.plist"; sourceTree = "<group>"; };
 		C7BEB4B023887DF2007A32CC /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cute_image.jpg; path = ../cute_image.jpg; sourceTree = "<group>"; };
@@ -82,9 +89,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7B545F8238EE1A80058C812 /* Balloon */ = {
+			isa = PBXGroup;
+			children = (
+				C7B545F9238EE1C50058C812 /* Asset */,
+				C7B545FC238EE1EE0058C812 /* Balloon.cpp */,
+				C7B545FD238EE1EE0058C812 /* Balloon.hpp */,
+				C7B545FF238EE1FF0058C812 /* BalloonConstants.cpp */,
+			);
+			path = Balloon;
+			sourceTree = "<group>";
+		};
+		C7B545F9238EE1C50058C812 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				C7B545FA238EE1D50058C812 /* ballon2.png */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		C7BEB49B23887DF2007A32CC = {
 			isa = PBXGroup;
 			children = (
+				C7B545F8238EE1A80058C812 /* Balloon */,
 				C7E42EFC238C11AF0081382A /* Birds */,
 				C7D12D79238AF41A005149F8 /* Water */,
 				C7BEB4DB238895C6007A32CC /* Game */,
@@ -273,6 +300,7 @@
 				C7E42F2C238C13280081382A /* row-2-col-4.jpg in Resources */,
 				C7E42F34238C13280081382A /* row-1-col-4.jpg in Resources */,
 				C7E42F35238C13280081382A /* row-1-col-5.jpg in Resources */,
+				C7B545FB238EE1D50058C812 /* ballon2.png in Resources */,
 				C7E42F2A238C13280081382A /* row-1-col-1-4.jpg in Resources */,
 				C7BEB4E223889660007A32CC /* bgimg.jpg in Resources */,
 			);
@@ -310,10 +338,12 @@
 				C7BEB4DF238895C6007A32CC /* GameConstants.cpp in Sources */,
 				C7BEB4E0238895C6007A32CC /* Game.cpp in Sources */,
 				C7E42F01238C11D80081382A /* BirdsConstants.cpp in Sources */,
+				C7B54600238EE1FF0058C812 /* BalloonConstants.cpp in Sources */,
 				C7BEB4E52388A0CB007A32CC /* ResourcePath.mm in Sources */,
 				C7BEB4D92388958D007A32CC /* BackgroundConstants.cpp in Sources */,
 				C7D12D7C238AF43D005149F8 /* Water.cpp in Sources */,
 				C7E42EFF238C11BE0081382A /* Birds.cpp in Sources */,
+				C7B545FE238EE1EE0058C812 /* Balloon.cpp in Sources */,
 				C7D12D7E238AF48C005149F8 /* WaterConstants.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
