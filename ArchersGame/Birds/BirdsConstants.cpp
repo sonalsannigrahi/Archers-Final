@@ -12,11 +12,11 @@
 class BirdsConstants {
 public:
     double changetime = 0.05;
-    std::string filename[10];
-    int filenamelen = 10;
+    std::string filename[20];
+    int filenamelen = 20;
     
     BirdsConstants(){
-        for (int i=0; i< 10; i++) {
+        for (int i=0; i< 20; i++) {
             filename[i] = "bird" + std::to_string(i+1) + ".png";
             
         }
