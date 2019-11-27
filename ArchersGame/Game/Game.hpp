@@ -37,4 +37,7 @@ class Game {
         void StartGame();
         void UpdateFrame();
         void EndGame();
+
+        void createBird();
+        void removeBird(int id);
 };

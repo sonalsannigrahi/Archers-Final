@@ -6,4 +6,9 @@
 //  Copyright © 2019 Sunho Hwang. All rights reserved.
 //
 
-#include <iostream>
+#include<string>
+
+class BackgroundConstants{
+    public:
+    std::string filename = "bgimg.jpg";
+};

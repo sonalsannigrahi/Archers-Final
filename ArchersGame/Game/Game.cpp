@@ -15,14 +15,22 @@ Game::Game(){
 }
 
 Game::~Game(){
-    delete circle;
-    delete window;
 }
 
 void Game::StartGame(){
+    // CIRCLE TEST
+
     // Draw a circle
-    circle = new sf::CircleShape(100.f);
-    circle -> setFillColor(sf::Color::Green);
+    // circle = new sf::CircleShape(100.f);
+    // circle -> setFillColor(sf::Color::Green);
+
+    // END CIRCLE TEST
+
+    // TEST BIRDS
+
+    createBird();
+    
+    // END TEST BIRDS
 
     // Start timer
     elapsedTime = clock();
@@ -55,20 +63,45 @@ void Game::UpdateFrame(){
     gameBackground.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
 
-    // Draw Water
+    // Draw Waters
     gameWater.updateFrame(time);
+
+    // Draw birds
+    int id = 0;
+    while (id < birds.size()){
+        if (birds[id] -> isAlive()) birds[id] -> updateFrame(time); else removeBird(id);
+        id++;
+    }
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
     std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;
 
+    // CIRCLE TEST
+
     // Change circle's color
-    circle -> setFillColor(sf::Color(0, 255, 0, int((double (elapsedTime) / CLOCKS_PER_SEC) * 25) % 256));
-    window -> draw(*circle);
+    // circle -> setFillColor(sf::Color(0, 255, 0, int((double (elapsedTime) / CLOCKS_PER_SEC) * 25) % 256));
+    // window -> draw(*circle);
     
     // std::cout << "Yo i was here" << std::endl;
+     
+    // END CIRCLE TEST
 }
 
 void Game::EndGame(){
 
+}
+
+void Game::createBird(){
+    Birds* bird = new Birds();
+    bird -> setWindow(window);
+    birds.push_back(bird);
+}
+
+void Game::removeBird(int id){
+    if (birds.size() > id){
+        delete birds[id];
+        birds[id] = birds[birds.size() - 1];
+        birds.pop_back();
+    }
 }

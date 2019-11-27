@@ -15,10 +15,12 @@
 class Background{
 private:
     sf::RenderWindow* window;
+    BackgroundConstants backgroundConstants = BackgroundConstants();
+    sf::Texture backgroundTexture;
+    sf::Sprite backgroundSprite;
 public:
     
-    Background(){
-    }
+    Background();
     
     void setWindow(sf::RenderWindow* gameWindow);
 

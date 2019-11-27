@@ -8,14 +8,16 @@
 
 #include "Background.hpp"
 
+Background::Background(){
+    backgroundTexture.loadFromFile("Background/Asset/" + backgroundConstants.filename);
+    backgroundSprite = sf::Sprite(backgroundTexture);
+}
+
 void Background::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
 void Background::updateFrame(double time) {
-    sf::Texture texture;
-    texture.loadFromFile("Background/Asset/bgimg.jpg");
     //std::cout << "Yo i was here" << std::endl;
-    sf::Sprite sprite(texture);
-    window -> draw(sprite);
+    window -> draw(backgroundSprite);
 }

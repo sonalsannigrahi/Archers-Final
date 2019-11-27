@@ -9,7 +9,7 @@
 
 class WaterConstants {
 public:
-    double changetimewater = 0.02;
+    double changetimewater = 0.07;
     std::string filename[63];
     int filename_len = 63;
 

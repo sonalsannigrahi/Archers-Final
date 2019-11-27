@@ -8,6 +8,15 @@
 
 #include "Birds.hpp"
 
+Birds::Birds(){
+    for (int i = 0; i < birdconstant.filenamelen; i++){
+        sf::Texture* texture = new sf::Texture();
+        texture -> loadFromFile("Birds/Assets/"+ birdconstant.filename[i]);
+        sf::Sprite* sprite = new sf::Sprite(*texture);
+        birdsSprites.push_back(*sprite);
+    }   
+}
+
 void Birds::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
@@ -16,15 +25,15 @@ void Birds::updateFrame(double time) {
     counter = counter + time;
     if (counter >= birdconstant.changetime ) {
         counter = 0;
-        current +=1;
-        if (current >= birdconstant.filenamelen) current = 0;
+        current += 1;
+        if (current >= birdconstant.birdlen * (birdconstant.birdtype + 1)) 
+            current = birdconstant.birdlen * birdconstant.birdtype;
     }
-    sf::Texture texture;
-    texture.loadFromFile("Birds/Assets/"+ birdconstant.filename[current]);
+    
     //std::cout << "Yo i was here" << std::endl;
-    sf::Sprite sprite(texture);
-    window -> draw(sprite);
-    
-    
-    
+    window -> draw(birdsSprites[current]);
+}
+
+bool Birds::isAlive(){
+    return alive;
 }

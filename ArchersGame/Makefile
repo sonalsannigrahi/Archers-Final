@@ -25,14 +25,14 @@ GameConstants.o: Game/GameConstants.cpp
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
 	$(CXX) -c main.cpp
 
 archer: main.o
-	$(CXX) main.o Game.o GameConstants.o BackgroundConstants.o Background.o Water.o -o archer $(Dependencies)
+	$(CXX) main.o Game.o Background.o Water.o Birds.o -o archer $(Dependencies)
 
 clean: 
 	rm -f archer
