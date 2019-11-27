@@ -1,12 +1,14 @@
 #pragma once
 #include <ctime>
 #include <iostream>
+#include <vector>
 #include <SFML/Graphics.hpp>
 
 #include "GameConstants.cpp"
 #include "GameFPS.cpp"
 #include "../Background/Background.hpp"
 #include "../Water/Water.hpp"
+#include "../Birds/Birds.hpp"
 
 class Game {
     private:
@@ -15,6 +17,7 @@ class Game {
         GameFPS gameFPS = GameFPS();
         Background gameBackground = Background();
         Water gameWater = Water();
+        std::vector<Birds*> birds;
         // All other classes
         // ...
 

@@ -55,9 +55,12 @@ void Game::UpdateFrame(){
     gameBackground.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
 
+    // Draw Water
+    gameWater.updateFrame(time);
+
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
-    //std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;
+    std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;
 
     // Change circle's color
     circle -> setFillColor(sf::Color(0, 255, 0, int((double (elapsedTime) / CLOCKS_PER_SEC) * 25) % 256));

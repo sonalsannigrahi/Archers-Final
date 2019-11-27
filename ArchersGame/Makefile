@@ -13,6 +13,12 @@ WaterConstants.o: Water/WaterConstants.cpp
 Water.o: Water/Water.cpp Water/Water.hpp WaterConstants.o
 	$(CXX) -c Water/Water.cpp $(Dependencies)
 
+BirdsConstants.o: Birds/BirdsConstants.cpp
+	$(CXX) -c Birds/BirdsConstants.cpp
+
+Birds.o: Birds/Birds.cpp Birds/Birds.hpp BirdsConstants.o
+	$(CXX) -c Birds/Birds.cpp $(Dependencies)
+
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
 
