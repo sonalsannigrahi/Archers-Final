@@ -41,22 +41,21 @@ Vector2D operator*(double k,Vector2D v)
 
 
 class Force{
-    virtual Vector2D get_force(int x,int y) = 0;
+    virtual Vector2D get_force(PointMass &  point) = 0;
 };
 
 
 
 class ConstantGravity:public Force{
 private:
-    double g;
+    Vector2D g;
 public:
-    ConstantGravity(){
-        g = 10.0;
+    ConstantGravity(vector2D _g){
+        g = _g;
     }
-    virtual Vector2D get_force(double x,double y){
-        Vector2D ans;
-        ans.x = 0.0;
-        ans.y = -g;
+    virtual Vector2D get_force(PointMass & point){
+        Vector2D _force = point.mass * g;
+        return _force;
     }
 };
 
@@ -71,7 +70,7 @@ public:
                 PointMass* point = points[i];
                 Force* force = forces[j];
 
-                point->sum_forces = point->sum_forces + force->get_force(0.0,0.0);
+                point->sum_forces = point->sum_forces + force->get_force(point);
 
             }
         }
@@ -95,15 +94,15 @@ public:
                 **/
 
                 if( intersect(*points[i],*points[j]) ){
-                    Vector2D CM_VEL = (*points[i])*mass * (*points[i]).vel + (*points[j])*mass * (*points[j]).vel;
-                    Vector2D CM_VEL = 1.0/( (*points[i]).mass + (*points[j]).mass );
+                    Vector2D CM_VEL = (*points[i]).mass * (*points[i]).vel + (*points[j]).mass * (*points[j]).vel;
+                    CM_VEL = CM_VEL/( (*points[i]).mass + (*points[j]).mass );
 
                     Vector2D V = (*points[i]).vel - (*points[j]).vel;
 
-                    Vector2D V_i_CM = (*points[j])*mass/((*points[i]).mass + (*points[j]).mass) * V;
-                    Vector2D V_j_CM = (-*points[i])*mass/((*points[i]).mass + (*points[j]).mass) * V;
+                    Vector2D V_i_CM = -(*points[j]).mass/((*points[i]).mass + (*points[j]).mass) * V; //velocity_i after collision CM frame
+                    Vector2D V_j_CM = (*points[i]).mass/((*points[i]).mass + (*points[j]).mass) * V; //velocity_j after collision CM frame
 
-                    ///TODO
+                    ///TODO just say that the final velocity will be equal to vcm+vrel (for both)
 
                 }
             }
@@ -120,6 +119,7 @@ public:
     double mass;
     double radius;
     friend bool intersect(PointMass a, PointMass b);
+    friend Force;
 public:
     PointMass(double _x, double _y, double _mass, double _radius):
         x(_x),y(_y),mass(_mass),radius(_radius){
