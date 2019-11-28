@@ -23,6 +23,7 @@ public:
         ans.y = this->y - other.y;
         return ans;
     }
+    Vector
     double magnitude(){
         return sqrt( (this->x)*(this->x) + (this->y)*(this->y) );
     }
@@ -152,3 +153,7 @@ int main()
 {
     return 0;
 }
+
+
+
+//Testing New Branch
