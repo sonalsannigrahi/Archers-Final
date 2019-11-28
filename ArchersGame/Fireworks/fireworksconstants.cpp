@@ -1,14 +1,14 @@
 #include <string>
 
-class WaterConstants {
+class FireworksConstants {
 public:
-    double changetimewater = 0.02;
-    std::string filename[63];
-    int filename_len = 63;
+    double changetimefireworks = 0.02;
+    std::string filename[45];
+    int filename_len = 45;
 
-    WaterConstants(){
-        for (int i =1;i <= 63;i++){
-            filename[i-1] = "waterAnimation" + std::to_string(i) + ".png";
+    FireworksConstants(){
+        for (int i =1;i <= filename_len;i++){
+            filename[i-1] = "frame_apngframe" + std::to_string(i) + ".png";
         }
 
     }
