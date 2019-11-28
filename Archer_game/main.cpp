@@ -29,6 +29,7 @@ public:
         ans.y = this->y - other.y;
         return ans;
     }
+    
 
     
 
@@ -39,6 +40,9 @@ public:
 
 double operator* (Vector2D a, Vector2D b){
         return (a.x * b.x) + (a.y * b.y);
+    }
+double operator^(Vector2D a, Vector2D b){ // opperator that calculates the vector product between two vectors
+        return a.x*b.y-a.y*b.x;
     }
 
 Vector2D operator*(double k,Vector2D v)
@@ -56,13 +60,10 @@ double cos(Vector2D &other){ //function that calculates the cossine between two 
 
 double sin(Vector2D &other){ //function that calculates sin between two angles
     Vector2D ans;
-    return (ans^other)/ans.magnitude()*other.magnitude();
+    return (ans^other)*(1.0/(ans.magnitude()*other.magnitude()));
 }
 
-Vector2D operator^(Vector2D &other){ // opperator that calculates the vector product between two vectors
-    Vector2D ans;
-    return ans.x*other.y-ans.y*other.x;
-}
+
 
 class AirResistance:public Force{
 private:
