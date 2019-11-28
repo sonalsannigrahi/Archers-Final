@@ -64,6 +64,18 @@ Vector2D operator^(Vector2D &other){ // opperator that calculates the vector pro
     return ans.x*other.y-ans.y*other.x;
 }
 
+class AirResistance:public Force{
+private:
+    Vector2D r;
+public:
+    AirResistance(PointMass m){
+        r = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * magnitude(m.vel)*(-1)*m.vel;
+    }
+    virtual Vector2D get_force(PointMass &m){
+        Vector2D _force = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * magnitude(m.vel)*(-1)*m.vel;
+        return _force;
+    }
+};
 
 
 
