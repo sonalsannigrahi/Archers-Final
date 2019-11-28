@@ -17,6 +17,7 @@ Balloon::Balloon() {
     sf::Texture texture;
     texture.loadFromFile(balloonconstants.filename);
     sprite = sf::Sprite(texture);
+    sprite.setPosition(0.f,0.f);
 }
 
 void Balloon::setSize(int width, int height) {
