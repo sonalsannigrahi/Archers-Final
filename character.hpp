@@ -1,5 +1,8 @@
 #include <SFML/Graphics.hpp>
 
+#include "bow.hpp"
+#include "arrow.hpp"
+
 class Character: public sf::Drawable 
 {
 private:
@@ -10,17 +13,27 @@ private:
 
     double xPosition, yPosition;
 
+    Bow bow;
+
+    Arrow arrow;
+
 public:
 
-    // constructor
-    Character(double x, double y);
+    // constructor (health initialized to 1 by default)
+    Character(double x, double y, Bow bow, Arrow arrow, float health = 1);
 
     // get position functions
-    double getX() const;
-    double getY() const;
+    double getX();
+    double getY();
 
     // get health function
     float getHealth();
+
+    // get bow
+    Bow getBow();
+
+    // get arrow
+    Arrow getArrow();
 
     //smfl objects for graphics
     sf::CircleShape head;
@@ -29,13 +42,6 @@ public:
     sf::RectangleShape right_arm;
     sf::RectangleShape left_leg;
     sf::RectangleShape right_leg;
-
-    /* only add these functions if we need to change the position of the character
-    more useful for the opponent class
-    // set position functions
-    void setX(double x);
-    void setY(double y);
-    */
 
     /* update function
     what type? and what should it do?
