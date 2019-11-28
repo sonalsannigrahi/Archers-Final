@@ -1,5 +1,9 @@
 #include <SFML/Graphics.hpp>
 
+#include "bow.hpp"
+#include "arrow.hpp"
+#include "player.hpp"
+
 class Character: public sf::Drawable 
 {
 private:
@@ -9,6 +13,12 @@ private:
     float health; 
 
     double xPosition, yPosition;
+
+    Bow bow;
+
+    Arrow arrow;
+
+    Player player;
 
 public:
 
