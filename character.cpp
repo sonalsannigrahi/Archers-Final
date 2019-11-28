@@ -1,6 +1,6 @@
 #include "character.hpp"
 
-Character::Character(double x, double y, Bow bow, Arrow arrow) {
+Character::Character(double x, double y, Bow bow, Arrow arrow, float health = 1) {
     this->health = health;
     this->xPosition = x;
     this->yPosition = y;

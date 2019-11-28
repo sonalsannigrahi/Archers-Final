@@ -19,8 +19,8 @@ private:
 
 public:
 
-    // constructor
-    Character(double x, double y, Bow bow, Arrow arrow);
+    // constructor (health initialized to 1 by default)
+    Character(double x, double y, Bow bow, Arrow arrow, float health = 1);
 
     // get position functions
     double getX();
