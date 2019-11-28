@@ -31,4 +31,3 @@ void Balloon::updateFrame(double time) {
     sprite.move(0.f,y * time);
 }
 
-
