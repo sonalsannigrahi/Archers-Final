@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "fireworksconstants.cpp"
 
-class Firework{
+class Fireworks{
 private:
     sf::RenderWindow* window;
     FireworksConstants fireworksconstants = FireworksConstants();
@@ -13,7 +13,7 @@ private:
     
 public:
     
-    Firework(){
+    Fireworks(){
     }
     
     void setWindow(sf::RenderWindow* gameWindow);
