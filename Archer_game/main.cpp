@@ -204,5 +204,126 @@ int main()
     return 0;
 }
 
+/**
+#include <SFML/Graphics.hpp>
+#include <iostream>
 
+using namespace std;
+
+class Gravity;
+
+class Point: public sf::Drawable{
+private:
+
+    double mass;
+
+    double x;
+    double y;
+
+    double v_x;
+    double v_y;
+
+    double f_x;
+    double f_y;
+
+    double radius;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        sf::CircleShape shape(radius);
+        shape.setPosition(x,target.getSize().y - y);
+        target.draw(shape);
+    }
+public:
+
+    friend Gravity;
+
+    Point(double _mass, double _x, double _y, double _v_x, double _v_y, double _radius){
+        mass = _mass;
+
+        x = _x;
+        y = _y;
+
+        v_x = _v_x;
+        v_y = _v_y;
+
+        f_x = 0.0;
+        f_y = 0.0;
+
+        radius = _radius;
+    }
+    void integrate(double duration){
+        double a_x = f_x / mass;
+        double a_y = f_y / mass;
+
+        v_x += a_x * duration;
+        v_y += a_y * duration;
+
+        x += v_x * duration;
+        y += v_y * duration;
+
+    }
+    void reset(){
+        f_x = f_y = 0.0;
+    }
+};
+
+class Gravity{
+private:
+    double g = 10.0;
+public:
+    void get_force(Point& point)
+    {
+        point.f_y -= point.mass * g;
+    }
+
+};
+/// To do
+/**
+
+Collisions with earth
+convex shape
+black hole
+Collisions with each other
+
+
+
+
+
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(400, 400), "SFML works!",sf::Style::Default);
+
+    sf::CircleShape shape(100.f);
+
+    Point point(20.0, -50.0, 50.0, 15.0, 70.0, 50.0);
+    Gravity gravity;
+
+
+    sf::Clock clock;
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        gravity.get_force(point);
+
+        float duration = clock.getElapsedTime().asSeconds() * 10.0;
+        clock.restart();
+
+        point.integrate(duration);
+
+        window.clear();
+        window.draw(point);
+        window.display();
+
+        point.reset();
+    }
+
+    return 0;
+}
+**/
 
