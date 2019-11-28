@@ -65,7 +65,7 @@ Vector2D operator^(Vector2D &other){ // opperator that calculates the vector pro
 }
 
 
-/*
+
 
 class Force{
     virtual Vector2D get_force(PointMass &  point) = 0;
@@ -84,6 +84,13 @@ public:
         Vector2D _force = point.mass * g;
         return _force;
     }
+};
+
+class BlackHole:public PointMass{
+    vel=0;
+    sum_forces=0;//check if need Vector2D
+    //Add function to kill object if it intersects the blackhole
+
 };
 
 class ForceGenerator{
@@ -173,7 +180,7 @@ bool intersect(PointMass a, PointMass b)
         return false;
 }
 
-*/
+
 
 int main()
 {
