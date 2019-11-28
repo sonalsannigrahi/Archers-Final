@@ -49,6 +49,19 @@ Vector2D operator*(double k,Vector2D v)
     return ans;
 }
 
+class AirResistance:public Force{
+private:
+    Vector2D r;
+public:
+    AirResistance(PointMass m){
+        r = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * magnitude(m.vel)*(-1)*m.vel;
+    }
+    virtual Vector2D get_force(PointMass &m){
+        Vector2D _force = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * magnitude(m.vel)*(-1)*m.vel;
+        return _force;
+    }
+};
+
 
 /*
 
