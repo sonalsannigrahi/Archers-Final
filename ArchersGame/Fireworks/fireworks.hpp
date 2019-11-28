@@ -2,18 +2,18 @@
 #include <ctime>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "WaterConstants.cpp"
+#include "fireworksconstants.cpp"
 
-class Water{
+class Firework{
 private:
     sf::RenderWindow* window;
-    WaterConstants waterconstants = WaterConstants();
+    FireworksConstants fireworksconstants = FireworksConstants();
     double counter = 0;
     int current = 0;
     
 public:
     
-    Water(){
+    Firework(){
     }
     
     void setWindow(sf::RenderWindow* gameWindow);
