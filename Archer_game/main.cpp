@@ -37,7 +37,7 @@ public:
     }
 };
 
-double operator^ (Vector2D a, Vector2D b){
+double operator* (Vector2D a, Vector2D b){
         return (a.x * b.x) + (a.y * b.y);
     }
 
@@ -50,7 +50,7 @@ Vector2D operator*(double k,Vector2D v)
 }
 
 
-
+/*
 
 class Force{
     virtual Vector2D get_force(PointMass &  point) = 0;
@@ -158,13 +158,13 @@ bool intersect(PointMass a, PointMass b)
         return false;
 }
 
-
+*/
 
 int main()
 {
     Vector2D a = Vector2D(3,4);
     Vector2D b = Vector2D(5,6);
-    double c = a^b;
+    double c = a * b;
     std::cout << c << std::endl;
     return 0;
 }
