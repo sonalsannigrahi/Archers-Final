@@ -1,6 +1,5 @@
 #include "opponent.hpp"
 
-
 void Opponent::setX(double x) {
     this->xPosition = x;
 }

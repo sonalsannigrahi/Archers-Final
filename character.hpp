@@ -20,14 +20,20 @@ private:
 public:
 
     // constructor
-    Character(double x, double y);
+    Character(double x, double y, Bow bow, Arrow arrow);
 
     // get position functions
-    double getX() const;
-    double getY() const;
+    double getX();
+    double getY();
 
     // get health function
     float getHealth();
+
+    // get bow
+    Bow getBow();
+
+    // get arrow
+    Arrow getArrow();
 
     //smfl objects for graphics
     sf::CircleShape head;
