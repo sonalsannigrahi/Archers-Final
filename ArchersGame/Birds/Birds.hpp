@@ -9,6 +9,9 @@
 #pragma once
 #include <ctime>
 #include <iostream>
+#include <vector>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
 #include "BirdsConstants.cpp"
 
@@ -16,13 +19,20 @@ class Birds{
 private:
     BirdsConstants birdconstant = BirdsConstants();
     sf::RenderWindow* window;
+    std::vector<sf::Sprite> birdsSprites;
     double counter = 0;
     int current = 0;
+    int birdType;
+    int direction;
+    int windowWidth, windowHeight;
+    bool alive = true;
+    float posX, posY;
 public:
     
-    Birds(){
-    }
+    Birds();
     
     void setWindow(sf::RenderWindow* gameWindow);
+    void setSize(int width, int height);
     void updateFrame(double time);
+    bool isAlive();
 };
