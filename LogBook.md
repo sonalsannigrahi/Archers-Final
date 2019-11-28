@@ -28,3 +28,7 @@ Alice Aubert - This week I helped set up the Trello and get everyone on the gith
 Zhang Xingjian & Saba Tavdgiridze - We analyzed how to detect intersection for objects and resolve them. Next week, we will write the part of the code which is responsible for that part of the game.
 
 Jiwon Park - This week I looked over SFML libraries how to draw 2D figures on window to start working on implementing basic classes such as game map.
+
+## Week 2 (23rd Nov - 29th Nov)
+
+Andre Renom - Met with Saba, Nicolas and Chris to discuss Physics engine, implementation was started with a vector and pointmass framework of forces. Vector operations were created to help with later development. Air resisitance as implemented as a force on a pointmass, and started BlackHoles were added as a subclass of Pointmasses.
