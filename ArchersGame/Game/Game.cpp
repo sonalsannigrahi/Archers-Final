@@ -69,8 +69,11 @@ void Game::UpdateFrame(){
     // Draw birds
     int id = 0;
     while (id < birds.size()){
-        if (birds[id] -> isAlive()) birds[id] -> updateFrame(time); else removeBird(id);
-        id++;
+        if (birds[id] -> isAlive()){
+            birds[id] -> updateFrame(time);
+            id++;
+        }
+        else removeBird(id);
     }
 
     // Update FPS counter
