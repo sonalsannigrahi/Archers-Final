@@ -32,3 +32,5 @@ Jiwon Park - This week I looked over SFML libraries how to draw 2D figures on wi
 ## Week 2 (23rd Nov - 29th Nov)
 
 Andre Renom - Met with Saba, Nicolas and Chris to discuss Physics engine, implementation was started with a vector and pointmass framework of forces. Vector operations were created to help with later development. Air resisitance as implemented as a force on a pointmass, and started BlackHoles were added as a subclass of Pointmasses.
+
+Xingjian Zhang & Saba Tavdgiridze - Met with Physics Engine group members for discussion on Monday. Began implementation of vector and pointmass frameworks and worked on solving collision. Next week, we will continue to work on the engine and try to test it using sfml.
