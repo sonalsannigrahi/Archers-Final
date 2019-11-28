@@ -2,7 +2,6 @@
 
 #include "bow.hpp"
 #include "arrow.hpp"
-#include "player.hpp"
 
 class Character: public sf::Drawable 
 {
@@ -17,8 +16,6 @@ private:
     Bow bow;
 
     Arrow arrow;
-
-    Player player;
 
 public:
 
@@ -39,13 +36,6 @@ public:
     sf::RectangleShape right_arm;
     sf::RectangleShape left_leg;
     sf::RectangleShape right_leg;
-
-    /* only add these functions if we need to change the position of the character
-    more useful for the opponent class
-    // set position functions
-    void setX(double x);
-    void setY(double y);
-    */
 
     /* update function
     what type? and what should it do?

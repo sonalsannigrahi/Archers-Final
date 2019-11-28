@@ -1,5 +1,3 @@
-#include <SFML/Graphics.hpp>
-
 #include "character.hpp"
 
 class Opponent: public Character
