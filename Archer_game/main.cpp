@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<iostream>
 
 using namespace std;
 
@@ -8,6 +9,11 @@ public:
     double x;
     double y;
     Vector2D(){};
+
+    Vector2D(double x1,double y1){
+        x = x1;
+        y = y1;
+    }
 
     friend Vector2D operator*(double k,Vector2D v);
 
@@ -23,12 +29,17 @@ public:
         ans.y = this->y - other.y;
         return ans;
     }
-    Vector
+
+    
+
     double magnitude(){
         return sqrt( (this->x)*(this->x) + (this->y)*(this->y) );
     }
 };
 
+double operator^ (Vector2D a, Vector2D b){
+        return (a.x * b.x) + (a.y * b.y);
+    }
 
 Vector2D operator*(double k,Vector2D v)
 {
@@ -90,9 +101,9 @@ public:
         int n = points.size();
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
-                /**
-                Collision between ith and jth objects;
-                **/
+                
+                //Collision between ith and jth objects;
+                
 
                 if( intersect(*points[i],*points[j]) ){
                     Vector2D CM_VEL = (*points[i]).mass * (*points[i]).vel + (*points[j]).mass * (*points[j]).vel;
@@ -151,9 +162,12 @@ bool intersect(PointMass a, PointMass b)
 
 int main()
 {
+    Vector2D a = Vector2D(3,4);
+    Vector2D b = Vector2D(5,6);
+    double c = a^b;
+    std::cout << c << std::endl;
     return 0;
 }
 
 
 
-//Testing New Branch
