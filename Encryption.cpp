@@ -1,8 +1,11 @@
-#include "GitHub\Archers\Encryption.hpp"
+#include "Encryption.hpp"
 #include <iostream>     // std::cout
 #include <algorithm>    // std::random_shuffle
 #include <vector>       // std::vector
-#include <cstdlib>      // std::rand, std::srand
+#include <cstdlib>
+#include <iterator>
+#include <map>
+#include <typeinfo>
 using namespace std;
 Encrypt::Encrypt(){
     vector<vector<int> >   vect;
@@ -109,7 +112,7 @@ float Encrypt::decrypt(float number){
         nnumber=nnumber*10;
         k = k*10;
     }
-    float res = (float)(this->decrypt(nnumber))/(float)(k);
+    float res = (float)(this->decrypt((int)(nnumber)))/(k);
     return res;
 }
 double Encrypt::encrypt(double number){
@@ -135,7 +138,7 @@ double Encrypt::decrypt(double number){
         nnumber=nnumber*10;
         k = k*10;
     }
-    double res = (double)(this->decrypt(nnumber))/(double)(k);
+    double res = (double)(this->decrypt((int)(nnumber)))/(k);
     return res;
 }
 long long Encrypt::encrypt(long long number){
@@ -199,3 +202,65 @@ string Encrypt::decrypt(string word){
     }
     return word_;
 }
+/*template <typename U> void Encrypt::add_data(string key, U value){
+    int int_;
+    float float_;
+    double double_;
+    long long long_long;
+    string string_;
+    if (typeid(value)==typeid(int_)){
+        sint.insert(pair<string,int> (this->encrypt(key),this->encrypt(value)));
+    }
+    else if (typeid(value)==typeid(float_)){
+        sfloat.insert(pair<string,float> (this->encrypt(key),this->encrypt(value)));
+    }
+    else if (typeid(value)==typeid(double_)){
+        sdouble.insert(pair<string,double> (this->encrypt(key),this->encrypt(value)));
+    }
+    else if (typeid(value)==typeid(long_long)){
+        sllong.insert(pair<string,long long> (this->encrypt(key),this->encrypt(value)));
+    }
+}
+template <typename T> T Encrypt::get_item(string key){
+    T type;
+    int int_;
+    float float_;
+    double double_;
+    long long long_long;
+    string string_;
+    if (typeid(type)==typeid(int_)){
+        for (map<string, int>::iterator itr = sint.begin(); itr != sint.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                return this->decrypt(itr->second);
+            }
+        }
+    }
+    else if (typeid(type)==typeid(float_)){
+        for (map<string, float>::iterator itr = sfloat.begin(); itr != sfloat.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                return this->decrypt(itr->second);
+            }
+        }
+    }
+    else if (typeid(type)==typeid(double_)){
+        for (map<string, double>::iterator itr = sdouble.begin(); itr != sdouble.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                return this->decrypt(itr->second);
+            }
+        }
+    }
+    else if (typeid(type)==typeid(long_long)){
+        for (map<string, long long>::iterator itr = sllong.begin(); itr != sllong.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                return this->decrypt(itr->second);
+            }
+        }
+    }
+
+}
+
+*/
+
+
+
+
