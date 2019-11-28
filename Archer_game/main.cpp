@@ -51,12 +51,12 @@ Vector2D operator*(double k,Vector2D v)
 
 double cos(Vector2D &other){ //function that calculates the cossine between two vectors
     Vector2D ans;
-    return (ans.magnitude*ans.magnitude+other.magnitude*other.magnitude-(ans-other).magnitude*(ans-other).magnitude)/(2*ans.magnitude*other.magnitude);
+    return (ans.magnitude()*ans.magnitude()+other.magnitude()*other.magnitude()-(ans-other).magnitude()*(ans-other).magnitude())/(2*ans.magnitude()*other.magnitude());
 }
 
 double sin(Vector2D &other){ //function that calculates sin between two angles
     Vector2D ans;
-    return (ans^other)/ans.magnitude*other.magnitude;
+    return (ans^other)/ans.magnitude()*other.magnitude();
 }
 
 Vector2D operator^(Vector2D &other){ // opperator that calculates the vector product between two vectors
@@ -69,10 +69,10 @@ private:
     Vector2D r;
 public:
     AirResistance(PointMass m){
-        r = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * magnitude(m.vel)*(-1)*m.vel;
+        r = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * m.vel.magnitude()*(-1)*m.vel;
     }
     virtual Vector2D get_force(PointMass &m){
-        Vector2D _force = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * magnitude(m.vel)*(-1)*m.vel;
+        Vector2D _force = 0.5*0.47*1.225*(m.radius * m.radius * 3.142) * m.vel.magnitude()*(-1)*m.vel;
         return _force;
     }
 };
