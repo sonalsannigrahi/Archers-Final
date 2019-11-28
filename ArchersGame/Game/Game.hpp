@@ -1,12 +1,16 @@
 #pragma once
 #include <ctime>
 #include <iostream>
+#include <vector>
+#include <stdlib.h>
+#include <time.h>
 #include <SFML/Graphics.hpp>
 
 #include "GameConstants.cpp"
 #include "GameFPS.cpp"
 #include "../Background/Background.hpp"
 #include "../Water/Water.hpp"
+#include "../Birds/Birds.hpp"
 
 class Game {
     private:
@@ -15,6 +19,7 @@ class Game {
         GameFPS gameFPS = GameFPS();
         Background gameBackground = Background();
         Water gameWater = Water();
+        std::vector<Birds*> birds;
         // All other classes
         // ...
 
@@ -34,4 +39,7 @@ class Game {
         void StartGame();
         void UpdateFrame();
         void EndGame();
+
+        void createBird();
+        void removeBird(int id);
 };

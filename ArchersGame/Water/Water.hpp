@@ -9,6 +9,7 @@
 #pragma once
 #include <ctime>
 #include <iostream>
+#include <vector>
 #include <SFML/Graphics.hpp>
 #include "WaterConstants.cpp"
 
@@ -16,13 +17,15 @@ class Water{
 private:
     sf::RenderWindow* window;
     WaterConstants waterconstants = WaterConstants();
+    std::vector<sf::Sprite> waterSprites;
     double counter = 0;
     int current = 0;
+    int windowWidth, windowHeight;
 public:
     
-    Water(){
-    }
+    Water();
     
     void setWindow(sf::RenderWindow* gameWindow);
+    void setSize(int width, int height);
     void updateFrame(double time);
 };

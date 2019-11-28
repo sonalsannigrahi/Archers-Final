@@ -8,8 +8,26 @@
 
 #include "Water.hpp"
 
+Water::Water(){
+    for (int i = 0; i < waterconstants.filename_len; i++){
+        sf::Texture* waterTexture = new sf::Texture();
+        waterTexture -> loadFromFile("Water/asset/"+waterconstants.filename[i]);
+        sf::Sprite* waterSprite = new sf::Sprite(*waterTexture);
+        waterSprites.push_back(*waterSprite);
+    }
+}
+
 void Water::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
+}
+
+void Water::setSize(int width, int height){
+    windowWidth = width;
+    windowHeight = height;
+    for (int i = 0; i < waterconstants.filename_len; i++){
+        waterSprites[i].setScale((float) width / waterSprites[i].getGlobalBounds().width, waterconstants.heightScale * (float) height / waterSprites[i].getGlobalBounds().height);
+        waterSprites[i].setPosition(0.0, height - waterSprites[i].getGlobalBounds().height);
+    }
 }
 
 void Water::updateFrame(double time) {
@@ -21,9 +39,6 @@ void Water::updateFrame(double time) {
             current = 0;
         }
     }
-     sf::Texture texture;
-    texture.loadFromFile("Water/asset/"+waterconstants.filename[current]);
     //std::cout << "Yo i was here" << std::endl;
-    sf::Sprite sprite(texture);
-    window -> draw(sprite);
+    window -> draw(waterSprites[current]);
 }
