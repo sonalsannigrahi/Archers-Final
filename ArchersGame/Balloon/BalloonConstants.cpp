@@ -8,3 +8,8 @@
 
 #include <string>
 
+class BalloonConstants {
+    public:
+        float ypos = -50;
+        std::string filename = "Balloon/Asset/ballon2.png";
+};

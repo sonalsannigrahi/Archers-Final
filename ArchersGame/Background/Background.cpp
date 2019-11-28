@@ -14,8 +14,8 @@ void Background::setWindow(sf::RenderWindow* gameWindow){
 
 void Background::updateFrame(double time) {
     sf::Texture texture;
-    texture.loadFromFile("Background/Asset/bgimg.jpg");
-    //std::cout << "Yo i was here" << std::endl;
+    texture.loadFromFile("Background/Asset/PNG/game_background_3/bg3.png");
+    //std::cout << "Yo i was here bgimg" << std::endl;
     sf::Sprite sprite(texture);
     window -> draw(sprite);
 }

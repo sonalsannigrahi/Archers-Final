@@ -8,10 +8,26 @@
 
 #include "Balloon.hpp"
 
-void Ballons::setWindow(sf::RenderWindow* gameWindow){
+
+void Balloon::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
-void Ballons::updateFrame(double time) {
-    
+Balloon::Balloon() {
+    sf::Texture texture;
+    texture.loadFromFile(balloonconstants.filename);
+    sprite = sf::Sprite(texture);
 }
+
+void Balloon::setSize(int width, int height) {
+    windowWidth = width;
+    windowHeight = height;
+}
+
+void Balloon::updateFrame(double time) {
+    window -> draw(sprite);
+    float y = balloonconstants.ypos;
+    sprite.move(0.f,y * time);
+}
+
+

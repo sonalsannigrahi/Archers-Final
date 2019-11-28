@@ -15,12 +15,18 @@
 
 class Balloon{
 private:
+    BalloonConstants balloonconstants = BalloonConstants();
     sf::RenderWindow* window;
+    sf::Sprite sprite;
+    int windowWidth, windowHeight;
+    bool active = true;
+    float x;
 public:
     
-    Balloon(){
-    }
+    Balloon();
     
+    void setSize(int width, int height);
+    bool isActive();
     void setWindow(sf::RenderWindow* gameWindow);
     void updateFrame(double time);
 };
