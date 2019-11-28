@@ -18,11 +18,13 @@ private:
     BackgroundConstants backgroundConstants = BackgroundConstants();
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
+    int backgroundWidth;
+    int backgroundHeight;
 public:
     
     Background();
     
     void setWindow(sf::RenderWindow* gameWindow);
-
+    void setSize(int width, int height);
     void updateFrame(double time);
 };

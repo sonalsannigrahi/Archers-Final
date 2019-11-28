@@ -21,6 +21,15 @@ void Water::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
+void Water::setSize(int width, int height){
+    windowWidth = width;
+    windowHeight = height;
+    for (int i = 0; i < waterconstants.filename_len; i++){
+        waterSprites[i].setScale((float) width / waterSprites[i].getGlobalBounds().width, waterconstants.heightScale * (float) height / waterSprites[i].getGlobalBounds().height);
+        waterSprites[i].setPosition(0.0, height - waterSprites[i].getGlobalBounds().height);
+    }
+}
+
 void Water::updateFrame(double time) {
     counter += time;
     if (counter >= waterconstants.changetimewater){

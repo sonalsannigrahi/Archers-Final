@@ -20,10 +20,12 @@ private:
     std::vector<sf::Sprite> waterSprites;
     double counter = 0;
     int current = 0;
+    int windowWidth, windowHeight;
 public:
     
     Water();
     
     void setWindow(sf::RenderWindow* gameWindow);
+    void setSize(int width, int height);
     void updateFrame(double time);
 };

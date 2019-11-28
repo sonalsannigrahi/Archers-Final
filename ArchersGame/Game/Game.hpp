@@ -2,6 +2,8 @@
 #include <ctime>
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 #include <SFML/Graphics.hpp>
 
 #include "GameConstants.cpp"

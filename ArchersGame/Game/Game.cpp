@@ -9,6 +9,10 @@ Game::Game(){
     gameBackground.setWindow(window);
     gameWater.setWindow(window);
 
+    // Inititalize other variables
+    gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+
     // Start game
     std::cout << "Starting Game ..." << std::endl;
     StartGame();
@@ -28,9 +32,11 @@ void Game::StartGame(){
 
     // TEST BIRDS
 
-    createBird();
+    // createBird();
     
     // END TEST BIRDS
+
+    srand(time(NULL)); // Randomize
 
     // Start timer
     elapsedTime = clock();
@@ -54,6 +60,9 @@ void Game::StartGame(){
 
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
+
+    // Creating birds
+    if (rand() % gameConstants.birdRate == 0) createBird();
 
     // Calculate time has passed since the last UpdateFrame
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
@@ -98,6 +107,7 @@ void Game::EndGame(){
 void Game::createBird(){
     Birds* bird = new Birds();
     bird -> setWindow(window);
+    bird -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     birds.push_back(bird);
 }
 

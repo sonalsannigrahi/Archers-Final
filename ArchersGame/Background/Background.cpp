@@ -17,6 +17,12 @@ void Background::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
+void Background::setSize(int width, int height){
+    backgroundWidth = width;
+    backgroundHeight = height;
+    backgroundSprite.setScale((float) width / backgroundSprite.getGlobalBounds().width, (float) height / backgroundSprite.getGlobalBounds().height);
+}
+
 void Background::updateFrame(double time) {
     //std::cout << "Yo i was here" << std::endl;
     window -> draw(backgroundSprite);

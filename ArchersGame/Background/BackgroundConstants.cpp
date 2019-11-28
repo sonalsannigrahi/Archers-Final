@@ -10,5 +10,5 @@
 
 class BackgroundConstants{
     public:
-    std::string filename = "bgimg.jpg";
+    std::string filename = "PNG/game_background_1/game_background_1.png";
 };

@@ -9,6 +9,8 @@
 #include "Birds.hpp"
 
 Birds::Birds(){
+    srand (time(NULL)); // Randomize with time
+
     for (int i = 0; i < birdconstant.filenamelen; i++){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Birds/Assets/"+ birdconstant.filename[i]);
@@ -21,17 +23,43 @@ void Birds::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
+void Birds::setSize(int width, int height){
+    windowWidth = width;
+    windowHeight = height;
+    birdType = rand() % birdconstant.birdTypeCount;
+    current = birdconstant.birdlen * birdType;
+    direction = rand() % 2;
+    if (direction == 0){
+        posX = 0.0;
+        for (int i = 0; i < birdconstant.filenamelen; i++) 
+            birdsSprites[i].setScale(-1.f, 1.f); // Flip the bird
+    } else {
+        posX = (float) width;
+    }
+    posY = rand() % ((int) (height * birdconstant.skylimit));
+}
+
 void Birds::updateFrame(double time) {
     counter = counter + time;
     if (counter >= birdconstant.changetime ) {
         counter = 0;
         current += 1;
-        if (current >= birdconstant.birdlen * (birdconstant.birdtype + 1)) 
-            current = birdconstant.birdlen * birdconstant.birdtype;
+        if (current >= birdconstant.birdlen * (birdType + 1)) 
+            current = birdconstant.birdlen * birdType;
     }
     
     //std::cout << "Yo i was here" << std::endl;
-    window -> draw(birdsSprites[current]);
+    if (direction == 0){
+        posX += birdconstant.birdSpeed * time;
+    } else {
+        posX -= birdconstant.birdSpeed * time;
+    }
+    if (posX < 0.0 || posX > (float) windowWidth){
+        alive = false; // The bird has moved out of the game => delete it
+    } else {
+        birdsSprites[current].setPosition(posX, posY);
+        window -> draw(birdsSprites[current]);
+    }
 }
 
 bool Birds::isAlive(){

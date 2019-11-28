@@ -14,7 +14,9 @@ public:
     std::string filename[20];
     int filenamelen = 20;
     int birdlen = 10;
-    int birdtype = 0;
+    int birdTypeCount = 2;
+    float birdSpeed = 100.f;
+    float skylimit = 0.7;
     
     BirdsConstants(){
         for (int i=0; i< 20; i++) {
