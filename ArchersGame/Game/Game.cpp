@@ -1,6 +1,8 @@
 #include "Game.hpp"
 
 Game::Game(){
+    srand(time(NULL)); // Randomize
+    
     // Create game window
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
@@ -35,8 +37,6 @@ void Game::StartGame(){
     // createBird();
     
     // END TEST BIRDS
-
-    srand(time(NULL)); // Randomize
 
     // Start timer
     elapsedTime = clock();
