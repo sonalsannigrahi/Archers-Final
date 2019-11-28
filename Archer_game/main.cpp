@@ -49,6 +49,21 @@ Vector2D operator*(double k,Vector2D v)
     return ans;
 }
 
+double cos(Vector2D &other){ //function that calculates the cossine between two vectors
+    Vector2D ans;
+    return (magnitude(ans)*magnitude(ans)+magnitude(other)*magnitude(other)-magnitude(ans-other)*magnitude(ans-other))/(2*magnitude(ans)*magnitude(other));
+}
+
+double sin(Vector2D &other){ //function that calculates sin between two angles
+    Vector2D ans;
+    return (ans^other)/magnitude(ans)*magnitude(other);
+}
+
+Vector2D operator^(Vector2D &other){ // opperator that calculates the vector product between two vectors
+    Vector2D ans;
+    return ans.x*other.y-ans.y*other.x;
+}
+
 
 /*
 
