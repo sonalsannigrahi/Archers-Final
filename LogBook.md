@@ -33,7 +33,7 @@ Jiwon Park - This week I looked over SFML libraries how to draw 2D figures on wi
 
 Andre Renom - Met with Saba, Nicolas and Chris to discuss Physics engine, implementation was started with a vector and pointmass framework of forces. Vector operations were created to help with later development. Air resisitance as implemented as a force on a pointmass, and started BlackHoles were added as a subclass of Pointmasses.
 
-Xingjian Zhang & Saba Tavdgiridze - Met with Physics Engine group members for discussion last Sunday. Began implementation of vector and pointmass frameworks and worked on solving collision. Next week, we will continue to work on the engine and try to test it using sfml.
+Xingjian Zhang & Saba Tavdgiridze - Met with Physics Engine group members for discussion last Sunday. Began implementation of vector and pointmass frameworks and worked on solving collision.Implemented a demo in a subbranch with very basic collisions and simple gravity. Next week, we will continue improving the collison detector and physics necassary for resolving them(We will use general convex polygons instead of circles for each object.)
 
 Sonal Sannigrahi- Looking into sprite animation vs vector graphics through drawables. Implemented a click and drag function for the bow/arrow. Will be implementing character movements next.
 
