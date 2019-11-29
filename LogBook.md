@@ -36,3 +36,5 @@ Andre Renom - Met with Saba, Nicolas and Chris to discuss Physics engine, implem
 Xingjian Zhang & Saba Tavdgiridze - Met with Physics Engine group members for discussion last Sunday. Began implementation of vector and pointmass frameworks and worked on solving collision. Next week, we will continue to work on the engine and try to test it using sfml.
 
 Sonal Sannigrahi- Looking into sprite animation vs vector graphics through drawables. Implemented a click and drag function for the bow/arrow. Will be implementing character movements next.
+
+Alice Aubert- This week I started working on how to animate the characters in the game, more specifically the attributes of the arrow class so that they can be implemented as drawables and sucessfully manipulated by the physics engine. Next week, I will work on finalizing this and making sure it works well in tandem with the character class
