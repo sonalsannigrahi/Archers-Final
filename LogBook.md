@@ -49,4 +49,6 @@ Minh Tuan Nguyen - Set up the game class so it can work together with other clas
 
 Alexandre Hirsch - Began the outline of the main menu: Play, Settings, Quit. Next week will be focused on discussing what aspects of the game can be altered in the settings, although this will be subject to change if we decide to remove or add functionalities.
 
-Hoang Anh NGO - Start framing the layouts of state screens (splash screen, main menu screen and game over screen) with different buttons. Next week, I would continue framing the buttons and start to connect the state screens with the other states of the game
+Maëlys Solal - This week I started the implementation of the character and opponents class. I also changed the structure we had initially thought of in order to make it more useable. Next week I will start creating different types of opponents.
+
+Alice Aubert - This week I started to implement the arrow class keeping in mind how the physics engine would affect the graphics. I also worked to implement both the arrow and Character classes as subclasses of the Drawables class of SFML. Next week I plan to continue this to make sure that both the Characters and arrows interact smoothly ie the character can shoot the arrow correctly using the click and drag function. 
