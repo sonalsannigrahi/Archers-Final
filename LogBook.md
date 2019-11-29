@@ -42,3 +42,5 @@ Jiwon Park - Began the mplemention of the ground where characters stand on and l
 Sunho Hwang - Began and finished the implementation of the bird classs with animations. Started on another balloon class. Some animations still require polishing.
 
 Diego Gomez - This week I searched for animations for water and fireworks and implemented them in their corresponding classes. 
+
+Tarcisio Teixeira - I began and almost finished the implementation of the Encryption class needing just some more tests and merge with the rest of the code. Some part of it will be done just when the table of constants is ready. Next week I will start working on UI-UX part.
