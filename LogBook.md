@@ -48,3 +48,5 @@ Tarcisio Teixeira - I began and almost finished the implementation of the Encryp
 Minh Tuan Nguyen - Set up the game class so it can work together with other classes; Grouped and tested game, background, water and birds classes together; Optimized the game performance by changing ways variables are initialized. Next week I will put all the other classes (rain, lightning, fireworks,...) together and begin researching on audio and sound.
 
 Alexandre Hirsch - Began the outline of the main menu: Play, Settings, Quit. Next week will be focused on discussing what aspects of the game can be altered in the settings, although this will be subject to change if we decide to remove or add functionalities.
+
+Hoang Anh NGO - Start framing the layouts of state screens (splash screen, main menu screen and game over screen) with different buttons. Next week, I would continue framing the buttons and start to connect the state screens with the other states of the game
