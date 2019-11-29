@@ -38,3 +38,7 @@ Xingjian Zhang & Saba Tavdgiridze - Met with Physics Engine group members for di
 Sonal Sannigrahi- Looking into sprite animation vs vector graphics through drawables. Implemented a click and drag function for the bow/arrow. Will be implementing character movements next.
 
 Jiwon Park - Began the mplemention of the ground where characters stand on and looking for sprite that will be used in our black hole. 
+
+Sunho Hwang - Began and finished the implementation of the bird classs with animations. Started on another balloon class. Some animations still require polishing.
+
+Diego Gomez - This week I searched for animations for water and fireworks and implemented them in their corresponding classes. 
