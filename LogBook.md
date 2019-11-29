@@ -52,3 +52,5 @@ Alexandre Hirsch - Began the outline of the main menu: Play, Settings, Quit. Nex
 Maëlys Solal - This week I started the implementation of the character and opponents class. I also changed the structure we had initially thought of in order to make it more useable. Next week I will start creating different types of opponents.
 
 Alice Aubert - This week I started to implement the arrow class keeping in mind how the physics engine would affect the graphics. I also worked to implement both the arrow and Character classes as subclasses of the Drawables class of SFML. Next week I plan to continue this to make sure that both the Characters and arrows interact smoothly ie the character can shoot the arrow correctly using the click and drag function. 
+
+Nicolas Lopes - Met with Saba, Andre and Chris to discuss Physics engine. Corrected some small mistakes in previous code, changed the class of ConstantGravity, added cossine, sine and vector product as well as discussed about and started the BlackHole class with Andre. Discussed about implementation of air resistance.
