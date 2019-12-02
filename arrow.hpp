@@ -12,15 +12,12 @@ class Arrow{
         
         //need to include the files for sprites
         sf::Texture texture;
-        if (!texture.loadFromFile("image.png"))
-        {
-            // error...
-        }
+        sf::Sprite arrow;
+        //File included will depend on arrow types(not yet implemented but will be used for future levels)
+        
     public:
         Arrow();
-        Arrow(float x, float y, float angle);
-
-        
+        Arrow(float x, float y, float angle, std::string filename);
 
         //ask physics team for specifications
         void move();

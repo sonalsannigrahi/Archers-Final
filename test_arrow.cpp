@@ -10,6 +10,7 @@ int main(){
     texture.loadFromFile("arrow.png");
     sf::Sprite sprite;
     sprite.setTexture(texture);
+    sprite.setScale(sf::Vector2f(0.5f, 0.5f));
 
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
