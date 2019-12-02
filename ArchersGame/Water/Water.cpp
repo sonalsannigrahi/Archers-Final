@@ -33,7 +33,7 @@ void Water::setSize(int width, int height){
 void Water::updateFrame(double time) {
     counter += time;
     if (counter >= waterconstants.changetimewater){
-        counter = 0;
+        counter -= waterconstants.changetimewater;
         current ++;
         if (current == waterconstants.filename_len){
             current = 0;

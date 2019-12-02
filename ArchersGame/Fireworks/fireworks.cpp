@@ -2,6 +2,7 @@
 #include "fireworks.hpp"
 Fireworks::Fireworks(){
 
+<<<<<<< HEAD
     for (int i = 0; i < fireworksconstants.filename_len; i++){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Fireworks/asset/"+fireworksconstants.filename[i]);
@@ -12,6 +13,8 @@ Fireworks::Fireworks(){
     
     
 }
+=======
+>>>>>>> 02ab9cbbd4e07f55c97e2a5549d2022a8204cc87
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
@@ -35,6 +38,7 @@ void Fireworks::updateFrame(double time) {
             current = 0;
         }
     }
+<<<<<<< HEAD
     if (alive){
         fireSprites[current].setPosition(posX, posY);
         window -> draw(fireSprites[current]);
@@ -43,4 +47,11 @@ void Fireworks::updateFrame(double time) {
 
 bool Fireworks::isAlive(){
     return alive
+=======
+     sf::Texture texture;
+    texture.loadFromFile("Fireworks/asset/"+fireworksconstants.filename[current]);
+    //std::cout << "Yo i was here" << std::endl;
+    sf::Sprite sprite(texture);
+    window -> draw(sprite);
+>>>>>>> 02ab9cbbd4e07f55c97e2a5549d2022a8204cc87
 }
