@@ -8,9 +8,7 @@ Fireworks::Fireworks(){
         sf::Sprite* sprite = new sf::Sprite(*texture);
         fireSprites.push_back(*sprite);
     }   
-
-    
-    
+ 
 }
 
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
@@ -21,8 +19,11 @@ void Fireworks::setSize(int width, int height){
     windowHeight = height;
     //sets a random position within the window 
     posX = rand() % windowWidth;
-    posY = rand() % windowHeight;
-    
+    posY = (rand() % windowHeight) * fireworksconstants.skylimit;
+    for (int i = 0; i < fireworksconstants.filename_len; i++){
+        fireSprites[i].setPosition(posX, posY);
+        fireSprites[i].setScale(fireworksconstants.scalex, fireworksconstants.scaley);
+    }
 }
 
 
@@ -37,7 +38,6 @@ void Fireworks::updateFrame(double time) {
         }
     }
     if (alive){
-        fireSprites[current].setPosition(posX, posY);
         window -> draw(fireSprites[current]);
     }
 }

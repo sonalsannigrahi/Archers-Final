@@ -14,6 +14,7 @@
 #include "../Lightning/Lightning.hpp"
 #include "../Rain/Rain.hpp"
 #include "../Balloon/Balloon.hpp"
+#include "../Fireworks/fireworks.hpp"
 
 class Game {
     private:
@@ -29,6 +30,7 @@ class Game {
         Rain gameRain = Rain();
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
+        std::vector<Fireworks*> fireworks;
 
         // Elapsed time
         clock_t elapsedTime;
@@ -51,4 +53,6 @@ class Game {
         void removeBird(int id);
         void createBalloon();
         void removeBalloon(int id);
+        void createFireworks();
+        void removeFireworks(int id);
 };

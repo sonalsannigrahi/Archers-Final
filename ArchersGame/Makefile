@@ -37,20 +37,26 @@ BalloonConstants.o: Balloon/BalloonConstants.cpp
 Balloon.o: Balloon/Balloon.cpp Balloon/Balloon.hpp BalloonConstants.o
 	$(CXX) -c Balloon/Balloon.cpp $(Dependencies)	
 
+fireworksconstants.o: Fireworks/fireworksconstants.cpp
+	$(CXX) -c Fireworks/fireworksconstants.cpp
+
+fireworks.o: Fireworks/fireworks.cpp
+	$(CXX) -c Fireworks/fireworks.cpp $(Dependencies)
+
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
 
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
 	$(CXX) -c main.cpp
 
 archer: main.o
-	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o -o archer $(Dependencies)
+	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o -o archer $(Dependencies)
 
 clean: 
 	rm -f archer
