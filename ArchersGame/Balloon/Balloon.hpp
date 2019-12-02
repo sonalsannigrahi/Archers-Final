@@ -12,6 +12,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "BalloonConstants.cpp"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>  
 
 class Balloon{
 private:
@@ -20,7 +22,6 @@ private:
     sf::Sprite sprite;
     int windowWidth, windowHeight;
     bool active = true;
-    float x;
 public:
     
     Balloon();

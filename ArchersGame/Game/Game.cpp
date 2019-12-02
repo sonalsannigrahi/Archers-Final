@@ -10,10 +10,14 @@ Game::Game(){
     // Send window to other classes
     gameBackground.setWindow(window);
     gameWater.setWindow(window);
+    gameLightning.setWindow(window);
+    gameRain.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -64,6 +68,9 @@ void Game::UpdateFrame(){
     // Creating birds
     if (rand() % gameConstants.birdRate == 0) createBird();
 
+    // Creating balloons
+    if (rand() % gameConstants.balloonRate == 0) createBalloon();
+
     // Calculate time has passed since the last UpdateFrame
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -72,18 +79,39 @@ void Game::UpdateFrame(){
     gameBackground.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
 
-    // Draw Waters
-    gameWater.updateFrame(time);
+    // Draw Lightning
+    if (gameConstants.isLightning) gameLightning.updateFrame(time);
 
     // Draw birds
-    int id = 0;
-    while (id < birds.size()){
-        if (birds[id] -> isAlive()){
-            birds[id] -> updateFrame(time);
-            id++;
+    if (gameConstants.isBirds){
+        int id = 0;
+        while (id < birds.size()){
+            if (birds[id] -> isAlive()){
+                birds[id] -> updateFrame(time);
+                id++;
+            }
+            else removeBird(id);
         }
-        else removeBird(id);
     }
+
+    // Draw balloons
+    if (gameConstants.isBalloon){
+        int id = 0;
+        //std::cout << balloons.size();
+        while (id < balloons.size()){
+            if (balloons[id] -> isActive()){
+                balloons[id] -> updateFrame(time);
+                id++;
+            }
+            else removeBalloon(id);
+        }
+    }
+
+    // Draw Rain
+    if (gameConstants.isRaining) gameRain.updateFrame(time);
+
+    // Draw Waters
+    gameWater.updateFrame(time);
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
@@ -116,5 +144,20 @@ void Game::removeBird(int id){
         delete birds[id];
         birds[id] = birds[birds.size() - 1];
         birds.pop_back();
+    }
+}
+
+void Game::createBalloon(){
+    Balloon* balloon = new Balloon();
+    balloon -> setWindow(window);
+    balloon -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    balloons.push_back(balloon);
+}
+
+void Game::removeBalloon(int id){
+    if (balloons.size() > id){
+        delete balloons[id];
+        balloons[id] = balloons[balloons.size() - 1];
+        balloons.pop_back();
     }
 }

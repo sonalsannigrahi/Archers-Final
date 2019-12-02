@@ -11,17 +11,24 @@
 #include "../Background/Background.hpp"
 #include "../Water/Water.hpp"
 #include "../Birds/Birds.hpp"
+#include "../Lightning/Lightning.hpp"
+#include "../Rain/Rain.hpp"
+#include "../Balloon/Balloon.hpp"
 
 class Game {
     private:
         // Add constants to the class
         GameConstants gameConstants = GameConstants();
+
+        // All other classes
+        // ...
         GameFPS gameFPS = GameFPS();
         Background gameBackground = Background();
         Water gameWater = Water();
+        Lightning gameLightning = Lightning();
+        Rain gameRain = Rain();
         std::vector<Birds*> birds;
-        // All other classes
-        // ...
+        std::vector<Balloon*> balloons;
 
         // Elapsed time
         clock_t elapsedTime;
@@ -42,4 +49,6 @@ class Game {
 
         void createBird();
         void removeBird(int id);
+        void createBalloon();
+        void removeBalloon(int id);
 };

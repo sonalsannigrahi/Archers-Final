@@ -10,6 +10,8 @@
 
 class BalloonConstants {
     public:
-        float ypos = -30;
-        std::string filename = "Balloon/Asset/ballon2.png";
+        float ypos = 20;
+        float xscale = 0.1;
+        float yscale = 0.1;
+    std::string filename = "Balloon/Asset/ballon2.png";
 };

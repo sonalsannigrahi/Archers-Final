@@ -42,7 +42,7 @@ void Birds::setSize(int width, int height){
 void Birds::updateFrame(double time) {
     counter = counter + time;
     if (counter >= birdconstant.changetime ) {
-        counter = 0;
+        counter -= birdconstant.changetime;
         current += 1;
         if (current >= birdconstant.birdlen * (birdType + 1)) 
             current = birdconstant.birdlen * birdType;
