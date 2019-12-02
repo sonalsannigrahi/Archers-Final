@@ -24,6 +24,11 @@ void Background::setSize(int width, int height){
 }
 
 void Background::updateFrame(double time) {
+    sf::Texture texture;
+    texture.loadFromFile("Background/Asset/PNG/game_background_3/bg3.png");
+    //std::cout << "Yo i was here bgimg" << std::endl;
+    sf::Sprite sprite(texture);
+    window -> draw(sprite);
     //std::cout << "Yo i was here" << std::endl;
     window -> draw(backgroundSprite);
 }

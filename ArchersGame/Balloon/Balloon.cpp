@@ -8,10 +8,35 @@
 
 #include "Balloon.hpp"
 
-void Ballons::setWindow(sf::RenderWindow* gameWindow){
+
+void Balloon::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
-void Ballons::updateFrame(double time) {
-    
+Balloon::Balloon() {
+    srand(time(NULL));
+    sf::Texture texture;
+    texture.loadFromFile(balloonconstants.filename);
+    sprite = sf::Sprite(texture);
+    sprite.setPosition( rand()%windowWidth , 0.f);
 }
+
+void Balloon::setSize(int width, int height) {
+    windowWidth = width;
+    windowHeight = height;
+}
+
+void Balloon::updateFrame(double time) {
+    window -> draw(sprite);
+    float y = balloonconstants.ypos;
+    if (sprite.getGlobalBounds().top < 0.0 || sprite.getGlobalBounds().top > (float) windowHeight){
+            active = false; // Balloon out of frame => delete it
+        } else {
+            sprite.move(0.f,y*time);
+        }
+    }
+
+bool Balloon::isActive(){
+        return active;
+    }
+
