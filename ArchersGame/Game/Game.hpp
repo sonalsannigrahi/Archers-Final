@@ -11,6 +11,8 @@
 #include "../Background/Background.hpp"
 #include "../Water/Water.hpp"
 #include "../Birds/Birds.hpp"
+#include "../Lightning/Lightning.hpp"
+#include "../Rain/Rain.hpp"
 
 class Game {
     private:
@@ -19,7 +21,10 @@ class Game {
         GameFPS gameFPS = GameFPS();
         Background gameBackground = Background();
         Water gameWater = Water();
+        Lightning gameLightning = Lightning();
+        Rain gameRain = Rain();
         std::vector<Birds*> birds;
+
         // All other classes
         // ...
 

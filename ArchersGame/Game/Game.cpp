@@ -10,10 +10,14 @@ Game::Game(){
     // Send window to other classes
     gameBackground.setWindow(window);
     gameWater.setWindow(window);
+    gameLightning.setWindow(window);
+    gameRain.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -72,18 +76,26 @@ void Game::UpdateFrame(){
     gameBackground.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
 
-    // Draw Waters
-    gameWater.updateFrame(time);
+    // Draw Lightning
+    if (gameConstants.isLightning) gameLightning.updateFrame(time);
 
     // Draw birds
-    int id = 0;
-    while (id < birds.size()){
-        if (birds[id] -> isAlive()){
-            birds[id] -> updateFrame(time);
-            id++;
+    if (gameConstants.isBirds){
+        int id = 0;
+        while (id < birds.size()){
+            if (birds[id] -> isAlive()){
+                birds[id] -> updateFrame(time);
+                id++;
+            }
+            else removeBird(id);
         }
-        else removeBird(id);
     }
+
+    // Draw Rain
+    if (gameConstants.isRaining) gameRain.updateFrame(time);
+
+    // Draw Waters
+    gameWater.updateFrame(time);
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);

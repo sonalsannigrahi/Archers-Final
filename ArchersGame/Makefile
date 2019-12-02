@@ -19,20 +19,32 @@ BirdsConstants.o: Birds/BirdsConstants.cpp
 Birds.o: Birds/Birds.cpp Birds/Birds.hpp BirdsConstants.o
 	$(CXX) -c Birds/Birds.cpp $(Dependencies)
 
+LightningConstants.o: Lightning/LightningConstants.cpp
+	$(CXX) -c Lightning/LightningConstants.cpp
+
+Lightning.o: Lightning/Lightning.cpp Lightning/Lightning.hpp LightningConstants.o
+	$(CXX) -c Lightning/Lightning.cpp $(Dependencies)	
+
+RainConstants.o: Rain/RainConstants.cpp
+	$(CXX) -c Rain/RainConstants.cpp
+
+Rain.o: Rain/Rain.cpp Rain/Rain.hpp RainConstants.o
+	$(CXX) -c Rain/Rain.cpp $(Dependencies)	
+
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
 
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
 	$(CXX) -c main.cpp
 
 archer: main.o
-	$(CXX) main.o Game.o Background.o Water.o Birds.o -o archer $(Dependencies)
+	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o -o archer $(Dependencies)
 
 clean: 
 	rm -f archer

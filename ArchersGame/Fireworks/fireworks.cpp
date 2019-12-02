@@ -1,11 +1,11 @@
 
 #include "fireworks.hpp"
 
-void Firework::setWindow(sf::RenderWindow* gameWindow){
+void Fireworks::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
 
-void Firework::updateFrame(double time) {
+void Fireworks::updateFrame(double time) {
     counter += time;
     if (counter >= fireworksconstants.changetimefireworks){
         counter = 0;
@@ -19,3 +19,4 @@ void Firework::updateFrame(double time) {
     //std::cout << "Yo i was here" << std::endl;
     sf::Sprite sprite(texture);
     window -> draw(sprite);
+}
