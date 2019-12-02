@@ -29,12 +29,10 @@ void Balloon::setSize(int width, int height) {
 void Balloon::updateFrame(double time) {
     window -> draw(sprite);
     float y = balloonconstants.ypos;
-    if (posY < 0.0 || posY > (float) windowHeight){
+    if (sprite.getGlobalBounds().top < 0.0 || sprite.getGlobalBounds().top > (float) windowHeight){
             active = false; // Balloon out of frame => delete it
         } else {
             sprite.move(0.f,y*time);
-            posY -= y*time;
-            
         }
     }
 
