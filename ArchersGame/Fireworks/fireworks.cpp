@@ -1,7 +1,7 @@
 
 #include "fireworks.hpp"
 Fireworks::Fireworks(){
-
+  
     for (int i = 0; i < fireworksconstants.filename_len; i++){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Fireworks/asset/"+fireworksconstants.filename[i]);
@@ -12,6 +12,7 @@ Fireworks::Fireworks(){
     
     
 }
+
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
 }
