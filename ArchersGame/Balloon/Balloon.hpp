@@ -22,7 +22,7 @@ private:
     sf::Sprite sprite;
     int windowWidth, windowHeight;
     bool active = true;
-    float x;
+    float posY;
 public:
     
     Balloon();
