@@ -26,3 +26,7 @@ Arrow::Arrow(float x, float y, float theta = 0, std::string filename){
 
     this->arrow.setRotation(this->angle);
 }
+
+void Arrow::shoot(){
+    
+}
