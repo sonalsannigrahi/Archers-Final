@@ -14,10 +14,11 @@ void Balloon::setWindow(sf::RenderWindow* gameWindow){
 }
 
 Balloon::Balloon() {
+    srand(time(NULL));
     sf::Texture texture;
     texture.loadFromFile(balloonconstants.filename);
     sprite = sf::Sprite(texture);
-    sprite.setPosition(0.f,0.f);
+    sprite.setPosition( rand()%windowWidth , 0.f);
 }
 
 void Balloon::setSize(int width, int height) {
@@ -28,6 +29,15 @@ void Balloon::setSize(int width, int height) {
 void Balloon::updateFrame(double time) {
     window -> draw(sprite);
     float y = balloonconstants.ypos;
-    sprite.move(0.f,y * time);
-}
+    if (x < 0.0 || x > (float) windowHeight){
+            active = false; // Balloon out of frame => delete it
+        } else {
+            sprite.move(0.f,y*time);
+            
+        }
+    }
+
+bool Balloon::isActive(){
+        return active;
+    }
 

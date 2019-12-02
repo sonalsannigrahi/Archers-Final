@@ -11,5 +11,5 @@
 class BalloonConstants {
     public:
         float ypos = -30;
-        std::string filename = "Balloon/Asset/ballon2.png";
+    std::string filename = "Balloon/Asset/ballon2.png";
 };
