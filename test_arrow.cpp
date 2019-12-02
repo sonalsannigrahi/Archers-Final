@@ -6,11 +6,10 @@
 #include <iostream>
 
 int main(){
-    sf::RectangleShape body(sf::Vector2f(100, 5));
-    body.setPosition(0,0);
-    sf::CircleShape head(25, 3);
-    head.setPosition(100, 0);
-    head.rotate(60);
+    sf::Texture texture;
+    texture.loadFromFile("arrow.png");
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
 
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
@@ -27,13 +26,12 @@ int main(){
                 window.close();
         }
 
-        // clear the window with black color
-        window.clear(sf::Color::Black);
+ 
+        window.clear(sf::Color::White);
 
         // draw everything here...
         // window.draw(...);
-        window.draw(body);
-        window.draw(head);
+        window.draw(sprite);
 
         // end the current frame
         window.display();
