@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "fireworksconstants.cpp"
+#include <stdlib.h> 
 
 class Fireworks{
 private:
@@ -18,4 +19,5 @@ public:
     
     void setWindow(sf::RenderWindow* gameWindow);
     void updateFrame(double time);
+    void setSize(int width, int heigth);
 };
