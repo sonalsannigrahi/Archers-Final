@@ -71,6 +71,9 @@ void Game::UpdateFrame(){
     // Creating balloons
     if (rand() % gameConstants.balloonRate == 0) createBalloon();
 
+    // Creating Fireworks
+    if (rand() % gameConstants.fireworkRate == 0) createFireworks();
+
     // Calculate time has passed since the last UpdateFrame
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -112,6 +115,18 @@ void Game::UpdateFrame(){
 
     // Draw Waters
     gameWater.updateFrame(time);
+
+    //Draw Fireworks
+    if (gameConstants.isFireworks){
+        int id = 0;
+        while (id < fireworks.size()){
+            if (fireworks[id] -> isAlive()){
+                fireworks[id] -> updateFrame(time);
+                id ++;
+            }
+            else removeFireworks(id);
+        }
+    }
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
@@ -159,5 +174,20 @@ void Game::removeBalloon(int id){
         delete balloons[id];
         balloons[id] = balloons[balloons.size() - 1];
         balloons.pop_back();
+    }
+}
+
+void Game::createFireworks(){
+    Fireworks* firework = new Fireworks();
+    firework -> setWindow(window);
+    firework -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    fireworks.push_back(firework);
+}
+
+void:: Game::removeFireworks(int id){
+    if (fireworks.size() > id){
+        delete fireworks[id];
+        fireworks[id] = fireworks[fireworks.size() -1];
+        fireworks.pop_back();
     }
 }

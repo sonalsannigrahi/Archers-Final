@@ -8,9 +8,7 @@ Fireworks::Fireworks(){
         sf::Sprite* sprite = new sf::Sprite(*texture);
         fireSprites.push_back(*sprite);
     }   
-
-    
-    
+ 
 }
 
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
