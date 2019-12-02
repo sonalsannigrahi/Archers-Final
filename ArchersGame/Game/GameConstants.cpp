@@ -5,7 +5,7 @@ class GameConstants{
         int WINDOW_WIDTH = 900;
     // Spawning rate
         int birdRate = 1200;
-        int balloonRate = 1200;
+        int balloonRate = 2000;
     // Game setting
         bool isRaining = true;
         bool isLightning = true;

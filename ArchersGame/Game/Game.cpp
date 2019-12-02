@@ -68,6 +68,9 @@ void Game::UpdateFrame(){
     // Creating birds
     if (rand() % gameConstants.birdRate == 0) createBird();
 
+    // Creating balloons
+    if (rand() % gameConstants.balloonRate == 0) createBalloon();
+
     // Calculate time has passed since the last UpdateFrame
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -88,6 +91,19 @@ void Game::UpdateFrame(){
                 id++;
             }
             else removeBird(id);
+        }
+    }
+
+    // Draw balloons
+    if (gameConstants.isBalloon){
+        int id = 0;
+        //std::cout << balloons.size();
+        while (id < balloons.size()){
+            if (balloons[id] -> isActive()){
+                balloons[id] -> updateFrame(time);
+                id++;
+            }
+            else removeBalloon(id);
         }
     }
 
@@ -128,5 +144,20 @@ void Game::removeBird(int id){
         delete birds[id];
         birds[id] = birds[birds.size() - 1];
         birds.pop_back();
+    }
+}
+
+void Game::createBalloon(){
+    Balloon* balloon = new Balloon();
+    balloon -> setWindow(window);
+    balloon -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    balloons.push_back(balloon);
+}
+
+void Game::removeBalloon(int id){
+    if (balloons.size() > id){
+        delete balloons[id];
+        balloons[id] = balloons[balloons.size() - 1];
+        balloons.pop_back();
     }
 }

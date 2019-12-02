@@ -9,6 +9,12 @@
 #include<string>
 
 class BackgroundConstants{
-    public:
-    std::string filename = "PNG/game_background_3/game_background_3.1.png";
+public:
+    int filename_length = 10;
+    int chosen = 7;
+    std::string filename[10];
+
+    BackgroundConstants(){
+        for (int i = 1; i <= filename_length; i++) filename[i - 1] = "background" + std::to_string(i) + ".png";
+    }
 };
