@@ -85,6 +85,18 @@ void Game::UpdateFrame(){
     // Draw Lightning
     if (gameConstants.isLightning) gameLightning.updateFrame(time);
 
+    //Draw Fireworks
+    if (gameConstants.isFireworks){
+        int id = 0;
+        while (id < fireworks.size()){
+            if (fireworks[id] -> isAlive()){
+                fireworks[id] -> updateFrame(time);
+                id ++;
+            }
+            else removeFireworks(id);
+        }
+    }
+
     // Draw birds
     if (gameConstants.isBirds){
         int id = 0;
@@ -115,18 +127,6 @@ void Game::UpdateFrame(){
 
     // Draw Waters
     gameWater.updateFrame(time);
-
-    //Draw Fireworks
-    if (gameConstants.isFireworks){
-        int id = 0;
-        while (id < fireworks.size()){
-            if (fireworks[id] -> isAlive()){
-                fireworks[id] -> updateFrame(time);
-                id ++;
-            }
-            else removeFireworks(id);
-        }
-    }
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
