@@ -1,0 +1,5 @@
+class GroundConstants {
+public:
+	GroundConstants() {
+	}
+};

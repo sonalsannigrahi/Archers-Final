@@ -15,6 +15,7 @@
 #include "../Rain/Rain.hpp"
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
+#include "../Ground/Ground.hpp"
 
 class Game {
     private:
@@ -31,6 +32,7 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
+        std::vector<Ground*> grounds;
 
         // Elapsed time
         clock_t elapsedTime;
@@ -41,7 +43,7 @@ class Game {
         sf::CircleShape* circle;
 
     public:
-    
+
         Game();
         ~Game();
 

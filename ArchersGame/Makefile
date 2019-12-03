@@ -24,19 +24,19 @@ LightningConstants.o: Lightning/LightningConstants.cpp
 	$(CXX) -c Lightning/LightningConstants.cpp
 
 Lightning.o: Lightning/Lightning.cpp Lightning/Lightning.hpp LightningConstants.o
-	$(CXX) -c Lightning/Lightning.cpp $(Dependencies)	
+	$(CXX) -c Lightning/Lightning.cpp $(Dependencies)
 
 RainConstants.o: Rain/RainConstants.cpp
 	$(CXX) -c Rain/RainConstants.cpp
 
 Rain.o: Rain/Rain.cpp Rain/Rain.hpp RainConstants.o
-	$(CXX) -c Rain/Rain.cpp $(Dependencies)	
+	$(CXX) -c Rain/Rain.cpp $(Dependencies)
 
 BalloonConstants.o: Balloon/BalloonConstants.cpp
 	$(CXX) -c Balloon/BalloonConstants.cpp
 
 Balloon.o: Balloon/Balloon.cpp Balloon/Balloon.hpp BalloonConstants.o
-	$(CXX) -c Balloon/Balloon.cpp $(Dependencies)	
+	$(CXX) -c Balloon/Balloon.cpp $(Dependencies)
 
 fireworksconstants.o: Fireworks/fireworksconstants.cpp
 	$(CXX) -c Fireworks/fireworksconstants.cpp
@@ -44,21 +44,27 @@ fireworksconstants.o: Fireworks/fireworksconstants.cpp
 fireworks.o: Fireworks/fireworks.cpp
 	$(CXX) -c Fireworks/fireworks.cpp $(Dependencies)
 
+GroundConstants.o: Ground/GroundConstants.cpp
+	$(CXX) -c Ground/GroundConstants.cpp
+
+Ground.o: Ground/Ground.cpp Ground/Ground.hpp GroundConstants.o
+	$(CXX) -c Ground/Ground.cpp $(Dependencies)
+
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
 
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o Ground.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
 	$(CXX) -c main.cpp
 
 archer: main.o
-	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o -o archer $(Dependencies)
+	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o Ground.o -o archer $(Dependencies)
 
-clean: 
+clean:
 	rm -f archer
 	rm -f *.o
