@@ -1,7 +1,7 @@
 #include "character.hpp"
 
 Character::Character(double x, double y, Bow bow, Arrow arrow, float health = 1) {
-    this->health = health;
+    this->healthbar = Healthbar(float health);
     this->xPosition = x;
     this->yPosition = y;
     this->bow = bow;
@@ -17,7 +17,7 @@ double Character::getY() {
 }
 
 float Character::getHealth() {
-    return health;
+    return healthbar.health;
 }
 
 Bow Character::getBow() {

@@ -2,6 +2,7 @@
 
 #include "bow.hpp"
 #include "arrow.hpp"
+#include "healthbar.hpp"
 
 class Character: public sf::Drawable 
 {
@@ -9,9 +10,10 @@ private:
 
     /* health attribute, values between 0 and 1, can be turned into a percentage
     1: healthy, 0: dead */
-    float health; 
 
     double xPosition, yPosition;
+
+    Healthbar healthbar; 
 
     Bow bow;
 
