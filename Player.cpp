@@ -1,4 +1,4 @@
-#include bow.hpp
+#include Player.hpp
 
 
 Player::Players(){
@@ -21,7 +21,6 @@ void Player::setsize(int width, int height ){
 }
 
 void Player::updateFrame(double time){
-	// need to test implementation
     sf::Vector2i mouse;
     float angle;
     sf::Vector2f playerPosition;
