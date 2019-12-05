@@ -7,8 +7,13 @@ Fireworks::Fireworks(){
         texture -> loadFromFile("Fireworks/asset/"+fireworksconstants.filename[i]);
         sf::Sprite* sprite = new sf::Sprite(*texture);
         fireSprites.push_back(*sprite);
+        
     }   
- 
+    sf::SoundBuffer soundBuffer;
+    sf::Sound sound;
+    soundBuffer.loadFromFile("Fireworks/asset/firework_sound1.wav");
+    sound.setBuffer(soundBuffer);
+    sound.play();
 }
 
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){

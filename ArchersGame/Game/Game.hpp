@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "GameConstants.cpp"
 #include "GameFPS.cpp"
