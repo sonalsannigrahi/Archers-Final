@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C7B545FB238EE1D50058C812 /* ballon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B545FA238EE1D50058C812 /* ballon2.png */; };
+		C7B545FE238EE1EE0058C812 /* Balloon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7B545FC238EE1EE0058C812 /* Balloon.cpp */; };
+		C7B54600238EE1FF0058C812 /* BalloonConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7B545FF238EE1FF0058C812 /* BalloonConstants.cpp */; };
+		C7B54640238EE7550058C812 /* bird8.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5462C238EE7550058C812 /* bird8.png */; };
+		C7B54641238EE7550058C812 /* bird9.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5462D238EE7550058C812 /* bird9.png */; };
+		C7B54642238EE7550058C812 /* bird13.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5462E238EE7550058C812 /* bird13.png */; };
+		C7B54643238EE7550058C812 /* bird12.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5462F238EE7550058C812 /* bird12.png */; };
+		C7B54644238EE7550058C812 /* bird10.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54630238EE7550058C812 /* bird10.png */; };
+		C7B54645238EE7550058C812 /* bird11.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54631238EE7550058C812 /* bird11.png */; };
+		C7B54646238EE7550058C812 /* bird15.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54632238EE7550058C812 /* bird15.png */; };
+		C7B54647238EE7550058C812 /* bird14.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54633238EE7550058C812 /* bird14.png */; };
+		C7B54648238EE7550058C812 /* bird16.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54634238EE7550058C812 /* bird16.png */; };
+		C7B54649238EE7550058C812 /* bird17.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54635238EE7550058C812 /* bird17.png */; };
+		C7B5464A238EE7550058C812 /* bird19.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54636238EE7550058C812 /* bird19.png */; };
+		C7B5464B238EE7550058C812 /* bird18.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54637238EE7550058C812 /* bird18.png */; };
+		C7B5464C238EE7550058C812 /* bird20.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54638238EE7550058C812 /* bird20.png */; };
+		C7B5464D238EE7550058C812 /* bird1.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B54639238EE7550058C812 /* bird1.png */; };
+		C7B5464E238EE7550058C812 /* bird2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5463A238EE7550058C812 /* bird2.png */; };
+		C7B5464F238EE7550058C812 /* bird3.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5463B238EE7550058C812 /* bird3.png */; };
+		C7B54650238EE7550058C812 /* bird7.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5463C238EE7550058C812 /* bird7.png */; };
+		C7B54651238EE7550058C812 /* bird6.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5463D238EE7550058C812 /* bird6.png */; };
+		C7B54652238EE7550058C812 /* bird4.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5463E238EE7550058C812 /* bird4.png */; };
+		C7B54653238EE7550058C812 /* bird5.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B5463F238EE7550058C812 /* bird5.png */; };
+		C7BEB4B123887DF2007A32CC /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B023887DF2007A32CC /* cute_image.jpg */; };
+		C7BEB4B323887DF2007A32CC /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B223887DF2007A32CC /* nice_music.ogg */; };
+		C7BEB4B523887DF2007A32CC /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B423887DF2007A32CC /* sansation.ttf */; };
+		C7BEB4B723887DF2007A32CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4B623887DF2007A32CC /* icon.png */; };
+		C7BEB4C7238888CD007A32CC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BEB4C6238888CD007A32CC /* main.cpp */; };
+		C7BEB4D723889481007A32CC /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BEB4D523889481007A32CC /* Background.cpp */; };
+		C7BEB4D92388958D007A32CC /* BackgroundConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BEB4D82388958D007A32CC /* BackgroundConstants.cpp */; };
+		C7BEB4DF238895C6007A32CC /* GameConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BEB4DD238895C6007A32CC /* GameConstants.cpp */; };
+		C7BEB4E0238895C6007A32CC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BEB4DE238895C6007A32CC /* Game.cpp */; };
+		C7BEB4E223889660007A32CC /* bgimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BEB4E123889660007A32CC /* bgimg.jpg */; };
+		C7BEB4E52388A0CB007A32CC /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = C7BEB4E32388A0CB007A32CC /* ResourcePath.mm */; };
+		C7D12D7C238AF43D005149F8 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7D12D7A238AF43D005149F8 /* Water.cpp */; };
+		C7D12D7E238AF48C005149F8 /* WaterConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7D12D7D238AF48C005149F8 /* WaterConstants.cpp */; };
+		C7E42EFF238C11BE0081382A /* Birds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E42EFD238C11BE0081382A /* Birds.cpp */; };
+		C7E42F01238C11D80081382A /* BirdsConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E42F00238C11D80081382A /* BirdsConstants.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C7B545FA238EE1D50058C812 /* ballon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballon2.png; sourceTree = "<group>"; };
+		C7B545FC238EE1EE0058C812 /* Balloon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Balloon.cpp; sourceTree = "<group>"; };
+		C7B545FD238EE1EE0058C812 /* Balloon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Balloon.hpp; sourceTree = "<group>"; };
+		C7B545FF238EE1FF0058C812 /* BalloonConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BalloonConstants.cpp; sourceTree = "<group>"; };
+		C7B5462C238EE7550058C812 /* bird8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird8.png; sourceTree = "<group>"; };
+		C7B5462D238EE7550058C812 /* bird9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird9.png; sourceTree = "<group>"; };
+		C7B5462E238EE7550058C812 /* bird13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird13.png; sourceTree = "<group>"; };
+		C7B5462F238EE7550058C812 /* bird12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird12.png; sourceTree = "<group>"; };
+		C7B54630238EE7550058C812 /* bird10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird10.png; sourceTree = "<group>"; };
+		C7B54631238EE7550058C812 /* bird11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird11.png; sourceTree = "<group>"; };
+		C7B54632238EE7550058C812 /* bird15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird15.png; sourceTree = "<group>"; };
+		C7B54633238EE7550058C812 /* bird14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird14.png; sourceTree = "<group>"; };
+		C7B54634238EE7550058C812 /* bird16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird16.png; sourceTree = "<group>"; };
+		C7B54635238EE7550058C812 /* bird17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird17.png; sourceTree = "<group>"; };
+		C7B54636238EE7550058C812 /* bird19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird19.png; sourceTree = "<group>"; };
+		C7B54637238EE7550058C812 /* bird18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird18.png; sourceTree = "<group>"; };
+		C7B54638238EE7550058C812 /* bird20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird20.png; sourceTree = "<group>"; };
+		C7B54639238EE7550058C812 /* bird1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird1.png; sourceTree = "<group>"; };
+		C7B5463A238EE7550058C812 /* bird2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird2.png; sourceTree = "<group>"; };
+		C7B5463B238EE7550058C812 /* bird3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird3.png; sourceTree = "<group>"; };
+		C7B5463C238EE7550058C812 /* bird7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird7.png; sourceTree = "<group>"; };
+		C7B5463D238EE7550058C812 /* bird6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird6.png; sourceTree = "<group>"; };
+		C7B5463E238EE7550058C812 /* bird4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird4.png; sourceTree = "<group>"; };
+		C7B5463F238EE7550058C812 /* bird5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird5.png; sourceTree = "<group>"; };
+		C7BEB4A523887DF2007A32CC /* ArchersGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchersGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7BEB4A923887DF2007A32CC /* ArchersGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ArchersGame-Info.plist"; path = "../ArchersGame-Info.plist"; sourceTree = "<group>"; };
+		C7BEB4B023887DF2007A32CC /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cute_image.jpg; path = ../cute_image.jpg; sourceTree = "<group>"; };
+		C7BEB4B223887DF2007A32CC /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = nice_music.ogg; path = ../nice_music.ogg; sourceTree = "<group>"; };
+		C7BEB4B423887DF2007A32CC /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sansation.ttf; path = ../sansation.ttf; sourceTree = "<group>"; };
+		C7BEB4B623887DF2007A32CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		C7BEB4C6238888CD007A32CC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		C7BEB4D523889481007A32CC /* Background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		C7BEB4D623889481007A32CC /* Background.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Background.hpp; sourceTree = "<group>"; };
+		C7BEB4D82388958D007A32CC /* BackgroundConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundConstants.cpp; sourceTree = "<group>"; };
+		C7BEB4DC238895C6007A32CC /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		C7BEB4DD238895C6007A32CC /* GameConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameConstants.cpp; sourceTree = "<group>"; };
+		C7BEB4DE238895C6007A32CC /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		C7BEB4E123889660007A32CC /* bgimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgimg.jpg; sourceTree = "<group>"; };
+		C7BEB4E32388A0CB007A32CC /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
+		C7BEB4E42388A0CB007A32CC /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		C7D12D7A238AF43D005149F8 /* Water.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Water.cpp; sourceTree = "<group>"; };
+		C7D12D7B238AF43D005149F8 /* Water.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Water.hpp; sourceTree = "<group>"; };
+		C7D12D7D238AF48C005149F8 /* WaterConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WaterConstants.cpp; sourceTree = "<group>"; };
+		C7E42EFD238C11BE0081382A /* Birds.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Birds.cpp; sourceTree = "<group>"; };
+		C7E42EFE238C11BE0081382A /* Birds.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Birds.hpp; sourceTree = "<group>"; };
+		C7E42F00238C11D80081382A /* BirdsConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BirdsConstants.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C7BEB4A123887DF2007A32CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C7B545F8238EE1A80058C812 /* Balloon */ = {
+			isa = PBXGroup;
+			children = (
+				C7B545F9238EE1C50058C812 /* Asset */,
+				C7B545FC238EE1EE0058C812 /* Balloon.cpp */,
+				C7B545FD238EE1EE0058C812 /* Balloon.hpp */,
+				C7B545FF238EE1FF0058C812 /* BalloonConstants.cpp */,
+			);
+			path = Balloon;
+			sourceTree = "<group>";
+		};
+		C7B545F9238EE1C50058C812 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				C7B545FA238EE1D50058C812 /* ballon2.png */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		C7B5462B238EE7550058C812 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C7B5462C238EE7550058C812 /* bird8.png */,
+				C7B5462D238EE7550058C812 /* bird9.png */,
+				C7B5462E238EE7550058C812 /* bird13.png */,
+				C7B5462F238EE7550058C812 /* bird12.png */,
+				C7B54630238EE7550058C812 /* bird10.png */,
+				C7B54631238EE7550058C812 /* bird11.png */,
+				C7B54632238EE7550058C812 /* bird15.png */,
+				C7B54633238EE7550058C812 /* bird14.png */,
+				C7B54634238EE7550058C812 /* bird16.png */,
+				C7B54635238EE7550058C812 /* bird17.png */,
+				C7B54636238EE7550058C812 /* bird19.png */,
+				C7B54637238EE7550058C812 /* bird18.png */,
+				C7B54638238EE7550058C812 /* bird20.png */,
+				C7B54639238EE7550058C812 /* bird1.png */,
+				C7B5463A238EE7550058C812 /* bird2.png */,
+				C7B5463B238EE7550058C812 /* bird3.png */,
+				C7B5463C238EE7550058C812 /* bird7.png */,
+				C7B5463D238EE7550058C812 /* bird6.png */,
+				C7B5463E238EE7550058C812 /* bird4.png */,
+				C7B5463F238EE7550058C812 /* bird5.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C7BEB49B23887DF2007A32CC = {
+			isa = PBXGroup;
+			children = (
+				C7B545F8238EE1A80058C812 /* Balloon */,
+				C7E42EFC238C11AF0081382A /* Birds */,
+				C7D12D79238AF41A005149F8 /* Water */,
+				C7BEB4DB238895C6007A32CC /* Game */,
+				C7BEB4CE23888B20007A32CC /* Background */,
+				C7BEB4A723887DF2007A32CC /* ArchersGame */,
+				C7BEB4A623887DF2007A32CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C7BEB4A623887DF2007A32CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4A523887DF2007A32CC /* ArchersGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C7BEB4A723887DF2007A32CC /* ArchersGame */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4C6238888CD007A32CC /* main.cpp */,
+				C7BEB4AF23887DF2007A32CC /* Resources */,
+				C7BEB4A823887DF2007A32CC /* Supporting Files */,
+			);
+			path = ArchersGame;
+			sourceTree = "<group>";
+		};
+		C7BEB4A823887DF2007A32CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4A923887DF2007A32CC /* ArchersGame-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7BEB4AF23887DF2007A32CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4B023887DF2007A32CC /* cute_image.jpg */,
+				C7BEB4B223887DF2007A32CC /* nice_music.ogg */,
+				C7BEB4B423887DF2007A32CC /* sansation.ttf */,
+				C7BEB4B623887DF2007A32CC /* icon.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C7BEB4CE23888B20007A32CC /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4CF23888B31007A32CC /* Asset */,
+				C7BEB4D523889481007A32CC /* Background.cpp */,
+				C7BEB4D623889481007A32CC /* Background.hpp */,
+				C7BEB4D82388958D007A32CC /* BackgroundConstants.cpp */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		C7BEB4CF23888B31007A32CC /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4E42388A0CB007A32CC /* ResourcePath.hpp */,
+				C7BEB4E32388A0CB007A32CC /* ResourcePath.mm */,
+				C7BEB4E123889660007A32CC /* bgimg.jpg */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		C7BEB4DB238895C6007A32CC /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB4DC238895C6007A32CC /* Game.hpp */,
+				C7BEB4DE238895C6007A32CC /* Game.cpp */,
+				C7BEB4DD238895C6007A32CC /* GameConstants.cpp */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		C7D12D79238AF41A005149F8 /* Water */ = {
+			isa = PBXGroup;
+			children = (
+				C7D12D7A238AF43D005149F8 /* Water.cpp */,
+				C7D12D7B238AF43D005149F8 /* Water.hpp */,
+				C7D12D7D238AF48C005149F8 /* WaterConstants.cpp */,
+			);
+			path = Water;
+			sourceTree = "<group>";
+		};
+		C7E42EFC238C11AF0081382A /* Birds */ = {
+			isa = PBXGroup;
+			children = (
+				C7B5462B238EE7550058C812 /* Assets */,
+				C7E42EFD238C11BE0081382A /* Birds.cpp */,
+				C7E42EFE238C11BE0081382A /* Birds.hpp */,
+				C7E42F00238C11D80081382A /* BirdsConstants.cpp */,
+			);
+			path = Birds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C7BEB4A423887DF2007A32CC /* ArchersGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7BEB4BA23887DF2007A32CC /* Build configuration list for PBXNativeTarget "ArchersGame" */;
+			buildPhases = (
+				C7BEB4A023887DF2007A32CC /* Sources */,
+				C7BEB4A123887DF2007A32CC /* Frameworks */,
+				C7BEB4A223887DF2007A32CC /* Resources */,
+				C7BEB4A323887DF2007A32CC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArchersGame;
+			productName = ArchersGame;
+			productReference = C7BEB4A523887DF2007A32CC /* ArchersGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C7BEB49C23887DF2007A32CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "Sunho Hwang";
+				TargetAttributes = {
+					C7BEB4A423887DF2007A32CC = {
+						CreatedOnToolsVersion = 11.1;
+					};
+				};
+			};
+			buildConfigurationList = C7BEB49F23887DF2007A32CC /* Build configuration list for PBXProject "ArchersGame" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C7BEB49B23887DF2007A32CC;
+			productRefGroup = C7BEB4A623887DF2007A32CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C7BEB4A423887DF2007A32CC /* ArchersGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7BEB4A223887DF2007A32CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7B54642238EE7550058C812 /* bird13.png in Resources */,
+				C7B5464A238EE7550058C812 /* bird19.png in Resources */,
+				C7BEB4B723887DF2007A32CC /* icon.png in Resources */,
+				C7BEB4B523887DF2007A32CC /* sansation.ttf in Resources */,
+				C7B5464F238EE7550058C812 /* bird3.png in Resources */,
+				C7B54648238EE7550058C812 /* bird16.png in Resources */,
+				C7B54643238EE7550058C812 /* bird12.png in Resources */,
+				C7BEB4B323887DF2007A32CC /* nice_music.ogg in Resources */,
+				C7B5464B238EE7550058C812 /* bird18.png in Resources */,
+				C7B54652238EE7550058C812 /* bird4.png in Resources */,
+				C7B5464E238EE7550058C812 /* bird2.png in Resources */,
+				C7B54649238EE7550058C812 /* bird17.png in Resources */,
+				C7B54651238EE7550058C812 /* bird6.png in Resources */,
+				C7BEB4B123887DF2007A32CC /* cute_image.jpg in Resources */,
+				C7B5464D238EE7550058C812 /* bird1.png in Resources */,
+				C7B54650238EE7550058C812 /* bird7.png in Resources */,
+				C7B54646238EE7550058C812 /* bird15.png in Resources */,
+				C7B5464C238EE7550058C812 /* bird20.png in Resources */,
+				C7B54640238EE7550058C812 /* bird8.png in Resources */,
+				C7B545FB238EE1D50058C812 /* ballon2.png in Resources */,
+				C7B54653238EE7550058C812 /* bird5.png in Resources */,
+				C7B54645238EE7550058C812 /* bird11.png in Resources */,
+				C7B54641238EE7550058C812 /* bird9.png in Resources */,
+				C7B54647238EE7550058C812 /* bird14.png in Resources */,
+				C7B54644238EE7550058C812 /* bird10.png in Resources */,
+				C7BEB4E223889660007A32CC /* bgimg.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7BEB4A323887DF2007A32CC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# This shell script simply copies required SFML dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# SETTINGS\nSFML_DEPENDENCIES_INSTALL_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_FRAMEWORK_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_LIB_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks/lib\"\nFRAMEWORKS_FULL_PATH=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n# Are we building a project that uses frameworks or dylibs?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert: not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $@ is some paths\n{\n    test $# -ge 1\n    assert $? \"force_remove() requires at least one parameter\"\n    rm -fr $@\n    assert $? \"couldn't remove $@\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1\"*\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            source=\"$CMAKE_INSTALL_FRAMEWORK_PREFIX/sfml-$1.framework\"\n            target=\"sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1-d.dylib\"\n            target=\"`readlink $source`\"\n        else\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1.dylib\"\n            target=\"`readlink $source`\"\n        fi\n\n        copy \"$source\" \"$dest/$target\"\n\n        # copy extra dependencies\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\" frameworks too\n            for f in \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\"\n            do\n                copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/$f.framework\" \"$dest/$f.framework\"\n            done\n        elif [ \"$1\" = \"graphics\" ]\n        then\n            copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                \n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C7BEB4A023887DF2007A32CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7BEB4D723889481007A32CC /* Background.cpp in Sources */,
+				C7BEB4C7238888CD007A32CC /* main.cpp in Sources */,
+				C7BEB4DF238895C6007A32CC /* GameConstants.cpp in Sources */,
+				C7BEB4E0238895C6007A32CC /* Game.cpp in Sources */,
+				C7E42F01238C11D80081382A /* BirdsConstants.cpp in Sources */,
+				C7B54600238EE1FF0058C812 /* BalloonConstants.cpp in Sources */,
+				C7BEB4E52388A0CB007A32CC /* ResourcePath.mm in Sources */,
+				C7BEB4D92388958D007A32CC /* BackgroundConstants.cpp in Sources */,
+				C7D12D7C238AF43D005149F8 /* Water.cpp in Sources */,
+				C7E42EFF238C11BE0081382A /* Birds.cpp in Sources */,
+				C7B545FE238EE1EE0058C812 /* Balloon.cpp in Sources */,
+				C7D12D7E238AF48C005149F8 /* WaterConstants.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C7BEB4B823887DF2007A32CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX) sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		C7BEB4B923887DF2007A32CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX) sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+		C7BEB4BB23887DF2007A32CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ArchersGame/ArchersGame-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C7BEB4BC23887DF2007A32CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ArchersGame/ArchersGame-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C7BEB49F23887DF2007A32CC /* Build configuration list for PBXProject "ArchersGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7BEB4B823887DF2007A32CC /* Debug */,
+				C7BEB4B923887DF2007A32CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7BEB4BA23887DF2007A32CC /* Build configuration list for PBXNativeTarget "ArchersGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7BEB4BB23887DF2007A32CC /* Debug */,
+				C7BEB4BC23887DF2007A32CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C7BEB49C23887DF2007A32CC /* Project object */;
+}

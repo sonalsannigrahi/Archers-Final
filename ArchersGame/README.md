@@ -37,14 +37,14 @@ This is a 2d archer game, where the user controls an immobile player character w
 #### Physics Engine:
   Renom,
   Lopes,
-  Zhang,
-  Tavdgiridze
+  Tavdgiridze,
+  Zhang
 
 #### HUD:
   Hirsch
   
 #### Game Design:
-  Gomes,
+  Gomez,
   Park,
   Hwang,
   Nguyen
