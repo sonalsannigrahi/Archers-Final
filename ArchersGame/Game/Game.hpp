@@ -15,6 +15,7 @@
 #include "../Rain/Rain.hpp"
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
+#include "../Character/bow.hpp"
 
 class Game {
     private:
@@ -31,6 +32,7 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
+        Player player = Player();
 
         // Elapsed time
         clock_t elapsedTime;
