@@ -3,12 +3,19 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
-
+ 
 using namespace std;
-
+ 
+ 
+double pi = 3.141592653589;
+ 
+ 
 class Gravity;
 class CollisionGenerator;
-
+ 
+ 
+ 
+ 
 class Vector2D{
 private:
     double x;
@@ -37,12 +44,14 @@ public:
     }
     void turn(double angle)
     {
-        /// angles in radians 
+        /// angles in radians
         double n_x = cos(angle) * x - sin(angle) * y;
         double n_y = sin(angle) * x + cos(angle) * y;
         x = n_x;
         y = n_y;
     }
+ 
+ 
     Vector2D operator/(double k){
         Vector2D ans;
         ans.x = x/k;
@@ -68,7 +77,7 @@ public:
         return ans;
     }
     friend Vector2D operator*(double k, Vector2D v);
-    double operator*(Vector2D& other){
+    double operator*(Vector2D other){
         double ans = (this->x)*(other.x) + (this->y)*(other.y);
         return ans;
     }
@@ -77,22 +86,22 @@ Vector2D operator*(double k, Vector2D v)
 {
     return v*k;
 }
-
-
+ 
+ 
 class Point: public sf::Drawable{
 private:
-
+ 
     double mass;
-
+ 
     double x;
     double y;
-
+ 
     double v_x;
     double v_y;
-
+ 
     double f_x;
     double f_y;
-
+ 
     double radius;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
@@ -104,56 +113,63 @@ public:
     friend bool collide(Point& a, Point& b);
     friend Gravity;
     friend CollisionGenerator;
-
+ 
     Point(double _mass, double _x, double _y, double _v_x, double _v_y, double _radius){
         mass = _mass;
-
+ 
         x = _x;
         y = _y;
-
+ 
         v_x = _v_x;
         v_y = _v_y;
-
+ 
         f_x = 0.0;
         f_y = 0.0;
-
+ 
         radius = _radius;
+    }
+    double energy(){
+        double g = 10.0;
+        double ans = (mass/2.0) * ( v_x * v_x + v_y * v_y ) + mass * g * y;
+        return ans;
     }
     void integrate(double duration){
         double a_x = f_x / mass;
         double a_y = f_y / mass;
-
-        v_x += a_x * duration;
-        v_y += a_y * duration;
-
+ 
+ 
         x += v_x * duration;
         y += v_y * duration;
-
+ 
+        v_x += a_x * duration;
+        v_y += a_y * duration;
+ 
+ 
     }
     void reset(){
         f_x = f_y = 0.0;
     }
 };
-
+ 
 bool collide(Point& a, Point& b)
 {
     if(a.radius + b.radius > sqrt( (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y) )){
         double r_rel_x = a.x - b.x;
         double r_rel_y = a.y - b.y;
-
+ 
         double v_rel_x = a.v_x - b.v_x;
         double v_rel_y = a.v_y - b.v_y;
-
+ 
         double scalar_product = r_rel_x*v_rel_x + r_rel_y*v_rel_y;
         if(scalar_product < 0){
             return true;
         }
-
+ 
     }
     return false;
 }
-
-
+ 
+ 
 class Gravity{
 private:
     double g = 10.0;
@@ -168,9 +184,8 @@ public:
             points[i]->f_y -= points[i]->mass * g;
         }
     }
-
+ 
 };
-
 //----------------------------Coded by Nicolas (05/12)------------------------------------//
 //I used intercation with the Point class because I do not know which of the two codes we are going to follow, hence, if PointMass was the correct one, just change Points to PointMass
 double G //Gravitational constant to be changed to make the game more interesting
@@ -250,27 +265,81 @@ public:
                 Point* point_a = points[i];
                 Point* point_b = points[j];
                 if(collide(*point_a, *point_b)){
-                    /**
+ 
                     Vector2D pos_a(point_a->x,point_a->y);
                     Vector2D pos_b(point_b->x,point_b->y);
-                    **/
-                    Vector2D vel_a(point_a->v_x,point_a->v_y);
-                    Vector2D vel_b(point_b->v_x,point_b->v_y);
-
+ 
+ 
+                    /// e_n and e_t vectors
+                    double eps = 1e-6;
+ 
+                    Vector2D e_n = (pos_a - pos_b);
+                    while(e_n.len() > 1 + eps ) e_n.normalize();
+ 
+                    ///cout << e_n.len() << endl;
+ 
+                    Vector2D e_t = e_n;
+                    e_t.turn(pi/2);
+ 
+                    ///cout << e_t.len() << endl;
+ 
+ 
+                    ///cout << " Scalar product " << e_n * e_t << endl;
+ 
+                    Vector2D vel_a_initial(point_a->v_x,point_a->v_y);
+                    Vector2D vel_b_initial(point_b->v_x,point_b->v_y);
+ 
+                    double vel_a_initial_n = (vel_a_initial*e_n);
+                    double vel_a_initial_t = (vel_a_initial*e_t);
+ 
+                    double vel_b_initial_n = (vel_b_initial*e_n);
+                    double vel_b_initial_t = (vel_b_initial*e_t);
+ 
+ 
+                    ///cout << vel_a_initial_n << " " << vel_b_initial_n << endl;
+ 
+ 
+ 
+                    double CM_vel =((point_a->mass)*vel_a_initial_n + (point_b->mass)*vel_b_initial_n)/( ( point_a->mass ) + ( point_b->mass ) );
+ 
+                    double vel_a_final_n = 2*CM_vel - vel_a_initial_n;
+                    double vel_b_final_n = 2*CM_vel - vel_b_initial_n;
+ 
+ 
+                    Vector2D vel_a_final = vel_a_final_n * e_n + vel_a_initial_t * e_t;
+                    Vector2D vel_b_final = vel_b_final_n * e_n + vel_b_initial_t * e_t;
+ 
+                    point_a->v_x = vel_a_final.get_x();
+                    point_a->v_y = vel_a_final.get_y();
+ 
+                    point_b->v_x = vel_b_final.get_x();
+                    point_b->v_y = vel_b_final.get_y();
+ 
+ 
+ 
+ 
+ 
+ 
+                    /**
+ 
                     Vector2D CM_vel = ((point_a->mass)*vel_a + (point_b->mass)*vel_b)/( (point_a->mass) + (point_b->mass) );
-
+ 
                     Vector2D V_a_CM = vel_a - CM_vel;
                     Vector2D v_b_CM = vel_b - CM_vel;
-
-                    Vector2D n_vel_a = CM_vel - V_a_CM;
+ 
+                    Vector2D n_vel_a = CM_vel - v_a_CM;
                     Vector2D n_vel_b = CM_vel - v_b_CM;
-
+ 
                     point_a->v_x = n_vel_a.get_x();
                     point_a->v_y = n_vel_a.get_y();
-
+ 
                     point_b->v_x = n_vel_b.get_x();
                     point_b->v_y = n_vel_b.get_y();
-
+ 
+                    **/
+ 
+ 
+ 
                 }
             }
         }
@@ -279,59 +348,76 @@ public:
         for(int i=0;i<points.size();i++){
             Point* point = points[i];
             ///TO BE CHANGED
-            if(point->y - point->radius < 0 && point->v_y < 0)
+            double eps = 1e-6;
+            if(point->y + point->radius > H && point->v_y > 0)
             {
                 point->v_y = -point->v_y;
             }
-
+ 
+            if(point->y - point->radius < 0 && point->v_y < 0)
+            {
+ 
+                if( point->v_y > -eps )
+                {
+                    point->v_y = 0.0;
+                    point->y = 0.0;
+                }
+                else
+                    point->v_y = - 0.9 * point->v_y;
+ 
+                ///point->v_y = - 0.9 * point->v_y;
+                cout << point->v_y << endl;
+            }
+ 
             if(point->x + point->radius > W && point->v_x > 0){
                 point->v_x = -point->v_x;
             }
-
+ 
             if(point->x - point->radius < 0 && point->v_x < 0){
                 point->v_x = -point->v_x;
             }
+ 
         }
     }
-
+ 
 private:
     double W;
     double H;
     vector<Point*> points;
 };
-
+ 
 /// To do
 /**
-
+ 
 Collisions with earth
 convex shape
 black hole
 Collisions with each other
-
-
+ 
+ 
 **/
-
-
-
+ 
+ 
+ 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!",sf::Style::Default);
-
+ 
     sf::CircleShape shape(100.f);
-
+ 
     ///Point point(20.0, 200.0, 100.0, 10.0, 40.0, 50.0);
-
+ 
     Gravity gravity;
     ///gravity.add_point(point);
-
-
-
+ 
+ 
+ 
     CollisionGenerator CGenerator(window);
     ///CGenerator.add_point(point);
-
+ 
     vector<Point*> points;
     ///points.push_back(&point);
-
+ 
     sf::Clock clock;
     bool flag = false;
     while (window.isOpen())
@@ -341,7 +427,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-
+ 
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && flag == false){
             double x = sf::Mouse::getPosition(window).x;
@@ -360,27 +446,34 @@ int main()
         CGenerator.collisions_with_ground();
         CGenerator.resolve_collisions();
         gravity.get_force();
-
+ 
         float duration = clock.getElapsedTime().asSeconds() * 10.0;
         clock.restart();
-
+ 
         for(int i=0;i<points.size();i++){
             points[i]->integrate(duration);
         }
-
+        double TOTAL_ENERGY = 0.0;
+ 
+        for(int i=0;i<points.size();i++){
+            TOTAL_ENERGY += (*points[i]).energy();
+        }
+ 
+ 
+        ///cout << TOTAL_ENERGY << endl;
+ 
         window.clear();
-
+ 
         for(int i=0;i<points.size();i++){
             window.draw(*points[i]);
         }
-
+ 
         window.display();
-
+ 
         for(int i=0;i<points.size();i++){
             points[i]->reset();
         }
     }
-
+ 
     return 0;
 }
-
