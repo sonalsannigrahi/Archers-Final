@@ -9,8 +9,12 @@
 #include "Background.hpp"
 
 Background::Background(){
-    backgroundTexture.loadFromFile("Background/Asset/" + backgroundConstants.filename);
-    backgroundSprite = sf::Sprite(backgroundTexture);
+    for (int i = 0; i < backgroundConstants.filename_length; i++){
+        sf::Texture* texture = new sf::Texture();
+        texture -> loadFromFile("Background/Asset/" + backgroundConstants.filename[i]);
+        sf::Sprite* sprite = new sf::Sprite(*texture);
+        backgroundSprites.push_back(*sprite);
+    }
 }
 
 void Background::setWindow(sf::RenderWindow* gameWindow){
@@ -20,15 +24,11 @@ void Background::setWindow(sf::RenderWindow* gameWindow){
 void Background::setSize(int width, int height){
     backgroundWidth = width;
     backgroundHeight = height;
-    backgroundSprite.setScale((float) width / backgroundSprite.getGlobalBounds().width, (float) height / backgroundSprite.getGlobalBounds().height);
+    for (int i = 0; i < backgroundConstants.filename_length; i++)
+        backgroundSprites[i].setScale((float) width / backgroundSprites[i].getGlobalBounds().width, (float) height / backgroundSprites[i].getGlobalBounds().height);
 }
 
 void Background::updateFrame(double time) {
-    sf::Texture texture;
-    texture.loadFromFile("Background/Asset/PNG/game_background_3/bg3.png");
-    //std::cout << "Yo i was here bgimg" << std::endl;
-    sf::Sprite sprite(texture);
-    window -> draw(sprite);
     //std::cout << "Yo i was here" << std::endl;
-    window -> draw(backgroundSprite);
+    window -> draw(backgroundSprites[backgroundConstants.chosen]);
 }
