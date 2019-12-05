@@ -157,6 +157,51 @@ public:
 
 };
 
+//----------------------------Coded by Nicolas (05/12)------------------------------------//
+//I used intercation with the Point class because I do not know which of the two codes we are going to follow, hence, if PointMass was the correct one, just change Points to PointMass
+double G //Gravitational constant to be changed to make the game more interesting
+
+class BlackHole{
+private:
+    double x;
+    double y;
+    double mass;
+    double radius; //What if we do a relation between radius and mass? In physics a good approach is to do m proportional to area**2
+    vector<Point*> points;
+public:
+    double get_x(){
+        return x;
+    }
+    double get_y(){
+        return y;
+    }
+    double get_mass(){
+        return mass
+    }
+    double get_radius(){
+        return radius
+    }
+    Vector2D force(BlackHole black, Point point){ //Computes the force between a PointMass and a BlackHole
+        dx=black.x-point.get_x();
+        dy=black.x-point.get_y();
+        d=sqrt((dx*dx)+(dy*dy));
+        Force_Mod=(G*black.mass*point.get_mass())/(d*d);
+        Vector2D ResultingForce;
+        ResultingForce(Force_Mod*(dx/d),Force_Mod*dy/d);
+        return ResultingForce;
+    }
+    void get_force(){ //Compute the force each PointMass feel from all the BlackHoles
+        vector<BlackHole*> blackholes; //Takes all the BlackHoles in the game
+        for(int i=0;i<points.size();i++){
+            for(int j=0;j<blackholes.size(),j++)
+                points[i]->f_x+=force(blackholes[j],points[i]).get_x();
+                points[i]->f_y+=force(blackholes[j],points[i]).get_y();
+        }
+    }
+    //Still have to add function to delete object once it touches a BlackHole
+}
+//-----------------------------Coded by Nicolas (05/12)---------------------------------------//
+
 
 class CollisionGenerator{
 public:
