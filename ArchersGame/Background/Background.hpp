@@ -9,6 +9,7 @@
 #pragma once
 #include <ctime>
 #include <iostream>
+#include <vector>
 #include <SFML/Graphics.hpp>
 #include "BackgroundConstants.cpp"
 
@@ -16,8 +17,7 @@ class Background{
 private:
     sf::RenderWindow* window;
     BackgroundConstants backgroundConstants = BackgroundConstants();
-    sf::Texture backgroundTexture;
-    sf::Sprite backgroundSprite;
+    std::vector<sf::Sprite> backgroundSprites;
     int backgroundWidth;
     int backgroundHeight;
 public:
