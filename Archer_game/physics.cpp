@@ -29,6 +29,20 @@ public:
         double ans = sqrt(x*x + y*y);
         return ans;
     }
+    void normalize(){
+        if( this->len() !=0 ){
+            x = x / this->len();
+            y = y / this->len();
+        }
+    }
+    void turn(double angle)
+    {
+        /// angles in radians 
+        double n_x = cos(angle) * x - sin(angle) * y;
+        double n_y = sin(angle) * x + cos(angle) * y;
+        x = n_x;
+        y = n_y;
+    }
     Vector2D operator/(double k){
         Vector2D ans;
         ans.x = x/k;
