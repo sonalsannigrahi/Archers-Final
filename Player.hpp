@@ -7,13 +7,14 @@
 #include <SFML/System.hpp>
 #include <math.h>
 #include <iostream>
-#include <Texture.hpp>
 
 
 class Player{
 private:
     sf::RenderWindow* window;
     std::vector<sf::Sprite> characterSprites;
+    sf::Sprite* sprite = new sf::Sprite();
+    sf::Sprite* spritem = new sf::Sprite();
     int playerWidth, playerHeight, id;
     double timer;
 
