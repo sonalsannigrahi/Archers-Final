@@ -200,6 +200,24 @@ public:
     }
     //Still have to add function to delete object once it touches a BlackHole
 }
+//-------
+class ArrowObject{
+private:
+    double p1;
+    double p2;//It is enough to just have two points (it is a rectangle) as it will be a square (maybe a third for the tip)
+    double mass;//Better to break into different objects
+public:
+    double get_x(){
+        return x;
+    }
+    double get_y(){
+        return y;
+    }
+    double get_mass(){
+        return mass
+    }
+}
+//-------
 //-----------------------------Coded by Nicolas (05/12)---------------------------------------//
 
 
