@@ -78,3 +78,5 @@ Maëlys Solal - This week I continued thinking about opponents but mostly focuse
 André Renom - Discussed with the character team how their classes would interact with the phyics engine, and the extent to which theirs would be subclasses of the abstract objects defined in the physcics engine. Started thinking about the implementation of wind, which will be continued next week.
 
 Alexandre Hirsch - Discussed what we will be able to change in the settings of the game. We will be able to change the difficulty setting, the presence of rain, lightning, birds, balloons, as well as their spawn rate, and sound settings. I have also been working on a rough first version of our main menu. Next week I will be working on the menu and begin programming the settings and linking it to other teammembers' work.
+
+Hoang Anh Ngo - Re-implementing the whole structure of UI/UX, starting with the implementation of buttons and splash screen/game over screen
