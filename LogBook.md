@@ -66,3 +66,5 @@ Diego Gomez - This week I finished the implementation of the fireworks class int
 Alice Aubert - This week I looked to implement arrows as sprite and finding a suitable image. Next week, I will implement the mathematical equations to make them into projectiles.
 
 Minh Tuan Nguyen - Implemented rain and lightning and integrated them into the game, helped integrate other classes. Next week, I will try to implement sound system and add the encription class to encript game constants.
+
+Tarcisio Teixeira - Finished tests on Encryption and start working on UI-UX. On UI-UX, after have devided and made an scratch of the classes that will be needed I start working on the implementation of start screen.
