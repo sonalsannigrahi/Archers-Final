@@ -71,4 +71,4 @@ Tarcisio Teixeira - Finished tests on Encryption and start working on UI-UX. On 
 
 Saba Tavdgiridze & Zhang Xingjian - Finished well-functioning collision resolution part of the game. Started thinking about how to integrate it into the game.
 
-Nícolas Lopes - Implemented the BlackHole class and started the object class. Solved the collision problem in 2 dimensions, making it more realistic and simpler to implement. Solved the rotation of rigid bodies problem in accordance with real physics, making a link with the collisions code that, allowing us to implement it in the next week.
+Nícolas Lopes - Implemented the BlackHole class and started the object class. Solved the collision problem in 2 dimensions, making it more realistic and simpler to implement. Solved the rotation of rigid bodies problem in accordance with real physics, making a link with the collisions code, allowing us to implement it in the next week.
