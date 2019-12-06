@@ -37,7 +37,7 @@ Xingjian Zhang & Saba Tavdgiridze - Met with Physics Engine group members for di
 
 Sonal Sannigrahi- Looking into sprite animation vs vector graphics through drawables. Implemented a click and drag function for the bow/arrow. Will be implementing character movements next.
 
-Jiwon Park - Began the mplemention of the ground where characters stand on and looking for sprite that will be used in our black hole. 
+Jiwon Park - Started the implementation of ground and looking for the sprites for blackhole.
 
 Sunho Hwang - Began and finished the implementation of the bird classs with animations. Started on another balloon class. Some animations still require polishing.
 
@@ -80,3 +80,5 @@ André Renom - Discussed with the character team how their classes would interac
 Alexandre Hirsch - Discussed what we will be able to change in the settings of the game. We will be able to change the difficulty setting, the presence of rain, lightning, birds, balloons, as well as their spawn rate, and sound settings. I have also been working on a rough first version of our main menu. Next week I will be working on the menu and begin programming the settings and linking it to other teammembers' work.
 
 Hoang Anh Ngo - Re-implementing the whole structure of UI/UX, starting with the implementation of buttons and splash screen/game over screen
+
+Jiwon Park - Began the mplemention of the ground where characters stand on and looking for sprite that will be used in our black hole.
