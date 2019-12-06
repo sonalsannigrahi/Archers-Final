@@ -59,4 +59,10 @@ Nicolas Lopes - Met with Saba, Andre and Chris to discuss Physics engine. Correc
 
 Sonal Sannigrahi - Designed all the character (opponent and player) sprites. Integrated code to rotate bow with the character sprites and game window. For now, the bow with the arm rotates with the rest of the sprite fixed. Code is functional right now. For next week, I will be working on resizing the sprites to match the game window, placing the character on a ground, and finally fixing the arm in the right position.
 
-Jiwon Park - Implemented the ground for the characters, started to implement the blackhole to the game. I am looking at the physics engine and finding more sprites for grounds and blackhole. 
+Sunho Hwang - Finished the implementation of the falling balloon class. We are now able to set up the balloon class so that it will fall randomly throughout the game. Moved onto implementing sounds for the animated sprites. So far, I have found various samples that can be used. Still needs to address how to implement them into the game itself.
+
+Diego Gomez - This week I finished the implementation of the fireworks class into the game, that is we are now capable of shooting fireworks at will in the game. I also started to search and implement sound for other objects, but I have come across a compatibility error that still needs to be addressed.
+
+Alice Aubert - This week I looked to implement arrows as sprite and finding a suitable image. Next week, I will implement the mathematical equations to make them into projectiles.
+
+Minh Tuan Nguyen - Implemented rain and lightning and integrated them into the game, helped integrate other classes. Next week, I will try to implement sound system and add the encription class to encript game constants.
