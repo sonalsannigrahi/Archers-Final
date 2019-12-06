@@ -68,3 +68,5 @@ Alice Aubert - This week I looked to implement arrows as sprite and finding a su
 Minh Tuan Nguyen - Implemented rain and lightning and integrated them into the game, helped integrate other classes. Next week, I will try to implement sound system and add the encription class to encript game constants.
 
 Tarcisio Teixeira - Finished tests on Encryption and start working on UI-UX. On UI-UX, after having divided and made a scratch of the classes that will be needed I start working on the implementation of start screen.
+
+Saba Tavdgiridze & Zhang Xingjian - Finished well-functioning collision resolution part of the game. Started thinking about how to integrate it into the game.
