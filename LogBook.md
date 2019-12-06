@@ -74,3 +74,5 @@ Saba Tavdgiridze & Zhang Xingjian - Finished well-functioning collision resoluti
 Nícolas Lopes - Implemented the BlackHole class and started the object class. Solved the collision problem in 2 dimensions, making it more realistic and simpler to implement. Solved the rotation of rigid bodies problem in accordance with real physics, making a link with the collisions code, allowing us to implement it in the next week.
 
 Maëlys Solal - This week I continued thinking about opponents but mostly focused on the healthbar. The healthbar is now no longer just a player's attribute but now a full object with its own sprite which I am implementing. Next week I hope to finish implementing the healthbar and continue working on opponents.
+
+André Renom - Discussed with the character team how their classes would interact with the phyics engine, and the extent to which theirs would be subclasses of the abstract objects defined in the physcics engine. Started thinking about the implementation of wind, which will be continued next week.
