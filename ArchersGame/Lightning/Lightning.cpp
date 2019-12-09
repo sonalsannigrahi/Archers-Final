@@ -37,3 +37,7 @@ void Lightning::updateFrame(double time) {
     }
     if (timer > lightningConstants.lightning_time) window -> draw(lightningSprites[id]);
 }
+
+void Lightning::change_volume_lightning(int volume){
+    sound.setVolume(volume);
+}
