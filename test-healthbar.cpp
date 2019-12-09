@@ -9,15 +9,26 @@ int main(){
 
     sf::Sprite rectangle;
     sf::Sprite filling;
-    float health = 0.2;
+    float health = 1;
 
-    sf::Texture texture1;
-    texture1.loadFromFile("Assets/healthbar_moving.png");
-    rectangle.setTexture(texture1);
+    sf::Texture texture_rect;
+    texture_rect.loadFromFile("Assets/healthbar_moving.png");
+    // texture_rect.setSmooth(true);
+    rectangle.setTexture(texture_rect);
     rectangle.setPosition(0.f, 0.f);
-    sf::Texture texture2;
-    texture2.loadFromFile("Assets/healthbar_rectangle.png");
-    filling.setTexture(texture2);
+    sf::Texture texture_green;
+    texture_green.loadFromFile("Assets/healthbar_rectangle_g.png");
+    sf::Texture texture_orange;
+    texture_orange.loadFromFile("Assets/healthbar_rectangle_o.png");
+    sf::Texture texture_red;
+    texture_red.loadFromFile("Assets/healthbar_rectangle_r.png");
+    if (0.25 < health < 1) {
+        filling.setTexture(texture_green);
+    } else if (0.10 < health <= 0.25) {
+        filling.setTexture(texture_orange);
+    } else {
+        filling.setTexture(texture_red);
+    }
     filling.setScale(health, 1.0f);
     filling.setPosition(114.f, 31.f);
 
