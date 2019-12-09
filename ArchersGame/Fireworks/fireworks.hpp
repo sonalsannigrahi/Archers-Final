@@ -9,7 +9,8 @@
 class Fireworks{
 private:
     sf::RenderWindow* window;
-    
+    sf::SoundBuffer soundBuffer;
+    sf::Sound sound;
     FireworksConstants fireworksconstants = FireworksConstants();
     double counter = 0;
     int current = 0;
