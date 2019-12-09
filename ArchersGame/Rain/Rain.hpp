@@ -4,10 +4,13 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "RainConstants.cpp"
+#include <SFML/Audio.hpp>
 
 class Rain{
 private:
     sf::RenderWindow* window;
+    sf::SoundBuffer soundBuffer;
+    sf::Sound sound;
     RainConstants rainConstants = RainConstants();
     std::vector<sf::Sprite> rainSprite;
     int rainWidth;

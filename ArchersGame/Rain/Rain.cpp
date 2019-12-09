@@ -7,6 +7,10 @@ Rain::Rain(){
         sf::Sprite*  sprite = new sf::Sprite(*texture);
         rainSprite.push_back(*sprite);
     }
+    soundBuffer.loadFromFile(rainConstants.sound_filename);
+    sound.setBuffer(soundBuffer);
+    sound.setLoop(true);
+    sound.play();
 }
 
 void Rain::setWindow(sf::RenderWindow* gameWindow){
