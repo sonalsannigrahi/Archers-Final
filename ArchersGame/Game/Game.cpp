@@ -12,12 +12,14 @@ Game::Game(){
     gameWater.setWindow(window);
     gameLightning.setWindow(window);
     gameRain.setWindow(window);
+    player.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -127,6 +129,9 @@ void Game::UpdateFrame(){
 
     // Draw Waters
     gameWater.updateFrame(time);
+
+    // Draw Player
+    player.updateFrame(time);
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
