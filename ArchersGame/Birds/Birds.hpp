@@ -14,6 +14,7 @@
 #include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
 #include "BirdsConstants.cpp"
+#include <SFML/Audio.hpp>
 
 class Birds{
 private:

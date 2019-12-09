@@ -8,6 +8,7 @@
 
 #include "Birds.hpp"
 
+
 Birds::Birds(){
     srand (time(NULL)); // Randomize with time
 
@@ -59,6 +60,12 @@ void Birds::updateFrame(double time) {
     } else {
         birdsSprites[current].setPosition(posX, posY);
         window -> draw(birdsSprites[current]);
+    }
+    if (alive == true) {
+        sf::Music music;
+        music.openFromFile("Birds/Assets/" + birdconstant.musicfile);
+        music.play();
+        music.setLoop(true);
     }
 }
 
