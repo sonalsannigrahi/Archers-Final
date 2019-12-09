@@ -11,7 +11,7 @@ Fireworks::Fireworks(){
     }   
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;
-    soundBuffer.loadFromFile("Fireworks/asset/firework_sound1.wav");
+    soundBuffer.loadFromFile("Fireworks/asset/firework_sound1.ogg");
     sound.setBuffer(soundBuffer);
     sound.play();
 }
