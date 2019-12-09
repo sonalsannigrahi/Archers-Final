@@ -1,5 +1,5 @@
 CXX = g++
-Dependencies = -lsfml-graphics -lsfml-window -lsfml-system
+Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
 BackgroundConstants.o: Background/BackgroundConstants.cpp
 	$(CXX) -c Background/BackgroundConstants.cpp
