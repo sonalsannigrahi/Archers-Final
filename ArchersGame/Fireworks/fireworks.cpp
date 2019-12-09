@@ -7,8 +7,11 @@ Fireworks::Fireworks(){
         texture -> loadFromFile("Fireworks/asset/"+fireworksconstants.filename[i]);
         sf::Sprite* sprite = new sf::Sprite(*texture);
         fireSprites.push_back(*sprite);
+        
     }   
- 
+    soundBuffer.loadFromFile(fireworksconstants.sound_filename);
+    sound.setBuffer(soundBuffer);
+    sound.play();
 }
 
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
@@ -28,6 +31,7 @@ void Fireworks::setSize(int width, int height){
 
 
 void Fireworks::updateFrame(double time) {
+
     counter += time;
     if (counter >= fireworksconstants.changetimefireworks){
         counter -= fireworksconstants.changetimefireworks;
