@@ -22,8 +22,9 @@ Birds::Birds(){
     sf::Sound sound;
     soundBuffer.loadFromFile("Birds/Assets/" + birdconstant.musicfile);
     sound.setBuffer(soundBuffer);
-    sound.play();
     sound.setLoop(true);
+    sound.play();
+    if (alive = false) sound.stop();
 
 }
 
@@ -64,7 +65,6 @@ void Birds::updateFrame(double time) {
     }
     if (posX < 0.0 || posX > (float) windowWidth){
         alive = false; // The bird has moved out of the game => delete it
-        sound.stop();
     } else {
         birdsSprites[current].setPosition(posX, posY);
         window -> draw(birdsSprites[current]);
