@@ -37,3 +37,11 @@ void Lightning::updateFrame(double time) {
     }
     if (timer > lightningConstants.lightning_time) window -> draw(lightningSprites[id]);
 }
+
+int Lightning::getLightningRate(){
+    return lightningConstants.lightning_rate;
+}
+
+void Lightning::setLightningRate(int rate){
+    lightningConstants.lightning_rate = rate;
+}

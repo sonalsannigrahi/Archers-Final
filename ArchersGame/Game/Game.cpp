@@ -21,6 +21,9 @@ Game::Game(){
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
+    // Start rain audio
+    if (gameConstants.isRaining) gameRain.playAudio();
+
     // Start game
     std::cout << "Starting Game ..." << std::endl;
     StartGame();
@@ -68,13 +71,13 @@ void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
 
     // Creating birds
-    if (rand() % gameConstants.birdRate == 0) createBird();
+    if (rand() % gameConstants.birdRate == 0 && gameConstants.isBirds) createBird();
 
     // Creating balloons
-    if (rand() % gameConstants.balloonRate == 0) createBalloon();
+    if (rand() % gameConstants.balloonRate == 0 && gameConstants.isBalloon) createBalloon();
 
     // Creating Fireworks
-    if (rand() % gameConstants.fireworkRate == 0) createFireworks();
+    if (rand() % gameConstants.fireworkRate == 0 && gameConstants.isFireworks) createFireworks();
 
     // Calculate time has passed since the last UpdateFrame
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
@@ -189,10 +192,103 @@ void Game::createFireworks(){
     fireworks.push_back(firework);
 }
 
-void:: Game::removeFireworks(int id){
+void Game::removeFireworks(int id){
     if (fireworks.size() > id){
         delete fireworks[id];
         fireworks[id] = fireworks[fireworks.size() -1];
         fireworks.pop_back();
     }
+}
+
+void Game::toggleBalloons(){
+    gameConstants.isBalloon = !gameConstants.isBalloon;
+}
+
+void Game::toggleBirds(){
+    gameConstants.isBirds = !gameConstants.isBirds;
+}
+
+void Game::toggleBlackhole(){
+    gameConstants.isBlackhole = !gameConstants.isBlackhole;
+}
+
+void Game::toggleFireworks(){
+    gameConstants.isFireworks = !gameConstants.isFireworks;
+}
+
+void Game::toggleLightning(){
+    gameConstants.isLightning = !gameConstants.isLightning;
+}
+
+void Game::toggleRain(){
+    gameConstants.isRaining = !gameConstants.isRaining;
+    if (gameConstants.isRaining) gameRain.playAudio(); else gameRain.stopAudio();
+}
+
+bool Game::getIsBalloons(){
+    return gameConstants.isBalloon;
+}
+
+bool Game::getIsBirds(){
+    return gameConstants.isBirds;
+}
+
+bool Game::getIsBlackhole(){
+    return gameConstants.isBlackhole;
+}
+
+bool Game::getIsFireworks(){
+    return gameConstants.isFireworks;
+}
+
+bool Game::getIsLightning(){
+    return gameConstants.isLightning;
+}
+
+bool Game::getIsRaining(){
+    return gameConstants.isRaining;
+}
+
+void Game::setBalloonsRate(int rate){
+    gameConstants.balloonRate = rate;
+}
+
+void Game::setBirdsRate(int rate){
+    gameConstants.birdRate = rate;
+}
+
+void Game::setFireworksRate(int rate){
+    gameConstants.fireworkRate = rate;
+}
+
+void Game::setLightningRate(int rate){
+    gameLightning.setLightningRate(rate);
+}
+
+int Game::getBalloonsRate(){
+    return gameConstants.balloonRate;
+}
+
+int Game::getBirdsRate(){
+    return gameConstants.birdRate;
+}
+
+int Game::getFireworksRate(){
+    return gameConstants.fireworkRate;
+}
+
+int Game::getLightningRate(){
+    return gameLightning.getLightningRate();
+}
+
+void Game::setWindowSize(int width, int height){
+    gameConstants.WINDOW_WIDTH = width;
+    gameConstants.WINDOW_HEIGHT = height;
+
+    // Update all classes
+    gameBackground.setSize(width, height);
+    gameLightning.setSize(width, height);
+    gameRain.setSize(width, height);
+    gameWater.setSize(width, height);
+    // Add Ground and Blackhole...
 }

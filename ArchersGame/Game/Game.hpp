@@ -58,4 +58,30 @@ class Game {
         void removeBalloon(int id);
         void createFireworks();
         void removeFireworks(int id);
+
+        void toggleBirds();
+        void toggleRain();
+        void toggleLightning();
+        void toggleBalloons();
+        void toggleFireworks();
+        void toggleBlackhole();
+
+        bool getIsBirds();
+        bool getIsRaining();
+        bool getIsLightning();
+        bool getIsBalloons();
+        bool getIsFireworks();
+        bool getIsBlackhole();
+
+        void setBirdsRate(int rate);
+        void setBalloonsRate(int rate);
+        void setFireworksRate(int rate);
+        void setLightningRate(int rate);
+
+        int getBirdsRate();
+        int getBalloonsRate();
+        int getFireworksRate();
+        int getLightningRate();
+
+        void setWindowSize(int width, int height);
 };

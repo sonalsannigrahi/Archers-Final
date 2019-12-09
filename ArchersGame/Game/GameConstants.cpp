@@ -8,10 +8,10 @@ class GameConstants{
         int balloonRate = 2000;
         int fireworkRate = 100;
     // Game setting
-        bool isRaining = true;
+        bool isRaining = false;
         bool isLightning = true;
-        bool isBirds = true;
-        bool isBalloon = true;
-        bool isFireworks = true;
-        bool isBlackhole = true;
+        bool isBirds = false;
+        bool isBalloon = false;
+        bool isFireworks = false;
+        bool isBlackhole = false;
 };

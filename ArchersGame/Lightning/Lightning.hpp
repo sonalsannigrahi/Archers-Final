@@ -24,4 +24,7 @@ public:
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
     void updateFrame(double time);
+
+    int getLightningRate();
+    void setLightningRate(int rate);
 };
