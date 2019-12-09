@@ -9,8 +9,6 @@ Fireworks::Fireworks(){
         fireSprites.push_back(*sprite);
         
     }   
-    sf::SoundBuffer soundBuffer;
-    sf::Sound sound;
     soundBuffer.loadFromFile("Fireworks/asset/firework_sound1.ogg");
     sound.setBuffer(soundBuffer);
     sound.play();
@@ -33,6 +31,7 @@ void Fireworks::setSize(int width, int height){
 
 
 void Fireworks::updateFrame(double time) {
+
     counter += time;
     if (counter >= fireworksconstants.changetimefireworks){
         counter -= fireworksconstants.changetimefireworks;
