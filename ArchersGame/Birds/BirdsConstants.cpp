@@ -17,7 +17,7 @@ public:
     int birdTypeCount = 2;
     float birdSpeed = 100.f;
     float skylimit = 0.7;
-    std::string musicfile = "bird.wav"
+    std::string musicfile = "bird.wav";
     BirdsConstants(){
         for (int i=0; i< 20; i++) {
             filename[i] = "bird" + std::to_string(i+1) + ".png";

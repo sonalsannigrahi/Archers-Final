@@ -9,7 +9,7 @@ Fireworks::Fireworks(){
         fireSprites.push_back(*sprite);
         
     }   
-    soundBuffer.loadFromFile("Fireworks/asset/firework_sound1.ogg");
+    soundBuffer.loadFromFile(fireworksconstants.sound_filename);
     sound.setBuffer(soundBuffer);
     sound.play();
 }
