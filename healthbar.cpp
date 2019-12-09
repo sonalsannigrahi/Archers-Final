@@ -23,8 +23,10 @@ void Healthbar::setSize(int width, int height) {
 
 void Healthbar::updateFrame(double time) {
     // get player's health
+    float health = player.getHealth(); // how do I get the player's health?
     // update size of the health (change filling size)
-
+    this->filling.setScale(health, 1.0f);
+    
     window -> draw(rectangle);
     window -> draw(filling);
 }
