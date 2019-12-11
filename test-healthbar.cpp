@@ -9,7 +9,8 @@ int main(){
 
     sf::Sprite rectangle;
     sf::Sprite filling;
-    float health = 1;
+    float health = 0.05;
+    std::string colour;
 
     sf::Texture texture_rect;
     texture_rect.loadFromFile("Assets/healthbar_moving.png");
@@ -17,23 +18,26 @@ int main(){
     rectangle.setTexture(texture_rect);
     rectangle.setPosition(0.f, 0.f);
     sf::Texture texture_green;
-    texture_green.loadFromFile("Assets/healthbar_rectangle_g.png");
+    texture_green.loadFromFile("Assets/hb_green_rect.png");
     sf::Texture texture_orange;
-    texture_orange.loadFromFile("Assets/healthbar_rectangle_o.png");
+    texture_orange.loadFromFile("Assets/hb_orange_rect.png");
     sf::Texture texture_red;
-    texture_red.loadFromFile("Assets/healthbar_rectangle_r.png");
-    if (0.25 < health < 1) {
+    texture_red.loadFromFile("Assets/hb_red_rect.png");
+    if (health > 0.25) {
         filling.setTexture(texture_green);
-    } else if (0.10 < health <= 0.25) {
+        colour = "green";
+    } else if (health > 0.10) {
         filling.setTexture(texture_orange);
+        colour = "orange";
     } else {
         filling.setTexture(texture_red);
+        colour = "red";
     }
     filling.setScale(health, 1.0f);
-    filling.setPosition(114.f, 31.f);
+    filling.setPosition(113.f, 32.f);
 
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), colour);
 
     // run the program as long as the window is open
     while (window.isOpen())

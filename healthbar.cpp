@@ -12,15 +12,15 @@ Healthbar::Healthbar(float health = 1) {
     texture_orange.loadFromFile("Assets/healthbar_rectangle.png");
     sf::Texture texture_red;
     texture_red.loadFromFile("Assets/healthbar_rectangle.png");
-    if (0.25 < health < 1) {
+    if (health > 0.25) {
         this->filling.setTexture(texture_green);
-    } else if (0.10 < health <= 0.25) {
+    } else if (health > 0.10) {
         this->filling.setTexture(texture_orange);
     } else {
         this->filling.setTexture(texture_red);
     }
     this->filling.setScale(health, 1.0f); // default values, real values tbd
-    filling.setPosition(114.f, 31.f);
+    filling.setPosition(113.f, 32.f);
 }
 
 void Healthbar::setWindow(sf::RenderWindow* gameWindow){
@@ -44,12 +44,12 @@ void Healthbar::updateFrame(double time) {
     texture_orange.loadFromFile("Assets/healthbar_rectangle_o.png");
     sf::Texture texture_red;
     texture_red.loadFromFile("Assets/healthbar_rectangle_r.png");
-    if (0.25 < health < 1) {
-        filling.setTexture(texture_green);
-    } else if (0.10 < health <= 0.25) {
-        filling.setTexture(texture_orange);
+    if (health > 0.25) {
+        this->filling.setTexture(texture_green);
+    } else if (health > 0.10) {
+        this->filling.setTexture(texture_orange);
     } else {
-        filling.setTexture(texture_red);
+        this->filling.setTexture(texture_red);
     }
     this->filling.setScale(health, 1.0f);
 
