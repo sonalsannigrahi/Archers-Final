@@ -84,3 +84,5 @@ Hoang Anh Ngo - Re-implementing the whole structure of UI/UX, starting with the 
 Jiwon Park - Finish the implementation of ground and started the implementation of blackhole. I looked over the phycis engine to see how it will be implemented to the game. 
 
 ## Week 4 (7th Dec - 13th Dec)
+
+Andre Renom - Finalised discussions on completion of physics engine and how to treat game objects. Now working on coordinating the implementation of the physics engine with the charcter development team. Documented classes and processes. Tested collisions and a few limit cases of engine.
