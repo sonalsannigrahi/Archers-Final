@@ -11,6 +11,7 @@
 #include <iostream>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "BackgroundConstants.cpp"
 
 class Background{
@@ -20,6 +21,7 @@ private:
     std::vector<sf::Sprite> backgroundSprites;
     int backgroundWidth;
     int backgroundHeight;
+    sf::Music music;
 public:
     
     Background();
