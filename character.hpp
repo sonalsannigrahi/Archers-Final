@@ -1,28 +1,26 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 
-#include "bow.hpp"
 #include "arrow.hpp"
 #include "healthbar.hpp"
+#include "ArchersGame/Ground/Ground.hpp"
 
-class Character: public sf::Drawable 
+class Character:
 {
 private:
 
-    /* health attribute, values between 0 and 1, can be turned into a percentage
-    1: healthy, 0: dead */
-
     double xPosition, yPosition;
-
-    Healthbar healthbar; 
-
-    Bow bow;
-
+    float health; 
     Arrow arrow;
+    sf::RenderWindow* window;
+    int characterWidth, characterHeight;
+    double timer; // don't know if that one should be in character or player/opponent
+    Ground* ground_p;
 
 public:
 
     // constructor (health initialized to 1 by default)
-    Character(double x, double y, Bow bow, Arrow arrow, float health = 1);
+    Character(double x, double y, Arrow arrow, float health = 1);
 
     // get position functions
     double getX();
@@ -31,26 +29,18 @@ public:
     // get health function
     float getHealth();
 
-    // get bow
-    Bow getBow();
-
     // get arrow
     Arrow getArrow();
 
-    //smfl objects for graphics
-    sf::CircleShape head;
-    sf::RectangleShape body;
-    sf::RectangleShape left_arm;
-    sf::RectangleShape right_arm;
-    sf::RectangleShape left_leg;
-    sf::RectangleShape right_leg;
+    void setWindow(sf::RenderWindow* gameWindow);
+    void setSize(int width, int height);
+    void setGround(Ground* ground_p); // useful here?
 
-    /* update function
-    what type? and what should it do?
-    type update()
+    // changeHealth function, will depend on collisions --> physics
+
+
+    /* updateFrame function
+    inside the character class or player/opponent
     */
-
-    // draw character function
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 };

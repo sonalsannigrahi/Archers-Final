@@ -13,7 +13,7 @@ int main(){
     std::string colour;
 
     sf::Texture texture_rect;
-    texture_rect.loadFromFile("Assets/healthbar_moving.png");
+    texture_rect.loadFromFile("Assets/hb_moving.png");
     // texture_rect.setSmooth(true);
     rectangle.setTexture(texture_rect);
     rectangle.setPosition(0.f, 0.f);
