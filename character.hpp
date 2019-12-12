@@ -20,7 +20,7 @@ private:
 public:
 
     // constructor (health initialized to 1 by default)
-    Character(double x, double y, Arrow arrow, float health = 1);
+    Character(double x, double y, Arrow arrow, float health = 1, int width, int height);
 
     // get position functions
     double getX();
