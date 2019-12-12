@@ -14,4 +14,5 @@ class GameConstants{
         bool isBalloon = true;
         bool isFireworks = true;
         bool isBlackhole = true;
+        bool isGround = true;
 };

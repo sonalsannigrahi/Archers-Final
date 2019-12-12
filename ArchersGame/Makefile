@@ -50,20 +50,26 @@ GroundConstants.o: Ground/GroundConstants.cpp
 Ground.o: Ground/Ground.cpp Ground/Ground.hpp GroundConstants.o
 	$(CXX) -c Ground/Ground.cpp $(Dependencies)
 
+BlackholeConstants.o: Blackhole/BlackholeConstants.cpp
+	$(CXX) -c Blackhole/BlackholeConstants.cpp
+
+Blackhole.o: Blackhole/Blackhole.cpp Blackhole/Blackhole.hpp BlackholeConstants.o
+	$(CXX) -c Blackhole/Blackhole.cpp $(Dependencies)
+
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
 
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o Ground.o
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o Ground.o Blackhole.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
 	$(CXX) -c main.cpp
 
 archer: main.o
-	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o Ground.o -o archer $(Dependencies)
+	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o Ground.o Blackhole.o -o archer $(Dependencies)
 
 clean:
 	rm -f archer

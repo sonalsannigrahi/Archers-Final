@@ -2,7 +2,7 @@
 
 Game::Game(){
     srand(time(NULL)); // Randomize
-    
+
     // Create game window
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
@@ -12,12 +12,16 @@ Game::Game(){
     gameWater.setWindow(window);
     gameLightning.setWindow(window);
     gameRain.setWindow(window);
+    gameGround.setWindow(window);
+    gameBlackhole.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameGround.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameBlackhole.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -39,7 +43,7 @@ void Game::StartGame(){
     // TEST BIRDS
 
     // createBird();
-    
+
     // END TEST BIRDS
 
     // Start timer
@@ -65,6 +69,10 @@ void Game::StartGame(){
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
 
+    // Creating ground
+    int id = gameGround.createGround(0);
+    gameGround.setGroundPosition(id, 10.0, 10.0);
+
     // Creating birds
     if (rand() % gameConstants.birdRate == 0) createBird();
 
@@ -77,14 +85,19 @@ void Game::UpdateFrame(){
     // Calculate time has passed since the last UpdateFrame
     double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
-    
+
     // Draw Background
     gameBackground.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
 
+    gameGround.updateFrame(time);
+
     // Draw Lightning
     if (gameConstants.isLightning) gameLightning.updateFrame(time);
 
+    // Drwa Blackhole
+    gameBlackhole.setBlackholePosition(gameConstants.WINDOW_WIDTH/2, gameConstants.WINDOW_HEIGHT/2);
+    gameBlackhole.updateFrame(time);
     // Draw birds
     if (gameConstants.isBirds){
         int id = 0;
@@ -137,9 +150,9 @@ void Game::UpdateFrame(){
     // Change circle's color
     // circle -> setFillColor(sf::Color(0, 255, 0, int((double (elapsedTime) / CLOCKS_PER_SEC) * 25) % 256));
     // window -> draw(*circle);
-    
+
     // std::cout << "Yo i was here" << std::endl;
-     
+
     // END CIRCLE TEST
 }
 

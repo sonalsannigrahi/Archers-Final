@@ -16,6 +16,7 @@
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
 #include "../Ground/Ground.hpp"
+#include "../Blackhole/Blackhole.hpp"
 
 class Game {
     private:
@@ -29,10 +30,13 @@ class Game {
         Water gameWater = Water();
         Lightning gameLightning = Lightning();
         Rain gameRain = Rain();
+        Ground gameGround = Ground();
+        Blackhole gameBlackhole = Blackhole();
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
-        std::vector<Ground*> grounds;
+
+
 
         // Elapsed time
         clock_t elapsedTime;
