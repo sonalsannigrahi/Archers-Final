@@ -20,4 +20,5 @@ class GameConstants{
         float thunderVolume = 100.0;
         float birdsVolume = 100.0;
         float fireworksVolume = 100.0;
+        float backgroundVolume = 100.0;
 };
