@@ -74,3 +74,7 @@ void Birds::updateFrame(double time) {
 bool Birds::isAlive(){
     return alive;
 }
+
+void Birds::change_volume_bird(float volume){
+    music.setVolume(volume);
+}

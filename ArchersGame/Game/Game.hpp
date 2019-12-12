@@ -83,5 +83,17 @@ class Game {
         int getFireworksRate();
         int getLightningRate();
 
+        float getMasterVolume();
+        float getRainVolume();
+        float getThunderVolume();
+        float getBirdsVolume();
+        float getFireworksVolume();
+
+        void setMasterVolume(float volume);
+        void setRainVolume(float volume);
+        void setThunderVolume(float volume);
+        void setBirdsVolume(float volume);
+        void setFireworksVolume(float volume);
+
         void setWindowSize(int width, int height);
 };
