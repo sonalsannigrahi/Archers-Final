@@ -318,6 +318,7 @@ void Game::setMasterVolume(float volume){
     setThunderVolume(gameConstants.thunderVolume);
     setBirdsVolume(gameConstants.birdsVolume);
     setFireworksVolume(gameConstants.fireworksVolume);
+    setBackgroundVolume(gameConstants.backgroundVolume);
 }
 
 void Game::setBackgroundVolume(float volume){
