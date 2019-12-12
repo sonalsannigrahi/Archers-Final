@@ -58,6 +58,6 @@ bool Fireworks::isAlive(){
     return alive;
 }
 
-void Fireworks::change_volume_fireworks(int volume){
+void Fireworks::change_volume_fireworks(float volume){
     sound.setVolume(volume);
 }

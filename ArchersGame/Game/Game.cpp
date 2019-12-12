@@ -21,6 +21,10 @@ Game::Game(){
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
+    // Set initialize volume
+    gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume);
+    gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume);
+
     // Start rain audio
     if (gameConstants.isRaining) gameRain.playAudio();
 
@@ -134,7 +138,7 @@ void Game::UpdateFrame(){
     gameWater.updateFrame(time);
 
     // Draw Player
-    player.updateFrame(time);
+    // player.updateFrame(time);
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
@@ -159,6 +163,7 @@ void Game::createBird(){
     Birds* bird = new Birds();
     bird -> setWindow(window);
     bird -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    bird -> change_volume_bird(gameConstants.birdsVolume * gameConstants.masterVolume);
     birds.push_back(bird);
 }
 
@@ -189,6 +194,7 @@ void Game::createFireworks(){
     Fireworks* firework = new Fireworks();
     firework -> setWindow(window);
     firework -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    firework -> change_volume_fireworks(gameConstants.fireworksVolume * gameConstants.masterVolume);
     fireworks.push_back(firework);
 }
 
@@ -279,6 +285,56 @@ int Game::getFireworksRate(){
 
 int Game::getLightningRate(){
     return gameLightning.getLightningRate();
+}
+
+float Game::getMasterVolume(){
+    return gameConstants.masterVolume;
+}
+
+float Game::getRainVolume(){
+    return gameConstants.rainVolume;
+}
+
+float Game::getThunderVolume(){
+    return gameConstants.thunderVolume;
+}
+
+float Game::getBirdsVolume(){
+    return gameConstants.birdsVolume;
+}
+
+float Game::getFireworksVolume(){
+    return gameConstants.fireworksVolume;
+}
+
+void Game::setMasterVolume(float volume){
+    gameConstants.masterVolume = volume;
+    setRainVolume(gameConstants.rainVolume);
+    setThunderVolume(gameConstants.thunderVolume);
+    setBirdsVolume(gameConstants.birdsVolume);
+    setFireworksVolume(gameConstants.fireworksVolume);
+}
+
+void Game::setRainVolume(float volume){
+    gameConstants.rainVolume = volume;
+    gameRain.change_volume_rain(volume * gameConstants.masterVolume);
+}
+
+void Game::setThunderVolume(float volume){
+    gameConstants.thunderVolume = volume;
+    gameLightning.change_volume_lightning(volume * gameConstants.masterVolume);
+}
+
+void Game::setBirdsVolume(float volume){
+    gameConstants.birdsVolume = volume;
+    for (int i = 0; i < birds.size(); i++) 
+        birds[i] -> change_volume_bird(volume * gameConstants.masterVolume);
+}
+
+void Game::setFireworksVolume(float volume){
+    gameConstants.fireworksVolume = volume;
+    for (int i = 0; i < fireworks.size(); i++)
+        fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume);
 }
 
 void Game::setWindowSize(int width, int height){

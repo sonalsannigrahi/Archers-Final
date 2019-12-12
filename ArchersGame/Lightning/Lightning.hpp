@@ -24,11 +24,8 @@ public:
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
     void updateFrame(double time);
-<<<<<<< HEAD
-    void change_volume_lightning(int volume);
-=======
+    void change_volume_lightning(float volume);
 
     int getLightningRate();
     void setLightningRate(int rate);
->>>>>>> Game-Design---Minh-Tuan
 };

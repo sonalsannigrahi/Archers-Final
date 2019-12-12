@@ -38,4 +38,5 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
+    void change_volume_bird(float volume);
 };

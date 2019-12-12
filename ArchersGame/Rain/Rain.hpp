@@ -24,10 +24,7 @@ public:
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
     void updateFrame(double time);
-<<<<<<< HEAD
-    void change_volume_rain(int volume);
-=======
+    void change_volume_rain(float volume);
     void playAudio();
     void stopAudio();
->>>>>>> Game-Design---Minh-Tuan
 };
