@@ -28,7 +28,7 @@ void Lightning::updateFrame(double time) {
     timer = std::max(0.0, timer - time);
     //std::cout << "Yo i was here" << std::endl;
     // Draw lightning at a rate
-    if (rand() % lightningConstants.lightning_rate == 0) {
+    if (((float) rand() / RAND_MAX) * lightningConstants.lightning_rate < time) {
         // Choose a random lightning
         id = rand() % lightningConstants.filename_length;
         // Set random x position

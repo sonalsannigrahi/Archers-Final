@@ -64,6 +64,19 @@ void Game::StartGame(){
         {
             if (event.type == sf::Event::Closed)
                 window -> close();
+            else if (event.type == sf::Event::KeyPressed){
+                if (event.key.code == sf::Keyboard::Escape){
+                    // TEST KEY PRESSED
+                    // std::cout << "The escape key is pressed" << std::endl;
+                    // std::cout << "control: " << event.key.control << std::endl;
+                    // std::cout << "shift: " << event.key.shift << std::endl;
+                    // std::cout << "alt: " << event.key.alt << std::endl;
+                    // std::cout << "system: " << event.key.system << std::endl;
+
+                    isGamePaused = !isGamePaused;
+                    std::cout << "Game paused!" << std::endl;
+                }
+            }
         }
 
         window -> clear();
@@ -75,19 +88,25 @@ void Game::StartGame(){
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
 
+    // Calculate time has passed since the last UpdateFrame
+    double time = 0;
+    if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
+    elapsedTime = clock();
+
     // Creating birds
-    if (rand() % gameConstants.birdRate == 0 && gameConstants.isBirds) createBird();
+    if (((float) rand() / RAND_MAX) * gameConstants.birdRate < time && gameConstants.isBirds) 
+        createBird();
 
     // Creating balloons
-    if (rand() % gameConstants.balloonRate == 0 && gameConstants.isBalloon) createBalloon();
+    if (((float) rand() / RAND_MAX) * gameConstants.balloonRate < time && gameConstants.isBalloon)
+        createBalloon();
 
     // Creating Fireworks
-    if (rand() % gameConstants.fireworkRate == 0 && gameConstants.isFireworks) createFireworks();
-
-    // Calculate time has passed since the last UpdateFrame
-    double time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
-    elapsedTime = clock();
+    if (((float) rand() / RAND_MAX) * gameConstants.fireworkRate < time && gameConstants.isFireworks) 
+        createFireworks();
     
+    //std::cout << rand() << " " << RAND_MAX << std::endl;
+
     // Draw Background
     gameBackground.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
@@ -143,7 +162,7 @@ void Game::UpdateFrame(){
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
-    std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;
+    if (!isGamePaused) std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;
 
     // CIRCLE TEST
 

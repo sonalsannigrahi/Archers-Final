@@ -1,15 +1,15 @@
 class GameConstants{
     public:
     // Window setting
-        int WINDOW_HEIGHT = 720;
-        int WINDOW_WIDTH = 1240;
+        int WINDOW_HEIGHT = 600;
+        int WINDOW_WIDTH = 900;
     // Spawning rate
-        int birdRate = 1200;
-        int balloonRate = 2000;
-        int fireworkRate = 500;
+        float birdRate = 2.5;
+        float balloonRate = 5.0;
+        float fireworkRate = 0.5;
     // Game setting
         bool isRaining = false;
-        bool isLightning = false;
+        bool isLightning = true;
         bool isBirds = true;
         bool isBalloon = false;
         bool isFireworks = true;

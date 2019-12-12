@@ -41,7 +41,9 @@ class Game {
         // Game Window
         sf::RenderWindow* window;
         // A circle
-        sf::CircleShape* circle;
+        // sf::CircleShape* circle;
+
+        bool isGamePaused = false;
 
     public:
     
