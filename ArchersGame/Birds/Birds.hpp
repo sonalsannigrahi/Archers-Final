@@ -20,7 +20,9 @@ class Birds{
 private:
     BirdsConstants birdconstant = BirdsConstants();
     sf::RenderWindow* window;
+    sf::Music music;
     std::vector<sf::Sprite> birdsSprites;
+    
     double counter = 0;
     int current = 0;
     int birdType;
