@@ -8,6 +8,7 @@ public:
     float skylimit = 0.4;
     float scalex = 0.4;
     float scaley = 0.4;
+    std::string sound_filename = "Fireworks/asset/firework_sound1.ogg";
 
     FireworksConstants(){
         for (int i =1;i <= filename_len;i++){

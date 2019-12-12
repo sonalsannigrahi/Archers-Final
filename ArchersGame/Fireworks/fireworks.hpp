@@ -28,4 +28,5 @@ public:
     void setSize(int width, int heigth);
     bool isAlive();
     void setPosition(float x, float y);
+    void change_volume_fireworks(int volume);
 };

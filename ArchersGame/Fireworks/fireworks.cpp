@@ -9,9 +9,17 @@ Fireworks::Fireworks(){
         fireSprites.push_back(*sprite);
         
     }   
-    soundBuffer.loadFromFile("Fireworks/asset/firework_sound1.ogg");
+    soundBuffer.loadFromFile(fireworksconstants.sound_filename);
     sound.setBuffer(soundBuffer);
     sound.play();
+
+    // to test that change volume works
+    //if (rand()%2 == 0) change_volume_fireworks(0);
+    //else
+    //{
+    //    change_volume_fireworks(100);
+    //}
+    
 }
 
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
@@ -48,4 +56,8 @@ void Fireworks::updateFrame(double time) {
 
 bool Fireworks::isAlive(){
     return alive;
+}
+
+void Fireworks::change_volume_fireworks(int volume){
+    sound.setVolume(volume);
 }

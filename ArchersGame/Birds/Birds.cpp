@@ -18,14 +18,12 @@ Birds::Birds(){
         sf::Sprite* sprite = new sf::Sprite(*texture);
         birdsSprites.push_back(*sprite);
     }   
-    sf::SoundBuffer soundBuffer;
-    sf::Sound sound;
-    soundBuffer.loadFromFile("Birds/Assets/" + birdconstant.musicfile);
-    sound.setBuffer(soundBuffer);
-    sound.setLoop(true);
-    sound.play();
-    if (alive = false) sound.stop();
 
+    // Add sound
+    music.openFromFile("Birds/Assets/" + birdconstant.musicfile);
+    music.play();
+    music.setLoop(true);
+    music.play();
 }
 
 void Birds::setWindow(sf::RenderWindow* gameWindow){
@@ -65,6 +63,8 @@ void Birds::updateFrame(double time) {
     }
     if (posX < 0.0 || posX > (float) windowWidth){
         alive = false; // The bird has moved out of the game => delete it
+        // And stop music
+        music.stop();
     } else {
         birdsSprites[current].setPosition(posX, posY);
         window -> draw(birdsSprites[current]);
