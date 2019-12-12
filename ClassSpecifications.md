@@ -12,7 +12,7 @@
 
 **Rectangle:** Object defined by a centre of mass, height, width and angle. Uniform and black hole gravity implemented, inter-rectangle collisions not currently implemented.
 
-For any object, the member function integrate recalculates it's position.
+For any object, the member function integrate recalculates its position.
 
 **Black Holes:** Gravity generator defined with a position and a GM attribute (Gravitational constant * mass)
 
