@@ -28,5 +28,5 @@ Arrow::Arrow(float x, float y, float theta = 0, std::string filename){
 }
 
 void Arrow::shoot(){
-    
+    //need to implement the movement using the physics engine point mass class, Arrow to be made a subclass?
 }
