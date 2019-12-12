@@ -13,8 +13,8 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
-#include "BirdsConstants.cpp"
 #include <SFML/Audio.hpp>
+#include "BirdsConstants.cpp"
 
 class Birds{
 private:

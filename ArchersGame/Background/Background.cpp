@@ -15,6 +15,10 @@ Background::Background(){
         sf::Sprite* sprite = new sf::Sprite(*texture);
         backgroundSprites.push_back(*sprite);
     }
+    // Add sound
+    // music.openFromFile("Background/Asset/" + backgroundConstants.musicfile);
+    // music.setLoop(true);
+    // music.play();
 }
 
 void Background::setWindow(sf::RenderWindow* gameWindow){
