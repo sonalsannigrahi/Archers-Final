@@ -22,6 +22,7 @@ Game::Game(){
     player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Set initialize volume
+    gameBackground.changeBackgroundVolume(gameConstants.backgroundVolume * gameConstants.masterVolume);
     gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume);
     gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume);
 
@@ -291,6 +292,10 @@ float Game::getMasterVolume(){
     return gameConstants.masterVolume;
 }
 
+float Game::getBackgroundVolume(){
+    return gameConstants.backgroundVolume;
+}
+
 float Game::getRainVolume(){
     return gameConstants.rainVolume;
 }
@@ -315,6 +320,11 @@ void Game::setMasterVolume(float volume){
     setFireworksVolume(gameConstants.fireworksVolume);
 }
 
+void Game::setBackgroundVolume(float volume){
+    gameConstants.backgroundVolume = volume;
+    gameBackground.changeBackgroundVolume(volume * gameConstants.masterVolume);
+}
+
 void Game::setRainVolume(float volume){
     gameConstants.rainVolume = volume;
     gameRain.change_volume_rain(volume * gameConstants.masterVolume);
@@ -335,6 +345,10 @@ void Game::setFireworksVolume(float volume){
     gameConstants.fireworksVolume = volume;
     for (int i = 0; i < fireworks.size(); i++)
         fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume);
+}
+
+void Game::changeBackgroundPicture(int chosen){
+    gameBackground.changeBackground(chosen);
 }
 
 void Game::setWindowSize(int width, int height){
