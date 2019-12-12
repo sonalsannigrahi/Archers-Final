@@ -18,7 +18,8 @@ class Background{
 private:
     BackgroundConstants backgroundConstants = BackgroundConstants();
     sf::RenderWindow* window;
-    sf::Music music;
+    sf::SoundBuffer soundBuffer;
+    sf::Sound sound;
     std::vector<sf::Sprite> backgroundSprites;
     int backgroundWidth;
     int backgroundHeight;
