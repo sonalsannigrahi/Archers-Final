@@ -16,11 +16,9 @@ Background::Background(){
         backgroundSprites.push_back(*sprite);
     }
     // Add sound
-    music.openFromFile("Background/Asset/" + backgroundConstants.musicfile);
-    music.play();
-    music.setLoop(true);
-    music.play();
-
+    // music.openFromFile("Background/Asset/" + backgroundConstants.musicfile);
+    // music.setLoop(true);
+    // music.play();
 }
 
 void Background::setWindow(sf::RenderWindow* gameWindow){

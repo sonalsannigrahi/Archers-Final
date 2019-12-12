@@ -21,7 +21,6 @@ Birds::Birds(){
 
     // Add sound
     music.openFromFile("Birds/Assets/" + birdconstant.musicfile);
-    music.play();
     music.setLoop(true);
     music.play();
 }
