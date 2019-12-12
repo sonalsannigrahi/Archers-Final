@@ -1,4 +1,4 @@
-#include "StartScreen.hpp"
+#include "UI-UX.hpp"
 
 StartScreen::StartScreen(){
     srand(time(NULL)); // Randomize
@@ -27,8 +27,7 @@ StartScreen::StartScreen(){
     //settingsButton.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     //infoButton.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     //exitButton.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-
-    Start();
+    Start()
 }
 
 StartScreen::~Game(){
@@ -71,6 +70,9 @@ void StartScreen::Start(){
 
 void StartScreen::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
+    if (menu.loadgame()) Game* game = new Game();
+
+    if(menu.turnoff()) window -> close();
 
     // Creating birds
     if (rand() % gameConstants.birdRate == 0) createBird();
@@ -87,6 +89,7 @@ void StartScreen::UpdateFrame(){
 
     // Draw Background
     gameBackground.updateFrame(time);
+    menu.updateFrame(time);
     //std::cout << "Yo i was here" << std::endl;
 
     // Draw Lightning
