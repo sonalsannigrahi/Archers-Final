@@ -6,7 +6,7 @@ class GameConstants{
     // Spawning rate
         int birdRate = 1200;
         int balloonRate = 2000;
-        int fireworkRate = 100;
+        int fireworkRate = 500;
     // Game setting
         bool isRaining = false;
         bool isLightning = true;
