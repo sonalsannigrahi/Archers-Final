@@ -86,3 +86,10 @@ Jiwon Park - Finish the implementation of ground and started the implementation 
 ## Week 4 (7th Dec - 13th Dec)
 
 Andre Renom - Finalised discussions on completion of physics engine and how to treat game objects. Now working on coordinating the implementation of the physics engine with the charcter development team. Documented classes and processes. Tested collisions and a few limit cases of engine.
+
+Sunho Hwang - This week i worked on the implementation of sounds of birds and also the background music. There were various issues when choosing appropriate sound samples as they had to match with the general atmosphere of the game. I also helped to implement functions which would eventually enable us to control the volume, change the background, etc. 
+
+Diego Gomez - This week I added sound and functions that allow us to control  the level of said sound for the fireworks, lightning and rain classes. The implementation was not as easy as I thought it would be as I had some compatibility errors at first, and it was not enough to just play the sound when in the constructor function. For example for the lightning I had to add a delay to make more realistic, and I had to loop the sound for the rain. Next week I will start creating a new level ( training level ).
+
+Tarcisio Teixeira - This week I worked on encryption class. I start implementing a method to be able to write all constant in a txt file this way being able to save information for the next time one plays. I also kept working on the start screen. I’m planning to finish encryption next week and try to merge with the rest of the code.
+
