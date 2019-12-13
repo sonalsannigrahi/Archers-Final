@@ -100,3 +100,5 @@ Jiwon Park - Finished the implementation of blackhole and discussed how to merge
 Sonal Sannigrahi - Finished implementation of bow rotation, character scaling, and ground sprite. Updated player hpp and cpp files. I am working on perpendicular motion of the other arm to make it look more realistic. Will be changing class structure of my code to better organise it into character classes next. Will be also adding a health count for the player.
 
 Minh Tuan Nguyen - Finished the sound system, add the ability to pause the game. Next week, I will add encription into the game with Tarcisio.
+
+Saba Tavdgiridze - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
