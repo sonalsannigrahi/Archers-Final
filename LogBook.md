@@ -106,3 +106,5 @@ Alice Aubert - This week I started to implement the projectile function for the 
 Alexandre Hirsch - This week, I started discussing with Tarcisio and Andrew about what we will share about the main menu's settings, and the in-game pause settings. I have also been reviewing Minh Tuan's various classes such as Arrow and Bow, to implement a similarly structured, displayed Health Bar. 
 
 Minh Tuan Nguyen - This week, I finished the game's sound system and added the ability to pause the game. Next week, I will add encription to the game with Tarcisio.
+
+Saba Tavdgiridze - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
