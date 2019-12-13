@@ -102,3 +102,5 @@ Sonal Sannigrahi - Finished implementation of bow rotation, character scaling, a
 Maelys Solal - This week I finished implementing the healthbar. I also continued working on the character and opponents class, specifically what is common between players and opponents. Next week I will continue working on the opponents class and I will discuss with the physics team on how to increase and decrease health. 
 
 Alice Aubert - This week I started to implement the projectile function for the arrow object using the functions implemented by the physics team. Next week I will test my code and maybe look to implement arrows as SFML rectangles so I can use the collisions functions written by the physics team. 
+
+Alexandre Hirsch - This week, I started discussing with Tarcisio and Andrew about what we will share about the main menu's settings, and the in-game pause settings. I have also been reviewing Minh Tuan's various classes such as Arrow and Bow, to implement a similarly structured, displayed Health Bar. 
