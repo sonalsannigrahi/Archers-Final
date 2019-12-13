@@ -102,3 +102,5 @@ Sonal Sannigrahi - Finished implementation of bow rotation, character scaling, a
 Minh Tuan Nguyen - Finished the sound system, add the ability to pause the game. Next week, I will add encription into the game with Tarcisio.
 
 Saba Tavdgiridze - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
+
+Nícolas Lopes - Discussed with members of the physics team on the leatest adjustements necessaries for the final working of the physics engine. Proposed a new solution for a more realistic representation of the arrow, which, instead of having mass uniformily distributed, will have it concentrated at the tip to correct rotational imprecisions in the closure of black holes. Besides that in such distribution we will have more precision when applying air friction to the arrow. This new distribution and air friction is still to be implemented, however we already closed on the physics models to be implemented (for the air friction we will try to implement the flux of air on the area of the arrow with respect to its referential).
