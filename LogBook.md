@@ -96,3 +96,5 @@ Tarcisio Teixeira - This week I worked on encryption class. I start implementing
 Xingjian Zhang - Tested collisions and black holes and worked on finalizing the physics engine. Next week, hopefully physics engine will be fully implemented and I will join Diego in creating a training/practice level in the game.
 
 Jiwon Park - Finished the implementation of blackhole and discussed how to merge the game design code with the character code. I am looking for more sprites to put on the game. 
+
+Sonal Sannigrahi - Finished implementation of bow rotation, character scaling, and ground sprite. Updated player hpp and cpp files. I am working on perpendicular motion of the other arm to make it look more realistic. Will be changing class structure of my code to better organise it into character classes next. Will be also adding a health count for the player.
