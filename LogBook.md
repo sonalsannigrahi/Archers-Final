@@ -110,3 +110,5 @@ Alexandre Hirsch - This week, I started discussing with Tarcisio and Andrew abou
 Minh Tuan Nguyen - This week, I finished the game's sound system and added the ability to pause the game. Next week, I will add encription to the game with Tarcisio.
 
 Saba Tavdgiridze and Nícolas Lopes - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
+
+Hoang Anh Ngo - This week, I finished the implementation of the class of buttons of the state screens. Next week, I will start on implementing on the game over screen and the layout of different parts of each state screen (settings, options, etc.).
