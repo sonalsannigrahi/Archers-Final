@@ -94,3 +94,5 @@ Diego Gomez - This week I added sound and functions that allow us to control  th
 Tarcisio Teixeira - This week I worked on encryption class. I start implementing a method to be able to write all constant in a txt file this way being able to save information for the next time one plays. I also kept working on the start screen. I’m planning to finish encryption next week and try to merge with the rest of the code.
 
 Xingjian Zhang - Tested collisions and black holes and worked on finalizing the physics engine. Next week, hopefully physics engine will be fully implemented and I will join Diego in creating a training/practice level in the game.
+
+Jiwon Park - Finished the implementation of blackhole and discussed how to merge the game design code with the character code. I am looking for more sprites to put on the game. 
