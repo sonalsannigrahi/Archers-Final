@@ -104,3 +104,5 @@ Maelys Solal - This week I finished implementing the healthbar. I also continued
 Alice Aubert - This week I started to implement the projectile function for the arrow object using the functions implemented by the physics team. Next week I will test my code and maybe look to implement arrows as SFML rectangles so I can use the collisions functions written by the physics team. 
 
 Alexandre Hirsch - This week, I started discussing with Tarcisio and Andrew about what we will share about the main menu's settings, and the in-game pause settings. I have also been reviewing Minh Tuan's various classes such as Arrow and Bow, to implement a similarly structured, displayed Health Bar. 
+
+Minh Tuan Nguyen - This week, I finished the game's sound system and added the ability to pause the game. Next week, I will add encription to the game with Tarcisio.
