@@ -109,4 +109,4 @@ Alexandre Hirsch - This week, I started discussing with Tarcisio and Andrew abou
 
 Minh Tuan Nguyen - This week, I finished the game's sound system and added the ability to pause the game. Next week, I will add encription to the game with Tarcisio.
 
-Saba Tavdgiridze - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
+Saba Tavdgiridze and Nícolas Lopes - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
