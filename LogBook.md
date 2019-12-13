@@ -3,6 +3,8 @@ This is a place to centralise each person's weekly log, so that it can then be s
 
 The weeks will be recorded from saturday to friday, since the weekly logs are submitted on friday evening.
 
+Google Doc: https://docs.google.com/document/d/1uYjR0zVaRZ21TvxT-6qca0e81JusXByS6f48v9w9iXI/edit?usp=sharing
+
 ## Week 1 (16th Nov - 22nd Nov)
 
 Andre Renom & Nicolas Lopes - This week we began planning the physics engine, and researched different ways of implementing it.
