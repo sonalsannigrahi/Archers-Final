@@ -99,8 +99,6 @@ Jiwon Park - Finished the implementation of blackhole and discussed how to merge
 
 Sonal Sannigrahi - Finished implementation of bow rotation, character scaling, and ground sprite. Updated player hpp and cpp files. I am working on perpendicular motion of the other arm to make it look more realistic. Will be changing class structure of my code to better organise it into character classes next. Will be also adding a health count for the player.
 
-Minh Tuan Nguyen - Finished the sound system, add the ability to pause the game. Next week, I will add encription into the game with Tarcisio.
+Maelys Solal - This week I finished implementing the healthbar. I also continued working on the character and opponents class, specifically what is common between players and opponents. Next week I will continue working on the opponents class and I will discuss with the physics team on how to increase and decrease health. 
 
-Saba Tavdgiridze - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
-
-Nícolas Lopes - Discussed with members of the physics team on the leatest adjustements necessaries for the final working of the physics engine. Proposed a new solution for a more realistic representation of the arrow, which, instead of having mass uniformily distributed, will have it concentrated at the tip to correct rotational imprecisions in the closure of black holes. Besides that in such distribution we will have more precision when applying air friction to the arrow. This new distribution and air friction is still to be implemented, however we already closed on the physics models to be implemented (for the air friction we will try to implement the flux of air on the area of the arrow with respect to its referential).
+Alice Aubert - This week I started to implement the projectile function for the arrow object using the functions implemented by the physics team. Next week I will test my code and maybe look to implement arrows as SFML rectangles so I can use the collisions functions written by the physics team. 
