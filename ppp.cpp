@@ -445,6 +445,28 @@ bool collide(Point& a, Point& b)
     return false;
 }
 
+bool collide(Rectangle a, Rectangle& b)
+{
+    /* To be implemented once COM is determined *****
+
+    if(a.radius + b.radius > sqrt( (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y) )){
+        double r_rel_x = a.x - b.x;
+        double r_rel_y = a.y - b.y;
+
+        double v_rel_x = a.v_x - b.v_x;
+        double v_rel_y = a.v_y - b.v_y;
+
+        double scalar_product = r_rel_x*v_rel_x + r_rel_y*v_rel_y;
+        if(scalar_product < 0){
+            return true;
+        }
+
+    }
+    */
+    return false;
+
+}
+
 
 ///****************************GRAVITY GENERATORS*****************///
 
