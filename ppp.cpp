@@ -324,22 +324,20 @@ public:
 };
 
 class AirResistanceForRectangle{
-    /* TO BE CONTINUED
+    
     private:
     public:
-    void AirResistanceForRectangle(Rectangle& a, Vector2D wind){
-        Vector2D v = Vector2D(a.V_X_CM,a.V_Y_CM);
+    void AirResistanceForRectangle(Rectangle& a, Vector2D wind=Vector2D()){
+        Vector2D v = Vector2D(a.V_X_CM,a.V_Y_CM)-wind;
         double av = a.ang_acc;
-        double theta = a.angle;
+        double theta = arctan(v.get_y/v.get_x);
         Vector2D forcetot = Vetor2D();
-        double torqtot = 0;
-        Vector2D relativewind = wind - v;
-        for (i=0;i<5;i++){
-            angle = 
-        }
-
-
-    }*/
+        double b = x.b/2 + magnitude(a.pos_CM-a.pos_Center)*sign(sin(a.pos_CM-a.pos_Center));
+        double torq = 1.224 * sin(theta) *(0.5*a.b*a.b*magnitude(v) - (5/6)*a.b*a.b*a.b*av - a.b*b*magnitude(v));
+        a.torque_TOT += torq;
+        Vector2D force = -0.45*1.224*(a.a*cos(theta) + a.b*sin(theta))*magnitude(v)*v;
+        a.force_TOT += force;
+    }
 };
 
 class GravityForRectangle{
