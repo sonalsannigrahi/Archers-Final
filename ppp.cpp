@@ -323,6 +323,25 @@ public:
     }
 };
 
+class AirResistanceForRectangle{
+    /* TO BE CONTINUED
+    private:
+    public:
+    void AirResistanceForRectangle(Rectangle& a, Vector2D wind){
+        Vector2D v = Vector2D(a.V_X_CM,a.V_Y_CM);
+        double av = a.ang_acc;
+        double theta = a.angle;
+        Vector2D forcetot = Vetor2D();
+        double torqtot = 0;
+        Vector2D relativewind = wind - v;
+        for (i=0;i<5;i++){
+            angle = 
+        }
+
+
+    }*/
+};
+
 class GravityForRectangle{
 private:
 
@@ -466,6 +485,7 @@ bool collide(Rectangle a, Rectangle& b)
     return false;
 
 }
+
 
 
 ///****************************GRAVITY GENERATORS*****************///
