@@ -243,7 +243,7 @@ public:
         return y;
     }
     double get_mass(){
-        return mass
+        return mass;
     }
 }
 //-------
