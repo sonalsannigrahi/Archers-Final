@@ -6,9 +6,10 @@
 #include <time.h>
 #include <SFML/Graphics.hpp>
 
-#include <Menu/Menu.hpp>
+#include <../Menu/Menu.hpp>
 #include "GameConstants.cpp"
 #include "GameFPS.cpp"
+#include "../Game/Game.hpp"
 #include "../Background/Background.hpp"
 #include "../Water/Water.hpp"
 #include "../Birds/Birds.hpp"
