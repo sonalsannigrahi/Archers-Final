@@ -1,6 +1,7 @@
 #include "opponent.hpp"
 
-Opponent::Opponent(double x, double y, Arrow arrow, float health = 1, int width, int height):Character(x, y, arrow, health, width, height) {
+Opponent::Opponent(double x = 600, double y = 400, Arrow arrow, float health = 1, float scale = 0.35):Character(x, y, arrow, health) {
+    /*
     sf::Texture texture_arm_bow;
     texture_arm_bow.loadFromFile(""); // add file
     this->arm_bow.setTexture(texture_arm_bow);
@@ -10,18 +11,23 @@ Opponent::Opponent(double x, double y, Arrow arrow, float health = 1, int width,
     // define random numbers to set opponent's position
     opponent.setPosition(0.f, 0.f); // set opponent's position (randomly)
     arm_bow.setPosition(0.f, 0.f); // set position of the bow compared to opponent
-}
+    */
 
-void Opponent::setX(double x) {
-    this->xPosition = x;
-}
-
-void Opponent::setY(double y) {
-    this->yPosition = y;
+    sf::Texture texture;
+    texture.loadFromFile("Assets/opponentsprite.png");
+    this->opponent.setTexture(texture);
+    opponent.setPosition(x.f, y.f);
+    opponent.setScale(scale, scale);
 }
 
 void Opponent::setPosition(double x, double y) {
-    setX(double x);
-    setY(double y);
+    opponent.setPosition(x.f, y.f);
 }
 
+void Opponent::getPosition() {
+    return opponent.getPosition()
+}
+
+void Opponent::updateFrame(double time) {
+    
+}

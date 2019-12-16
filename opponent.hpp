@@ -6,24 +6,21 @@
 class Opponent: public Character {
 
 private:
+
     std::vector<sf::Sprite> opponentSprites;
-    sf::Sprite arm_bow;
+    // sf::Sprite arm_bow;
     sf::Sprite opponent;
     
 
 public:
 
-    Opponent(double x, double y, Arrow arrow, float health = 1, int width, int height);
+    Opponent(double x, double y, Arrow arrow, float health = 1, float scale = 0.35);
 
-    // set position functions
-    void setX(double x);
-    void setY(double y);
     void setPosition(double x, double y);
+    void getPosition();
 
-    /* update function
-    what type? and what should it do?
-    type update()
-    */
+    void updateFrame(double time);
+
 
 }
 
