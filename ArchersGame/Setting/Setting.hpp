@@ -5,14 +5,15 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "SettingConstants.cpp"
-#include "../Game/Game.hpp"
+
+class Game;
 
 class Setting{
 private:
     SettingConstants settingConstants = SettingConstants();
     sf::RenderWindow* window;
+    sf::Sprite* settingButton;
     Game* game;
-    sf::Sprite SettingButton;
     int windowWidth;
     int windowHeight;
 public:

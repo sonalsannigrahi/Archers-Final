@@ -17,6 +17,7 @@
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
 #include "../Character/bow.hpp"
+#include "../Setting/Setting.hpp"
 
 class Game {
     private:
@@ -34,6 +35,7 @@ class Game {
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
         Player player = Player();
+        Setting gameSetting = Setting();
 
         // Elapsed time
         clock_t elapsedTime;
@@ -75,15 +77,15 @@ class Game {
         bool getIsFireworks();
         bool getIsBlackhole();
 
-        void setBirdsRate(int rate);
-        void setBalloonsRate(int rate);
-        void setFireworksRate(int rate);
-        void setLightningRate(int rate);
+        void setBirdsRate(float rate);
+        void setBalloonsRate(float rate);
+        void setFireworksRate(float rate);
+        void setLightningRate(float rate);
 
-        int getBirdsRate();
-        int getBalloonsRate();
-        int getFireworksRate();
-        int getLightningRate();
+        float getBirdsRate();
+        float getBalloonsRate();
+        float getFireworksRate();
+        float getLightningRate();
 
         float getMasterVolume();
         float getBackgroundVolume();
@@ -102,4 +104,8 @@ class Game {
         void changeBackgroundPicture(int chosen);
 
         void setWindowSize(int width, int height);
+
+        void pauseGame();
+        void unpauseGame();
+        bool getIsGamePaused();
 };

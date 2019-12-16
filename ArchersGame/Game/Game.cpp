@@ -13,6 +13,7 @@ Game::Game(){
     gameLightning.setWindow(window);
     gameRain.setWindow(window);
     player.setWindow(window);
+    gameSetting.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
@@ -20,6 +21,10 @@ Game::Game(){
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    gameSetting.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+
+    // Send a pointer to game class
+    gameSetting.setGame(this);
 
     // Set initialize volume
     gameBackground.changeBackgroundVolume(gameConstants.backgroundVolume * gameConstants.masterVolume);
@@ -73,7 +78,7 @@ void Game::StartGame(){
                     // std::cout << "alt: " << event.key.alt << std::endl;
                     // std::cout << "system: " << event.key.system << std::endl;
 
-                    isGamePaused = !isGamePaused;
+                    if (isGamePaused) unpauseGame(); else pauseGame();
                     std::cout << "Game paused!" << std::endl;
                 }
             }
@@ -159,6 +164,9 @@ void Game::UpdateFrame(){
 
     // Draw Player
     // player.updateFrame(time);
+
+    // Draw Setting
+    gameSetting.updateFrame(time);
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
@@ -275,35 +283,35 @@ bool Game::getIsRaining(){
     return gameConstants.isRaining;
 }
 
-void Game::setBalloonsRate(int rate){
+void Game::setBalloonsRate(float rate){
     gameConstants.balloonRate = rate;
 }
 
-void Game::setBirdsRate(int rate){
+void Game::setBirdsRate(float rate){
     gameConstants.birdRate = rate;
 }
 
-void Game::setFireworksRate(int rate){
+void Game::setFireworksRate(float rate){
     gameConstants.fireworkRate = rate;
 }
 
-void Game::setLightningRate(int rate){
+void Game::setLightningRate(float rate){
     gameLightning.setLightningRate(rate);
 }
 
-int Game::getBalloonsRate(){
+float Game::getBalloonsRate(){
     return gameConstants.balloonRate;
 }
 
-int Game::getBirdsRate(){
+float Game::getBirdsRate(){
     return gameConstants.birdRate;
 }
 
-int Game::getFireworksRate(){
+float Game::getFireworksRate(){
     return gameConstants.fireworkRate;
 }
 
-int Game::getLightningRate(){
+float Game::getLightningRate(){
     return gameLightning.getLightningRate();
 }
 
@@ -381,4 +389,30 @@ void Game::setWindowSize(int width, int height){
     gameRain.setSize(width, height);
     gameWater.setSize(width, height);
     // Add Ground and Blackhole...
+
+    gameSetting.setSize(width, height);
+}
+
+void Game::pauseGame(){
+    if (!isGamePaused){
+        isGamePaused = true;
+        gameBackground.changeBackgroundVolume(0);
+        gameRain.change_volume_rain(0);
+        gameLightning.change_volume_lightning(0);
+        for (int i = 0; i < birds.size(); i++) 
+            birds[i] -> change_volume_bird(0);
+        for (int i = 0; i < fireworks.size(); i++)
+            fireworks[i] -> change_volume_fireworks(0);
+    }
+}
+
+void Game::unpauseGame(){
+    if (isGamePaused){
+        isGamePaused = false;
+        setMasterVolume(gameConstants.masterVolume);
+    }
+}
+
+bool Game::getIsGamePaused(){
+    return isGamePaused;
 }

@@ -40,11 +40,17 @@ Balloon.o: Balloon/Balloon.cpp Balloon/Balloon.hpp BalloonConstants.o
 fireworksconstants.o: Fireworks/fireworksconstants.cpp
 	$(CXX) -c Fireworks/fireworksconstants.cpp
 
-fireworks.o: Fireworks/fireworks.cpp
+fireworks.o: Fireworks/fireworks.cpp fireworksconstants.o
 	$(CXX) -c Fireworks/fireworks.cpp $(Dependencies)
 
 bow.o: Character/bow.cpp 
 	$(CXX) -c Character/bow.cpp $(Dependencies)
+
+SettingConstants.o: Setting/SettingConstants.cpp
+	$(CXX) -c Setting/SettingConstants.cpp
+
+Setting.o: Setting/Setting.cpp Setting/Setting.hpp SettingConstants.o
+	$(CXX) -c Setting/Setting.cpp $(Dependencies)
 
 GameConstants.o: Game/GameConstants.cpp
 	$(CXX) -c Game/GameConstants.cpp
@@ -52,14 +58,14 @@ GameConstants.o: Game/GameConstants.cpp
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
-Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o
+Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Setting.o
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
 main.o: main.cpp Game.o
 	$(CXX) -c main.cpp
 
 archer: main.o
-	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o -o archer $(Dependencies)
+	$(CXX) main.o Game.o Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Setting.o -o archer $(Dependencies)
 
 clean: 
 	rm -f archer
