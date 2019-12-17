@@ -10,7 +10,15 @@ Rain::Rain(){
     soundBuffer.loadFromFile(rainConstants.sound_filename);
     sound.setBuffer(soundBuffer);
     sound.setLoop(true);
+    //sound.play();
+}
+
+void Rain::playAudio(){
     sound.play();
+}
+
+void Rain::stopAudio(){
+    sound.stop();
 }
 
 void Rain::setWindow(sf::RenderWindow* gameWindow){

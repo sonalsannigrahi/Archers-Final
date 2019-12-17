@@ -25,4 +25,6 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     void change_volume_rain(int volume);
+    void playAudio();
+    void stopAudio();
 };

@@ -41,3 +41,10 @@ void Lightning::updateFrame(double time) {
 void Lightning::change_volume_lightning(int volume){
     sound.setVolume(volume);
 }
+int Lightning::getLightningRate(){
+    return lightningConstants.lightning_rate;
+}
+
+void Lightning::setLightningRate(int rate){
+    lightningConstants.lightning_rate = rate;
+}
