@@ -14,10 +14,12 @@ class Arrow: public Rectangle{
         
     public:
         Arrow();
-        Arrow(float x, float y, float angle, std::string filename);
-
-        //ask physics team for specifications
+        Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, std::string filename);
+        //X_CM = x coordinate of center of mass, V_X_CM = x comp of velociy, angle = angle of roation, a = width, b = height
+        //note, a and b might be switched, unclear from physics.cpp written by the physics team
+        
         void update(double time);
         void shoot();
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        void changeAngle(double alpha);
 };
