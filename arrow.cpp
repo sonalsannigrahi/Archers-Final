@@ -15,9 +15,18 @@ Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angl
         return EXIT_FAILURE;
     }
 }
-
 void Arrow::shoot(){
+    this->shot = true
+}
+
+void Arrow::update(double time){
     //need to implement the movement using the physics engine point mass class, Arrow to be made a subclass?
+    if (this->shot == true){
+        this->integrate(time);
+    }
+    else{
+        //needs to work with the bow
+    }
 }
 
 virtual void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const

@@ -9,6 +9,7 @@ class Arrow: public Rectangle{
     private:
         //need to include the files for sprites
         sf::Texture texture;
+        bool shot = false;
         //File included will depend on arrow types(not yet implemented but will be used for future levels)
         
     public:
@@ -16,6 +17,7 @@ class Arrow: public Rectangle{
         Arrow(float x, float y, float angle, std::string filename);
 
         //ask physics team for specifications
+        void update(double time);
         void shoot();
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
