@@ -2,17 +2,13 @@
 #include <SFML/System.hpp>
 #include <math.h>
 #include <iostream>
+#include "physics.cpp"
 
 
-class Arrow{
+class Arrow: public Rectangle{
     private:
-        float xpos;
-        float ypos;
-        float angle;//will be used to render the graphics
-        
         //need to include the files for sprites
         sf::Texture texture;
-        sf::Sprite arrow;
         //File included will depend on arrow types(not yet implemented but will be used for future levels)
         
     public:
@@ -21,4 +17,5 @@ class Arrow{
 
         //ask physics team for specifications
         void shoot();
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
