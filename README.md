@@ -1,11 +1,11 @@
 # Character Specifications 
 
 
-##Players 
+## Players 
 
 Players starts in a fixed position, bottom left, of the screen. It initialises the bow movement with the cursor and sets an angle for the arrow to be shot from. Force/speed of the arrow is decided by how far back you pull the cursor, i.e. the distance between the cursor and the sprite itself. The arrow is shot and follows projectile motion. Player dies if shot in the head once or shot anywhere else twice or if hit once by spear.
 
-##Opponents
+## Opponents
 
 ### Type 1
 
