@@ -18,7 +18,7 @@ void Opponent::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
     
-    posX = float(width)/25;
+    posX = width - float(width)/25; // set to opposite end of window
     posY = float(height)/5;      
 }
 
@@ -31,15 +31,15 @@ void Opponent::updateFrame(double time) {
     }
     
     if (direction == 0){
-        posX += charconstant.charSpeed * time;
+        posX -= charconstant.charSpeed * time; // run in left direction
     } else {
-        posX -= charconstant.charSpeed * time;
+        posX += charconstant.charSpeed * time;
     }
 
     //std::cout << posX << " " << posY << std::endl;
 
     if (posX < 0.0 || posX > (float) windowWidth){
-        alive = false; 
+        alive = false; // sprite has reached out of window
     } else {
         oppSprites[current].setPosition(posX, posY);
         window -> draw(oppSprites[current]);
