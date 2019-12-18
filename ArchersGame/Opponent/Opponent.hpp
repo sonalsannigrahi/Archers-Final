@@ -26,5 +26,5 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
-    bool isShot(); //will call in arrow class
+    bool isShot(int X, int Y); //will call in arrow class
 };
