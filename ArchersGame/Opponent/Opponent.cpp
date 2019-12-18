@@ -1,4 +1,3 @@
-
 #include "Opponent.hpp"
 
 Opponent::Opponent(){
@@ -18,21 +17,17 @@ void Opponent::setWindow(sf::RenderWindow* gameWindow){
 void Opponent::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
-    posX = 0;
-    posY = 0;
+    
+    posX = float(width)/25;
+    posY = float(height)/5;      
 }
 
 void Opponent::updateFrame(double time) {
-    sf::Vector2u windowSize;
-
-    windowSize = window -> getSize();
-
-    posX = float(windowSize.x)/25;
-    posY = float(windowSize.y)/5;      
     counter = counter + time;
     if (counter >= charconstant.changetime ) {
         counter -= charconstant.changetime;
         current += 1;
+        current %= charconstant.filenamelen;
     }
     
     if (direction == 0){
@@ -40,6 +35,9 @@ void Opponent::updateFrame(double time) {
     } else {
         posX -= charconstant.charSpeed * time;
     }
+
+    //std::cout << posX << " " << posY << std::endl;
+
     if (posX < 0.0 || posX > (float) windowWidth){
         alive = false; 
     } else {
