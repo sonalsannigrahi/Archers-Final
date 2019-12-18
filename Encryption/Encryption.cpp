@@ -6,6 +6,10 @@
 #include <iterator>
 #include <map>
 #include <typeinfo>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <cstring>
 using namespace std;
 Encrypt::Encrypt(){
     vector<vector<int> >   vect;
@@ -49,6 +53,88 @@ Encrypt::Encrypt(){
     }
     s = vecto;
     //DICTIONARY IMPLEMENTATION
+    ifstream fin;
+    vector<string> lines;
+    fin.open("Constants.txt", ios::in);
+    char my_character ;
+    ostringstream line;
+	while (!fin.eof() ) {
+        fin.get(my_character);
+        if (my_character != '\n'){
+                line << my_character;
+        }
+        if (my_character == '\n'){
+            lines.push_back(decrypt(line.str()));
+            line.str("");
+            line.clear();
+        }
+    }
+    int pos_of_eq = 1000;
+    int pos_of_y = 1000;
+    ostringstream ss;
+    ostringstream nn;
+    ostringstream tt;
+    for(int k = 0;k<lines.size();k++){
+        ss.str("");
+        ss.clear();
+        nn.str("");
+        nn.clear();
+        tt.str("");
+        tt.clear();
+        pos_of_eq = 1000;
+        pos_of_y = 1000;
+        for(int i=0;i<lines[k].length();++i){
+            if((lines[k][i]=='t') && (lines[k][i+1]== 'y') && (lines[k][i+2]=='p')){
+                    pos_of_y = i+1;
+            }
+
+            else if((lines[k][i]==' ') && (lines[k][i+1]== '=') && (lines[k][i+2]==' ')){
+                    pos_of_eq = i+1;
+            }
+            else if((i> pos_of_eq + 1) && (i< pos_of_y )){
+                nn<<lines[k][i];
+            }
+            else if (i> pos_of_y + 1){
+                tt<<lines[k][i];
+            }
+
+            else if ((i!=pos_of_y)&&(i!=pos_of_y-1)&&(i!=pos_of_eq)&&(i!=pos_of_eq-1)&&(i!=pos_of_y+1)&&(i!=pos_of_eq+1) ){
+                    ss<<lines[k][i];
+
+            }
+
+
+        }
+        cout<<ss.str()<< "---"<<nn.str()<< "---"<< tt.str()<<endl;
+        if (tt.str()=="double"){
+                istringstream buffer(nn.str());
+                double temp;
+                buffer >> temp;
+                sdouble.insert(pair<string,double> (ss.str(),temp));
+        }
+        else if (tt.str()=="int"){
+                istringstream buffer(nn.str());
+                int temp;
+                buffer >> temp;
+                sint.insert(pair<string,int> (ss.str(),temp));
+        }
+        else if (tt.str()=="float"){
+                istringstream buffer(nn.str());
+                float temp;
+                buffer >> temp;
+                sfloat.insert(pair<string,float> (ss.str(),temp));
+        }
+        else if (tt.str()=="llong"){
+                istringstream buffer(nn.str());
+                long long temp;
+                buffer >> temp;
+                sllong.insert(pair<string,long long> (ss.str(),temp));
+
+        }
+
+
+    }
+
 }
 Encrypt::~Encrypt(){
 }
@@ -112,7 +198,7 @@ float Encrypt::decrypt(float number){
         nnumber=nnumber*10;
         k = k*10;
     }
-    float res = (float)(this->decrypt((int)(nnumber)))/(k);
+    float res = ((float)(this->decrypt((int)nnumber)))/(k);
     return res;
 }
 double Encrypt::encrypt(double number){
@@ -202,65 +288,60 @@ string Encrypt::decrypt(string word){
     }
     return word_;
 }
-/*template <typename U> void Encrypt::add_data(string key, U value){
-    int int_;
-    float float_;
-    double double_;
-    long long long_long;
-    string string_;
-    if (typeid(value)==typeid(int_)){
-        sint.insert(pair<string,int> (this->encrypt(key),this->encrypt(value)));
+int Encrypt::updatefile(){
+    ofstream outdata; // outdata is like cin
+    int i; // loop index
+    outdata.open("Constants.txt"); // opens the file
+    if( !outdata ) { // file couldn't be opened
+        cerr << "Error: file could not be opened" << endl;
+        exit(1);
     }
-    else if (typeid(value)==typeid(float_)){
-        sfloat.insert(pair<string,float> (this->encrypt(key),this->encrypt(value)));
+    map<string, int>::iterator itri;
+    map<string, float>::iterator itrf;
+    map<string, long long>::iterator itrll;
+    map<string, double>::iterator itrd;
+    ostringstream ss;
+    string en;
+    for (itri=sint.begin(); itri!=sint.end(); ++itri) {
+        ss << itri->first << " = " << itri->second << "typ" << "int";
+        //cout<<ss.str();
+        en = this->encrypt(ss.str());
+        //cout<<en;
+        outdata << en << endl;
+        //outdata<< ss.str()<< endl;
+        ss.str("");
+        ss.clear();
     }
-    else if (typeid(value)==typeid(double_)){
-        sdouble.insert(pair<string,double> (this->encrypt(key),this->encrypt(value)));
+    for (itrf=sfloat.begin(); itrf!=sfloat.end(); ++itrf){
+        ss << itrf->first << " = " << itrf->second << "typ" << "float";
+        //cout<<ss.str()<<endl;
+        en = this->encrypt(ss.str());
+        outdata << en << endl;
+        //outdata<< ss.str()<< endl;
+        ss.str("");
+        ss.clear();
     }
-    else if (typeid(value)==typeid(long_long)){
-        sllong.insert(pair<string,long long> (this->encrypt(key),this->encrypt(value)));
-    }
+    ss.clear();
+    for (itrd=sdouble.begin(); itrd!=sdouble.end(); ++itrd){
+        ss << itrd->first << " = " << itrd->second << "typ" << "double";
+        //cout<<ss.str()<<endl;
+        en = this->encrypt(ss.str());
+        outdata << en << endl;
+        //outdata<< ss.str()<< endl;
+        ss.str("");
+        ss.clear();
+        }
+    for (itrll=sllong.begin(); itrll!=sllong.end(); ++itrll) {
+        ss << itrll->first << " = " << itrll->second << "typ" << "llong";
+        //cout<<ss.str()<<endl;
+        en = this->encrypt(ss.str());
+        outdata << en << endl;
+        //outdata<< ss.str()<< endl;
+        ss.str("");
+        ss.clear();
+        }
+    outdata.close();
+    return 0;
 }
-template <typename T> T Encrypt::get_item(string key){
-    T type;
-    int int_;
-    float float_;
-    double double_;
-    long long long_long;
-    string string_;
-    if (typeid(type)==typeid(int_)){
-        for (map<string, int>::iterator itr = sint.begin(); itr != sint.end(); ++itr) {
-            if (itr->first== this->encrypt(key)){
-                return this->decrypt(itr->second);
-            }
-        }
-    }
-    else if (typeid(type)==typeid(float_)){
-        for (map<string, float>::iterator itr = sfloat.begin(); itr != sfloat.end(); ++itr) {
-            if (itr->first== this->encrypt(key)){
-                return this->decrypt(itr->second);
-            }
-        }
-    }
-    else if (typeid(type)==typeid(double_)){
-        for (map<string, double>::iterator itr = sdouble.begin(); itr != sdouble.end(); ++itr) {
-            if (itr->first== this->encrypt(key)){
-                return this->decrypt(itr->second);
-            }
-        }
-    }
-    else if (typeid(type)==typeid(long_long)){
-        for (map<string, long long>::iterator itr = sllong.begin(); itr != sllong.end(); ++itr) {
-            if (itr->first== this->encrypt(key)){
-                return this->decrypt(itr->second);
-            }
-        }
-    }
-
-}
-
-*/
-
-
 
 

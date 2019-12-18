@@ -3,6 +3,9 @@
 #include <vector>
 #include <iterator>
 #include <map>
+#include <typeinfo>
+#include <fstream>
+#include <sstream>
 using namespace std;
 class Encrypt{
 private:
@@ -14,6 +17,7 @@ private:
     map<string,float> sfloat;
     map<string,double> sdouble;
     map<string,long long> sllong;
+
 
     //
 public:
@@ -46,27 +50,8 @@ public:
     template <typename T> T get_item(string key);
     //add data
     template <typename U> void add_data(string key, U value);
-
+    int updatefile();
 };
-template <typename U> void Encrypt::add_data(string key, U value){
-    int int_;
-    float float_;
-    double double_;
-    long long long_long;
-    string string_;
-    if (typeid(value)==typeid(int_)){
-        sint.insert(pair<string,int> (this->encrypt(key),this->encrypt(value)));
-    }
-    else if (typeid(value)==typeid(float_)){
-        sfloat.insert(pair<string,float> (this->encrypt(key),this->encrypt(value)));
-    }
-    else if (typeid(value)==typeid(double_)){
-        sdouble.insert(pair<string,double> (this->encrypt(key),this->encrypt(value)));
-    }
-    else if (typeid(value)==typeid(long_long)){
-        sllong.insert(pair<string,long long> (this->encrypt(key),this->encrypt(value)));
-    }
-}
 template <typename T> T Encrypt::get_item(string key){
     T type;
     int int_;
@@ -104,6 +89,42 @@ template <typename T> T Encrypt::get_item(string key){
     }
 
 }
-
-//template <typename U > void Encrypt::add_data(U value)
-
+template <typename U> void Encrypt::add_data(string key, U value){
+    int int_;
+    float float_;
+    double double_;
+    long long long_long;
+    string string_;
+    if (typeid(value)==typeid(int_)){
+        for (map<string, int>::iterator itr = sint.begin(); itr != sint.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                sint.erase(this->encrypt(key));
+            }
+        }
+        sint.insert(pair<string,int> (this->encrypt(key),this->encrypt(value)));
+    }
+    else if (typeid(value)==typeid(float_)){
+        for (map<string, float>::iterator itr = sfloat.begin(); itr != sfloat.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                sfloat.erase(this->encrypt(key));
+            }
+        }
+        sfloat.insert(pair<string,float> (this->encrypt(key),this->encrypt(value)));
+    }
+    else if (typeid(value)==typeid(double_)){
+        for (map<string, double>::iterator itr = sdouble.begin(); itr != sdouble.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                sdouble.erase(this->encrypt(key));
+            }
+        }
+        sdouble.insert(pair<string,double> (this->encrypt(key),this->encrypt(value)));
+    }
+    else if (typeid(value)==typeid(long_long)){
+        for (map<string, long long>::iterator itr = sllong.begin(); itr != sllong.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                sllong.erase(this->encrypt(key));
+            }
+        }
+        sllong.insert(pair<string,long long> (this->encrypt(key),this->encrypt(value)));
+    }
+}
