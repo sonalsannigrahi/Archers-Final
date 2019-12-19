@@ -12,7 +12,7 @@ Opponent::Opponent(){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Opponent/Assets/"+ charconstant.filename[i]);
         sf::Sprite* sprite = new sf::Sprite(*texture);
-        sprite -> setScale(0.4f,0.4f);
+        sprite -> setScale(0.4f * 5 / 6 ,0.4f * 5 / 6);
         oppSprites.push_back(*sprite);
     }   
 }
@@ -26,7 +26,7 @@ void Opponent::setSize(int width, int height){
     windowHeight = height;
     
     posX = width - float(width)/25; // set to opposite end of window
-    posY = float(height)/2;
+    posY = float(height)/1.8;
     comparison = float(width)/25;   
     defeat -> setScale(0.8f, 0.8f);
     defeat -> setPosition(windowWidth/4.7, windowHeight/8); 
