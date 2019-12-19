@@ -29,5 +29,9 @@
 # Executables
 *.exe
 *.out
+<<<<<<< HEAD
 *.app
 Archer_game/test
+=======
+*.app
+>>>>>>> 7b95df0544b4ef85590e7ff64df72098f0a74e96
