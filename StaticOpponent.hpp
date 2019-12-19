@@ -1,9 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-#include "character.hpp"
-
-class Opponent: public Character {
+class StaticOpponent: {
 
 private:
 
@@ -20,7 +18,7 @@ private:
 
 public:
 
-    Opponent(double x, double y, Arrow arrow, float health = 1, float scale = 0.35);
+    StaticOpponent();
 
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
@@ -32,5 +30,7 @@ public:
 
     bool isAlive();
     bool isShot(float X, float Y);
+
+    void updateHealth();
 }
 
