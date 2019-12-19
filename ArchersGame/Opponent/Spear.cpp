@@ -10,7 +10,7 @@ Spear::Spear(){
     defback -> setTexture(*background);
     for (int i = 0; i < spearconstant.filenamelen; i++){
         sf::Texture* texture = new sf::Texture();
-        texture -> loadFromFile("Opponent/Assets/Spear/"+ spearconstant.filename[i]);
+        texture -> loadFromFile("Opponent/Assets/"+ spearconstant.filename[i]);
         sf::Sprite* sprite = new sf::Sprite(*texture);
         sprite -> setScale(0.4f,0.4f);
         spearSprites.push_back(*sprite);
