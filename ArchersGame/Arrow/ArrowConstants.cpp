@@ -5,6 +5,6 @@ class ArrowConstants{
 public:
     std::string filename = "arrow.png";
     ArrowConstants(){
-
+        
     }
 };
