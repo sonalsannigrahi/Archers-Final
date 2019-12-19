@@ -9,10 +9,10 @@ class GameConstants{
         float fireworkRate = 0.5;
     // Game setting
         bool isRaining = false;
-        bool isLightning = true;
+        bool isLightning = false;
         bool isBirds = true;
         bool isBalloon = false;
-        bool isFireworks = true;
+        bool isFireworks = false;
         bool isBlackhole = false;
     // Volume
         float masterVolume = 100.0;

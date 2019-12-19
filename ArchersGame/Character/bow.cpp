@@ -8,9 +8,6 @@ Player::Player(){
 	sf::Texture* hand = new sf::Texture();
 	hand -> loadFromFile("Character/hand_p.png");
 	spriteh -> setTexture(*hand);
-    sf::Texture* arrow = new sf::Texture();
-    arrow -> loadFromFile("Character/arrow.png");
-    spritea -> setTexture(*arrow);
 }
 
 

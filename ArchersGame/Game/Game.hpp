@@ -19,6 +19,7 @@
 #include "../Character/bow.hpp"
 #include "../Setting/Setting.hpp"
 #include "../Opponent/Opponent.hpp"
+#include "../Arrow/Arrow.hpp"
 
 class Game {
     private:
@@ -38,6 +39,7 @@ class Game {
         Player player = Player();
         Setting gameSetting = Setting();
         Opponent opponent = Opponent();
+        //Arrow arrow = Arrow(); // Test arrow
 
         // Elapsed time
         clock_t elapsedTime;

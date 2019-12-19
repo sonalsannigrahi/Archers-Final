@@ -15,14 +15,17 @@ Game::Game(){
     player.setWindow(window);
     gameSetting.setWindow(window);
     opponent.setWindow(window);
+    //arrow.setWindow(window);
 
-    // Inititalize other variables
+    // Inititalize window size
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameSetting.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    opponent.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    //arrow.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Send a pointer to game class
     gameSetting.setGame(this);
@@ -34,7 +37,6 @@ Game::Game(){
 
     // Start rain audio
     if (gameConstants.isRaining) gameRain.playAudio();
-    opponent.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -161,14 +163,17 @@ void Game::UpdateFrame(){
     // Draw Rain
     if (gameConstants.isRaining) gameRain.updateFrame(time);
 
-    // Draw Waters
-    gameWater.updateFrame(time);
-
     // Draw Player
-    // player.updateFrame(time);
     player.updateFrame(time);
+
+    // Draw Opponents
     opponent.updateFrame(time);
 
+    // Draw Arrow (test)
+    // arrow.updateFrame(time);
+
+    // Draw Water
+    gameWater.updateFrame(time);
 
     // Draw Setting
     gameSetting.updateFrame(time);
@@ -190,14 +195,14 @@ void Game::UpdateFrame(){
     // Print cursor position
     // For testing / debuging purpose ONLY
 
-    // Get mouse position
-    sf::Vector2i positionMouse = sf::Mouse::getPosition();
-    sf::Vector2i positionWindow = window -> getPosition();
+    // // Get mouse position
+    // sf::Vector2i positionMouse = sf::Mouse::getPosition();
+    // sf::Vector2i positionWindow = window -> getPosition();
 
-    // Print
-    std::cout << std::to_string(positionMouse.x - positionWindow.x) + ", " + std::to_string(positionMouse.y - positionWindow.y) << std::endl;
+    // // Print
+    // std::cout << std::to_string(positionMouse.x - positionWindow.x) + ", " + std::to_string(positionMouse.y - positionWindow.y) << std::endl;
     
-    // End
+    // // End
 }
 
 void Game::EndGame(){

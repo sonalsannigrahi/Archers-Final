@@ -51,8 +51,8 @@ void Opponent::updateFrame(double time) {
 
     if (posX < comparison + 30 || posX > (float) windowWidth){
         alive = false; // sprite has reached out of window
-        window -> draw(*defback);
-        window -> draw(*defeat);
+        //window -> draw(*defback);
+        //window -> draw(*defeat);
     } else {
         oppSprites[current].setPosition(posX, posY);
         window -> draw(oppSprites[current]);
