@@ -86,4 +86,4 @@ void Texts::updateFrame(double time) {
 
     
     
-}
+} //bruh
