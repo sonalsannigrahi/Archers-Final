@@ -18,6 +18,7 @@
 #include "../Fireworks/fireworks.hpp"
 #include "../Character/bow.hpp"
 #include "../Setting/Setting.hpp"
+#include "../Opponent/Opponent.hpp"
 
 class Game {
     private:
@@ -36,6 +37,7 @@ class Game {
         std::vector<Fireworks*> fireworks;
         Player player = Player();
         Setting gameSetting = Setting();
+        Opponent opponent = Opponent();
 
         // Elapsed time
         clock_t elapsedTime;
