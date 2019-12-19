@@ -12,8 +12,8 @@ class Arrow: public Rectangle{
         bool shot = false;
         //File included will depend on arrow types(not yet implemented but will be used for future levels)
 
-        double f_x; //Force in the x
-        double f_y = 9.8; //Force in the y, by default is gravity
+        double a_x; //acceleration in the x
+        double a_y = 9.8; //acceleration in the y, by default is gravity
         
     public:
         Arrow();

@@ -8,29 +8,35 @@
 
 Arrow::Arrow(): Rectangle(0,0,0,0,0,0,10,20){}
 
-Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, std::string filename): Rectangle(double X_CM,double Y_CM,double V_X_CM,double V_Y_CM,double angle,double ang_acc,double a, double b){
+Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, std::string filename, double m = 20.0): Rectangle(double X_CM,double Y_CM,double V_X_CM,double V_Y_CM,double angle,double ang_acc,double a, double b){
     if (!this.texture.loadFromFile(filename)){
         std::cout << "Load failed" << std::endl
         system(pause);
         return EXIT_FAILURE;
     }
+    this->MASS = m;
 }
 
 void Arrow::changeAngle(double alpha){
     this->angle = alpha;
 }
-void Arrow::shoot(){
+void Arrow::shoot(double force=100){//force is in newtons
     this->shot = true
+    this->a_x = (force*sin(this->alpha))/this->MASS
+    this->a_y += (force*cos(this->alpha))/this->MASS
+
 }
 
 void Arrow::update(double time){
     //need to implement the movement using the physics engine point mass class, Arrow to be made a subclass?
     if (this->shot == true){
-        this->integrate(time);
-        this->draw();
+        this->integrate(time); //as the arrow moves in a projectile, its object attributes (position velocity etc) are modified
+        //via this function
+        this->draw();//then we draw it
     }
     else{
-        this->draw(); 
+        this->draw(); //If the arrow isn't being shot, the Character object will call its change angle function, so when it
+        //is updated, it just gets drawn as a drawable
     }
 }
 
