@@ -13,6 +13,7 @@ Game::Game(){
     gameLightning.setWindow(window);
     gameRain.setWindow(window);
     player.setWindow(window);
+    opponent.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
@@ -20,6 +21,7 @@ Game::Game(){
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    opponent.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -132,6 +134,7 @@ void Game::UpdateFrame(){
 
     // Draw Player
     player.updateFrame(time);
+    opponent.updateFrame(time);
 
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);

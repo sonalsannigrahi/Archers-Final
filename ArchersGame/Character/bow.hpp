@@ -13,10 +13,13 @@ class Player{
 private:
     sf::RenderWindow* window;
     std::vector<sf::Sprite> characterSprites;
-    sf::Sprite* sprite = new sf::Sprite();
-    sf::Sprite* spritem = new sf::Sprite();
-    int playerWidth, playerHeight, id;
+    sf::Sprite* spriteh = new sf::Sprite();
+    sf::Sprite* spriteb = new sf::Sprite();
+    sf::Sprite* spritea = new sf::Sprite();
+    sf::Sprite* spriteo = new sf::Sprite();
+    int winWidth, winHeight;
     double timer;
+    int counter = 0;
 
 
 public:
