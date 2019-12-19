@@ -1,20 +1,20 @@
 #include "Opponent.hpp"
 
 Opponent::Opponent(){
-    
+
     sf::Texture* texture = new sf::Texture();
-    texture -> loadFromFile("Opponent/defeat.png");
+    texture -> loadFromFile("Opponent/Assets/defeat.png");
     defeat -> setTexture(*texture);
     sf::Texture* background = new sf::Texture();
-    background -> loadFromFile("Opponent/defback.png");
+    background -> loadFromFile("Opponent/Assets/defback.png");
     defback -> setTexture(*background);
     for (int i = 0; i < charconstant.filenamelen; i++){
         sf::Texture* texture = new sf::Texture();
-        texture -> loadFromFile("Opponent/Assets/"+ charconstant.filename[i]);
+        texture -> loadFromFile("Opponent/Assets/Running/"+ charconstant.filename[i]);
         sf::Sprite* sprite = new sf::Sprite(*texture);
-        sprite -> setScale(0.4f * 5 / 6 ,0.4f * 5 / 6);
+        sprite -> setScale(0.4f,0.4f);
         oppSprites.push_back(*sprite);
-    }   
+    }
 }
 
 void Opponent::setWindow(sf::RenderWindow* gameWindow){
@@ -24,12 +24,12 @@ void Opponent::setWindow(sf::RenderWindow* gameWindow){
 void Opponent::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
-    
+
     posX = width - float(width)/25; // set to opposite end of window
-    posY = float(height)/1.8;
-    comparison = float(width)/25;   
+    posY = float(height)/2;
+    comparison = float(width)/25;
     defeat -> setScale(0.8f, 0.8f);
-    defeat -> setPosition(windowWidth/4.7, windowHeight/8); 
+    defeat -> setPosition(windowWidth/4.7, windowHeight/8);
     defback -> setScale(windowWidth, windowHeight);
 }
 
@@ -40,7 +40,7 @@ void Opponent::updateFrame(double time) {
         current += 1;
         current %= charconstant.filenamelen;
     }
-    
+
     if (direction == 0){
         posX -= charconstant.charSpeed * time; // run in left direction
     } else {
@@ -56,11 +56,10 @@ void Opponent::updateFrame(double time) {
     } else {
         oppSprites[current].setPosition(posX, posY);
         window -> draw(oppSprites[current]);
-        
+
     }
 }
 
 bool Opponent::isAlive(){
     return alive;
 }
-
