@@ -11,6 +11,9 @@ class Arrow: public Rectangle{
         sf::Texture texture;
         bool shot = false;
         //File included will depend on arrow types(not yet implemented but will be used for future levels)
+
+        double f_x; //Force in the x
+        double f_y = 9.8; //Force in the y, by default is gravity
         
     public:
         Arrow();
