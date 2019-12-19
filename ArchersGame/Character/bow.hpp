@@ -15,12 +15,11 @@ private:
     std::vector<sf::Sprite> characterSprites;
     sf::Sprite* spriteh = new sf::Sprite();
     sf::Sprite* spriteb = new sf::Sprite();
-    sf::Sprite* spritea = new sf::Sprite();
-    sf::Sprite* spriteo = new sf::Sprite();
+
     int winWidth, winHeight;
     double timer;
     int counter = 0;
-
+    float lastAngle;
 
 public:
     
