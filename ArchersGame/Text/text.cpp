@@ -38,7 +38,7 @@ void Texts::updateFrame(double time) {
     if (textconstants.condition0)
     {
         setstring(textconstants.txt0);
-        setposition(400,windowHeight-200);
+        setposition(500,windowHeight-200);
         textconstants.condition0 = false;
         counter = 0;
     }
@@ -60,12 +60,23 @@ void Texts::updateFrame(double time) {
         counter = 0;
     }
     if (counter > 10){
+        textconstants.condition8 = true;
+    }
+    
+    if (counter>20){
         textconstants.condition4 = true;
+    }
+
+    if (textconstants.condition8){
+        setstring(textconstants.txt8);
+        setposition(100,windowHeight-300);
+        textconstants.condition8 = false;
+
     }
 
     if (textconstants.condition4){
         setstring(textconstants.txt4);
-        setposition(400,windowHeight-200);
+        setposition(500,windowHeight-300);
         textconstants.condition4 = false;
 
     }
