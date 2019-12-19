@@ -15,6 +15,11 @@ Background::Background(){
         sf::Sprite* sprite = new sf::Sprite(*texture);
         backgroundSprites.push_back(*sprite);
     }
+    // Add sound
+    soundBuffer.loadFromFile("Background/Asset/" + backgroundConstants.musicfile);
+    sound.setBuffer(soundBuffer);
+    sound.setLoop(true);
+    sound.play();
 }
 
 void Background::setWindow(sf::RenderWindow* gameWindow){
@@ -28,7 +33,15 @@ void Background::setSize(int width, int height){
         backgroundSprites[i].setScale((float) width / backgroundSprites[i].getGlobalBounds().width, (float) height / backgroundSprites[i].getGlobalBounds().height);
 }
 
+void Background::changeBackground(int chosen) {
+    backgroundConstants.chosen = chosen;
+}
+
 void Background::updateFrame(double time) {
     //std::cout << "Yo i was here" << std::endl;
     window -> draw(backgroundSprites[backgroundConstants.chosen]);
+}
+
+void Background::changeBackgroundVolume(float volume){
+    sound.setVolume(volume);
 }

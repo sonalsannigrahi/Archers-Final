@@ -8,6 +8,7 @@
 
 #include "Birds.hpp"
 
+
 Birds::Birds(){
     srand (time(NULL)); // Randomize with time
 
@@ -17,6 +18,11 @@ Birds::Birds(){
         sf::Sprite* sprite = new sf::Sprite(*texture);
         birdsSprites.push_back(*sprite);
     }   
+
+    // Add sound
+    music.openFromFile("Birds/Assets/" + birdconstant.musicfile);
+    music.setLoop(true);
+    music.play();
 }
 
 void Birds::setWindow(sf::RenderWindow* gameWindow){
@@ -56,6 +62,8 @@ void Birds::updateFrame(double time) {
     }
     if (posX < 0.0 || posX > (float) windowWidth){
         alive = false; // The bird has moved out of the game => delete it
+        // And stop music
+        music.stop();
     } else {
         birdsSprites[current].setPosition(posX, posY);
         window -> draw(birdsSprites[current]);
@@ -64,4 +72,8 @@ void Birds::updateFrame(double time) {
 
 bool Birds::isAlive(){
     return alive;
+}
+
+void Birds::change_volume_bird(float volume){
+    music.setVolume(volume);
 }
