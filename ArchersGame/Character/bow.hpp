@@ -7,6 +7,7 @@
 #include <SFML/System.hpp>
 #include <math.h>
 #include <iostream>
+#include "../Arrow/Arrow.hpp"
 
 
 class Player{
