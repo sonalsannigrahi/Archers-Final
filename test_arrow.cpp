@@ -4,11 +4,13 @@
 #include <SFML/System.hpp>
 #include <math.h>
 #include <iostream>
+#include <string>
 
 #include "arrow.hpp"
 
 int main(){
-    Arrow arrow1 = Arrow(0.0,0.0,0.0,0.0,0.0,0.0,10.0,20.0, "arrow.png");
+
+    Arrow arrow1 = Arrow(0.0,0.0,0.0,0.0,0.0,0.0,10.0,20.0, 20.0, "arrow.png");
 
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");

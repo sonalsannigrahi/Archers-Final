@@ -39,16 +39,16 @@ void Player::updateFrame(double time){
     //sf::Vector2i arrowComponents;
     double a, b;	
 
-    spriteh -> setScale(0.3f,0.3f); 
+    spriteh -> setScale(0.25f,0.25f); 
     //spritea -> setScale(0.3f, 0.3f);
-    spriteb -> setScale(0.3f, 0.3f);
+    spriteb -> setScale(0.25f, 0.25f);
 
     handSize = spriteh -> getGlobalBounds();
     bodySize = spriteb -> getGlobalBounds();
 
     spriteh -> setOrigin(float(handSize.width)/2,float(handSize.height)/2);
 
-    spriteb -> setPosition(float(winWidth)/25, float(winHeight)/2);      
+    spriteb -> setPosition(float(winWidth)/25, float(winHeight)/1.8);      
 
     spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/2.5 ,spriteb -> getPosition().y + float(bodySize.height)/4);
     

@@ -2,12 +2,15 @@
 #include <ctime>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "fireworksconstants.cpp"
 #include <stdlib.h> 
 
 class Fireworks{
 private:
     sf::RenderWindow* window;
+    sf::SoundBuffer soundBuffer;
+    sf::Sound sound;
     FireworksConstants fireworksconstants = FireworksConstants();
     double counter = 0;
     int current = 0;
@@ -25,4 +28,5 @@ public:
     void setSize(int width, int heigth);
     bool isAlive();
     void setPosition(float x, float y);
+    void change_volume_fireworks(float volume);
 };
