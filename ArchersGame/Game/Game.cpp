@@ -186,6 +186,18 @@ void Game::UpdateFrame(){
     // std::cout << "Yo i was here" << std::endl;
      
     // END CIRCLE TEST
+
+    // Print cursor position
+    // For testing / debuging purpose ONLY
+
+    // Get mouse position
+    sf::Vector2i positionMouse = sf::Mouse::getPosition();
+    sf::Vector2i positionWindow = window -> getPosition();
+
+    // Print
+    std::cout << std::to_string(positionMouse.x - positionWindow.x) + ", " + std::to_string(positionMouse.y - positionWindow.y) << std::endl;
+    
+    // End
 }
 
 void Game::EndGame(){
