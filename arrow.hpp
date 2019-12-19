@@ -3,6 +3,7 @@
 #include <math.h>
 #include <iostream>
 #include "physics.cpp"
+#include <string>
 
 
 class Arrow: public Rectangle{
@@ -14,15 +15,17 @@ class Arrow: public Rectangle{
 
         double a_x; //acceleration in the x
         double a_y = 9.8; //acceleration in the y, by default is gravity
+
+        UniformGravityForRectangle rec_grav;
         
     public:
         Arrow();
-        Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, std::string filename);
+        Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, std::string filename, double m);
         //X_CM = x coordinate of center of mass, V_X_CM = x comp of velociy, angle = angle of roation, a = width, b = height
         //note, a and b might be switched, unclear from physics.cpp written by the physics team
         
         void update(double time);
-        void shoot();
+        void shoot(double vel);
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void changeAngle(double alpha);
 };

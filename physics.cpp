@@ -86,7 +86,7 @@ public:
         double ans = (this->x)*(other.x) + (this->y)*(other.y);
         return ans;
     }
-    double operator^(const Vector2D& other){
+    double operator^(Vector2D other){
         return this->x * other.y - this->y * other.x;
     }
 };
@@ -168,7 +168,7 @@ public:
 class Rectangle: public sf::Drawable{
 ///private:
 public:
-
+    Vector2D pos_Center;
     Vector2D pos_CM;
     Vector2D vel_CM;
     Vector2D force_TOT;
@@ -198,13 +198,13 @@ public:
         e_2.turn(pi/2);
 
         Vector2D p_1 = ( a/2.0 * e_1 - b/2.0 * e_2);
-        p_1 = p_1 + pos_CM;
+        p_1 = p_1 + pos_Center;
         Vector2D p_2 = ( a/2.0 * e_1 + b/2.0 * e_2);
-        p_2 = p_2 + pos_CM;
+        p_2 = p_2 + pos_Center;
         Vector2D p_3 = (-a/2.0 * e_1 + b/2.0 * e_2);
-        p_3 = p_3 + pos_CM;
+        p_3 = p_3 + pos_Center;
         Vector2D p_4 = (-a/2.0 * e_1 - b/2.0 * e_2);
-        p_4 = p_4 + pos_CM;
+        p_4 = p_4 + pos_Center;
 
         shape.setPoint(0,sf::Vector2f(p_1.x,target.getSize().y-p_1.y));
         shape.setPoint(1,sf::Vector2f(p_2.x,target.getSize().y-p_2.y));
@@ -214,19 +214,16 @@ public:
         target.draw(shape);
     }
 public:
-    Rectangle(double X_CM,double Y_CM,double V_X_CM,double V_Y_CM,double angle,double ang_acc,double a, double b){
-        //center of mass
-        this->pos_CM.x = X_CM;
-        this->pos_CM.y = Y_CM;
+    Rectangle(double X_Center,double Y_Center,double V_X_CM,double V_Y_CM,double angle,double ang_acc,double a, double b,int (*mass_distribution)(int i,int j)){
+        this->pos_Center.x = X_Center;
+        this->pos_Center.y = Y_Center;
 
-        //velocity of cm
         this->vel_CM.x = V_X_CM;
         this->vel_CM.y = V_Y_CM;
 
         this->angle = angle;
         this->ang_acc = ang_acc;
 
-        //width and height
         this->a = a;
         this->b = b;
 
@@ -234,14 +231,51 @@ public:
 
         /// By default
         MASS = 20.0;
+
+
         a_N = b_N = 20;
 
-        for(int i=1;i<=a_N;i++){
-            for(int j=1;j<=b_N;j++){
-                mat_mass[make_pair(i,j)] = MASS / ( a_N * b_N );
-            }
-        }
+        {
 
+            double C = 0.0;
+            double S = 0.0;
+            for(int i=1;i<=a_N;i++){
+                for(int j=1;j<=b_N;j++){
+                    S +=mass_distribution(i,j);
+                }
+            }
+            C = MASS / S;
+
+            for(int i=1;i<=a_N;i++){
+                for(int j=1;j<=b_N;j++){
+                    mat_mass[make_pair(i,j)] = C * mass_distribution(i,j);
+                }
+            }
+            /// Calculation of the position of the Center of Mass
+
+            pos_CM.x = 0.0;
+            pos_CM.y = 0.0;
+
+            Vector2D e_1(1.0,0.0);
+            e_1.turn(angle);
+
+            Vector2D e_2 = e_1;
+            e_2.turn(pi/2.0);
+
+            Vector2D left_down = pos_Center - (a/2.0) * e_1 - (b/2.0) * e_2;
+
+            for(int i=1;i<=a_N;i++){
+                for(int j=1;j<=b_N;j++){
+                    Vector2D pos_cube = left_down + (2*i-1)*(a/(2*a_N)) * e_1 + (2*j-1)*(b/(2*b_N)) * e_2;
+                    pos_CM += pos_cube * mat_mass[make_pair(i,j)] / MASS;
+                }
+            }
+
+            cout<< pos_Center.x << " " << pos_Center.y << endl;
+            cout<< pos_CM.x << " " << pos_CM.y << endl;
+
+
+        }
         /// Calculation of the Moment of Inertia
 
         Inertia = 0.0;
@@ -251,7 +285,7 @@ public:
         Vector2D e_2 = e_1;
         e_2.turn(pi/2.0);
 
-        Vector2D left_down = pos_CM - (a/2.0) * e_1 - (b/2.0) * e_2;
+        Vector2D left_down = pos_Center - (a/2.0) * e_1 - (b/2.0) * e_2;
 
         for(int i=1;i<=a_N;i++){
             for(int j=1;j<=b_N;j++){
@@ -264,13 +298,42 @@ public:
     void integrate(double duration){
         pos_CM += vel_CM * duration;
 
-        cout << vel_CM.x << " " << vel_CM.y <<  endl;
-        cout << " " << force_TOT.x << " " << force_TOT.y << endl;
+        Vector2D vel_Center;
+
+        Vector2D e_n = pos_Center - pos_CM;
+        e_n.normalize();
+
+        Vector2D e_t = e_n;
+        e_t.turn(pi/2.0);
+
+        vel_Center = vel_CM + ang_acc * (pos_Center - pos_CM).len() * e_t;
+
+        pos_Center += vel_Center * duration;
+
+        ///cout << vel_CM.x << " " << vel_CM.y <<  endl;
+        ///cout << " " << force_TOT.x << " " << force_TOT.y << endl;
         angle  += ang_acc * duration;
 
         vel_CM += force_TOT/MASS * duration;
         ang_acc+= torque_TOT/Inertia * duration;
 
+        ///THIS IS IMPORTANT
+
+        Vector2D vel = vel_CM;
+        Vector2D dir(1.0,0);
+        vel.normalize();
+
+        angle = acos(vel * dir);
+
+        ///cout << (dir^vel) << endl;
+
+
+        if( (dir^vel) < 0.0 )
+            angle = -angle;
+
+        cout << (vel * dir) << endl;
+        cout<<" "<< (angle * 180.0 / pi) << endl;
+        ///HERE IT ENDS
 
         force_TOT = Vector2D();
         torque_TOT = 0.0;
@@ -301,7 +364,7 @@ public:
         Vector2D e_2 = e_1;
         e_2.turn(pi/2.0);
 
-        Vector2D left_down = rec.pos_CM - (rec.a/2.0) * e_1 - (rec.b/2.0) * e_2;
+        Vector2D left_down = rec.pos_Center - (rec.a/2.0) * e_1 - (rec.b/2.0) * e_2;
 
 
 
@@ -324,7 +387,9 @@ public:
         Vector2D pos_p;
         pos_p.x = point.x;
         pos_p.y = point.y;
+
         Vector2D R = pos_p - pos;
+
         Vector2D force = ((-GAMA * point.mass)/(pow(R.len(),3))) * R;
         point.f_x += force.get_x();
         point.f_y += force.get_y();
@@ -356,7 +421,7 @@ public:
         Vector2D e_2 = e_1;
         e_2.turn(pi/2.0);
 
-        Vector2D left_down = rec.pos_CM - (rec.a/2.0) * e_1 - (rec.b/2.0) * e_2;
+        Vector2D left_down = rec.pos_Center - (rec.a/2.0) * e_1 - (rec.b/2.0) * e_2;
 
 
 
@@ -521,8 +586,14 @@ public:
 
                     double CM_vel =((point_a->mass)*vel_a_initial_n + (point_b->mass)*vel_b_initial_n)/( ( point_a->mass ) + ( point_b->mass ) );
 
+                    ///double K = 0.0;
+
                     double vel_a_final_n = 2*CM_vel - vel_a_initial_n;
                     double vel_b_final_n = 2*CM_vel - vel_b_initial_n;
+
+
+                    ///double vel_a_final_n = CM_vel - K*(vel_a_initial_n-CM_vel);
+                    ///double vel_b_final_n = CM_vel - K*(vel_b_initial_n-CM_vel);
 
 
                     Vector2D vel_a_final = vel_a_final_n * e_n + vel_a_initial_t * e_t;
@@ -540,15 +611,21 @@ public:
 
 
                     /**
+
                     Vector2D CM_vel = ((point_a->mass)*vel_a + (point_b->mass)*vel_b)/( (point_a->mass) + (point_b->mass) );
+
                     Vector2D V_a_CM = vel_a - CM_vel;
                     Vector2D v_b_CM = vel_b - CM_vel;
+
                     Vector2D n_vel_a = CM_vel - v_a_CM;
                     Vector2D n_vel_b = CM_vel - v_b_CM;
+
                     point_a->v_x = n_vel_a.get_x();
                     point_a->v_y = n_vel_a.get_y();
+
                     point_b->v_x = n_vel_b.get_x();
                     point_b->v_y = n_vel_b.get_y();
+
                     **/
 
 
@@ -579,7 +656,7 @@ public:
                     point->v_y = - 0.9 * point->v_y;
 
                 ///point->v_y = - 0.9 * point->v_y;
-                cout << point->v_y << endl;
+                ///cout << point->v_y << endl;
             }
 
             if(point->x + point->radius > W && point->v_x > 0){
@@ -601,25 +678,41 @@ private:
 
 /// To do
 /**
+
 Collisions with earth
 convex shape
 black hole
 Collisions with each other
+
+
 **/
 
 /**
+
 // create an empty shape
 sf::ConvexShape convex;
+
 // resize it to 5 points
 convex.setPointCount(5);
+
 // define the points
 convex.setPoint(0, sf::Vector2f(0.f, 0.f));
 convex.setPoint(1, sf::Vector2f(150.f, 10.f));
 convex.setPoint(2, sf::Vector2f(120.f, 90.f));
 convex.setPoint(3, sf::Vector2f(30.f, 100.f));
 convex.setPoint(4, sf::Vector2f(0.f, 50.f));
+
 **/
-int main()
+
+int distr(int i,int j)
+{
+    return i*i;
+}
+int main();
+
+
+/**
+
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!",sf::Style::Default);
 
@@ -629,19 +722,24 @@ int main()
 
     Gravity gravity;
 
-    UniformGravity uni_grav;
-    BlackHole BL_H(700.0,500.0,1e4);
-    gravity.add_gravityGenerator(uni_grav);
-    gravity.add_gravityGenerator(BL_H);
+    ///UniformGravity uni_grav;
+    ///BlackHole BL_H(400.0,300.0,5e5);
+    ///gravity.add_gravityGenerator(uni_grav);
+    ///gravity.add_gravityGenerator(BL_H);
     ///gravity.add_point(point);
 
-    Rectangle rec(100.0,100.0,80.0,60.0,pi/6.0,0.0,200.0,10.0);
-    UniformGravityForRectangle jojo;
-    BlackHoleForRectangle bobo(400.0,400.0,1e5);
+
+
+    Rectangle rec(100.0, 100.0, 60.0, 45.0, pi/6.0, 0.0, 80.0, 8.0,distr);
+
+    UniformGravityForRectangle rec_uni_grav;
+
+
+
+    ///BlackHoleForRectangle bobo(400.0,100.0,3e5);
 
     CollisionGenerator CGenerator(window);
     ///CGenerator.add_point(point);
-
     vector<Point*> points;
     ///points.push_back(&point);
 
@@ -656,12 +754,13 @@ int main()
                 window.close();
 
         }
+
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && flag == false){
             double x = sf::Mouse::getPosition(window).x;
             double y = sf::Mouse::getPosition(window).y;
             y = window.getSize().y - y;
             ///cout<<x<<" "<<y<<endl;
-            Point* point = new Point(20.0, x, y, 10.0, 20.0, 50.0);
+            Point* point = new Point(20.0, x, y, 60.0, 30.0, 40.0);
             points.push_back(point);
             gravity.add_point(*point);
             CGenerator.add_point(*point);
@@ -671,9 +770,10 @@ int main()
             flag = false;
         }
 
-        float duration = clock.getElapsedTime().asSeconds() * 10.0;
+        ///float duration = clock.getElapsedTime().asSeconds() * 2.0;
+        float duration = clock.getElapsedTime().asSeconds() * 10.0 ;
         clock.restart();
-        int frame = 60;
+        int frame = 10;
         double frame_t = duration / frame;
         while(frame > 0){
             CGenerator.collisions_with_ground();
@@ -699,20 +799,26 @@ int main()
             }
             ///****************************************
             /**
+
             sf::ConvexShape convex;
             convex.setPointCount(4);
             convex.setPoint(0, sf::Vector2f(0.f, 0.f));
             convex.setPoint(1, sf::Vector2f(100.f, 0.f));
             convex.setPoint(2, sf::Vector2f(100.f, 50.f));
             convex.setPoint(3, sf::Vector2f(0.f, 50.f));
+
             window.draw(convex);
-            **/
+
+            
             ///****************************************
 
-            jojo.force_torque_gen(rec);
+            ///rec_uni_grav is an uniform gravity
 
-            bobo.force_torque_gen(rec);
-            window.draw(bobo);
+            rec_uni_grav.force_torque_gen(rec);
+
+            ///bobo.force_torque_gen(rec);
+
+            ///window.draw(bobo);
             /// cout << rec.force_TOT.x << " " << rec.force_TOT.y << endl;
             /// cout << rec.torque_TOT << endl;
 
@@ -732,3 +838,5 @@ int main()
 
     return 0;
 }
+
+**/
