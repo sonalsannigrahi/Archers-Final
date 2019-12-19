@@ -1,18 +1,11 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <math.h>
-#include <iostream>
-#include <string>
 #include "arrow.hpp"
 
 
-Arrow::Arrow(): Rectangle(0,0,0,0,0,0,10,20){}
+Arrow::Arrow(): Rectangle(0,0,0,0,0,0,10,20, distr){}
 
-Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, std::string filename, double m = 20.0): Rectangle(double X_CM,double Y_CM,double V_X_CM,double V_Y_CM,double angle,double ang_acc,double a, double b){
-    if (!this.texture.loadFromFile(filename)){
-        std::cout << "Load failed" << std::endl
-        system(pause);
-        return EXIT_FAILURE;
+Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, double m = 20.0, std::string filename = "arrow.png"): Rectangle(X_CM, Y_CM, V_X_CM, V_Y_CM, angle, ang_acc, a,  b, distr){
+    if (!this->texture.loadFromFile(filename)){
+        std::cout << "Load failed" << std::endl;
     }
     this->MASS = m;
 }
@@ -20,30 +13,29 @@ Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angl
 void Arrow::changeAngle(double alpha){
     this->angle = alpha;
 }
-void Arrow::shoot(double force=100){//force is in newtons
-    this->shot = true
-    this->a_x = (force*sin(this->alpha))/this->MASS
-    this->a_y += (force*cos(this->alpha))/this->MASS
-
+void Arrow::shoot(double vel){//intial velocity is in m/s
+    this->shot = true;
+    this->vel_CM.y = sin(this->angle)*vel;
+    this->vel_CM.x = cos(this->angle)*vel;
 }
 
 void Arrow::update(double time){
     //need to implement the movement using the physics engine point mass class, Arrow to be made a subclass?
     if (this->shot == true){
+        rec_grav.force_torque_gen(*this);
         this->integrate(time); //as the arrow moves in a projectile, its object attributes (position velocity etc) are modified
         //via this function
-        this->draw();//then we draw it
     }
-    else{
-        this->draw(); //If the arrow isn't being shot, the Character object will call its change angle function, so when it
-        //is updated, it just gets drawn as a drawable
-    }
+    //If the arrow isn't being shot, the Character object will call its change angle function, so when it
+    //is updated, it just gets drawn as a drawable
+    
 }
 
-virtual void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     sf::ConvexShape shape;
-    shape.setTexture(this.texture)
+    shape.setTexture(&this->texture);
+    shape.setFillColor(sf::Color::Transparent);
     shape.setPointCount(4);
 
     Vector2D e_1(1.0,0);
