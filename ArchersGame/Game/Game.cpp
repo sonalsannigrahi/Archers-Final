@@ -14,6 +14,7 @@ Game::Game(){
     gameRain.setWindow(window);
     player.setWindow(window);
     gameSetting.setWindow(window);
+    opponent.setWindow(window);
 
     // Inititalize other variables
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
@@ -33,6 +34,7 @@ Game::Game(){
 
     // Start rain audio
     if (gameConstants.isRaining) gameRain.playAudio();
+    opponent.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -164,10 +166,13 @@ void Game::UpdateFrame(){
 
     // Draw Player
     // player.updateFrame(time);
+    player.updateFrame(time);
+    opponent.updateFrame(time);
+
 
     // Draw Setting
     gameSetting.updateFrame(time);
-
+    
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
     if (!isGamePaused) std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;

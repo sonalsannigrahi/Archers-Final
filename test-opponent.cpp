@@ -1,4 +1,4 @@
-//this is a temporary test file for the arrow class
+// this is a temporary test file for the healthbar class
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -6,14 +6,17 @@
 #include <iostream>
 
 int main(){
+
+    sf::Sprite opponent;
+
     sf::Texture texture;
-    texture.loadFromFile("arrow.png");
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-    sprite.setScale(sf::Vector2f(0.5f, 0.5f));
+    texture.loadFromFile("Assets/opponentsprite.png");
+    opponent.setTexture(texture);
+    opponent.setPosition(600.f, 400.f);
+    opponent.setScale(0.35, 0.35);
 
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Opponent window");
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -32,12 +35,11 @@ int main(){
 
         // draw everything here...
         // window.draw(...);
-        window.draw(sprite);
+        window.draw(opponent);
 
         // end the current frame
         window.display();
     }
-
 
     return 0;
 }

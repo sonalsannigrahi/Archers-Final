@@ -1,10 +1,10 @@
 #include "character.hpp"
 
-Character::Character(double x, double y, Bow bow, Arrow arrow, float health = 1) {
+// To do: add default size
+Character::Character(double x, double y, Arrow arrow, float health = 1) {
     this->health = health;
     this->xPosition = x;
     this->yPosition = y;
-    this->bow = bow;
     this->arrow = arrow;
 }
 
@@ -17,13 +17,17 @@ double Character::getY() {
 }
 
 float Character::getHealth() {
-    return health;
-}
-
-Bow Character::getBow() {
-    return bow;
+    return healthbar.health;
 }
 
 Arrow Character::getArrow() {
     return arrow;
 }
+
+void Character::setWindow(sf::RenderWindow* gameWindow) {
+    window = gameWindow;
+}
+
+// setGround --> to implement later on
+
+// updateFrame ?

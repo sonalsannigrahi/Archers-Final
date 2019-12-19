@@ -1,0 +1,11 @@
+Different types of opponents: 
+
+***
+
+basic_opponent:
+> not moving, doesn't shoot back 
+> no protection
+> can set health (to set it lower to make the game easier at first)
+> random position (in right-hand side half of the screen)
+
+given window_xsize and window_ysize
