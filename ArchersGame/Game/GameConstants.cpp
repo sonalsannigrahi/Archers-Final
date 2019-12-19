@@ -9,7 +9,7 @@ class GameConstants{
         int fireworkRate = 500;
     // Game setting
         bool isRaining = false;
-        bool isLightning = true;
+        bool isLightning = false;
         bool isBirds = false;
         bool isBalloon = false;
         bool isFireworks = false;

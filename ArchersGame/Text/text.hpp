@@ -13,6 +13,7 @@ class Texts{
     TextConstants textconstants = TextConstants();
     sf::Text text;
     sf::Font font;
+    double counter = 0;
 
     public:
     Texts();
