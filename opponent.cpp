@@ -1,23 +1,19 @@
 #include "opponent.hpp"
 
-Opponent::Opponent(double x = 600, double y = 400, Arrow arrow, float health = 1, float scale = 0.35):Character(x, y, arrow, health) {
-    /*
-    sf::Texture texture_arm_bow;
-    texture_arm_bow.loadFromFile(""); // add file
-    this->arm_bow.setTexture(texture_arm_bow);
-    sf::Texture texture_opponent;
-    texture_opponent.loadFromFile(""); // add file
-    this->opponent.setTexture(texture_opponent);
-    // define random numbers to set opponent's position
-    opponent.setPosition(0.f, 0.f); // set opponent's position (randomly)
-    arm_bow.setPosition(0.f, 0.f); // set position of the bow compared to opponent
-    */
-
+Opponent::Opponent(double x = 600, double y = 400, Arrow arrow, float health = 1):Character(x, y, arrow, health) {
     sf::Texture texture;
     texture.loadFromFile("Assets/opponentsprite.png");
     this->opponent.setTexture(texture);
-    opponent.setPosition(x.f, y.f);
-    opponent.setScale(scale, scale);
+}
+
+void Opponent::setWindow(sf::RenderWindow* gameWindow){
+    //set window to game window
+	window = gameWindow;
+}
+
+void Opponent::setSize(int width, int height ){
+    winWidth = width;
+	winHeight = height;
 }
 
 void Opponent::setPosition(double x, double y) {
@@ -28,6 +24,13 @@ void Opponent::getPosition() {
     return opponent.getPosition()
 }
 
-void Opponent::updateFrame(double time) {
-    
+bool Opponent::isAlive(){
+    return alive;
 }
+
+void Opponent::updateFrame(double time) {
+    opponent.setPosition(x.f, y.f);
+    opponent.setScale(0.3f, 0.3f);
+    window.draw(opponent);
+}
+
