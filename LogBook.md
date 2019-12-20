@@ -112,3 +112,7 @@ Minh Tuan Nguyen - This week, I finished the game's sound system and added the a
 Saba Tavdgiridze and Nícolas Lopes - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
 
 Hoang Anh Ngo - This week, I finished the implementation of the class of buttons of the state screens. Next week, I will start on implementing on the game over screen and the layout of different parts of each state screen (settings, options, etc.).
+
+## Week 5 (15th Dec - 20th Dec)
+
+Xingjian Zhang - Worked with Diego and began implementation of a tutorial level. Added instructional texts with custom fonts to the game and created sprites for dummy targets and arrow pointers. Next week, I will implement the dummy targets and add more features to the tutorial.
