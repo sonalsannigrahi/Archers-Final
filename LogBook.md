@@ -122,3 +122,5 @@ Saba Tavdgiridze and Nicolas Lopes - finished rectangle class( except collisions
 Jiwon Park - Worked with Sonal to implement the rotation of the bow with the mouse click. Implemented the speared opponents.
 
 Alexandre Hirsch - Worked with Minh Tuan on the in game pause/settings menu. Will work on implementing the actual settings in the follwing week.
+
+Sonal Sannigrahi - Finished the player class and created sprites for a spear throwing opponent, running opponent, fire throwing opponent. I also created graphics for the title screen, levels screen, and buttons for endless and campaign mode. Worked on game design to integrate the spear throwing character. Implemented the running character and generally worked on integrating different parts of the game together. Over the holidays, I will work on a score counter and some more small graphics to enhance the game as well as complete the opponents.
