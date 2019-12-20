@@ -116,5 +116,6 @@ Hoang Anh Ngo - This week, I finished the implementation of the class of buttons
 ## Week 5 (15th Dec - 20th Dec)
 
 Xingjian Zhang - Worked with Diego and began implementation of a tutorial level. Added instructional texts with custom fonts to the game and created sprites for dummy targets and arrow pointers. Next week, I will implement the dummy targets and add more features to the tutorial.
+
 Saba Tavdgiridze and Nicolas Lopes - finished rectangle class( except collisions ) which has to be integrated with graphics team. 
 
