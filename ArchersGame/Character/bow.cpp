@@ -1,6 +1,9 @@
 #include "bow.hpp"
 
-Player::Player(){
+Player::Player(std::vector<Opponent*>* opponent){
+    this -> opponent = opponent;
+
+    health = maxHealth;
     //creating three textures for the arm, body, arrow
 	sf::Texture* body = new sf::Texture();
 	body -> loadFromFile("Character/charac_arm.png");
@@ -8,6 +11,15 @@ Player::Player(){
 	sf::Texture* hand = new sf::Texture();
 	hand -> loadFromFile("Character/hand_p.png");
 	spriteh -> setTexture(*hand);
+
+    // Hitbox
+    hitboxBody.setSize(sf::Vector2f(30, 120));
+    hitboxBody.setOutlineColor(sf::Color::Blue);
+    hitboxBody.setOutlineThickness(5);
+    
+    hitboxHead.setSize(sf::Vector2f(30, 30));
+    hitboxHead.setOutlineColor(sf::Color::Red);
+    hitboxHead.setOutlineThickness(5);
 }
 
 
@@ -19,6 +31,9 @@ void Player::setWindow(sf::RenderWindow* gameWindow){
 void Player::setSize(int width, int height ){
     winWidth = width;
 	winHeight = height;
+    for (int i = 0; i < arrows.size(); i++){
+        arrows[i] -> setSize(width, height);
+    }
 }
 
 void Player::updateFrame(double time){
@@ -57,12 +72,14 @@ void Player::updateFrame(double time){
 
     spriteh -> setRotation(0);
 
+    hitboxHead.setPosition(spriteb -> getPosition().x + 15, spriteb -> getPosition().y + 5);
+    hitboxBody.setPosition(spriteb -> getPosition().x + 15, spriteb -> getPosition().y + 5);
 
     mousePosition = sf::Mouse::getPosition();
     windowPosition = window -> getPosition();
 
-    a = mousePosition.x;
-    b = mousePosition.y;
+    a = mousePosition.x - windowPosition.x;
+    b = mousePosition.y - windowPosition.y;
 
     angle = -(-atan2( a , b) * 180 + 180)/3.14159265359;
 
@@ -73,6 +90,28 @@ void Player::updateFrame(double time){
             lastAngle = angle;
             //arrow -> setRotation(angle);
         }
+    } else {
+        if (lastAngle != NULL){
+            float dX = std::abs(spriteh -> getPosition().x - mousePosition.x + windowPosition.x);
+            float dY = std::abs(spriteh -> getPosition().y - mousePosition.y + windowPosition.y);
+            float power = std::sqrt(dX * dX + dY * dY) * 2;
+            float vX = power * std::cos(lastAngle * 3.14159265359 / 180);
+            float vY = power * std::sin(lastAngle * 3.14159265359 / 180);
+            createArrow(spriteh -> getPosition().x + spriteh -> getGlobalBounds().width / 2, spriteh -> getPosition().y + spriteh -> getGlobalBounds().height / 4, vX, vY);
+        }
+        lastAngle = NULL;
+    }
+
+    // Draw arrows
+    if (arrows.size() > 0){
+        int id = 0;
+        while (id < arrows.size()){
+            if (arrows[id] -> isAlive()){
+                arrows[id] -> updateFrame(time);
+                id++;
+            }
+            else removeArrow(id);
+        }
     }
 
     /*
@@ -81,6 +120,52 @@ void Player::updateFrame(double time){
     spritea -> setRotation(angle);
     spritea -> move(4 , 4 - 0.5*9.7* (time + 0.1));
     */
+
+    if (isHitboxDrawn){
+        window -> draw(hitboxBody);
+        window -> draw(hitboxHead);
+    }
+
     window -> draw(*spriteh);
     window -> draw(*spriteb);
     }
+
+void Player::createArrow(float posX, float posY, float vX, float vY){
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent);
+    arrow -> setWindow(window);
+    arrow -> setSize(winWidth, winHeight);
+    arrows.push_back(arrow);
+}
+
+void Player::removeArrow(int id){
+    if (arrows.size() > id){
+        delete arrows[id];
+        arrows[id] = arrows[arrows.size() - 1];
+        arrows.pop_back();
+    }
+}
+
+bool Player::shoot(float x, float y){
+    if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
+        hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
+            health -= 50;
+            return true;
+        } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
+                    hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
+                        health -= 35;
+                        return true;
+                    }
+    return false;
+}
+
+void Player::stab(){
+    health -= 70;
+}
+
+void Player::resetHealth(){
+    health = maxHealth;
+}
+
+float Player::getHealth(){
+    return health;
+}

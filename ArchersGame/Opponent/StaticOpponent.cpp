@@ -6,12 +6,6 @@ StaticOpponent::StaticOpponent() {
     opponent -> setTexture(*texture);
 }
 
-/*
-void StaticOpponent:updateHealth() {
-    // to implement
-}
-*/
-
 void StaticOpponent::setWindow(sf::RenderWindow* gameWindow){
     //set window to game window
 	window = gameWindow;

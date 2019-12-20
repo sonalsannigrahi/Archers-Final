@@ -19,7 +19,10 @@
 #include "../Character/bow.hpp"
 #include "../Setting/Setting.hpp"
 #include "../Opponent/Opponent.hpp"
+#include "../Opponent/Spear.hpp"
+#include "../Opponent/StaticOpponent.hpp"
 #include "../Arrow/Arrow.hpp"
+#include "../EndGame/EndGame.hpp"
 
 class Game {
     private:
@@ -36,10 +39,13 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
-        Player player = Player();
         Setting gameSetting = Setting();
-        Opponent opponent = Opponent();
+        std::vector<Opponent*> opponent;
+        Player* player = new Player(&opponent);
+        // std::vector<Spear*> spear;                     // Not implemented
+        // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
         //Arrow arrow = Arrow(); // Test arrow
+        EndGame endgame = EndGame();
 
         // Elapsed time
         clock_t elapsedTime;
@@ -51,6 +57,14 @@ class Game {
 
         bool isGamePaused = false;
 
+        // Spawning opponents
+        void createOpponent();
+        void removeOpponent(int id);
+        // void createSpear();  // Not implemented
+        // void removeSpear(int id); // Not implemented
+        // void createStaticOpponent(); // Not implemented
+        // void removeStaticOpponent(int id); // Not implemented
+
     public:
     
         Game();
@@ -58,7 +72,7 @@ class Game {
 
         void StartGame();
         void UpdateFrame();
-        void EndGame();
+        void GameOver();
 
         void createBird();
         void removeBird(int id);

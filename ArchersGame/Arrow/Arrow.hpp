@@ -7,11 +7,20 @@
 #include <SFML/Audio.hpp>
 #include "ArrowConstants.cpp"
 
+class Player;
+class Opponent;
+
 class Arrow{
 private:
     ArrowConstants arrowConstants = ArrowConstants();
     sf::RenderWindow* window;
     sf::Sprite* arrowSprite;
+
+    Player* player;
+    std::vector<Opponent*>* opponent;
+
+    sf::RectangleShape hitbox;
+    bool isHitboxDrawn = true;
     
     int windowWidth, windowHeight;
     bool alive = true;
@@ -22,7 +31,7 @@ private:
 public:
     
     Arrow();
-    Arrow(float posX, float posY, float vX, float vY);
+    Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent);
 
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);

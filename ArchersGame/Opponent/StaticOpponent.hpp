@@ -22,14 +22,8 @@ public:
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
 
-    void setPosition(double x, double y);
-    void getPosition();
-
     void updateFrame(double time);
 
     bool isAlive();
-    bool isShot(float X, float Y);
-
-    void updateHealth();
 };
 

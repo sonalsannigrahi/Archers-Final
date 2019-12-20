@@ -12,20 +12,20 @@ Game::Game(){
     gameWater.setWindow(window);
     gameLightning.setWindow(window);
     gameRain.setWindow(window);
-    player.setWindow(window);
+    player -> setWindow(window);
     gameSetting.setWindow(window);
-    opponent.setWindow(window);
     //arrow.setWindow(window);
+    endgame.setWindow(window);
 
     // Inititalize window size
     gameBackground.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-    player.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    player -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameSetting.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-    opponent.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     //arrow.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    endgame.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
 
     // Send a pointer to game class
     gameSetting.setGame(this);
@@ -60,6 +60,8 @@ void Game::StartGame(){
     // createBird();
     
     // END TEST BIRDS
+
+    // if game has ended
 
     // Start timer
     elapsedTime = clock();
@@ -114,6 +116,10 @@ void Game::UpdateFrame(){
     if (((float) rand() / RAND_MAX) * gameConstants.fireworkRate < time && gameConstants.isFireworks) 
         createFireworks();
     
+    //Creating Opponent
+    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time) 
+        createOpponent();
+
     //std::cout << rand() << " " << RAND_MAX << std::endl;
 
     // Draw Background
@@ -164,10 +170,19 @@ void Game::UpdateFrame(){
     if (gameConstants.isRaining) gameRain.updateFrame(time);
 
     // Draw Player
-    player.updateFrame(time);
+    player -> updateFrame(time);
 
     // Draw Opponents
-    opponent.updateFrame(time);
+    if (opponent.size() > 0){
+        int id = 0;
+        while (id < opponent.size()){
+            if (opponent[id] -> isAlive()){
+                opponent[id] -> updateFrame(time);
+                id++;
+            }
+            else removeOpponent(id);
+        }
+    }
 
     // Draw Arrow (test)
     // arrow.updateFrame(time);
@@ -203,10 +218,35 @@ void Game::UpdateFrame(){
     // std::cout << std::to_string(positionMouse.x - positionWindow.x) + ", " + std::to_string(positionMouse.y - positionWindow.y) << std::endl;
     
     // // End
+
+    // Game Over
+    if (player -> getHealth() <= 0){
+        GameOver();
+    }
 }
 
-void Game::EndGame(){
+void Game::GameOver(){
+    pauseGame();
+    endgame.updateFrame(0);
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        unpauseGame();
+        player -> resetHealth();
+    }
+}
 
+void Game::createOpponent(){
+    Opponent* opp = new Opponent(player);
+    opp -> setWindow(window);
+    opp -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    opponent.push_back(opp);
+}
+
+void Game::removeOpponent(int id){
+    if (opponent.size() > id){
+        delete opponent[id];
+        opponent[id] = opponent[opponent.size() - 1];
+        opponent.pop_back();
+    }
 }
 
 void Game::createBird(){
@@ -410,9 +450,19 @@ void Game::setWindowSize(int width, int height){
     gameLightning.setSize(width, height);
     gameRain.setSize(width, height);
     gameWater.setSize(width, height);
-    // Add Ground and Blackhole...
+    for (int i = 0; i < birds.size(); i++) 
+        birds[i] -> setSize(width, height);
+    for (int i = 0; i < fireworks.size(); i++)
+        fireworks[i] -> setSize(width, height);
+    for (int i = 0; i < balloons.size(); i++)
+        balloons[i] -> setSize(width, height);
 
     gameSetting.setSize(width, height);
+
+    for (int i = 0; i < opponent.size(); i++)
+        opponent[i] -> setSize(width, height);
+    
+    // Add Spear and StaticOpponent
 }
 
 void Game::pauseGame(){
