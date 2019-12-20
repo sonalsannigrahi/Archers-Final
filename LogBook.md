@@ -120,3 +120,5 @@ Xingjian Zhang - Worked with Diego and began implementation of a tutorial level.
 Saba Tavdgiridze and Nicolas Lopes - finished rectangle class( except collisions ) which has to be integrated with graphics team. 
 
 Jiwon Park - Worked with Sonal to implement the rotation of the bow with the mouse click. Implemented the speared opponents.
+
+Alexandre Hirsch - Worked with Minh Tuan on the in game pause/settings menu. Will work on implementing the actual settings in the follwing week.
