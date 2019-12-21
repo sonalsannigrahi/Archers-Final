@@ -28,7 +28,7 @@ void Lightning::updateFrame(double time) {
     timer = std::max(0.0, timer - time);
     //std::cout << "Yo i was here" << std::endl;
     // Draw lightning at a rate
-    if (rand() % lightningConstants.lightning_rate == 0) {
+    if (((float) rand() / RAND_MAX) * lightningConstants.lightning_rate < time) {
         // Choose a random lightning
         id = rand() % lightningConstants.filename_length;
         // Set random x position
@@ -38,13 +38,13 @@ void Lightning::updateFrame(double time) {
     if (timer > lightningConstants.lightning_time) window -> draw(lightningSprites[id]);
 }
 
-void Lightning::change_volume_lightning(int volume){
+void Lightning::change_volume_lightning(float volume){
     sound.setVolume(volume);
 }
-int Lightning::getLightningRate(){
+float Lightning::getLightningRate(){
     return lightningConstants.lightning_rate;
 }
 
-void Lightning::setLightningRate(int rate){
+void Lightning::setLightningRate(float rate){
     lightningConstants.lightning_rate = rate;
 }

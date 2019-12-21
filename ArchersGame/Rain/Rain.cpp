@@ -43,6 +43,6 @@ void Rain::updateFrame(double time) {
     window -> draw(rainSprite[current]);
 }
 
- void Rain::change_volume_rain(int volume){
+ void Rain::change_volume_rain(float volume){
      sound.setVolume(volume);
  }

@@ -24,7 +24,10 @@ public:
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
     void updateFrame(double time);
-    void change_volume_lightning(int volume);
-    int getLightningRate();
-    void setLightningRate(int rate);
+
+    void change_volume_lightning(float volume);
+
+    float getLightningRate();
+    void setLightningRate(float rate);
+
 };

@@ -13,7 +13,6 @@ Our initial goal, which we will begin implementing next week, is to add gravitat
 
 Alexandre Hirsch - This week, I began researching the menu class of our SFML game. In the following weeks, I will work on implementing it and other aspects of the HUD.
 
-<<<<<<< HEAD:LogBook.md
 Sunho Hwang - This week we began planning on the general game design and what it would require. Our first goal would be to figure out the game map, the animations required, etc.
 
 Minh Tuan Nguyen - Divided the team into smaller subteams for specific tasks, created a basic game class. Next week, we will set up basic classes (ie. background, water, ground).
@@ -57,6 +56,7 @@ Maëlys Solal - This week I started the implementation of the character and oppo
 Alice Aubert - This week I started to implement the arrow class keeping in mind how the physics engine would affect the graphics. I also worked to implement both the arrow and Character classes as subclasses of the Drawables class of SFML. Next week I plan to continue this to make sure that both the Characters and arrows interact smoothly ie the character can shoot the arrow correctly using the click and drag function. 
 
 Nicolas Lopes - Met with Saba, Andre and Chris to discuss Physics engine. Corrected some small mistakes in previous code, changed the class of ConstantGravity, added cossine, sine and vector product as well as discussed about and started the BlackHole class with Andre. Discussed about implementation of air resistance.
+
 
 ## Week 3 (30th Nov - 6th Dec)
 
@@ -113,7 +113,9 @@ Minh Tuan Nguyen - This week, I finished the game's sound system and added the a
 Saba Tavdgiridze and Nícolas Lopes - Implemented the rectangle class( Rigid object ) which will be a basis of an array class in the game. 
 
 Hoang Anh Ngo - This week, I finished the implementation of the class of buttons of the state screens. Next week, I will start on implementing on the game over screen and the layout of different parts of each state screen (settings, options, etc.).
-=======
+
 Sunho Hwang - This week we began planning on the general game design and what it would require. Our first goal would be to figure out the game map, the animations required, etc.s
 
 >>>>>>> 7b95df0544b4ef85590e7ff64df72098f0a74e96:ArchersGame/LogBook.md
+
+

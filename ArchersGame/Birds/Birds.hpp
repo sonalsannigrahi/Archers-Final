@@ -13,8 +13,8 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
-#include "BirdsConstants.cpp"
 #include <SFML/Audio.hpp>
+#include "BirdsConstants.cpp"
 
 class Birds{
 private:
@@ -38,4 +38,5 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
+    void change_volume_bird(float volume);
 };

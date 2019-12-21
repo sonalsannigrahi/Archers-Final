@@ -21,7 +21,6 @@ Birds::Birds(){
 
     // Add sound
     music.openFromFile("Birds/Assets/" + birdconstant.musicfile);
-    music.play();
     music.setLoop(true);
     music.play();
 }
@@ -73,4 +72,8 @@ void Birds::updateFrame(double time) {
 
 bool Birds::isAlive(){
     return alive;
+}
+
+void Birds::change_volume_bird(float volume){
+    music.setVolume(volume);
 }

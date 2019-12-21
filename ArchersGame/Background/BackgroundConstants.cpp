@@ -13,6 +13,7 @@ public:
     int filename_length = 10;
     int chosen = 7;
     std::string filename[10];
+    std::string musicfile = "DarkWinds.ogg";
 
     BackgroundConstants(){
         for (int i = 1; i <= filename_length; i++) filename[i - 1] = "background" + std::to_string(i) + ".png";
