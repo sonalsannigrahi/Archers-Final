@@ -14,6 +14,7 @@ class TextConstants{
     std::string txt6 = "This is a Black Hole";
     std::string txt7 = "Arrows flying close to it will change their trajectory, be careful!";
     std::string txt4 = "Enjoy the game";
+    bool isbutton = true;
     bool condition0 = true;
     bool condition1 = false;
     bool condition2 = false;

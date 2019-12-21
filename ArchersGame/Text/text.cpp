@@ -8,7 +8,10 @@ Texts::Texts(){
 
     text.setFont(font);
     setsize(textconstants.size);
-    
+    button.setSize(sf::Vector2f(30, 120));
+    button.setOutlineColor(sf::Color::Blue);
+    button.setOutlineThickness(5);
+    bruh = 1;
 }
 
 void Texts::setWindow(sf::RenderWindow* gameWindow){
@@ -34,6 +37,11 @@ void Texts::setposition(float x, float y){
 
 void Texts::updateFrame(double time) {
     counter += time;
+    if (textconstants.isbutton){
+        window -> draw(button);
+        button.setPosition(500,windowHeight-200);
+    }
+
 
     if (textconstants.condition0)
     {
@@ -86,4 +94,13 @@ void Texts::updateFrame(double time) {
 
     
     
-} //bruh
+} 
+bool Texts::loadgame(float x, float y){
+    if (button.getPosition().x <= x && x <= button.getPosition().x + button.getSize().x &&
+        button.getPosition().y <= y && y <= button.getPosition().y + button.getSize().y){
+            bruh = 0;
+            textconstants.isbutton = false;
+            return true;
+}
+}
+//bruh

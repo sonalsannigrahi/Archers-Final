@@ -14,6 +14,7 @@ class GameConstants{
         bool isBalloon = false;
         bool isFireworks = false;
         bool isBlackhole = false;
+        bool isOpponent = false;
     // Volume
         float masterVolume = 0.0;
         float rainVolume = 100.0;

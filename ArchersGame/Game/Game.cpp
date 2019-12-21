@@ -119,7 +119,7 @@ void Game::UpdateFrame(){
         createFireworks();
     
     //Creating Opponent
-    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time) 
+    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
         createOpponent();
 
     //std::cout << rand() << " " << RAND_MAX << std::endl;
@@ -229,6 +229,7 @@ void Game::UpdateFrame(){
     if (player -> getHealth() <= 0){
         GameOver();
     }
+    if (text.bruh == 0) gameConstants.isOpponent = true;
 }
 
 void Game::GameOver(){

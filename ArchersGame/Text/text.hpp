@@ -14,10 +14,12 @@ class Texts{
     sf::Text text;
     sf::Font font;
     double counter = 0;
-
+    sf::RectangleShape button;
+    
     public:
+    int bruh;
     Texts();
-
+    bool loadgame(float x, float y);
     void setposition(float x, float y);
     void setsize(int px);
     void setWindow(sf::RenderWindow* gameWindow);

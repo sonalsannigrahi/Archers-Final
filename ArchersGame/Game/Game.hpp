@@ -41,11 +41,10 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
-        Player player = Player();
-        Texts text = Texts();
+        Texts text;
         Setting gameSetting = Setting();
         std::vector<Opponent*> opponent;
-        Player* player = new Player(&opponent);
+        Player* player = new Player(&opponent, &text);
         // std::vector<Spear*> spear;                     // Not implemented
         // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
         //Arrow arrow = Arrow(); // Test arrow
