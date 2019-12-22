@@ -1,5 +1,6 @@
 class GameConstants{
     public:
+        bool isrunning = false;
     // Window setting
         int WINDOW_HEIGHT = 600;
         int WINDOW_WIDTH = 900;
@@ -8,12 +9,14 @@ class GameConstants{
         float balloonRate = 5.0;
         float fireworkRate = 0.5;
     // Game setting
+        bool isRunning = false;
         bool isRaining = false;
         bool isLightning = false;
-        bool isBirds = false;
+        bool isBirds = true;
+        bool isPlayer = false;
         bool isBalloon = false;
         bool isFireworks = false;
-        bool isBlackhole = false;
+        bool isBlackhole = true;
         bool isOpponent = false;
     // Volume
         float masterVolume = 0.0;

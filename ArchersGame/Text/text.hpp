@@ -12,11 +12,17 @@ class Texts{
     int windowWidth, windowHeight;
     TextConstants textconstants = TextConstants();
     sf::Text text;
+    sf::Text play;
+    sf::Text tutorial;
     sf::Font font;
+    sf::Text settings;
     double counter = 0;
-    sf::RectangleShape button;
-    
+    sf::RectangleShape startbutton;
+    sf::Sprite Startsprite;
+    sf::Sprite Titlesprite;
+
     public:
+    void loadgame();
     int bruh;
     Texts();
     bool loadgame(float x, float y);

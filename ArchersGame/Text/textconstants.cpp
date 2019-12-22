@@ -4,6 +4,8 @@
 class TextConstants{
     public:
     std::string filename = "Text/asset/font.TTF";
+    std::string Startfilename = "Text/asset/play.png";
+    std::string titlefilename = "Text/asset/index.png";
     int size = 30;
     std::string txt0 = "Welcome to the tutorial!";
     std::string txt8 = "This is you";
@@ -14,8 +16,13 @@ class TextConstants{
     std::string txt6 = "This is a Black Hole";
     std::string txt7 = "Arrows flying close to it will change their trajectory, be careful!";
     std::string txt4 = "Enjoy the game";
-    bool isbutton = true;
-    bool condition0 = true;
+    float xStartscale = 0.35;
+    float yStartscale = 0.35;
+    float xtitlescale = 0.8;
+    float ytitlescale = 0.8;
+    bool conditionplay = true;
+    bool isStartbutton = false;
+    bool condition0 = false;
     bool condition1 = false;
     bool condition2 = false;
     bool condition3 = false;

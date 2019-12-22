@@ -86,7 +86,7 @@ void Arrow::updateFrame(double time){
             if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;
         }
         if (alive && player -> shoot(headX, headY)) alive = false;
-        if (alive && texts->loadgame(headX, headY)) alive = false;
+        if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
     }
      else {
         alive = false;

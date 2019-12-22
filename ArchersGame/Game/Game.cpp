@@ -2,7 +2,7 @@
 
 Game::Game(){
     srand(time(NULL)); // Randomize
-    
+    gameConstants.isRunning = false;
     // Create game window
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
@@ -102,6 +102,9 @@ void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
 
     // Calculate time has passed since the last UpdateFrame
+    if(!gameConstants.isRunning){
+        gameConstants.isOpponent = false;
+    }
     double time = 0;
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -172,8 +175,9 @@ void Game::UpdateFrame(){
     if (gameConstants.isRaining) gameRain.updateFrame(time);
 
     // Draw Player
-    player -> updateFrame(time);
-
+    if(gameConstants.isRunning){
+        player -> updateFrame(time);
+    }
     //Draw text
     text.updateFrame(time);
 
@@ -229,7 +233,10 @@ void Game::UpdateFrame(){
     if (player -> getHealth() <= 0){
         GameOver();
     }
-    if (text.bruh == 0) gameConstants.isOpponent = true;
+    if (text.bruh == 0) {
+        gameConstants.isOpponent = true;
+        gameConstants.isRunning = true;
+    }    
 }
 
 void Game::GameOver(){

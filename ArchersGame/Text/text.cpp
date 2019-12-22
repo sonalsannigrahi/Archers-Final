@@ -1,16 +1,26 @@
 #include "text.hpp"
+#include <iostream>
 
 Texts::Texts(){
     if (!font.loadFromFile(textconstants.filename))
     {
         std::cout << "Error text file" << std::endl;
     }
-
+    sf::Texture* texture = new sf::Texture();
+    texture -> loadFromFile(textconstants.Startfilename);
+    Startsprite = sf::Sprite(*texture);
+     sf::Texture* texturetitle = new sf::Texture();
+    texturetitle -> loadFromFile(textconstants.titlefilename);
+    Titlesprite = sf::Sprite(*texturetitle);
     text.setFont(font);
+    play.setFont(font);
+    settings.setFont(font);
+    tutorial.setFont(font);
     setsize(textconstants.size);
-    button.setSize(sf::Vector2f(30, 120));
-    button.setOutlineColor(sf::Color::Blue);
-    button.setOutlineThickness(5);
+    startbutton.setSize(sf::Vector2f(60, 60));
+    startbutton.setFillColor(sf::Color::Cyan);
+    startbutton.setOutlineColor(sf::Color::Black);
+    startbutton.setOutlineThickness(5);
     bruh = 1;
 }
 
@@ -37,11 +47,57 @@ void Texts::setposition(float x, float y){
 
 void Texts::updateFrame(double time) {
     counter += time;
-    if (textconstants.isbutton){
-        window -> draw(button);
-        button.setPosition(500,windowHeight-200);
+    if (bruh==1){
+        Titlesprite.setPosition( 250, windowHeight-550);
+        Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
+        window -> draw(Titlesprite);
     }
 
+    if (textconstants.isStartbutton){
+        window -> draw(startbutton);
+        startbutton.setPosition(470,windowHeight-340);
+        Startsprite.setPosition( 465, windowHeight-345);
+        Startsprite.setScale(textconstants.xStartscale, textconstants.yStartscale);
+        window -> draw(Startsprite);
+    }
+    sf::Vector2i mousePosition;
+    mousePosition = sf::Mouse::getPosition();
+    float a;
+    float b;
+    sf::Vector2i windowPosition;
+    windowPosition = window -> getPosition();
+    if (textconstants.conditionplay)
+    {
+        play.setString("Play");
+        play.setCharacterSize(30);
+        play.setPosition(420,windowHeight-400);
+        tutorial.setString("Tutorial");
+        tutorial.setCharacterSize(30);
+        tutorial.setPosition(400,windowHeight-370);
+        settings.setString("Settings");
+        settings.setCharacterSize(30);
+        settings.setPosition(400,windowHeight-340);
+        textconstants.condition0 = false;
+        window -> draw(play);
+        window -> draw(tutorial);
+        window -> draw(settings);
+        a = mousePosition.x - windowPosition.x;
+        b = mousePosition.y - windowPosition.y;
+        if (a >=409 && a<=476 && b>=176 && b<=192){
+            play.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                bruh = 0;
+                textconstants.conditionplay = false;
+            }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            play.setColor(sf::Color::White);
+        }
+
+
+        counter = 0;
+
+    }
 
     if (textconstants.condition0)
     {
@@ -90,16 +146,17 @@ void Texts::updateFrame(double time) {
     }
 
     window -> draw(text);
+    
 
 
     
     
 } 
 bool Texts::loadgame(float x, float y){
-    if (button.getPosition().x <= x && x <= button.getPosition().x + button.getSize().x &&
-        button.getPosition().y <= y && y <= button.getPosition().y + button.getSize().y){
+    if (startbutton.getPosition().x <= x && x <= startbutton.getPosition().x + startbutton.getSize().x &&
+        startbutton.getPosition().y <= y && y <= startbutton.getPosition().y + startbutton.getSize().y){
             bruh = 0;
-            textconstants.isbutton = false;
+            textconstants.isStartbutton = false;
             return true;
 }
 }
