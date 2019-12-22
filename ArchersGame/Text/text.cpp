@@ -61,29 +61,33 @@ void Texts::updateFrame(double time) {
         window -> draw(Startsprite);
     }
     sf::Vector2i mousePosition;
-    mousePosition = sf::Mouse::getPosition();
+    //mousePosition = sf::Mouse::getPosition();
     float a;
     float b;
     sf::Vector2i windowPosition;
     windowPosition = window -> getPosition();
+    mousePosition = sf::Mouse::getPosition(*window);
     if (textconstants.conditionplay)
     {
         play.setString("Play");
         play.setCharacterSize(30);
-        play.setPosition(420,windowHeight-400);
+        play.setPosition(windowWidth/2-30,5*windowHeight/16);
         tutorial.setString("Tutorial");
         tutorial.setCharacterSize(30);
-        tutorial.setPosition(400,windowHeight-370);
+        tutorial.setPosition(windowWidth/2-60,5*windowHeight/16 + 30);
         settings.setString("Settings");
         settings.setCharacterSize(30);
-        settings.setPosition(400,windowHeight-340);
+        settings.setPosition(windowWidth/2-60,5*windowHeight/16 + 60);
         textconstants.condition0 = false;
         window -> draw(play);
         window -> draw(tutorial);
         window -> draw(settings);
-        a = mousePosition.x - windowPosition.x;
-        b = mousePosition.y - windowPosition.y;
-        if (a >=409 && a<=476 && b>=176 && b<=192){
+        a = mousePosition.x; 
+        b = mousePosition.y; 
+        
+        std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        std::cout<< bruh << '('<<play.getPosition().x<< ','<<play.getPosition().y <<')'<<std::endl;
+        if (a >=windowWidth/2-30 && a<=windowWidth/2+30 && b>=5*windowHeight/16 + 7 && b<=5*windowHeight/16+28){
             play.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 bruh = 0;
@@ -93,11 +97,32 @@ void Texts::updateFrame(double time) {
         else{
             play.setColor(sf::Color::White);
         }
-
-
-        counter = 0;
+        if (a >=windowWidth/2-60 && a<=windowWidth/2+60 && b>=5*windowHeight/16 + 37 && b<=5*windowHeight/16+58){
+            tutorial.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                bruh = 2;
+                 textconstants.condition0 = true;
+                textconstants.conditionplay = false;
+            }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            tutorial.setColor(sf::Color::White);
+        }
+        if (a >=windowWidth/2-60 && a<=windowWidth/2+60 && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
+            settings.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                bruh = 3;
+                textconstants.conditionplay = false;
+            }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            settings.setColor(sf::Color::White);
+        }
 
     }
+    if (bruh==2)
+    {
+   
 
     if (textconstants.condition0)
     {
@@ -147,7 +172,7 @@ void Texts::updateFrame(double time) {
 
     window -> draw(text);
     
-
+    }
 
     
     

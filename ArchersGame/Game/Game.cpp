@@ -175,7 +175,7 @@ void Game::UpdateFrame(){
     if (gameConstants.isRaining) gameRain.updateFrame(time);
 
     // Draw Player
-    if(gameConstants.isRunning){
+    if(text.bruh == 0 || text.bruh == 2){
         player -> updateFrame(time);
     }
     //Draw text
