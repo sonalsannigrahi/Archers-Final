@@ -13,13 +13,16 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "BirdsConstants.cpp"
 
 class Birds{
 private:
     BirdsConstants birdconstant = BirdsConstants();
     sf::RenderWindow* window;
+    sf::Music music;
     std::vector<sf::Sprite> birdsSprites;
+    
     double counter = 0;
     int current = 0;
     int birdType;
@@ -35,4 +38,5 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
+    void change_volume_bird(float volume);
 };

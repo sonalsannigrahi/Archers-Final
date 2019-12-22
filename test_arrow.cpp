@@ -4,13 +4,13 @@
 #include <SFML/System.hpp>
 #include <math.h>
 #include <iostream>
+#include <string>
+
+#include "arrow.hpp"
 
 int main(){
-    sf::Texture texture;
-    texture.loadFromFile("arrow.png");
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-    sprite.setScale(sf::Vector2f(0.5f, 0.5f));
+
+    Arrow arrow1 = Arrow(0.0,0.0,0.0,0.0,0.0,0.0,10.0,20.0, 20.0, "arrow.png");
 
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
@@ -25,14 +25,17 @@ int main(){
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+            
+            if(event.type == sf::Event::MouseButtonPressed){
+                arrow1.shoot(10.0);
+            }
         }
 
- 
         window.clear(sf::Color::White);
 
         // draw everything here...
         // window.draw(...);
-        window.draw(sprite);
+        window.draw(arrow1);
 
         // end the current frame
         window.display();
