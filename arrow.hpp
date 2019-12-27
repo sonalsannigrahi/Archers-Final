@@ -17,6 +17,8 @@ class Arrow: public Rectangle{
         double a_y = 9.8; //acceleration in the y, by default is gravity
 
         UniformGravityForRectangle rec_grav = UniformGravityForRectangle(9.8);
+
+        double damage = 0.5; //default value
         
     public:
         Arrow();
@@ -28,4 +30,5 @@ class Arrow: public Rectangle{
         void shoot(double vel);
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void changeAngle(double alpha);
+        double inflictDamage();
 };
