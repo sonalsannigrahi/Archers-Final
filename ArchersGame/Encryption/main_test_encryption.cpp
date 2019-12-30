@@ -9,7 +9,9 @@ int main(){
     enc.add_data<int>("damage",100);
     enc.add_data<float>("size",100.5);
     enc.add_data<long long>("remaining_health",1031314567899);
+    enc.updatefile();
 */
+
     cout<<"damage = "<<enc.get_item<int>("damage")<<'\n';
     cout<<"size = "<<enc.get_item<float>("size")<<"\n";
     cout<<"remaining_health = "<<enc.get_item<long long>("remaining_health")<<'\n';
