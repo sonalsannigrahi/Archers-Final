@@ -4,7 +4,13 @@
 class TextConstants{
     public:
     std::string filename = "Text/asset/font.TTF";
+    std::string wood_filename = "Text/asset/wood.jpeg";
+    
     int size = 30;
+
+    std::string txt_button = "Start Game";
+
+
     std::string txt0 = "Welcome to the tutorial!";
     std::string txt8 = "This is you";
     std::string txt1 = "Try to hit the target across the screen";

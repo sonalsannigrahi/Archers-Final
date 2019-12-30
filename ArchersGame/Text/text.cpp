@@ -8,11 +8,26 @@ Texts::Texts(){
 
     text.setFont(font);
     setsize(textconstants.size);
-    button.setSize(sf::Vector2f(30, 120));
-    button.setOutlineColor(sf::Color::Blue);
-    button.setOutlineThickness(5);
-    bruh = 1;
-}
+
+    
+
+    //Button stuff
+
+    sf::Texture* texture = new sf::Texture();
+    texture -> loadFromFile(textconstants.wood_filename);
+
+    button.setSize(sf::Vector2f(250, 75));
+    button.setOutlineColor(sf::Color::Black);
+    button.setOutlineThickness(1);
+    button.setPosition(600,windowHeight+100);
+    button.setTexture(texture);
+
+    text_button.setPosition(button.getPosition());
+    text_button.setString(textconstants.txt_button);
+    text_button.setFont(font);
+    text_button.setCharacterSize(42);
+
+    }
 
 void Texts::setWindow(sf::RenderWindow* gameWindow){
     window = gameWindow;
@@ -22,6 +37,7 @@ void Texts::setWindowSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
 }
+
 
 void Texts::setstring(std::string txt){
      text.setString(txt);
@@ -39,7 +55,7 @@ void Texts::updateFrame(double time) {
     counter += time;
     if (textconstants.isbutton){
         window -> draw(button);
-        button.setPosition(500,windowHeight-200);
+        window -> draw(text_button);
     }
 
 

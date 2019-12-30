@@ -12,6 +12,7 @@ class Texts{
     int windowWidth, windowHeight;
     TextConstants textconstants = TextConstants();
     sf::Text text;
+    sf::Text text_button;
     sf::Font font;
     double counter = 0;
     sf::RectangleShape button;
@@ -26,4 +27,5 @@ class Texts{
     void setWindowSize(int width, int height);
     void updateFrame(double time);
     void setstring(std::string txt);
+    void put_text_button(sf::RectangleShape button);
 };
