@@ -23,6 +23,7 @@
 #include "../Opponent/StaticOpponent.hpp"
 #include "../Arrow/Arrow.hpp"
 #include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
 
 class Game {
     private:
@@ -46,6 +47,7 @@ class Game {
         // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
         //Arrow arrow = Arrow(); // Test arrow
         EndGame endgame = EndGame();
+        Encrypt* enc = new Encrypt();
 
         // Elapsed time
         clock_t elapsedTime;

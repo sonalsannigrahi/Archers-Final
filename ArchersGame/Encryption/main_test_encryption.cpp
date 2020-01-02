@@ -5,48 +5,61 @@
 using namespace std;
 int main(){
     Encrypt enc;
-/*
-    enc.add_data<int>("damage",100);
-    enc.add_data<float>("size",100.5);
-    enc.add_data<long long>("remaining_health",1031314567899);
+
+    // ADD DATA
+
+    // Window setting
+        // int WINDOW_HEIGHT = 600;
+        // int WINDOW_WIDTH = 900;
+    enc.add_data<int>("WINDOW_HEIGHT", 700);
+    enc.add_data<int>("WINDOW_WIDTH", 1300);
+    // Game setting
+        // bool isRaining = false;
+        // bool isLightning = false;
+        // bool isBirds = false;
+        // bool isBalloon = false;
+        // bool isFireworks = false;
+        // bool isBlackhole = false;
+    enc.add_data<int>("isRaining", 0);
+    enc.add_data<int>("isLightning", 0);
+    enc.add_data<int>("isBirds", 0);
+    enc.add_data<int>("isBalloon", 0);
+    enc.add_data<int>("isFireworks", 0);
+    enc.add_data<int>("isBlackhole", 0);
+    // Volume
+        // float masterVolume = 0.0;
+        // float rainVolume = 100.0;
+        // float thunderVolume = 100.0;
+        // float birdsVolume = 100.0;
+        // float fireworksVolume = 100.0;
+        // float backgroundVolume = 100.0;
+    enc.add_data<float>("masterVolume", (float) 0.0);
+    enc.add_data<float>("rainVolume", (float) 100.0);
+    enc.add_data<float>("thunderVolume", (float) 100.0);
+    enc.add_data<float>("birdsVolume", (float) 100.0);
+    enc.add_data<float>("fireworksVolume", (float) 100.0);
+    enc.add_data<float>("backgroundVolume", (float) 100.0);
     enc.updatefile();
-*/
 
-    cout<<"damage = "<<enc.get_item<int>("damage")<<'\n';
-    cout<<"size = "<<enc.get_item<float>("size")<<"\n";
-    cout<<"remaining_health = "<<enc.get_item<long long>("remaining_health")<<'\n';
-    cout<<"gay = "<<enc.get_item<int>("gay")<<'\n';
-    enc.add_data<int>("gay",104);
-    enc.updatefile();
-/*
-    ostringstream line;
-    ifstream fin;
-    fin.open("Constants.txt", ios::in);
-    char my_character ;
-	while (!fin.eof() ) {
-        fin.get(my_character);
-        if (my_character!='\n'){
-            line << my_character;
-        }
-        if (my_character=='\n'){
-            cout<<line.str()<<'\n';
-            cout<<enc.decrypt(line.str())<<'\n';
-            line.str("");
-            line.clear();
 
-            //cout<<enc.decrypt(line);
-        }
+    cout << enc.get_item<int>("WINDOW_HEIGHT") << endl;
+    cout << enc.get_item<int>("WINDOW_WIDTH") << endl;
+    cout << endl;
 
-	}
+    cout << enc.get_item<int>("isRaining") << endl;
+    cout << enc.get_item<int>("isLightning") << endl;
+    cout << enc.get_item<int>("isBirds") << endl;
+    cout << enc.get_item<int>("isBalloon") << endl;
+    cout << enc.get_item<int>("isFireworks") << endl;
+    cout << enc.get_item<int>("isBlackhole") << endl;
+    cout << endl;
 
-	//cout<< enc.decrypt("UHutrqeUX(<aL$]MP :}");
-	enc.updatefile();
-	cout<<'\n';
-	istringstream buffer("5");
-	int temp;
-    buffer >> temp;
-    int y = 3 + temp;
-    cout<<y;
-    */
+    cout << enc.get_item<float>("masterVolume") << endl;
+    cout << enc.get_item<float>("rainVolume") << endl;
+    cout << enc.get_item<float>("thunderVolume") << endl;
+    cout << enc.get_item<float>("birdsVolume") << endl;
+    cout << enc.get_item<float>("fireworksVolume") << endl;
+    cout << enc.get_item<float>("backgroundVolume") << endl;
+
     return 0;
 }

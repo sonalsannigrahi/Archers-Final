@@ -1,6 +1,6 @@
 CXX = g++
 Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
-Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o EndGame.o
+Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o EndGame.o Encryption.o
 
 BackgroundConstants.o: Background/BackgroundConstants.cpp
 	$(CXX) -c Background/BackgroundConstants.cpp
@@ -69,13 +69,6 @@ Opponent.o: Opponent/Opponent.cpp Opponent/Opponent.hpp OpponentConstants.o
 	$(CXX) -c Opponent/Opponent.cpp $(Dependencies)
 
 
-OpponentConstants.o: Opponent/OpponentConstants.cpp
-	$(CXX) -c Opponent/OpponentConstants.cpp
-
-Opponent.o: Opponent/Opponent.cpp Opponent/Opponent.hpp OpponentConstants.o
-	$(CXX) -c Opponent/Opponent.cpp $(Dependencies)
-
-
 SpearConstants.o: Opponent/SpearConstants.cpp
 	$(CXX) -c Opponent/SpearConstants.cpp
 
@@ -94,13 +87,16 @@ Arrow.o: Arrow/Arrow.cpp Arrow/Arrow.hpp ArrowConstants.o
 	$(CXX) -c Arrow/Arrow.cpp $(Dependencies)
 
 
+Encryption.o: Encryption/Encryption.cpp Encryption/Encryption.hpp
+	$(CXX) -c Encryption/Encryption.cpp
+
 
 EndGame.o: EndGame/EndGame.cpp EndGame/EndGame.hpp 
 	$(CXX) -c EndGame/EndGame.cpp $(Dependencies)
 
 
 
-GameConstants.o: Game/GameConstants.cpp
+GameConstants.o: Game/GameConstants.cpp Encryption.o
 	$(CXX) -c Game/GameConstants.cpp
 
 GameFPS.o: Game/GameFPS.cpp
