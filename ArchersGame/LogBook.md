@@ -116,6 +116,3 @@ Hoang Anh Ngo - This week, I finished the implementation of the class of buttons
 
 Sunho Hwang - This week we began planning on the general game design and what it would require. Our first goal would be to figure out the game map, the animations required, etc.s
 
->>>>>>> 7b95df0544b4ef85590e7ff64df72098f0a74e96:ArchersGame/LogBook.md
-
-
