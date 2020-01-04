@@ -1,11 +1,16 @@
 #pragma once
-#include <iostream>
-#include <vector>
+#include <iostream>     // std::cout
+#include <algorithm>    // std::random_shuffle
+#include <vector>       // std::vector
+#include <cstdlib>
 #include <iterator>
 #include <map>
 #include <typeinfo>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <cstring>
+
 using namespace std;
 class Encrypt{
 private:
