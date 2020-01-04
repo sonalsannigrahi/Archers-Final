@@ -8,7 +8,7 @@
 #include <math.h>
 #include <iostream>
 #include "../Arrow/Arrow.hpp"
-
+#include "../Text/text.hpp"
 class Opponent;
 
 class Player{
@@ -29,12 +29,12 @@ private:
 
     float maxHealth = 100.f;
     float health;
-
+    Texts* texts;
     std::vector<Opponent*>* opponent;
 
 public:
     
-    Player(std::vector<Opponent*>* opponent);
+    Player(std::vector<Opponent*>* opponent,Texts* texts);
     
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);

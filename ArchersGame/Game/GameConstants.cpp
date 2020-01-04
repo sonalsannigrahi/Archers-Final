@@ -2,20 +2,26 @@
 
 class GameConstants{
     public:
+        bool isrunning = false;
     // Window setting
         int WINDOW_HEIGHT;
         int WINDOW_WIDTH;
     // Neutral spawning rate
-        float birdRate = 2.5;
+        float birdRate = 0.5;
         float balloonRate = 5.0;
         float fireworkRate = 0.5;
     // Game setting
-        bool isRaining;
-        bool isLightning;
-        bool isBirds;
-        bool isBalloon;
-        bool isFireworks;
-        bool isBlackhole;
+
+        bool isRunning = false;
+        bool isRaining = true;
+        bool isLightning = true;
+        bool isBirds = true;
+        bool isPlayer = false;
+        bool isBalloon = true;
+        bool isFireworks = true;
+        bool isBlackhole = true;
+        bool isOpponent = false;
+
     // Volume
         float masterVolume;
         float rainVolume;

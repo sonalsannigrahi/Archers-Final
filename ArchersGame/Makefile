@@ -1,6 +1,8 @@
 CXX = g++
 Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
-Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o EndGame.o Encryption.o
+
+Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o Encryption.o
+
 
 BackgroundConstants.o: Background/BackgroundConstants.cpp
 	$(CXX) -c Background/BackgroundConstants.cpp
@@ -50,6 +52,11 @@ fireworksconstants.o: Fireworks/fireworksconstants.cpp
 fireworks.o: Fireworks/fireworks.cpp fireworksconstants.o
 	$(CXX) -c Fireworks/fireworks.cpp $(Dependencies)
 
+textconstants.o: Text/textconstants.cpp
+	$(CXX) -c Text/textconstants.cpp
+
+text.o: Text/text.cpp
+	$(CXX) -c Text/text.cpp $(Dependencies)
 
 bow.o: Character/bow.cpp 
 	$(CXX) -c Character/bow.cpp $(Dependencies)
@@ -102,6 +109,7 @@ GameConstants.o: Game/GameConstants.cpp Encryption.o
 GameFPS.o: Game/GameFPS.cpp
 	$(CXX) -c Game/GameFPS.cpp
 
+
 Game.o: Game/Game.cpp Game/Game.hpp GameConstants.o GameFPS.o $(Classes)
 	$(CXX) -c Game/Game.cpp $(Dependencies)
 
@@ -115,7 +123,9 @@ main.o: main.cpp Game.o
 
 
 archer: main.o
+
 	$(CXX) main.o Game.o $(Classes) -o archer $(Dependencies)
+
 
 clean: 
 	rm -f archer

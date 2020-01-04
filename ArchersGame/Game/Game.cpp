@@ -2,7 +2,7 @@
 
 Game::Game(){
     srand(time(NULL)); // Randomize
-    
+    gameConstants.isRunning = false;
     // Create game window
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
@@ -12,6 +12,7 @@ Game::Game(){
     gameWater.setWindow(window);
     gameLightning.setWindow(window);
     gameRain.setWindow(window);
+    text.setWindow(window);
     player -> setWindow(window);
     gameSetting.setWindow(window);
     //arrow.setWindow(window);
@@ -22,6 +23,7 @@ Game::Game(){
     gameWater.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameLightning.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameRain.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    text.setWindowSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     player -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     gameSetting.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     //arrow.setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
@@ -100,6 +102,9 @@ void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
 
     // Calculate time has passed since the last UpdateFrame
+    if(!gameConstants.isRunning){
+        gameConstants.isOpponent = false;
+    }
     double time = 0;
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -117,7 +122,7 @@ void Game::UpdateFrame(){
         createFireworks();
     
     //Creating Opponent
-    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time) 
+    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
         createOpponent();
 
     //std::cout << rand() << " " << RAND_MAX << std::endl;
@@ -170,7 +175,12 @@ void Game::UpdateFrame(){
     if (gameConstants.isRaining) gameRain.updateFrame(time);
 
     // Draw Player
-    player -> updateFrame(time);
+    if(text.bruh == 0 || text.bruh == 2){
+        player -> updateFrame(time);
+    }
+    //Draw text
+    text.updateFrame(time);
+
 
     // Draw Opponents
     if (opponent.size() > 0){
@@ -223,6 +233,10 @@ void Game::UpdateFrame(){
     if (player -> getHealth() <= 0){
         GameOver();
     }
+    if (text.bruh == 0) {
+        gameConstants.isOpponent = true;
+        gameConstants.isRunning = true;
+    }    
 }
 
 void Game::GameOver(){
