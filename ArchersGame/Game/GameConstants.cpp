@@ -1,3 +1,5 @@
+#include "../Encryption/Encryption.hpp"
+
 class GameConstants{
     public:
         bool isrunning = false;
@@ -10,13 +12,13 @@ class GameConstants{
         float fireworkRate = 0.5;
     // Game setting
         bool isRunning = false;
-        bool isRaining = true;
-        bool isLightning = true;
+        bool isRaining = false;
+        bool isLightning = false;
         bool isBirds = true;
         bool isPlayer = false;
-        bool isBalloon = true;
-        bool isFireworks = true;
-        bool isBlackhole = true;
+        bool isBalloon = false;
+        bool isFireworks = false;
+        bool isBlackhole = false;
         bool isOpponent = false;
     // Volume
         float masterVolume = 0.0;

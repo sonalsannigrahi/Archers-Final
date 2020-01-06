@@ -24,6 +24,7 @@
 #include "../Opponent/StaticOpponent.hpp"
 #include "../Arrow/Arrow.hpp"
 #include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
 
 
 class Game {
