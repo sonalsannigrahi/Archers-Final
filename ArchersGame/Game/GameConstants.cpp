@@ -7,7 +7,7 @@ class GameConstants{
         int WINDOW_HEIGHT = 600;
         int WINDOW_WIDTH = 900;
     // Neutral spawning rate
-        float birdRate = 0.5;
+        float birdRate = 2.5;
         float balloonRate = 5.0;
         float fireworkRate = 0.5;
     // Game setting
