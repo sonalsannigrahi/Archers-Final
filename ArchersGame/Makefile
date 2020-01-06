@@ -74,13 +74,6 @@ Opponent.o: Opponent/Opponent.cpp Opponent/Opponent.hpp OpponentConstants.o
 	$(CXX) -c Opponent/Opponent.cpp $(Dependencies)
 
 
-OpponentConstants.o: Opponent/OpponentConstants.cpp
-	$(CXX) -c Opponent/OpponentConstants.cpp
-
-Opponent.o: Opponent/Opponent.cpp Opponent/Opponent.hpp OpponentConstants.o
-	$(CXX) -c Opponent/Opponent.cpp $(Dependencies)
-
-
 SpearConstants.o: Opponent/SpearConstants.cpp
 	$(CXX) -c Opponent/SpearConstants.cpp
 
