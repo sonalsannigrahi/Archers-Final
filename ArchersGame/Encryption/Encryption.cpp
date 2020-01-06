@@ -1,5 +1,15 @@
 #include "Encryption.hpp"
-
+#include <iostream>     // std::cout
+#include <algorithm>    // std::random_shuffle
+#include <vector>       // std::vector
+#include <cstdlib>
+#include <iterator>
+#include <map>
+#include <typeinfo>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <cstring>
 using namespace std;
 Encrypt::Encrypt(){
     vector<vector<int> >   vect;
@@ -180,7 +190,7 @@ float Encrypt::encrypt(float number){
 }
 float Encrypt::decrypt(float number){
     if (number==(float)(int)(number)){
-        return (float)(this->decrypt((int)(number)));
+        return (float)(this->encrypt((int)(number)));
     }
     float nnumber = number;
     int k=1;
@@ -206,7 +216,7 @@ double Encrypt::encrypt(double number){
 }
 double Encrypt::decrypt(double number){
     if (number==(double)(long long)(number)){
-        return (double)(this->decrypt((long long)(number)));
+        return (double)(this->encrypt((long long)(number)));
     }
     double nnumber = number;
     long long k=1;
