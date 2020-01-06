@@ -1,5 +1,6 @@
 # Character Specifications 
 
+Note that Text folder is currently not there, if trying to run also download the text folder from the UI/UX branch. 
 
 ## Players 
 
