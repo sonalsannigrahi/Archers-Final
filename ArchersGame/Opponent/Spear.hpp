@@ -7,6 +7,8 @@
 #include <SFML/Graphics.hpp>
 #include "SpearConstants.cpp"
 
+class Player;
+
 class Spear{
 private:
     SpearConstants spearconstant = SpearConstants();
@@ -14,6 +16,8 @@ private:
     std::vector<sf::Sprite> spearSprites;
     sf::Sprite* defeat = new sf::Sprite();
     sf::Sprite* defback = new sf::Sprite();
+
+    Player* player;
     double counter = 0;
     int current = 0;
     int windowWidth, windowHeight;
@@ -21,7 +25,7 @@ private:
     float posX, posY;
 public:
 
-    Spear();
+    Spear(Player* player);
 
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);

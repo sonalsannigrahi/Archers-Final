@@ -1,7 +1,7 @@
 #include "Spear.hpp"
+#include "../Character/bow.hpp"
 
-Spear::Spear(){
-
+Spear::Spear(Player* player){
     sf::Texture* texture = new sf::Texture();
     texture -> loadFromFile("Opponent/Assets/defeat.png");
     defeat -> setTexture(*texture);
@@ -12,7 +12,7 @@ Spear::Spear(){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Opponent/Assets/"+ spearconstant.filename[i]);
         sf::Sprite* sprite = new sf::Sprite(*texture);
-        sprite -> setScale(0.4f,0.4f);
+        sprite -> setScale(0.65f,0.65f);
         spearSprites.push_back(*sprite);
     }
 }
@@ -25,8 +25,9 @@ void Spear::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
 
-    posX = rand()%(width/2) + width*2/5;
-    posY = rand()%(height/3) + height/3;
+    float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
+    posX = rand()%(width/2) + float(width)/8;
+    posY = -rand()%(height/3) + float(height)/2;
     for (int i =0; i < spearconstant.filenamelen; i++){
       spearSprites[i].setPosition(posX,posY);
     }
