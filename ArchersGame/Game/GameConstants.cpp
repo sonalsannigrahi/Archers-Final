@@ -1,4 +1,5 @@
 #include "../Encryption/Encryption.hpp"
+#include <string>
 
 class GameConstants{
     public:
@@ -21,7 +22,7 @@ class GameConstants{
         bool isBlackhole = false;
         bool isOpponent = false;
     // Volume
-        float masterVolume = 0.0;
+        float masterVolume = 100.0;
         float rainVolume = 100.0;
         float thunderVolume = 100.0;
         float birdsVolume = 100.0;
@@ -31,4 +32,21 @@ class GameConstants{
         float opponentRate = 1.0;
         float staticOpponentRate = 25.0;
         float spearRate = 60.0;
+
+    GameConstants(Encrypt* enc){
+        WINDOW_HEIGHT = enc -> get_item<int>("WINDOW_HEIGHT");
+        WINDOW_WIDTH = enc -> get_item<int>("WINDOW_WIDTH");
+        isRaining = (enc -> get_item<int>("isRaining") == 1);
+        isLightning = (enc -> get_item<int>("isLightning") == 1);
+        isBirds = (enc -> get_item<int>("isBirds") == 1);
+        isBalloon = (enc -> get_item<int>("isBalloon") == 1);
+        isFireworks = (enc -> get_item<int>("isFireworks") == 1);
+        isBlackhole = (enc -> get_item<int>("isBlackhole") == 1);
+        masterVolume = enc -> get_item<float>("masterVolume");
+        rainVolume = enc -> get_item<float>("rainVolume");
+        thunderVolume = enc -> get_item<float>("thunderVolume");
+        birdsVolume = enc -> get_item<float>("birdsVolume");
+        fireworksVolume = enc -> get_item<float>("fireworksVolume");    
+        backgroundVolume = enc -> get_item<float>("backgroundVolume");
+    }
 };

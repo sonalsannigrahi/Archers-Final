@@ -37,6 +37,9 @@ Game::Game(){
     gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume);
     gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume);
 
+    // Set background
+    changeBackgroundPicture(enc -> get_item<int>("background"));
+
     // Start rain audio
     if (gameConstants.isRaining) gameRain.playAudio();
 
@@ -312,26 +315,39 @@ void Game::removeFireworks(int id){
 
 void Game::toggleBalloons(){
     gameConstants.isBalloon = !gameConstants.isBalloon;
+    enc -> add_data<int>("isBalloon", gameConstants.isBalloon ? 1 : 0);
+    enc -> updatefile();
 }
 
 void Game::toggleBirds(){
     gameConstants.isBirds = !gameConstants.isBirds;
+    enc -> add_data<int>("isBirds", gameConstants.isBirds ? 1 : 0);
+    enc -> updatefile();
 }
 
 void Game::toggleBlackhole(){
     gameConstants.isBlackhole = !gameConstants.isBlackhole;
+    enc -> add_data<int>("isBlackhole", gameConstants.isBlackhole ? 1 : 0);
+    enc -> updatefile();
 }
 
 void Game::toggleFireworks(){
     gameConstants.isFireworks = !gameConstants.isFireworks;
+    enc -> add_data<int>("isFireworks", gameConstants.isFireworks ? 1 : 0);
+    enc -> updatefile();
 }
 
 void Game::toggleLightning(){
     gameConstants.isLightning = !gameConstants.isLightning;
+    enc -> add_data<int>("isLightning", gameConstants.isLightning ? 1 : 0);
+    enc -> updatefile();
 }
 
 void Game::toggleRain(){
     gameConstants.isRaining = !gameConstants.isRaining;
+    enc -> add_data<int>("isRaining", gameConstants.isRaining ? 1 : 0);
+    enc -> updatefile();
+
     if (gameConstants.isRaining) gameRain.playAudio(); else gameRain.stopAudio();
 }
 
@@ -417,6 +433,9 @@ float Game::getFireworksVolume(){
 
 void Game::setMasterVolume(float volume){
     gameConstants.masterVolume = volume;
+    enc -> add_data<float>("masterVolume", volume);
+    enc -> updatefile();
+
     setRainVolume(gameConstants.rainVolume);
     setThunderVolume(gameConstants.thunderVolume);
     setBirdsVolume(gameConstants.birdsVolume);
@@ -426,38 +445,59 @@ void Game::setMasterVolume(float volume){
 
 void Game::setBackgroundVolume(float volume){
     gameConstants.backgroundVolume = volume;
+    enc -> add_data<float>("backgroundVolume", volume);
+    enc -> updatefile();
+
     gameBackground.changeBackgroundVolume(volume * gameConstants.masterVolume);
 }
 
 void Game::setRainVolume(float volume){
     gameConstants.rainVolume = volume;
+    enc -> add_data<float>("rainVolume", volume);
+    enc -> updatefile();
+
     gameRain.change_volume_rain(volume * gameConstants.masterVolume);
 }
 
 void Game::setThunderVolume(float volume){
     gameConstants.thunderVolume = volume;
+    enc -> add_data<float>("thunderVolume", volume);
+    enc -> updatefile();
+
     gameLightning.change_volume_lightning(volume * gameConstants.masterVolume);
 }
 
 void Game::setBirdsVolume(float volume){
     gameConstants.birdsVolume = volume;
+    enc -> add_data<float>("birdsVolume", volume);
+    enc -> updatefile();
+
     for (int i = 0; i < birds.size(); i++) 
         birds[i] -> change_volume_bird(volume * gameConstants.masterVolume);
 }
 
 void Game::setFireworksVolume(float volume){
     gameConstants.fireworksVolume = volume;
+    enc -> add_data<float>("fireworksVolume", volume);
+    enc -> updatefile();
+
     for (int i = 0; i < fireworks.size(); i++)
         fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume);
 }
 
 void Game::changeBackgroundPicture(int chosen){
     gameBackground.changeBackground(chosen);
+    enc -> add_data<int>("background", chosen);
+    enc -> updatefile();
 }
 
 void Game::setWindowSize(int width, int height){
     gameConstants.WINDOW_WIDTH = width;
     gameConstants.WINDOW_HEIGHT = height;
+
+    enc -> add_data<int>("WINDOW_WIDTH", width);
+    enc -> add_data<int>("WINDOW_HEIGHT", height);
+    enc -> updatefile();
 
     // Update all classes
     gameBackground.setSize(width, height);

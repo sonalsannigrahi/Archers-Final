@@ -1,8 +1,11 @@
 CXX = g++
 Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
-Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o
+Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o Encryption.o
 
-BackgroundConstants.o: Background/BackgroundConstants.cpp
+Encryption.o: Encryption/Encryption.cpp
+	$(CXX) -c Encryption/Encryption.cpp
+
+BackgroundConstants.o: Background/BackgroundConstants.cpp Encryption.o
 	$(CXX) -c Background/BackgroundConstants.cpp
 
 Background.o: Background/Background.cpp Background/Background.hpp BackgroundConstants.o

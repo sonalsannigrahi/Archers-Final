@@ -29,8 +29,11 @@
 
 class Game {
     private:
+        // Encryption
+        Encrypt* enc = new Encrypt();
+
         // Add constants to the class
-        GameConstants gameConstants = GameConstants();
+        GameConstants gameConstants = GameConstants(enc);
 
         // All other classes
         // ...
