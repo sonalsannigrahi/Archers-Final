@@ -2,30 +2,41 @@
 #include <ctime>
 #include <iostream>
 #include <vector>
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <math.h>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "ArrowConstants.cpp"
+#include "../Text/text.hpp"
+
+class Player;
+class Spear;
+class Opponent;
 
 class Arrow{
 private:
     ArrowConstants arrowConstants = ArrowConstants();
     sf::RenderWindow* window;
-    sf::Music music;
+    sf::Sprite* arrowSprite;
+    
+    Player* player;
+    std::vector<Opponent*>* opponent;
+    std::vector<Spear*>* spear;
+    sf::RectangleShape hitbox;
+    bool isHitboxDrawn = true;
     
     int windowWidth, windowHeight;
     bool alive = true;
-    float posX, posY;
+    Texts* texts;
+    float posX, posY, vX, vY;
     float angle;
 
 public:
     
-    Birds();
-    
+    Arrow();
+    Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, Texts* texts);
+
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
-    void change_volume_bird(float volume);
 };
