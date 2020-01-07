@@ -112,20 +112,28 @@ void Game::UpdateFrame(){
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
 
+    // Spawn Rate Decay - Increase difficulty
+    gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
+    gameConstants.staticOpponentRate = max(0.1, gameConstants.staticOpponentRate - gameConstants.staticOpponentRateDecay * time);
+    gameConstants.spearRate = max(0.1, gameConstants.spearRate - gameConstants.spearRateDecay * time);
+
+
     // Creating birds
-    if (((float) rand() / RAND_MAX) * gameConstants.birdRate < time && gameConstants.isBirds) 
+    if ((((double) rand() / RAND_MAX) * gameConstants.birdRate < time) && gameConstants.isBirds) {
+        //std::cout << rand() << ' ' << RAND_MAX << ' ' << ((double) rand() / RAND_MAX) * gameConstants.birdRate << ' ' << time << ' ' << (((double) rand() / RAND_MAX) * gameConstants.birdRate < time) << '\n';
         createBird();
+    }
 
     // Creating balloons
-    if (((float) rand() / RAND_MAX) * gameConstants.balloonRate < time && gameConstants.isBalloon)
+    if ((((double) rand() / RAND_MAX) * gameConstants.balloonRate < time) && gameConstants.isBalloon)
         createBalloon();
 
     // Creating Fireworks
-    if (((float) rand() / RAND_MAX) * gameConstants.fireworkRate < time && gameConstants.isFireworks) 
+    if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks) 
         createFireworks();
     
     //Creating Opponent
-    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
+    if ((((double) rand() / RAND_MAX) * gameConstants.opponentRate < time) && gameConstants.isOpponent) 
         createOpponent();
 
     //std::cout << rand() << " " << RAND_MAX << std::endl;
@@ -208,7 +216,7 @@ void Game::UpdateFrame(){
     
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
-    if (!isGamePaused) std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << std::endl;
+    if (!isGamePaused) std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << '\r';
 
     // CIRCLE TEST
 
@@ -243,11 +251,21 @@ void Game::UpdateFrame(){
 }
 
 void Game::GameOver(){
+    // Update best score
+    enc -> add_data<int>("BestScore", max(enc -> get_item<int>("BestScore"), score));
+    enc -> updatefile();
+    // Paused Game
     pauseGame();
     endgame.updateFrame(0);
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         unpauseGame();
+        // Reset score and player's health
         player -> resetHealth();
+        score = 0;
+        // Reset spawn rate
+        gameConstants.opponentRate = gameConstants.opponentRateOrigin;
+        gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
+        gameConstants.spearRate = gameConstants.spearRateOrigin;
     }
 }
 
@@ -260,6 +278,9 @@ void Game::createOpponent(){
 
 void Game::removeOpponent(int id){
     if (opponent.size() > id){
+        // Add 1 point if the opponent was killed by player
+        if (opponent[id] -> getHealth() == 0) score++;
+        
         delete opponent[id];
         opponent[id] = opponent[opponent.size() - 1];
         opponent.pop_back();

@@ -68,15 +68,15 @@ void Texts::setposition(float x, float y){
 void Texts::updateFrame(double time) {
     counter += time;
     if (bruh==1){
-        Titlesprite.setPosition( 250, windowHeight-550);
+        Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
         window -> draw(Titlesprite);
     }
 
     if (textconstants.isStartbutton){
         window -> draw(startbutton);
-        startbutton.setPosition(470,windowHeight-340);
-        Startsprite.setPosition( 465, windowHeight-345);
+        startbutton.setPosition((float) 470 / 900 * windowWidth, (float) windowHeight - (float) 340 / 600 * windowHeight);
+        Startsprite.setPosition((float) 465 / 900 * windowWidth, (float) windowHeight - (float) 345 / 600 * windowHeight);
         Startsprite.setScale(textconstants.xStartscale, textconstants.yStartscale);
         window -> draw(Startsprite);
     }
@@ -150,7 +150,7 @@ void Texts::updateFrame(double time) {
     if (textconstants.condition0)
     {
         setstring(textconstants.txt0);
-        setposition(500,windowHeight-200);
+        setposition((float) 500 / 900 * windowWidth, (float) windowHeight - (float) 200 / 600 * windowHeight);
         textconstants.condition0 = false;
         counter = 0;
     }
@@ -161,7 +161,7 @@ void Texts::updateFrame(double time) {
     if (textconstants.condition1)
     {
         setstring(textconstants.txt1);
-        setposition(75,windowHeight-300);
+        setposition((float) 75 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
         textconstants.condition1 = false;
     }
 
@@ -174,10 +174,10 @@ void Texts::updateFrame(double time) {
     if (textconstants.condition2)
     {
         setstring(textconstants.txt2);
-        setposition(200,windowHeight-450);
+        setposition((float) 200 / 900 * windowWidth, (float) windowHeight - (float) 450 / 600 * windowHeight);
 
-        int xbox = rand() % 300 + 300;
-        int ybox = rand() % 200 + windowHeight-300;
+        int xbox = rand() % (windowWidth / 3) + (windowWidth / 3);
+        int ybox = rand() % (windowHeight / 3) + windowHeight - (windowHeight / 2);
         
         box.setPosition(xbox,ybox);
         box.setOutlineThickness(3);
@@ -194,7 +194,7 @@ void Texts::updateFrame(double time) {
     if (textconstants.hits == 5)
     {
         setstring(textconstants.txt4);
-        setposition(300,windowHeight-350);
+        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         text.setColor(sf::Color::Red);
         textconstants.is_box = false;
     }
@@ -208,14 +208,14 @@ void Texts::updateFrame(double time) {
 
     // if (textconstants.condition8){
     //     setstring(textconstants.txt8);
-    //     setposition(100,windowHeight-300);
+    //     setposition((float) 100 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
     //     textconstants.condition8 = false;
 
     // }
 
     // if (textconstants.condition4){
     //     setstring(textconstants.txt4);
-    //     setposition(500,windowHeight-300);
+    //     setposition((float) 500 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
     //     textconstants.condition4 = false;
 
     // }

@@ -25,7 +25,10 @@ int main(){
         float birdsVolume = 100.0;
         float fireworksVolume = 100.0;
         float backgroundVolume = 100.0;
+    // BestScore
+        int BestScore = 0;
 
+    enc.add_data<int>("BestScore", BestScore);
     enc.add_data<int>("background",background);
     enc.add_data<int>("WINDOW_HEIGHT",WINDOW_HEIGHT);
     enc.add_data<int>("WINDOW_WIDTH",WINDOW_WIDTH);
@@ -43,6 +46,7 @@ int main(){
     enc.add_data<float>("backgroundVolume",backgroundVolume);
     enc.updatefile();
 
+    cout<<"BestScore = "<<enc.get_item<int>("BestScore")<<'\n';
     cout<<"background = "<<enc.get_item<int>("background")<<'\n';
     cout<<"WINDOW_HEIGHT = "<<enc.get_item<int>("WINDOW_HEIGHT")<<'\n';
     cout<<"WINDOW_WIDTH = "<<enc.get_item<int>("WINDOW_WIDTH")<<'\n';

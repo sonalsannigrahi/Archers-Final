@@ -21,7 +21,7 @@ private:
     std::vector<Opponent*>* opponent;
 
     sf::RectangleShape hitbox;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
     
     int windowWidth, windowHeight;
     bool alive = true;

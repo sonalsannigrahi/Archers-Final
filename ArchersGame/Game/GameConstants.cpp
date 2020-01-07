@@ -8,9 +8,9 @@ class GameConstants{
         int WINDOW_HEIGHT = 600;
         int WINDOW_WIDTH = 900;
     // Neutral spawning rate
-        float birdRate = 2.5;
-        float balloonRate = 5.0;
-        float fireworkRate = 0.5;
+        float birdRate = 12.5;
+        float balloonRate = 15.0;
+        float fireworkRate = 1.0;
     // Game setting
         bool isRunning = false;
         bool isRaining = false;
@@ -29,9 +29,15 @@ class GameConstants{
         float fireworksVolume = 100.0;
         float backgroundVolume = 100.0;
     // Opponent spawn rate
-        float opponentRate = 1.0;
+        float opponentRate = 10.0;
+        float opponentRateOrigin = 10.0;
+        float opponentRateDecay = 0.01;
         float staticOpponentRate = 25.0;
+        float staticOpponentRateOrigin = 25.0;
+        float staticOpponentRateDecay = 0.02;
         float spearRate = 60.0;
+        float spearRateOrigin = 60.0;
+        float spearRateDecay = 0.03;
 
     GameConstants(Encrypt* enc){
         WINDOW_HEIGHT = enc -> get_item<int>("WINDOW_HEIGHT");

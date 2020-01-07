@@ -63,6 +63,7 @@ class Game {
         // sf::CircleShape* circle;
 
         bool isGamePaused = false;
+        int score = 0;
 
         // Spawning opponents
         void createOpponent();
