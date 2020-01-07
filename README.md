@@ -1,6 +1,6 @@
 # Character Specifications 
 
-If trying to run, download the ArchersGame folder from UI/UX-Tarcisio-Hoang Anh branch and then replace Character, Arrow, Opponent, Game folders with the ones from here. Couldn't merge.  
+If trying to run, download the ArchersGame folder from UI/UX-Tarcisio-Hoang Anh branch and then replace Character, Arrow, Opponent, Game folders with the ones from here.
 
 ## Players 
 
