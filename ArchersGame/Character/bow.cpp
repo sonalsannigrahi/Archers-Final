@@ -86,7 +86,7 @@ void Player::updateFrame(double time){
 
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-        if (angle < 0){
+        if (angle < 0 && angle>-55){
             spriteh -> setRotation(angle);
             lastAngle = angle;
             //arrow -> setRotation(angle);
