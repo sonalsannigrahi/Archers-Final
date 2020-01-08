@@ -109,8 +109,8 @@ void Texts::updateFrame(double time) {
         a = mousePosition.x; 
         b = mousePosition.y; 
         
-        std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
-        std::cout<< bruh << '('<<play.getPosition().x<< ','<<play.getPosition().y <<')'<<std::endl;
+        //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        //std::cout<< bruh << '('<<play.getPosition().x<< ','<<play.getPosition().y <<')'<<std::endl;
         if (a >=windowWidth/2-30 && a<=windowWidth/2+30 && b>=5*windowHeight/16 + 7 && b<=5*windowHeight/16+28){
             play.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
