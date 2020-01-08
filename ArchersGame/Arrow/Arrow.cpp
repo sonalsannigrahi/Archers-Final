@@ -75,8 +75,8 @@ void Arrow::updateFrame(double time){
         if (angle <= 180) headY = posY + arrowSprite -> getGlobalBounds().height; else headY = posY - arrowSprite -> getGlobalBounds().height;
 
         // Draw hitbox
+        hitbox.setPosition(headX, headY);
         if (isHitboxDrawn){
-            hitbox.setPosition(headX, headY);
             window -> draw(hitbox);
         }
 
@@ -87,6 +87,7 @@ void Arrow::updateFrame(double time){
         }
         if (alive && player -> shoot(headX, headY)) alive = false;
         if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
+        if (alive && texts ->box_hit(headX,headY)) alive = false;
     }
      else {
         alive = false;

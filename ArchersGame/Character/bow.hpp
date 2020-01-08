@@ -20,12 +20,13 @@ private:
     std::vector<Arrow*> arrows;
 
     sf::RectangleShape hitboxHead, hitboxBody;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
 
     int winWidth, winHeight;
     double timer;
     int counter = 0;
     float lastAngle;
+    double lastPower = 0;
 
     float maxHealth = 100.f;
     float health;

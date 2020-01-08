@@ -24,12 +24,16 @@
 #include "../Opponent/StaticOpponent.hpp"
 #include "../Arrow/Arrow.hpp"
 #include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
 
 
 class Game {
     private:
+        // Encryption
+        Encrypt* enc = new Encrypt();
+
         // Add constants to the class
-        GameConstants gameConstants = GameConstants();
+        GameConstants gameConstants = GameConstants(enc);
 
         // All other classes
         // ...
@@ -59,6 +63,7 @@ class Game {
         // sf::CircleShape* circle;
 
         bool isGamePaused = false;
+        int score = 0;
 
         // Spawning opponents
         void createOpponent();

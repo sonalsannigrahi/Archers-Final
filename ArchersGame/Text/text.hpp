@@ -20,16 +20,22 @@ class Texts{
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
     sf::Sprite Titlesprite;
+    sf::RectangleShape box;
+
+    sf::SoundBuffer soundBuffer;
+    sf::Sound sound;
 
     public:
     void loadgame();
     int bruh;
     Texts();
     bool loadgame(float x, float y);
+    bool box_hit(float x,float y);
     void setposition(float x, float y);
     void setsize(int px);
     void setWindow(sf::RenderWindow* gameWindow);
     void setWindowSize(int width, int height);
     void updateFrame(double time);
     void setstring(std::string txt);
+    void put_text_button(sf::RectangleShape button);
 };

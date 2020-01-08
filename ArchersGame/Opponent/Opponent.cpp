@@ -76,9 +76,9 @@ void Opponent::updateFrame(double time) {
         // window -> draw(*defeat); // can be removed, defeat screen
     } else {
         // Draw hitbox
+        hitboxHead.setPosition(posX + 12, posY);
+        hitboxBody.setPosition(posX + 12, posY);
         if (isHitboxDrawn){
-            hitboxHead.setPosition(posX + 12, posY);
-            hitboxBody.setPosition(posX + 12, posY);
             window -> draw(hitboxBody);
             window -> draw(hitboxHead);
         }
@@ -103,4 +103,8 @@ bool Opponent::shoot(float x, float y){
 
 bool Opponent::isAlive(){
     return alive;
+}
+
+float Opponent::getHealth(){
+    return health;
 }
