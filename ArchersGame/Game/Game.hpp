@@ -45,9 +45,10 @@ class Game {
         Setting gameSetting = Setting();
         std::vector<Opponent*> opponent;
         std::vector<Spear*> spear;  
-        Player* player = new Player(&opponent, &spear, &text);
+        std::vector<StaticOpponent*> staticOpponent; 
+        Player* player = new Player(&opponent, &spear, &staticOpponent, &text);
                            // Not implemented
-        // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
+          // Not implemented
         //Arrow arrow = Arrow(); // Test arrow
         EndGame endgame = EndGame();
 
@@ -66,8 +67,8 @@ class Game {
         void removeOpponent(int id);
         void createSpear();  // Not implemented
         void removeSpear(int id); // Not implemented
-        // void createStaticOpponent(); // Not implemented
-        // void removeStaticOpponent(int id); // Not implemented
+        void createStaticOpponent(); // Not implemented
+        void removeStaticOpponent(int id); // Not implemented
 
     public:
     
