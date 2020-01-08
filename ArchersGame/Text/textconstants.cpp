@@ -6,7 +6,7 @@ class TextConstants{
     std::string filename = "Text/asset/font.TTF";
     std::string Startfilename = "Text/asset/play.png";
     std::string titlefilename = "Text/asset/index.png";
-    std::string boxfilename = "Text/asset/wood.jpeg";
+    std::string boxfilename = "Text/asset/3.png";
     std::string box_sound = "Text/asset/wood_hit.ogg";
     int size = 30;
 

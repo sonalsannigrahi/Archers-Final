@@ -24,7 +24,7 @@ Texts::Texts(){
     //setting size
     setsize(textconstants.size);
     startbutton.setSize(sf::Vector2f(60, 60));
-    box.setSize(sf::Vector2f(30, 120));
+    box.setSize(sf::Vector2f(90, 90));
 
     //setting color
     startbutton.setFillColor(sf::Color::Cyan);
@@ -180,7 +180,7 @@ void Texts::updateFrame(double time) {
         int ybox = rand() % 200 + windowHeight-300;
         
         box.setPosition(xbox,ybox);
-        box.setOutlineThickness(3);
+        box.setOutlineThickness(0);
         box.setOutlineColor(sf::Color::Black);
         textconstants.is_box = true;
         textconstants.condition2 = false;
