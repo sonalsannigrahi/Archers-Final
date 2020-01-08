@@ -29,6 +29,8 @@
 
 class Game {
     private:
+        //Username
+        sf::String UserName;
         // Encryption
         Encrypt* enc = new Encrypt();
 

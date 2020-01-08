@@ -6,7 +6,8 @@ Game::Game(){
     // Create game window
     sf::VideoMode videoMode = sf::VideoMode(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     window = new sf::RenderWindow(videoMode, "Archers");
-
+    //Username
+    
     // Send window to other classes
     gameBackground.setWindow(window);
     gameWater.setWindow(window);
@@ -80,8 +81,27 @@ void Game::StartGame(){
         {
             if (event.type == sf::Event::Closed)
                 window -> close();
+            else if (text.bruh==-1 && event.type == sf::Event::TextEntered){
+                if(event.text.unicode >=32 &&  event.text.unicode <= 126){
+                    UserName += (char)event.text.unicode;
+                }
+                else if (event.text.unicode ==8 && UserName.getSize()>0){
+                    UserName.erase(UserName.getSize()-1,UserName.getSize());
+                }
+                
+            }
+
             else if (event.type == sf::Event::KeyPressed){
-                if (event.key.code == sf::Keyboard::Escape){
+                if(text.bruh==-1 && event.key.code == sf::Keyboard::Return ){
+                    if(UserName.getSize() == 0){
+                        UserName = "New Player";
+                        text.bruh = 1;
+                    }
+                    else{
+                        text.bruh = 1;
+                    }
+                }
+                else if (event.key.code == sf::Keyboard::Escape){
                     // TEST KEY PRESSED
                     // std::cout << "The escape key is pressed" << std::endl;
                     // std::cout << "control: " << event.key.control << std::endl;
@@ -92,6 +112,7 @@ void Game::StartGame(){
                     if (isGamePaused) unpauseGame(); else pauseGame();
                     std::cout << "Game paused!" << std::endl;
                 }
+            
             }
         }
 
@@ -103,6 +124,8 @@ void Game::StartGame(){
 
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
+    
+    
 
     // Calculate time has passed since the last UpdateFrame
     if(!gameConstants.isRunning){
@@ -111,7 +134,15 @@ void Game::UpdateFrame(){
     double time = 0;
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
-
+    cout<<text.bruh<<endl;
+    if (text.bruh==-1){
+        text.updateFrame(time);
+        sf::Text name = sf::Text( UserName, text.font, 20);
+        int lettersnumber = UserName.getSize();
+        name.setPosition(gameConstants.WINDOW_WIDTH/2- lettersnumber*(7,5),5*gameConstants.WINDOW_HEIGHT/16 + 60);
+        window->draw(name);
+    }
+    else {
     // Spawn Rate Decay - Increase difficulty
     gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
     gameConstants.staticOpponentRate = max(0.1, gameConstants.staticOpponentRate - gameConstants.staticOpponentRateDecay * time);
@@ -247,7 +278,8 @@ void Game::UpdateFrame(){
     if (text.bruh == 0) {
         gameConstants.isOpponent = true;
         gameConstants.isRunning = true;
-    }    
+    }
+    }  
 }
 
 void Game::GameOver(){
