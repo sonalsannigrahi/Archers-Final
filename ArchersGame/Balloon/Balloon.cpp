@@ -18,12 +18,13 @@ Balloon::Balloon() {
     sf::Texture* texture = new sf::Texture();
     texture -> loadFromFile(balloonconstants.filename);
     sprite = sf::Sprite(*texture);
+    sprite.setPosition(-1.0, -1.0);
 }
 
 void Balloon::setSize(int width, int height) {
     windowWidth = width;
     windowHeight = height;
-    sprite.setPosition( rand()%windowWidth , 0.f);
+    if (sprite.getPosition().x == -1.0) sprite.setPosition( rand()%windowWidth , 0.f);
     sprite.setScale(balloonconstants.xscale, balloonconstants.yscale);
 }
 

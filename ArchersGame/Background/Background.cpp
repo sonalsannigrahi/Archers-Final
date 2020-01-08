@@ -29,8 +29,12 @@ void Background::setWindow(sf::RenderWindow* gameWindow){
 void Background::setSize(int width, int height){
     backgroundWidth = width;
     backgroundHeight = height;
+    // std::cout << width << ' ' << height << '\n';
+    // std::cout << window -> getSize().x << ' ' << window -> getSize().y << '\n';
+    // std::cout << backgroundSprites[0].getGlobalBounds().width << ' ' << backgroundSprites[0].getGlobalBounds().height << '\n';
     for (int i = 0; i < backgroundConstants.filename_length; i++)
-        backgroundSprites[i].setScale((float) width / backgroundSprites[i].getGlobalBounds().width, (float) height / backgroundSprites[i].getGlobalBounds().height);
+        backgroundSprites[i].setScale((float) width / backgroundSprites[i].getGlobalBounds().width * backgroundSprites[i].getScale().x, 
+                                        (float) height / backgroundSprites[i].getGlobalBounds().height * backgroundSprites[i].getScale().y);
 }
 
 void Background::changeBackground(int chosen) {

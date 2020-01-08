@@ -112,6 +112,12 @@ void Game::UpdateFrame(){
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
 
+    // Check if the screen resolution has changed
+    sf::Vector2u resolution = window -> getSize();
+    //std::cout << resolution.x << ' ' << resolution.y << '\n';
+    if (window -> getSize().x != gameConstants.WINDOW_WIDTH || window -> getSize().y != gameConstants.WINDOW_HEIGHT)
+        setWindowSize(resolution.x, resolution.y);
+
     // Spawn Rate Decay - Increase difficulty
     gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
     gameConstants.staticOpponentRate = max(0.1, gameConstants.staticOpponentRate - gameConstants.staticOpponentRateDecay * time);
@@ -216,6 +222,7 @@ void Game::UpdateFrame(){
     
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
+    //std::cout << window -> getView().getSize().x << ' ' << window -> getView().getSize().y << '\n';
     if (!isGamePaused) std::cout << "Game is running at " << gameFPS.GetFPS() << " fps" << '\r';
 
     // CIRCLE TEST
@@ -513,6 +520,9 @@ void Game::changeBackgroundPicture(int chosen){
 }
 
 void Game::setWindowSize(int width, int height){
+    sf::View* view = new sf::View(sf::FloatRect(window -> getView().getViewport().left, window -> getView().getViewport().top, width, height));
+    window -> setView(*view);
+
     gameConstants.WINDOW_WIDTH = width;
     gameConstants.WINDOW_HEIGHT = height;
 
@@ -534,8 +544,11 @@ void Game::setWindowSize(int width, int height){
 
     gameSetting.setSize(width, height);
 
+    player -> setSize(width, height);
     for (int i = 0; i < opponent.size(); i++)
         opponent[i] -> setSize(width, height);
+
+    text.setWindowSize(width, height);
     
     // Add Spear and StaticOpponent
 }

@@ -29,7 +29,8 @@ void Rain::setSize(int width, int height){
     rainWidth = width;
     rainHeight = height;
     for (int i = 0; i < rainConstants.filename_length; i++)
-        rainSprite[i].setScale((float) width / rainSprite[i].getGlobalBounds().width, (float) height / rainSprite[i].getGlobalBounds().height);
+        rainSprite[i].setScale((float) width / rainSprite[i].getGlobalBounds().width * rainSprite[i].getScale().x, 
+                                (float) height / rainSprite[i].getGlobalBounds().height * rainSprite[i].getScale().y);
 }
 
 void Rain::updateFrame(double time) {
