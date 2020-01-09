@@ -148,7 +148,13 @@ void Game::UpdateFrame(){
     gameConstants.staticOpponentRate = max(0.1, gameConstants.staticOpponentRate - gameConstants.staticOpponentRateDecay * time);
     gameConstants.spearRate = max(0.1, gameConstants.spearRate - gameConstants.spearRateDecay * time);
 
-
+    std::string score_str = std::to_string(score);
+    scoreview.setString(score_str);
+    scoreview.setCharacterSize(30);
+    scoreview.setPosition(WINDOW_WIDTH,WINDOW_HEIGHT);
+    window ->draw(scoreview);
+        
+        
     // Creating birds
     if ((((double) rand() / RAND_MAX) * gameConstants.birdRate < time) && gameConstants.isBirds) {
         //std::cout << rand() << ' ' << RAND_MAX << ' ' << ((double) rand() / RAND_MAX) * gameConstants.birdRate << ' ' << time << ' ' << (((double) rand() / RAND_MAX) * gameConstants.birdRate < time) << '\n';
