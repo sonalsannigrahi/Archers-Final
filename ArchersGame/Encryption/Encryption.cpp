@@ -190,7 +190,7 @@ float Encrypt::encrypt(float number){
 }
 float Encrypt::decrypt(float number){
     if (number==(float)(int)(number)){
-        return (float)(this->encrypt((int)(number)));
+        return (float)(this->decrypt((int)(number)));
     }
     float nnumber = number;
     int k=1;
@@ -216,7 +216,7 @@ double Encrypt::encrypt(double number){
 }
 double Encrypt::decrypt(double number){
     if (number==(double)(long long)(number)){
-        return (double)(this->encrypt((long long)(number)));
+        return (double)(this->decrypt((long long)(number)));
     }
     double nnumber = number;
     long long k=1;

@@ -13,9 +13,11 @@ private:
     SettingConstants settingConstants = SettingConstants();
     sf::RenderWindow* window;
     sf::Sprite* settingButton;
+    sf::RectangleShape* settingScreen = new sf::RectangleShape();
     Game* game;
     int windowWidth;
     int windowHeight;
+    bool isMouseDown = false;
 public:
     
     Setting();

@@ -5,46 +5,63 @@
 using namespace std;
 int main(){
     Encrypt enc;
-/*
-    enc.add_data<int>("damage",100);
-    enc.add_data<float>("size",100.5);
-    enc.add_data<long long>("remaining_health",1031314567899);
-*/
-    cout<<"damage = "<<enc.get_item<int>("damage")<<'\n';
-    cout<<"size = "<<enc.get_item<float>("size")<<"\n";
-    cout<<"remaining_health = "<<enc.get_item<long long>("remaining_health")<<'\n';
-    cout<<"gay = "<<enc.get_item<int>("gay")<<'\n';
-    enc.add_data<int>("gay",104);
+
+    // Background
+        int background = 7;
+    // Window setting
+        int WINDOW_HEIGHT = 600;
+        int WINDOW_WIDTH = 900;
+    // Game setting
+        int isRaining = 0;
+        int isLightning = 0;
+        int isBirds = 1;
+        int isBalloon = 0;
+        int isFireworks = 0;
+        int isBlackhole = 0;
+    // Volume
+        float masterVolume = 100.0;
+        float rainVolume = 100.0;
+        float thunderVolume = 100.0;
+        float birdsVolume = 100.0;
+        float fireworksVolume = 100.0;
+        float backgroundVolume = 100.0;
+    // BestScore
+        int BestScore = 0;
+
+    enc.add_data<int>("BestScore", BestScore);
+    enc.add_data<int>("background",background);
+    enc.add_data<int>("WINDOW_HEIGHT",WINDOW_HEIGHT);
+    enc.add_data<int>("WINDOW_WIDTH",WINDOW_WIDTH);
+    enc.add_data<int>("isRaining",isRaining);
+    enc.add_data<int>("isLightning",isLightning);
+    enc.add_data<int>("isBirds",isBirds);
+    enc.add_data<int>("isBalloon",isBalloon);
+    enc.add_data<int>("isFireworks",isFireworks);
+    enc.add_data<int>("isBlackhole",isBlackhole);
+    enc.add_data<float>("masterVolume",masterVolume);
+    enc.add_data<float>("rainVolume",rainVolume);
+    enc.add_data<float>("thunderVolume",thunderVolume);
+    enc.add_data<float>("birdsVolume",birdsVolume);
+    enc.add_data<float>("fireworksVolume",fireworksVolume);
+    enc.add_data<float>("backgroundVolume",backgroundVolume);
     enc.updatefile();
-/*
-    ostringstream line;
-    ifstream fin;
-    fin.open("Constants.txt", ios::in);
-    char my_character ;
-	while (!fin.eof() ) {
-        fin.get(my_character);
-        if (my_character!='\n'){
-            line << my_character;
-        }
-        if (my_character=='\n'){
-            cout<<line.str()<<'\n';
-            cout<<enc.decrypt(line.str())<<'\n';
-            line.str("");
-            line.clear();
 
-            //cout<<enc.decrypt(line);
-        }
+    cout<<"BestScore = "<<enc.get_item<int>("BestScore")<<'\n';
+    cout<<"background = "<<enc.get_item<int>("background")<<'\n';
+    cout<<"WINDOW_HEIGHT = "<<enc.get_item<int>("WINDOW_HEIGHT")<<'\n';
+    cout<<"WINDOW_WIDTH = "<<enc.get_item<int>("WINDOW_WIDTH")<<'\n';
+    cout<<"isRaining = "<<enc.get_item<int>("isRaining")<<'\n';
+    cout<<"isLightning = "<<enc.get_item<int>("isLightning")<<'\n';
+    cout<<"isBirds = "<<enc.get_item<int>("isBirds")<<'\n';
+    cout<<"isBalloon = "<<enc.get_item<int>("isBalloon")<<'\n';
+    cout<<"isFireworks = "<<enc.get_item<int>("isFireworks")<<'\n';
+    cout<<"isBlackhole = "<<enc.get_item<int>("isBlackhole")<<'\n';
+    cout<<"masterVolume = "<<enc.get_item<float>("masterVolume")<<"\n";
+    cout<<"rainVolume = "<<enc.get_item<float>("rainVolume")<<"\n";
+    cout<<"thunderVolume = "<<enc.get_item<float>("thunderVolume")<<"\n";
+    cout<<"birdsVolume = "<<enc.get_item<float>("birdsVolume")<<"\n";
+    cout<<"fireworksVolume = "<<enc.get_item<float>("fireworksVolume")<<"\n";    
+    cout<<"backgroundVolume = "<<enc.get_item<float>("backgroundVolume")<<"\n";
 
-	}
-
-	//cout<< enc.decrypt("UHutrqeUX(<aL$]MP :}");
-	enc.updatefile();
-	cout<<'\n';
-	istringstream buffer("5");
-	int temp;
-    buffer >> temp;
-    int y = 3 + temp;
-    cout<<y;
-    */
     return 0;
 }

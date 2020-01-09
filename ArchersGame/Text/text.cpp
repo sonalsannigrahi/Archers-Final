@@ -18,8 +18,10 @@ Texts::Texts(){
     //setting font
     text.setFont(font);
     play.setFont(font);
-    settings.setFont(font);
+    quit.setFont(font);
     tutorial.setFont(font);
+    ChooseUserName.setFont(font);
+        
 
     //setting size
     setsize(textconstants.size);
@@ -40,7 +42,7 @@ Texts::Texts(){
     sound.setBuffer(soundBuffer);
 
     //dummy variable
-    bruh = 1;
+    bruh = -1;
 }
 
 void Texts::setWindow(sf::RenderWindow* gameWindow){
@@ -66,17 +68,29 @@ void Texts::setposition(float x, float y){
 }
 
 void Texts::updateFrame(double time) {
+
     counter += time;
-    if (bruh==1){
-        Titlesprite.setPosition( 250, windowHeight-550);
+    if(bruh == -1){
+        Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
+        Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
+        window -> draw(Titlesprite);
+        ChooseUserName.setString("Choose an user name");
+        ChooseUserName.setCharacterSize(30);
+        ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);       
+        window->draw(ChooseUserName);
+    }
+    else{
+    if (bruh==1 ){
+        Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
         window -> draw(Titlesprite);
     }
+    
 
     if (textconstants.isStartbutton){
         window -> draw(startbutton);
-        startbutton.setPosition(470,windowHeight-340);
-        Startsprite.setPosition( 465, windowHeight-345);
+        startbutton.setPosition((float) 470 / 900 * windowWidth, (float) windowHeight - (float) 340 / 600 * windowHeight);
+        Startsprite.setPosition((float) 465 / 900 * windowWidth, (float) windowHeight - (float) 345 / 600 * windowHeight);
         Startsprite.setScale(textconstants.xStartscale, textconstants.yStartscale);
         window -> draw(Startsprite);
     }
@@ -97,15 +111,15 @@ void Texts::updateFrame(double time) {
         tutorial.setCharacterSize(30);
         tutorial.setPosition(windowWidth/2-60,5*windowHeight/16 + 30);
 
-        settings.setString("Settings");
-        settings.setCharacterSize(30);
-        settings.setPosition(windowWidth/2-60,5*windowHeight/16 + 60);
+        quit.setString("Quit");
+        quit.setCharacterSize(30);
+        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 60);
 
         textconstants.condition0 = false;
 
         window -> draw(play);
         window -> draw(tutorial);
-        window -> draw(settings);
+        window -> draw(quit);
         a = mousePosition.x; 
         b = mousePosition.y; 
         
@@ -132,15 +146,15 @@ void Texts::updateFrame(double time) {
         else{
             tutorial.setColor(sf::Color::White);
         }
-        if (a >=windowWidth/2-60 && a<=windowWidth/2+60 && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
-            settings.setColor(sf::Color::Blue);
+        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
+            quit.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 bruh = 3;
                 textconstants.conditionplay = false;
             }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
         }
         else{
-            settings.setColor(sf::Color::White);
+            quit.setColor(sf::Color::White);
         }
 
     }
@@ -150,22 +164,22 @@ void Texts::updateFrame(double time) {
     if (textconstants.condition0)
     {
         setstring(textconstants.txt0);
-        setposition(500,windowHeight-200);
+        setposition((float) 500 / 900 * windowWidth, (float) windowHeight - (float) 200 / 600 * windowHeight);
         textconstants.condition0 = false;
         counter = 0;
     }
-    if (counter > 5 && counter < 7 && !(textconstants.is_box))
+    if (counter > 5 && counter < 7 && !(textconstants.is_box) && !(textconstants.hits == 5))
     {
         textconstants.condition1 = true;
     }
     if (textconstants.condition1)
     {
         setstring(textconstants.txt1);
-        setposition(75,windowHeight-300);
+        setposition((float) 75 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
         textconstants.condition1 = false;
     }
 
-    if (counter > 10 && counter < 12 && !(textconstants.is_box))
+    if (counter > 10 && counter < 12 && !(textconstants.is_box)&& !(textconstants.hits == 5))
     {
         textconstants.condition2 = true;
     }
@@ -174,10 +188,10 @@ void Texts::updateFrame(double time) {
     if (textconstants.condition2)
     {
         setstring(textconstants.txt2);
-        setposition(200,windowHeight-450);
+        setposition((float) 200 / 900 * windowWidth, (float) windowHeight - (float) 450 / 600 * windowHeight);
 
-        int xbox = rand() % 300 + 300;
-        int ybox = rand() % 200 + windowHeight-300;
+        int xbox = rand() % (windowWidth / 3) + (windowWidth / 3);
+        int ybox = rand() % (windowHeight / 3) + windowHeight - (windowHeight / 2);
         
         box.setPosition(xbox,ybox);
         box.setOutlineThickness(0);
@@ -194,9 +208,16 @@ void Texts::updateFrame(double time) {
     if (textconstants.hits == 5)
     {
         setstring(textconstants.txt4);
-        setposition(300,windowHeight-350);
+        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         text.setColor(sf::Color::Red);
+        if(textconstants.is_box){
+            counter = 0;
+        }
         textconstants.is_box = false;
+    }
+    if(counter>3 && textconstants.hits == 5){
+        bruh =1;
+        textconstants.conditionplay = true;
     }
 
 
@@ -208,14 +229,14 @@ void Texts::updateFrame(double time) {
 
     // if (textconstants.condition8){
     //     setstring(textconstants.txt8);
-    //     setposition(100,windowHeight-300);
+    //     setposition((float) 100 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
     //     textconstants.condition8 = false;
 
     // }
 
     // if (textconstants.condition4){
     //     setstring(textconstants.txt4);
-    //     setposition(500,windowHeight-300);
+    //     setposition((float) 500 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
     //     textconstants.condition4 = false;
 
     // }
@@ -226,6 +247,7 @@ void Texts::updateFrame(double time) {
 
     window -> draw(text);
     
+    }
     }
 
     
@@ -253,4 +275,4 @@ bool Texts::loadgame(float x, float y){
             return true;
 }
 }
-//bruh
+//bruh is 0 in playing mode, 1 on startscreen, 2 on tutorial
