@@ -53,6 +53,7 @@ Game::~Game(){
 }
 
 void Game::StartGame(){
+    
     // CIRCLE TEST
 
     // Draw a circle
