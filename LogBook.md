@@ -138,5 +138,6 @@ Alice Aubert - This week I finalized the implementation of arrows as rectangle o
 Maëlys Solal - This week I implemented a static opponent and added it to the game class in order to test its implementation. I will now create new opponents, specifically, one that shoots arrows. I will also try to add the health bar to the game class and implement the functions to increase and decrease the health. 
 
 André Renom - I spent the early part of the week implementing flux-based air resistance for the rectangle physics class, and the latter part of the week coordinating with the character team with regards to the implementation of said class to the arrow drawable.
+
 Hoang Anh Ngo - This week, I finished the implementation of buttons. I will finish the start screen with Tarcisio next week.
 
