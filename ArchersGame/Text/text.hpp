@@ -27,7 +27,6 @@ class Texts{
 
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;
-    Game game = Game();
 
     public:
     sf::Font font;

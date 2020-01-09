@@ -90,7 +90,7 @@ void Texts::updateFrame(double time) {
     else{
         
     if (bruh == 0) {
-        std::string score_str = std::to_string(game.score);
+        std::string score_str = std::to_string(42);
         ScoreView.setString(score_str);
         ScoreView.setCharacterSize(20);
         ScoreView.setPosition(windowWidth-100, windowHeight-10);
