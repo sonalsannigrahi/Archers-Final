@@ -12,12 +12,16 @@ Texts::Texts(){
     texture -> loadFromFile(textconstants.Startfilename);
     Startsprite = sf::Sprite(*texture);
      sf::Texture* texturetitle = new sf::Texture();
+     sf::Texture* texturetitle1 = new sf::Texture();
     texturetitle -> loadFromFile(textconstants.titlefilename);
+    texturetitle1 -> loadFromFile(textconstants.titlefilename1);
     Titlesprite = sf::Sprite(*texturetitle);
+    Titlesprite1 = sf::Sprite(*texturetitle1);
 
     //setting font
     text.setFont(font);
     play.setFont(font);
+    retro.setFont(font);
     quit.setFont(font);
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
@@ -71,9 +75,9 @@ void Texts::updateFrame(double time) {
 
     counter += time;
     if(bruh == -1){
-        Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
-        Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
-        window -> draw(Titlesprite);
+        Titlesprite1.setPosition( (float) 450 / 900 * windowWidth - Titlesprite1.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
+        Titlesprite1.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
+        window -> draw(Titlesprite1);
         ChooseUserName.setString("Choose an user name");
         ChooseUserName.setCharacterSize(30);
         ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);       
@@ -107,19 +111,25 @@ void Texts::updateFrame(double time) {
         play.setCharacterSize(30);
         play.setPosition(windowWidth/2-30,5*windowHeight/16);
 
+        retro.setString("Retro Mode");
+        retro.setCharacterSize(30);
+        retro.setPosition(windowWidth/2-75,5*windowHeight/16+30);
+
         tutorial.setString("Tutorial");
         tutorial.setCharacterSize(30);
-        tutorial.setPosition(windowWidth/2-60,5*windowHeight/16 + 30);
+        tutorial.setPosition(windowWidth/2-60,5*windowHeight/16 + 60);
 
         quit.setString("Quit");
         quit.setCharacterSize(30);
-        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 60);
+        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 90);
 
         textconstants.condition0 = false;
 
         window -> draw(play);
+        window -> draw(retro);
         window -> draw(tutorial);
         window -> draw(quit);
+        
         a = mousePosition.x; 
         b = mousePosition.y; 
         
@@ -135,7 +145,17 @@ void Texts::updateFrame(double time) {
         else{
             play.setColor(sf::Color::White);
         }
-        if (a >=windowWidth/2-60 && a<=windowWidth/2+60 && b>=5*windowHeight/16 + 37 && b<=5*windowHeight/16+58){
+        if (a >=windowWidth/2-75 && a<=windowWidth/2+75 && b>=5*windowHeight/16 + 37 && b<=5*windowHeight/16+58){
+            retro.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                bruh = 0;
+                //textconstants.conditionplay = false;
+            } //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            retro.setColor(sf::Color::White);
+        }
+        if (a >=windowWidth/2-60 && a<=windowWidth/2+60 && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
             tutorial.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 bruh = 2;
@@ -146,7 +166,7 @@ void Texts::updateFrame(double time) {
         else{
             tutorial.setColor(sf::Color::White);
         }
-        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
+        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 97 && b<=5*windowHeight/16+118){
             quit.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 bruh = 3;

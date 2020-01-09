@@ -15,11 +15,13 @@ class Texts{
     sf::Text play;
     sf::Text tutorial;
     sf::Text quit;
+    sf::Text retro;
     sf::Text ChooseUserName;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
     sf::Sprite Titlesprite;
+    sf::Sprite Titlesprite1;
     sf::RectangleShape box;
 
     sf::SoundBuffer soundBuffer;
