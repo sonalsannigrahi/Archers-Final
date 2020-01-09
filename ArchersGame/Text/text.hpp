@@ -5,7 +5,6 @@
 #include <SFML/Audio.hpp>
 #include "textconstants.cpp"
 #include <stdlib.h>
-#include "../Game/Game.hpp"
 
 class Texts{
     private:
@@ -17,8 +16,6 @@ class Texts{
     sf::Text tutorial;
     sf::Text quit;
     sf::Text ChooseUserName;
-    sf::Text EnterPress;
-    sf::Text scoreview;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
@@ -27,7 +24,6 @@ class Texts{
 
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;
-    Game game = Game();
 
     public:
     sf::Font font;

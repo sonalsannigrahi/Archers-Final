@@ -21,8 +21,6 @@ Texts::Texts(){
     quit.setFont(font);
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
-    EnterPress.setFont(font);
-    scoreview.setFont(font);
         
 
     //setting size
@@ -76,17 +74,10 @@ void Texts::updateFrame(double time) {
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
         window -> draw(Titlesprite);
-        ChooseUserName.setString("Choose your username");
+        ChooseUserName.setString("Choose an user name");
         ChooseUserName.setCharacterSize(30);
-        ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);       
+        ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);
         window->draw(ChooseUserName);
-        EnterPress.setString("Press Enter to Play");
-        EnterPress.setCharacterSize(25);
-        EnterPress.setPosition(windowWidth/2-22*5,5*windowHeight/10);
-        if (counter > 5) {
-        window ->draw(EnterPress);
-        }
-        
     }
     else{
     if (bruh==1 ){
@@ -95,14 +86,7 @@ void Texts::updateFrame(double time) {
         window -> draw(Titlesprite);
     }
     
-    if (bruh ==0) {
-        std::string score_str = std::to_string(game.score);
-        scoreview.setString(score_str);
-        scoreview.setCharacterSize(30);
-        scoreview.setPosition(10,10);
-        window ->draw(scoreview);
-    }
-        
+
     if (textconstants.isStartbutton){
         window -> draw(startbutton);
         startbutton.setPosition((float) 470 / 900 * windowWidth, (float) windowHeight - (float) 340 / 600 * windowHeight);
@@ -136,8 +120,8 @@ void Texts::updateFrame(double time) {
         window -> draw(play);
         window -> draw(tutorial);
         window -> draw(quit);
-        a = mousePosition.x; 
-        b = mousePosition.y; 
+        a = mousePosition.x;
+        b = mousePosition.y;
         
         //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
         //std::cout<< bruh << '('<<play.getPosition().x<< ','<<play.getPosition().y <<')'<<std::endl;
@@ -268,7 +252,7 @@ void Texts::updateFrame(double time) {
 
     
     
-} 
+}
 bool Texts::box_hit(float x,float y){
 if ( textconstants.is_box && box.getPosition().x <= x && x <= box.getPosition().x + box.getSize().x &&
         box.getPosition().y <= y && y <= box.getPosition().y + box.getSize().y)

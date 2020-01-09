@@ -154,8 +154,8 @@ void Game::UpdateFrame(){
     gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
     gameConstants.staticOpponentRate = max(0.1, gameConstants.staticOpponentRate - gameConstants.staticOpponentRateDecay * time);
     gameConstants.spearRate = max(0.1, gameConstants.spearRate - gameConstants.spearRateDecay * time);
-    
-        
+
+
     // Creating birds
     if ((((double) rand() / RAND_MAX) * gameConstants.birdRate < time) && gameConstants.isBirds) {
         //std::cout << rand() << ' ' << RAND_MAX << ' ' << ((double) rand() / RAND_MAX) * gameConstants.birdRate << ' ' << time << ' ' << (((double) rand() / RAND_MAX) * gameConstants.birdRate < time) << '\n';
@@ -167,11 +167,11 @@ void Game::UpdateFrame(){
         createBalloon();
 
     // Creating Fireworks
-    if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks) 
+    if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks)
         createFireworks();
     
     //Creating Opponent
-    if ((((double) rand() / RAND_MAX) * gameConstants.opponentRate < time) && gameConstants.isOpponent) 
+    if ((((double) rand() / RAND_MAX) * gameConstants.opponentRate < time) && gameConstants.isOpponent)
         createOpponent();
 
     //std::cout << rand() << " " << RAND_MAX << std::endl;
@@ -533,7 +533,7 @@ void Game::setBirdsVolume(float volume){
     enc -> add_data<float>("birdsVolume", volume);
     enc -> updatefile();
 
-    for (int i = 0; i < birds.size(); i++) 
+    for (int i = 0; i < birds.size(); i++)
         birds[i] -> change_volume_bird(volume * gameConstants.masterVolume);
 }
 
@@ -569,7 +569,7 @@ void Game::setWindowSize(int width, int height){
     gameLightning.setSize(width, height);
     gameRain.setSize(width, height);
     gameWater.setSize(width, height);
-    for (int i = 0; i < birds.size(); i++) 
+    for (int i = 0; i < birds.size(); i++)
         birds[i] -> setSize(width, height);
     for (int i = 0; i < fireworks.size(); i++)
         fireworks[i] -> setSize(width, height);
@@ -593,7 +593,7 @@ void Game::pauseGame(){
         gameBackground.changeBackgroundVolume(0);
         gameRain.change_volume_rain(0);
         gameLightning.change_volume_lightning(0);
-        for (int i = 0; i < birds.size(); i++) 
+        for (int i = 0; i < birds.size(); i++)
             birds[i] -> change_volume_bird(0);
         for (int i = 0; i < fireworks.size(); i++)
             fireworks[i] -> change_volume_fireworks(0);
