@@ -21,6 +21,7 @@ Opponent::Opponent(Player* player){
                                 oppSprites[oppSprites.size() - 1].getGlobalBounds().height / sprite -> getGlobalBounds().height);
         oppSprites.push_back(*sprite);
     }
+    posX = -1.0;
 
     // Hitbox
     hitboxBody.setSize(sf::Vector2f(30, 120));
@@ -40,7 +41,7 @@ void Opponent::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
 
-    posX = width - float(width)/25; // set to opposite end of window
+    if (posX == -1.0) posX = width - float(width)/25; // set to opposite end of window
     posY = float(height)/1.8;
     comparison = float(width)/25;
     defeat -> setScale(0.8f, 0.8f);
