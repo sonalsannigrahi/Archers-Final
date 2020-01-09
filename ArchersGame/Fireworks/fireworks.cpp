@@ -19,7 +19,8 @@ Fireworks::Fireworks(){
     //{
     //    change_volume_fireworks(100);
     //}
-    
+    posX = -1.0;
+    posY = -1.0;
 }
 
 void Fireworks::setWindow(sf::RenderWindow* gameWindow){
@@ -29,8 +30,8 @@ void Fireworks::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
     //sets a random position within the window 
-    posX = rand() % windowWidth;
-    posY = (rand() % windowHeight) * fireworksconstants.skylimit;
+    if (posX == -1.0) posX = rand() % windowWidth;
+    if (posY == -1.0) posY = (rand() % windowHeight) * fireworksconstants.skylimit;
     for (int i = 0; i < fireworksconstants.filename_len; i++){
         fireSprites[i].setPosition(posX, posY);
         fireSprites[i].setScale(fireworksconstants.scalex, fireworksconstants.scaley);

@@ -4,6 +4,7 @@ class SettingConstants{
 public:
     std::string settingButtonImage = "Setting.png";
     float scale = 0.1;
+    std::string fontfile = "Setting/Asset/font.TTF";
 
     SettingConstants(){
 
