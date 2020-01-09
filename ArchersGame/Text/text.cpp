@@ -21,6 +21,8 @@ Texts::Texts(){
     quit.setFont(font);
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
+    EnterPress.setFont(font);
+    ScoreView.setFont(font);
         
 
     //setting size
@@ -78,8 +80,24 @@ void Texts::updateFrame(double time) {
         ChooseUserName.setCharacterSize(30);
         ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);
         window->draw(ChooseUserName);
+        EnterPress.setString("Press Enter to Play");
+        EnterPress.setCharacterSize(25);
+        EnterPress.setPosition(windowWidth/2-22*10,5*windowHeight/10);
+        if (counter > 5) {
+            window ->draw(EnterPress);
+        }
     }
     else{
+        
+    if (bruh == 0) {
+        std::string score_str = std::to_string(game.score);
+        ScoreView.setString(score_str);
+        ScoreView.setCharacterSize(20);
+        ScoreView.setPosition(windowWidth-100, windowHeight-10);
+        window -> draw(ScoreView);
+        
+    }
+        
     if (bruh==1 ){
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
