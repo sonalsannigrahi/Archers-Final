@@ -72,7 +72,6 @@ void Texts::updateFrame(double time) {
 
     counter += time;
     if(bruh == -1){
-        sf::Event event;
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
         window -> draw(Titlesprite);
