@@ -47,7 +47,7 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
-        Texts text;
+        Text text;
         Setting gameSetting = Setting();
         std::vector<Opponent*> opponent;
         Player* player = new Player(&opponent, &text);
