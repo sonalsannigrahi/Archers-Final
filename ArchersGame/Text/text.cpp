@@ -88,15 +88,7 @@ void Texts::updateFrame(double time) {
         }
     }
     else{
-        
-    if (bruh == 0) {
-        std::string score_str = std::to_string(42);
-        ScoreView.setString(score_str);
-        ScoreView.setCharacterSize(20);
-        ScoreView.setPosition(windowWidth-100, windowHeight-10);
-        window -> draw(ScoreView);
-        
-    }
+
         
     if (bruh==1 ){
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
