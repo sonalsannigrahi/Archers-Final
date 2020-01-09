@@ -21,7 +21,8 @@ Arrow::Arrow(){
     hitbox.setOutlineThickness(5);
 }
 
-Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent){
+Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, Texts* texts){
+    this -> texts = texts;
     this -> player = player;
     this -> opponent = opponent;
 
@@ -59,6 +60,8 @@ void Arrow::updateFrame(double time){
     posX += vX * time;
     posY += vY * time;
     angle = atan2(vY, vX) * 180 / 3.14159265359;
+    
+
     if (posX >= 0 && posX <= windowWidth && posY >= 0 && posY <= windowHeight){
         arrowSprite -> setPosition(posX, posY);
         arrowSprite -> setRotation(angle);
@@ -72,17 +75,21 @@ void Arrow::updateFrame(double time){
         if (angle <= 180) headY = posY + arrowSprite -> getGlobalBounds().height; else headY = posY - arrowSprite -> getGlobalBounds().height;
 
         // Draw hitbox
+        hitbox.setPosition(headX, headY);
         if (isHitboxDrawn){
-            hitbox.setPosition(headX, headY);
             window -> draw(hitbox);
         }
 
         // Check if arrow hit something
         for (int i = 0; i < opponent -> size(); i++){
+            
             if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;
         }
         if (alive && player -> shoot(headX, headY)) alive = false;
-    } else {
+        if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
+        if (alive && texts ->box_hit(headX,headY)) alive = false;
+    }
+     else {
         alive = false;
     }
 }

@@ -17,17 +17,23 @@
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
 #include "../Character/bow.hpp"
+#include "../Text/text.hpp"
 #include "../Setting/Setting.hpp"
 #include "../Opponent/Opponent.hpp"
 #include "../Opponent/Spear.hpp"
 #include "../Opponent/StaticOpponent.hpp"
 #include "../Arrow/Arrow.hpp"
 #include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
+
 
 class Game {
     private:
+        // Encryption
+        Encrypt* enc = new Encrypt();
+
         // Add constants to the class
-        GameConstants gameConstants = GameConstants();
+        GameConstants gameConstants = GameConstants(enc);
 
         // All other classes
         // ...
@@ -39,9 +45,10 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
+        Texts text;
         Setting gameSetting = Setting();
         std::vector<Opponent*> opponent;
-        Player* player = new Player(&opponent);
+        Player* player = new Player(&opponent, &text);
         // std::vector<Spear*> spear;                     // Not implemented
         // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
         //Arrow arrow = Arrow(); // Test arrow
@@ -56,6 +63,7 @@ class Game {
         // sf::CircleShape* circle;
 
         bool isGamePaused = false;
+        int score = 0;
 
         // Spawning opponents
         void createOpponent();

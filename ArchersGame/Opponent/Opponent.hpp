@@ -18,7 +18,7 @@ private:
     sf::Sprite* defback = new sf::Sprite();
 
     sf::RectangleShape hitboxHead, hitboxBody;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
 
     Player* player;
     double counter = 0;
@@ -36,6 +36,7 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
+    float getHealth();
 
     bool shoot(float x, float y); //will call in arrow class
 };

@@ -8,7 +8,7 @@
 #include <math.h>
 #include <iostream>
 #include "../Arrow/Arrow.hpp"
-
+#include "../Text/text.hpp"
 class Opponent;
 
 class Player{
@@ -20,21 +20,22 @@ private:
     std::vector<Arrow*> arrows;
 
     sf::RectangleShape hitboxHead, hitboxBody;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
 
     int winWidth, winHeight;
     double timer;
     int counter = 0;
     float lastAngle;
+    double lastPower = 0;
 
     float maxHealth = 100.f;
     float health;
-
+    Texts* texts;
     std::vector<Opponent*>* opponent;
 
 public:
     
-    Player(std::vector<Opponent*>* opponent);
+    Player(std::vector<Opponent*>* opponent,Texts* texts);
     
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);

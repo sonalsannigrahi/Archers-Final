@@ -17,7 +17,7 @@ void EndGame::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
 
-    defeat -> setScale(0.8f, 0.8f);
+    defeat -> setScale(0.8f * windowWidth / 900, 0.8f * windowHeight / 600);
     defeat -> setPosition(windowWidth/4.7, windowHeight/8);
     defback -> setScale(windowWidth, windowHeight);
 }
