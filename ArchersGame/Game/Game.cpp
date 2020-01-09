@@ -152,7 +152,7 @@ void Game::UpdateFrame(){
     scoreview.setString(score_str);
     scoreview.setCharacterSize(30);
     scoreview.setFont(text.font);
-    scoreview.setPosition(WINDOW_WIDTH,WINDOW_HEIGHT);
+    scoreview.setPosition(10,10);
     window ->draw(scoreview);
         
         
@@ -286,13 +286,6 @@ void Game::UpdateFrame(){
         gameConstants.isOpponent = true;
         gameConstants.isRunning = true;
     }
-    }
-    if (text.bruh ==1) {
-        std::string score_str = std::to_string(score);
-        scoreview.setString(score_str);
-        scoreview.setCharacterSize(30);
-        scoreview.setPosition(WINDOW_WIDTH,WINDOW_HEIGHT);
-        window ->draw(scoreview);
     }
 }
 
