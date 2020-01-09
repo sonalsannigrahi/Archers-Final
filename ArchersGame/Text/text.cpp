@@ -160,36 +160,36 @@ void Texts::updateFrame(double time) {
     }
     if (bruh==2)
     {
+    setposition((float) 1/2* windowWidth, (float) windowHeight - (float) 6/9 * windowHeight);
 
     if (textconstants.condition0)
     {
         setstring(textconstants.txt0);
-        setposition((float) 500 / 900 * windowWidth, (float) windowHeight - (float) 200 / 600 * windowHeight);
         textconstants.condition0 = false;
         counter = 0;
     }
-    if (counter > 5 && counter < 7 && !(textconstants.is_box) && !(textconstants.hits == 5))
+    if (counter > 5 && counter < 7 && !(textconstants.is_box) && textconstants.hits == 0)
     {
         textconstants.condition1 = true;
     }
     if (textconstants.condition1)
     {
         setstring(textconstants.txt1);
-        setposition((float) 75 / 900 * windowWidth, (float) windowHeight - (float) 300 / 600 * windowHeight);
+        //setposition((float) windowWidth/4, (float) windowHeight/2);
         textconstants.condition1 = false;
     }
 
-    if (counter > 10 && counter < 12 && !(textconstants.is_box)&& !(textconstants.hits == 5))
+    if (counter > 10 && counter < 12 && !(textconstants.is_box)&& textconstants.hits == 0)
     {
         textconstants.condition2 = true;
+        setstring(textconstants.txt2);
     }
 
 
     if (textconstants.condition2)
     {
-        setstring(textconstants.txt2);
-        setposition((float) 200 / 900 * windowWidth, (float) windowHeight - (float) 450 / 600 * windowHeight);
-
+        
+        //setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         int xbox = rand() % (windowWidth / 3) + (windowWidth / 3);
         int ybox = rand() % (windowHeight / 3) + windowHeight - (windowHeight / 2);
         
@@ -208,7 +208,7 @@ void Texts::updateFrame(double time) {
     if (textconstants.hits == 5)
     {
         setstring(textconstants.txt4);
-        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
+        //setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         text.setColor(sf::Color::Red);
         if(textconstants.is_box){
             counter = 0;
@@ -216,7 +216,7 @@ void Texts::updateFrame(double time) {
         textconstants.is_box = false;
     }
     if(counter>3 && textconstants.hits == 5){
-        bruh =1;
+        bruh = 1;
         textconstants.conditionplay = true;
     }
 
