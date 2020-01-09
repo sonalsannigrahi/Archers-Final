@@ -151,6 +151,7 @@ void Game::UpdateFrame(){
     std::string score_str = std::to_string(score);
     scoreview.setString(score_str);
     scoreview.setCharacterSize(30);
+    scoreview.setFont(text.font);
     scoreview.setPosition(WINDOW_WIDTH,WINDOW_HEIGHT);
     window ->draw(scoreview);
         
