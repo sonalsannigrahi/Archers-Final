@@ -122,7 +122,7 @@ void Game::UpdateFrame(){
         createFireworks();
     
     //Creating Static 
-    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isStatic) 
+    if (((float) rand() / RAND_MAX) * gameConstants.staticOpponentRate < time && gameConstants.isStatic) 
         createStaticOpponent();
     //Creating Opponent
     if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
@@ -195,7 +195,7 @@ void Game::UpdateFrame(){
                 staticOpponent[id] -> updateFrame(time);
                 id++;
             }
-            else removeOpponent(id);
+            else removeStaticOpponent(id);
         }
     }
 

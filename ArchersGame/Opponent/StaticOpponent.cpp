@@ -52,16 +52,22 @@ void StaticOpponent::updateFrame(double time) {
         current += 1;
         if (current >= statconstant.filenamelen) current = 0;
     }
-    if (isHitboxDrawn){
+
+    if (health <= 0){
+        alive = false;
+    }
+
+    if (alive) {
+        if (isHitboxDrawn){
             hitboxHead.setPosition(posX + 18, posY);
             hitboxBody.setPosition(posX + 18, posY);
             window -> draw(hitboxBody);
             window -> draw(hitboxHead);
-    }
-    if (alive){
+        }
         window -> draw(statSprites[current]);
     }
 }
+
 bool StaticOpponent::shoot(float x, float y){
     if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
         hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
