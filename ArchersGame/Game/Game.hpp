@@ -17,11 +17,25 @@
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
 #include "../Character/bow.hpp"
+#include "../Text/text.hpp"
+#include "../Setting/Setting.hpp"
+#include "../Opponent/Opponent.hpp"
+#include "../Opponent/Spear.hpp"
+#include "../Opponent/StaticOpponent.hpp"
+#include "../Arrow/Arrow.hpp"
+#include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
+
 
 class Game {
     private:
+        //Username
+        sf::String UserName;
+        // Encryption
+        Encrypt* enc = new Encrypt();
+
         // Add constants to the class
-        GameConstants gameConstants = GameConstants();
+        GameConstants gameConstants = GameConstants(enc);
 
         // All other classes
         // ...
@@ -33,7 +47,14 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
-        Player player = Player();
+        Texts text;
+        Setting gameSetting = Setting();
+        std::vector<Opponent*> opponent;
+        Player* player = new Player(&opponent, &text);
+        // std::vector<Spear*> spear;                     // Not implemented
+        // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
+        //Arrow arrow = Arrow(); // Test arrow
+        EndGame endgame = EndGame();
 
         // Elapsed time
         clock_t elapsedTime;
@@ -44,6 +65,15 @@ class Game {
         // sf::CircleShape* circle;
 
         bool isGamePaused = false;
+        int score = 0;
+
+        // Spawning opponents
+        void createOpponent();
+        void removeOpponent(int id);
+        // void createSpear();  // Not implemented
+        // void removeSpear(int id); // Not implemented
+        // void createStaticOpponent(); // Not implemented
+        // void removeStaticOpponent(int id); // Not implemented
 
     public:
     
@@ -52,7 +82,7 @@ class Game {
 
         void StartGame();
         void UpdateFrame();
-        void EndGame();
+        void GameOver();
 
         void createBird();
         void removeBird(int id);
@@ -75,15 +105,15 @@ class Game {
         bool getIsFireworks();
         bool getIsBlackhole();
 
-        void setBirdsRate(int rate);
-        void setBalloonsRate(int rate);
-        void setFireworksRate(int rate);
-        void setLightningRate(int rate);
+        void setBirdsRate(float rate);
+        void setBalloonsRate(float rate);
+        void setFireworksRate(float rate);
+        void setLightningRate(float rate);
 
-        int getBirdsRate();
-        int getBalloonsRate();
-        int getFireworksRate();
-        int getLightningRate();
+        float getBirdsRate();
+        float getBalloonsRate();
+        float getFireworksRate();
+        float getLightningRate();
 
         float getMasterVolume();
         float getBackgroundVolume();
@@ -102,4 +132,8 @@ class Game {
         void changeBackgroundPicture(int chosen);
 
         void setWindowSize(int width, int height);
+
+        void pauseGame();
+        void unpauseGame();
+        bool getIsGamePaused();
 };
