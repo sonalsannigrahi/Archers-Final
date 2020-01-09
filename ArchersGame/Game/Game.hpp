@@ -74,7 +74,6 @@ class Game {
         // void removeSpear(int id); // Not implemented
         // void createStaticOpponent(); // Not implemented
         // void removeStaticOpponent(int id); // Not implemented
-        sf::Text scoreview;
 
     public:
     

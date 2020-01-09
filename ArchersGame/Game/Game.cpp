@@ -147,13 +147,16 @@ void Game::UpdateFrame(){
     gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
     gameConstants.staticOpponentRate = max(0.1, gameConstants.staticOpponentRate - gameConstants.staticOpponentRateDecay * time);
     gameConstants.spearRate = max(0.1, gameConstants.spearRate - gameConstants.spearRateDecay * time);
-
-    std::string score_str = std::to_string(score);
-    scoreview.setString(score_str);
-    scoreview.setCharacterSize(30);
-    scoreview.setFont(text.font);
-    scoreview.setPosition(10,10);
-    window ->draw(scoreview);
+    
+        
+    if (text.bruh ==0) {
+        std::string score_str = std::to_string(score);
+        scoreview.setString(score_str);
+        scoreview.setCharacterSize(30);
+        scoreview.setFont(text.font);
+        scoreview.setPosition(10,10);
+        window ->draw(scoreview);
+    }
         
         
     // Creating birds

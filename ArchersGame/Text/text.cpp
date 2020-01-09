@@ -22,6 +22,7 @@ Texts::Texts(){
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
     EnterPress.setFont(font);
+    scoreview.setFont(font);
         
 
     //setting size
@@ -94,7 +95,14 @@ void Texts::updateFrame(double time) {
         window -> draw(Titlesprite);
     }
     
-
+    if (bruh ==0) {
+        std::string score_str = std::to_string(game.score);
+        scoreview.setString(score_str);
+        scoreview.setCharacterSize(30);
+        scoreview.setPosition(10,10);
+        window ->draw(scoreview);
+    }
+        
     if (textconstants.isStartbutton){
         window -> draw(startbutton);
         startbutton.setPosition((float) 470 / 900 * windowWidth, (float) windowHeight - (float) 340 / 600 * windowHeight);
