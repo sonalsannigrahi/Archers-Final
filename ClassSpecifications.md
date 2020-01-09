@@ -10,7 +10,7 @@
 
 **Point Mass:** Object with mass and radius, unifrom gravity and collisions fully implemented
 
-**Rectangle:** Object defined by a centre of mass, height, width and angle. Uniform and black hole gravity implemented, inter-rectangle collisions not currently implemented.
+**Rectangle:** Object defined by a centre of mass, height, width and angle. Uniform and black hole gravity implemented, air resistance implemented with torques. inter-rectangle collisions not currently implemented.
 
 For any object, the member function integrate recalculates its position.
 
