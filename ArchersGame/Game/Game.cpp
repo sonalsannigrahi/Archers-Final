@@ -121,6 +121,9 @@ void Game::UpdateFrame(){
     if (((float) rand() / RAND_MAX) * gameConstants.fireworkRate < time && gameConstants.isFireworks) 
         createFireworks();
     
+    //Creating Static 
+    if (((float) rand() / RAND_MAX) * gameConstants.staticOpponentRate < time && gameConstants.isStatic) 
+        createStaticOpponent();
     //Creating Opponent
     if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
         createOpponent();
@@ -184,6 +187,17 @@ void Game::UpdateFrame(){
     //Draw text
     text.updateFrame(time);
 
+    //Draw Static Opp
+    if (staticOpponent.size() > 0){
+        int id = 0;
+        while (id < staticOpponent.size()){
+            if (staticOpponent[id] -> isAlive()){
+                staticOpponent[id] -> updateFrame(time);
+                id++;
+            }
+            else removeStaticOpponent(id);
+        }
+    }
 
     // Draw Opponents
     if (opponent.size() > 0){
@@ -249,6 +263,7 @@ void Game::UpdateFrame(){
     if (text.bruh == 0) {
         gameConstants.isOpponent = true;
         gameConstants.isSpear = true;
+        gameConstants.isStatic = true;
         gameConstants.isRunning = true;
     }    
 }
@@ -259,6 +274,21 @@ void Game::GameOver(){
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         unpauseGame();
         player -> resetHealth();
+    }
+}
+
+void Game::createStaticOpponent(){
+    StaticOpponent* sta = new StaticOpponent(player);
+    sta -> setWindow(window);
+    sta -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    staticOpponent.push_back(sta);
+}
+
+void Game::removeStaticOpponent(int id){
+    if (staticOpponent.size() > id){
+        delete staticOpponent[id];
+        staticOpponent[id] = staticOpponent[staticOpponent.size() -1];
+        staticOpponent.pop_back();
     }
 }
 

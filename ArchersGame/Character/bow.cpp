@@ -1,8 +1,9 @@
 #include "bow.hpp"
 
-Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, Texts* texts){
+Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts){
     this -> texts = texts;
     this -> opponent = opponent;
+    this -> statico = statico;
 
     health = maxHealth;
     //creating three textures for the arm, body, arrow
@@ -86,7 +87,7 @@ void Player::updateFrame(double time){
 
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-        if (angle < 0 && angle>-55){
+        if (angle < 0 && angle > -55){
             spriteh -> setRotation(angle);
             lastAngle = angle;
             //arrow -> setRotation(angle);
@@ -125,7 +126,7 @@ void Player::updateFrame(double time){
     }
 
 void Player::createArrow(float posX, float posY, float vX, float vY){
-    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, texts);
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts);
     arrow -> setWindow(window);
     arrow -> setSize(winWidth, winHeight);
     arrows.push_back(arrow);
@@ -154,6 +155,19 @@ bool Player::shoot(float x, float y){
 
 void Player::stab(){
     health -= 70;
+}
+
+void Player::pierced(float x, float y){
+    if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
+        hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
+            health -= 50;
+            return true;
+        } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
+                    hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
+                        health -= 35;
+                        return true;
+                    }
+    return false;
 }
 
 void Player::resetHealth(){

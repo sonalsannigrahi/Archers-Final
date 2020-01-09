@@ -19,6 +19,7 @@ class GameConstants{
         bool isBlackhole = true;
         bool isOpponent = false;
         bool isSpear = false;
+        bool isStatic = false;
     // Volume
         float masterVolume = 0.0;
         float rainVolume = 100.0;
@@ -28,6 +29,6 @@ class GameConstants{
         float backgroundVolume = 100.0;
     // Opponent spawn rate
         float opponentRate = 1.0;
-        float staticOpponentRate = 25.0;
-        float spearRate = 30.0;
+        float staticOpponentRate = 1.0;
+        float spearRate = 1.0;
 };

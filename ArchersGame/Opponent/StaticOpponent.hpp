@@ -1,35 +1,38 @@
+#pragma once
+#include <ctime>
+#include <iostream>
+#include <vector>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
+#include "StaticConstants.cpp"
+
+class Player;
 
 class StaticOpponent{
-
 private:
-
+    StaticConstants statconstant = StaticConstants();
     sf::RenderWindow* window;
+    std::vector<sf::Sprite> statSprites;
+    sf::Sprite* defeat = new sf::Sprite();
+    sf::Sprite* defback = new sf::Sprite();
+    sf::RectangleShape hitboxHead, hitboxBody;
+    bool isHitboxDrawn = true;
 
-    std::vector<sf::Sprite> opponentSprites;
-    sf::Sprite* opponent = new sf::Sprite;
-    int winWidth, winHeight;
-
+    Player* player;
+    double counter = 0;
+    float health;
+    int current = 0;
+    int windowWidth, windowHeight;
     bool alive = true;
-
-    double timer;
-
+    float posX, posY;
 public:
 
-    StaticOpponent();
+    StaticOpponent(Player* player);
 
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
-
-    void setPosition(double x, double y);
-    void getPosition();
-
     void updateFrame(double time);
-
     bool isAlive();
-    bool isShot(float X, float Y);
-
-    void updateHealth();
+    bool shoot(float X, float Y); //will call in arrow class
 };
-

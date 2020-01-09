@@ -11,6 +11,7 @@
 class Player;
 class Spear;
 class Opponent;
+class StaticOpponent;
 
 class Arrow{
 private:
@@ -21,6 +22,7 @@ private:
     Player* player;
     std::vector<Opponent*>* opponent;
     std::vector<Spear*>* spear;
+    std::vector<StaticOpponent*>* statico;
     sf::RectangleShape hitbox;
     bool isHitboxDrawn = true;
     
@@ -33,7 +35,7 @@ private:
 public:
     
     Arrow();
-    Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, Texts* texts);
+    Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear,std::vector<StaticOpponent*>* statico, Texts* texts);
 
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);

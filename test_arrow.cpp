@@ -8,6 +8,7 @@
 
 #include "arrow.hpp"
 
+
 int main(){
 
     Arrow arrow1 = Arrow(0.0,0.0,0.0,0.0,0.0,0.0,10.0,20.0, 20.0, "arrow.png");
@@ -26,9 +27,9 @@ int main(){
             if (event.type == sf::Event::Closed)
                 window.close();
             
-            if(event.type == sf::Event::MouseButtonPressed){
-                arrow1.shoot(10.0);
-            }
+            //if(event.type == sf::Event::MouseButtonPressed){
+                //arrow1.shoot(10.0);
+            //}
         }
 
         window.clear(sf::Color::White);
