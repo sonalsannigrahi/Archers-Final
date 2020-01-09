@@ -49,6 +49,7 @@ public:
 
     bool shoot(float x, float y);
     void stab();
+    void pierced(float x, float y);
 
     float getHealth();
     void resetHealth();

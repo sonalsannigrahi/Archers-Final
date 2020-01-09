@@ -157,6 +157,19 @@ void Player::stab(){
     health -= 70;
 }
 
+void Player::pierced(float x, float y){
+    if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
+        hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
+            health -= 50;
+            return true;
+        } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
+                    hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
+                        health -= 35;
+                        return true;
+                    }
+    return false;
+}
+
 void Player::resetHealth(){
     health = maxHealth;
 }
