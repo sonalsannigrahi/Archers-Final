@@ -22,7 +22,7 @@ private:
     std::vector<Arrow*> arrows;
 
     sf::RectangleShape hitboxHead, hitboxBody;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
 
     int winWidth, winHeight;
     double timer;
@@ -30,6 +30,7 @@ private:
     float lastAngle;
 
     float maxHealth = 100.f;
+    sf::RectangleShape healthbar;
     float health;
     Texts* texts;
     std::vector<Opponent*>* opponent;

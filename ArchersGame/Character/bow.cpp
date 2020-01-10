@@ -4,6 +4,7 @@ Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std
     this -> texts = texts;
     this -> opponent = opponent;
     this -> statico = statico;
+    this -> spear = spear;
 
     health = maxHealth;
     //creating three textures for the arm, body, arrow
@@ -22,6 +23,10 @@ Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std
     hitboxHead.setSize(sf::Vector2f(30, 30));
     hitboxHead.setOutlineColor(sf::Color::Red);
     hitboxHead.setOutlineThickness(5);
+
+    //HealthBar
+    healthbar.setSize(sf::Vector2f(30,30));
+    healthbar.setFillColor(sf::Color::Green);
 }
 
 
@@ -119,11 +124,23 @@ void Player::updateFrame(double time){
     if (isHitboxDrawn){
         window -> draw(hitboxBody);
         window -> draw(hitboxHead);
+    };
+
+
+    healthbar.setPosition(playerPosition.x - 20, playerPosition.y - 50);
+
+    healthbar.setSize(sf::Vector2f((health/100)*60, 10));
+
+    if (health <= 50){
+      healthbar.setFillColor(sf::Color::Red);
+    }
+    if (health >= 0){
+        window -> draw(healthbar);
     }
 
     window -> draw(*spriteh);
     window -> draw(*spriteb);
-    }
+}
 
 void Player::createArrow(float posX, float posY, float vX, float vY){
     Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts);
@@ -158,16 +175,7 @@ void Player::stab(){
 }
 
 void Player::pierced(float x, float y){
-    if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
-        hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
-            health -= 50;
-            return true;
-        } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
-                    hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
-                        health -= 35;
-                        return true;
-                    }
-    return false;
+    health -= 100;
 }
 
 void Player::resetHealth(){
