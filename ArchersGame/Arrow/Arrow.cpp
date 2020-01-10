@@ -1,6 +1,8 @@
 #include "Arrow.hpp"
 #include "../Opponent/Opponent.hpp"
+#include "../Opponent/Spear.hpp"
 #include "../Character/bow.hpp"
+#include "../Opponent/StaticOpponent.hpp"
 
 Arrow::Arrow(){
     // This function is for testing purpose only
@@ -21,10 +23,12 @@ Arrow::Arrow(){
     hitbox.setOutlineThickness(5);
 }
 
-Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, Texts* texts){
+Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts){
     this -> texts = texts;
     this -> player = player;
     this -> opponent = opponent;
+    this -> statico = statico;
+    this -> spear = spear;
 
     sf::Texture* texture = new sf::Texture();
     texture -> loadFromFile("Arrow/Assets/" + arrowConstants.filename);
@@ -75,25 +79,27 @@ void Arrow::updateFrame(double time){
         if (angle <= 180) headY = posY + arrowSprite -> getGlobalBounds().height; else headY = posY - arrowSprite -> getGlobalBounds().height;
 
         // Draw hitbox
-        hitbox.setPosition(headX, headY);
         if (isHitboxDrawn){
+            hitbox.setPosition(headX, headY);
             window -> draw(hitbox);
         }
 
         // Check if arrow hit something
+        if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
+        if (alive && texts ->box_hit(headX,headY)) alive = false;
         for (int i = 0; i < opponent -> size(); i++){
-            
-            if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;
+            if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;   
+        }
+        for (int i = 0; i < statico -> size(); i++){
+            if (alive && (*statico)[i] -> shoot(headX, headY)) alive = false;
+        }
+        for (int i = 0; i < spear -> size(); i++){
+            if (alive && (*spear)[i] -> shoot(headX, headY)) alive = false;
         }
         if (alive && player -> shoot(headX, headY)) alive = false;
         if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
-        if (alive && texts ->box_hit(headX,headY)) alive = false;
     }
      else {
         alive = false;
     }
 }
-
-
-
-

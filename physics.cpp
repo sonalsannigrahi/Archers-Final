@@ -70,7 +70,7 @@ public:
         ans.y = this->y - other.y;
         return ans;
     }
-    Vector2D operator*(double k){
+    inline Vector2D operator*(double k){
         Vector2D ans;
         ans.x = (this->x)*k;
         ans.y = (this->y)*k;
@@ -466,8 +466,6 @@ bool collide(Point& a, Point& b)
 ///****************************GRAVITY GENERATORS*****************///
 
 class GravityGenerator{
-private:
-
 public:
     virtual void force_generate(Point& point) = 0;
 };

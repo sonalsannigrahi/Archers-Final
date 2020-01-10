@@ -136,12 +136,11 @@ void Game::StartGame(){
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
     
-    
-
-    // Calculate time has passed since the last UpdateFrame
     if(!gameConstants.isRunning){
         gameConstants.isOpponent = false;
     }
+
+    // Calculate time has passed since the last UpdateFrame
     double time = 0;
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -181,10 +180,16 @@ void Game::UpdateFrame(){
     if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks)
         createFireworks();
     
+    //Creating Static 
+    if (((float) rand() / RAND_MAX) * gameConstants.staticOpponentRate < time && gameConstants.isStatic) 
+        createStaticOpponent();
     //Creating Opponent
-    if ((((double) rand() / RAND_MAX) * gameConstants.opponentRate < time) && gameConstants.isOpponent)
+    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
         createOpponent();
 
+    //Creating Spear Opponent
+    if (((float) rand() / RAND_MAX) * gameConstants.spearRate < time && gameConstants.isSpear) 
+        createSpear();
     //std::cout << rand() << " " << RAND_MAX << std::endl;
 
     // Draw Background
@@ -241,6 +246,17 @@ void Game::UpdateFrame(){
     //Draw text
     text.updateFrame(time);
 
+    //Draw Static Opp
+    if (staticOpponent.size() > 0){
+        int id = 0;
+        while (id < staticOpponent.size()){
+            if (staticOpponent[id] -> isAlive()){
+                staticOpponent[id] -> updateFrame(time);
+                id++;
+            }
+            else removeStaticOpponent(id);
+        }
+    }
 
     // Draw Opponents
     if (opponent.size() > 0){
@@ -251,6 +267,17 @@ void Game::UpdateFrame(){
                 id++;
             }
             else removeOpponent(id);
+        }
+    }
+    //Draw Spear
+    if (spear.size()>0){
+        int id=0;
+        while(id<spear.size()){
+            if(spear[id] -> isAlive()){
+                spear[id] -> updateFrame(time);
+                id++;
+            }
+            else removeSpear(id);
         }
     }
     
@@ -302,6 +329,8 @@ void Game::UpdateFrame(){
     }
     if (text.bruh == 0) {
         gameConstants.isOpponent = true;
+        gameConstants.isSpear = true;
+        gameConstants.isStatic = true;
         gameConstants.isRunning = true;
     }
     }
@@ -309,7 +338,11 @@ void Game::UpdateFrame(){
 
 void Game::GameOver(){
     // Update best score
-    enc -> add_data<int>("BestScore", max(enc -> get_item<int>("BestScore"), score));
+    enc -> add_data<int>("BestScore", max(gameConstants.BestScore, score));
+    // if(max(gameConstants.BestScore, score) > score){
+    //     enc -> add_data_string("BestPlayer", UserName);
+    // }
+    // cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
     enc -> updatefile();
     // Paused Game
     pauseGame();
@@ -319,10 +352,32 @@ void Game::GameOver(){
         // Reset score and player's health
         player -> resetHealth();
         score = 0;
+        // Remove all opponents
+        while (opponent.size() > 0) removeOpponent(0);
+        while (spear.size() > 0) removeSpear(0);
+        while (staticOpponent.size() > 0) removeStaticOpponent(0);
         // Reset spawn rate
         gameConstants.opponentRate = gameConstants.opponentRateOrigin;
         gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
         gameConstants.spearRate = gameConstants.spearRateOrigin;
+    }
+}
+
+void Game::createStaticOpponent(){
+    StaticOpponent* sta = new StaticOpponent(player);
+    sta -> setWindow(window);
+    sta -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    staticOpponent.push_back(sta);
+}
+
+void Game::removeStaticOpponent(int id){
+    if (staticOpponent.size() > id){
+        // Add 1 point if the opponent was killed by player
+        if (staticOpponent[id] -> getHealth() <= 0) score++;
+        
+        delete staticOpponent[id];
+        staticOpponent[id] = staticOpponent[staticOpponent.size() -1];
+        staticOpponent.pop_back();
     }
 }
 
@@ -344,6 +399,23 @@ void Game::removeOpponent(int id){
     }
 }
 
+void Game::createSpear(){
+    Spear* sp = new Spear(player);
+    sp -> setWindow(window);
+    sp -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    spear.push_back(sp);
+}
+
+void Game::removeSpear(int id){
+    if (spear.size() > id){
+        // Add 1 point if the opponent was killed by player
+        if (spear[id] -> getHealth() <= 0) score++;
+        
+        delete spear[id];
+        spear[id] = spear[spear.size() - 1];
+        spear.pop_back();
+    }
+}
 void Game::createBird(){
     Birds* bird = new Birds();
     bird -> setWindow(window);
@@ -598,11 +670,13 @@ void Game::setWindowSize(int width, int height){
     player -> setSize(width, height);
     for (int i = 0; i < opponent.size(); i++)
         opponent[i] -> setSize(width, height);
+    for (int i = 0; i < spear.size(); i++)
+        spear[i] -> setSize(width, height);
+    for (int i = 0; i < staticOpponent.size(); i++)
+        staticOpponent[i] -> setSize(width, height);
 
     text.setWindowSize(width, height);
     ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
-
-    // Add Spear and StaticOpponent
 }
 
 void Game::pauseGame(){
