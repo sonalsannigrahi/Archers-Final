@@ -6,7 +6,7 @@
 //  Copyright © 2019 Sunho Hwang. All rights reserved.
 //
 
-#include<string>
+#include <string>
 
 class BackgroundConstants{
 public:

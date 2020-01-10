@@ -14,18 +14,20 @@ class Texts{
     sf::Text text;
     sf::Text play;
     sf::Text tutorial;
-    sf::Font font;
-    sf::Text settings;
+    sf::Text quit;
+    sf::Text ChooseUserName;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
     sf::Sprite Titlesprite;
     sf::RectangleShape box;
+    sf::Text PressEnter;
 
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;
 
     public:
+    sf::Font font;
     void loadgame();
     int bruh;
     Texts();
