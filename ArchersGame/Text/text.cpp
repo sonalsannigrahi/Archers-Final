@@ -21,6 +21,7 @@ Texts::Texts(){
     quit.setFont(font);
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
+    PressEnter.setFont(font);
         
 
     //setting size
@@ -78,6 +79,12 @@ void Texts::updateFrame(double time) {
         ChooseUserName.setCharacterSize(30);
         ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);       
         window->draw(ChooseUserName);
+        PressEnter.setString("Press Enter to Play");
+        PressEnter.setCharacterSize(25);
+        PressEnter.setPosition(windowWidth/2-22*5.0,5*windowHeight/10);
+        if (counter > 5.0) {
+            window->draw(PressEnter);
+        }
     }
     else{
     if (bruh==1 ){

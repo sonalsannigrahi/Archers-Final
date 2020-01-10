@@ -38,6 +38,9 @@ class GameConstants{
         float spearRate = 60.0;
         float spearRateOrigin = 60.0;
         float spearRateDecay = 0.03;
+    
+    //font
+        std::string filename  = "Game/asset/font.TTF";
 
     GameConstants(Encrypt* enc){
         WINDOW_HEIGHT = enc -> get_item<int>("WINDOW_HEIGHT");
