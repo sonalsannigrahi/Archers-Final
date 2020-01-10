@@ -22,8 +22,6 @@ Texts::Texts(){
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
     EnterPress.setFont(font);
-    ScoreView.setFont(font);
-        
 
     //setting size
     setsize(textconstants.size);
@@ -76,7 +74,7 @@ void Texts::updateFrame(double time) {
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
         window -> draw(Titlesprite);
-        ChooseUserName.setString("Choose an user name");
+        ChooseUserName.setString("Choose your username");
         ChooseUserName.setCharacterSize(30);
         ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);
         window->draw(ChooseUserName);
@@ -84,11 +82,11 @@ void Texts::updateFrame(double time) {
         EnterPress.setCharacterSize(25);
         EnterPress.setPosition(windowWidth/2-22*10,5*windowHeight/10);
         if (counter > 5) {
-            window ->draw(EnterPress);
+            window->draw(EnterPress);
         }
     }
     else{
-
+        
         
     if (bruh==1 ){
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);

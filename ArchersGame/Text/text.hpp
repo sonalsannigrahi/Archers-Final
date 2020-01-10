@@ -18,7 +18,6 @@ class Texts{
     sf::Text quit;
     sf::Text ChooseUserName;
     sf::Text EnterPress;
-    sf::Text ScoreView;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
