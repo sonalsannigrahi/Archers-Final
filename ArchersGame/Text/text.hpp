@@ -4,8 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "textconstants.cpp"
-#include <stdlib.h>
-#include "../Game/Game.hpp"
+#include <stdlib.h> 
 
 class Texts{
     private:
@@ -17,12 +16,12 @@ class Texts{
     sf::Text tutorial;
     sf::Text quit;
     sf::Text ChooseUserName;
-    sf::Text EnterPress;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
     sf::Sprite Titlesprite;
     sf::RectangleShape box;
+    sf::Text PressEnter;
 
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;
