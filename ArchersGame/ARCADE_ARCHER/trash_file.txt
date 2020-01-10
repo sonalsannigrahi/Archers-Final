@@ -1,0 +1,282 @@
+#include "fire_balls.hpp"
+#include "player_box.hpp"
+#include "targets.hpp"
+
+#include <bits/stdc++.h>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+int main()
+{
+    srand(time(NULL));
+
+    sf::RenderWindow window(sf::VideoMode(800, 600), "TEST!",sf::Style::Default);
+
+    {
+        ///TEST OF THE TRACE CLASS
+
+        /**
+        std::vector<Trace*> traces;
+        TraceConstants constants = TraceConstants(15.0,2.0);
+
+        Vector2D pos = Vector2D(400.0,300.0);
+
+        traces.push_back( new Trace(constants, pos) );
+
+        clock_t time = clock();
+
+        while (window.isOpen())
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+
+            }
+            double ElapsedTime = ((double)(clock() - time))/CLOCKS_PER_SEC;
+            time = clock();
+
+            for(int i=0;i<traces.size();i++){
+                traces[i]->update(ElapsedTime);
+            }
+
+            window.clear();
+
+            for(int i=0;i<traces.size();i++){
+                window.draw(*traces[i]);
+                /// std::cout<<traces[i]->Age<<" "<< traces[i]->isAlive <<std::endl;
+            }
+
+            window.display();
+        }
+        **/
+    }
+{
+    FIRE_BALLS fireBalls = FIRE_BALLS(&window);
+
+    Targets targets(&window, 50.0);
+
+    clock_t time = clock();
+
+    bool flag = false;
+    
+    ///THIS is for tracing ****************
+    double time_for_trace_cnst = 0.1;
+
+    double time_for_trace = 0;
+
+    std::vector<Trace*> traces;
+    ///************************************
+    while(window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            ///std::cout<<"Ha"<<std::endl;
+            if (event.type == sf::Event::Closed)
+                window.close();
+
+        }
+        ///std::cout<<"aaaaaaaaa"<<std::endl;
+        
+        /**
+        
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && flag == false){
+            double x = sf::Mouse::getPosition(window).x;
+            double y = sf::Mouse::getPosition(window).y;
+            y = window.getSize().y - y;
+
+            ///std::cout << x << " " << y << std::endl;
+
+            Vector2D Pos = Vector2D(x,y);
+            Vector2D Vel = Vector2D(60.0, 30.0);
+
+            int R = rand()%255 + 1;
+            int G = rand()%255 + 1;
+            int B = rand()%255 + 1;
+
+            ///std::cout<<R<<" "<<G<<" "<<B<<std::endl;
+
+            FIRE_BALL* ball = new FIRE_BALL(20.0,30.0,Pos,Vel,sf::Color(R,G,B));
+            fireBalls.AddBall(ball);
+
+            flag = true;
+        }
+        if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+            flag = false;
+        }
+        **/
+        double ElapsedTime = ((double)(clock() - time))/CLOCKS_PER_SEC;
+        time = clock();
+        
+        
+        ///Here starts tracing
+        time_for_trace += ElapsedTime;
+        if(time_for_trace > time_for_trace_cnst)
+        {
+            ///std::cout << "YES" << std::endl;
+            time_for_trace -= time_for_trace_cnst;
+
+            TraceConstants traceConstants = TraceConstants(10.0,1.0);
+
+            std::vector<Trace*> n_traces = fireBalls.genTrace( traceConstants );
+            ///std::cout<< n_traces.size() << std::endl;
+            for(int i=0;i<n_traces.size();i++){
+                traces.push_back(n_traces[i]);
+            }
+        }
+
+        ///std::cout << traces.size() << " ";
+
+        
+        for(int i=0;i<traces.size();i++)
+        {
+            traces[i]->update(ElapsedTime);
+            if( traces[i]->alive() == false ){
+                delete traces[i];
+                traces[i] = traces[ traces.size() - 1 ];
+                traces.pop_back();
+            }
+        }
+    
+        ///std::cout << traces.size() << std::endl;
+        window.clear();
+
+
+        for(int i=0;i<traces.size();i++)
+        {
+            ///std::cout<<"HA"<<std::endl;
+            window.draw(*traces[i]);
+        }
+        ///Here it ends
+        
+        ///To make a dynamic N times faster
+        int N = 10;
+        for(int i=0;i<N;i++)
+        {
+            ///std::cout<<fireBalls.BALLS.size()<<std::endl;
+            fireBalls.update(ElapsedTime);
+        }
+        fireBalls.show();
+        targets.run(ElapsedTime);
+
+
+        window.display();
+    }
+}
+
+{
+    /**
+    PLayerBox box = PLayerBox(100,40,80,window.getSize().x,window.getSize().y);
+
+    while(window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                    window.close();
+
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if( event.key.code == sf::Keyboard::Left ){
+                    box.move_to_left();
+                }
+                if( event.key.code == sf::Keyboard::Right ){
+                    box.move_to_right();
+                }
+            }
+
+        }
+        window.clear();
+        window.draw(box);
+        window.display();
+    }
+    **/
+}
+
+
+{
+    /**
+    Targets targets(&window, 50.0);
+
+    clock_t time = clock();
+
+    double seconds_pressed = 0.0;
+
+    bool is_pressed = false;
+
+
+    while(window.isOpen())
+    {
+        sf::Event event;
+        while(window.pollEvent(event)){
+            if(event.type == sf::Event::Closed){
+                window.close();
+            }
+            if(event.type == sf::Event::MouseButtonPressed)
+            {
+                if(event.mouseButton.button == sf::Mouse::Left){
+                    if(is_pressed == false)
+                        seconds_pressed = 0.0;
+                    is_pressed = true;
+                }
+            }
+            if(event.type == sf::Event::MouseButtonReleased)
+            {
+                if(event.mouseButton.button == sf::Mouse::Left){
+                    is_pressed = false;
+
+                    std::cout<< seconds_pressed << std::endl;
+
+                    seconds_pressed = 0.0;
+                }
+            }
+        }
+        double ElapsedTime = ((double)( clock() - time ))/CLOCKS_PER_SEC;
+        time = clock();
+
+        if(is_pressed == true){
+            seconds_pressed += ElapsedTime;
+        }
+
+        window.clear();
+        targets.run(ElapsedTime);
+        window.display();
+
+    }
+    **/
+}
+{
+    /**
+    Targets targets(&window, 50.0);
+
+    clock_t time = clock();
+
+    while(window.isOpen())
+    {
+        sf::Event event;
+        while(window.pollEvent(event)){
+            if(event.type == sf::Event::Closed){
+                window.close();
+            }
+        }
+        double ElapsedTime = ((double)(clock()- time))/CLOCKS_PER_SEC;
+
+        window.clear();
+
+        targets.run(ElapsedTime);
+
+        window.display();
+    }
+    **/
+}
+    return 0;
+}
+
+
+
+
+
+
+
