@@ -46,7 +46,7 @@ void StaticOpponent::setSize(int width, int height){
 
     if (posX == -1){
         float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
-        posX = rand()%(width/2) + float(width)/2;
+        posX = rand()%(width/2) + float(width)/3;
         posY = -rand()%(height/3) + float(height)/2;
         for (int i =0; i < statconstant.filenamelen; i++){
             statSprites[i].setPosition(posX,posY);
