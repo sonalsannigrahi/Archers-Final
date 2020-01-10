@@ -179,7 +179,7 @@ void Texts::updateFrame(double time) {
         textconstants.condition0 = false;
         counter = 0;
     }
-    if (counter > 5 && counter < 7 && !(textconstants.is_box))
+    if (counter > 5 && counter < 7 && !(textconstants.is_box) && !(textconstants.hits == 5))
     {
         textconstants.condition1 = true;
     }
@@ -190,7 +190,7 @@ void Texts::updateFrame(double time) {
         textconstants.condition1 = false;
     }
 
-    if (counter > 10 && counter < 12 && !(textconstants.is_box))
+    if (counter > 10 && counter < 12 && !(textconstants.is_box)&& !(textconstants.hits == 5))
     {
         textconstants.condition2 = true;
     }
@@ -221,7 +221,14 @@ void Texts::updateFrame(double time) {
         setstring(textconstants.txt4);
         setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         text.setColor(sf::Color::Red);
+        if(textconstants.is_box){
+            counter = 0;
+        }
         textconstants.is_box = false;
+    }
+    if(counter>3 && textconstants.hits == 5){
+        bruh =1;
+        textconstants.conditionplay = true;
     }
 
 
