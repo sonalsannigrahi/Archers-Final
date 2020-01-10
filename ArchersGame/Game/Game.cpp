@@ -51,8 +51,9 @@ Game::Game(){
     }
     //Settings for the score
     ScoreView.setFont(font);
-    ScoreView.setPosition(gameConstants.WINDOW_WIDTH/80,gameConstants.WINDOW_HEIGHT/80);
-    ScoreView.setCharacterSize(30);
+    ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
+    ScoreView.setCharacterSize(50);
+    ScoreView.setFillColor(sf::Color::Black);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -335,7 +336,7 @@ void Game::createOpponent(){
 void Game::removeOpponent(int id){
     if (opponent.size() > id){
         // Add 1 point if the opponent was killed by player
-        if (opponent[id] -> getHealth() == 0) score++;
+        if (opponent[id] -> getHealth() <= 0) score++;
         
         delete opponent[id];
         opponent[id] = opponent[opponent.size() - 1];
@@ -599,7 +600,8 @@ void Game::setWindowSize(int width, int height){
         opponent[i] -> setSize(width, height);
 
     text.setWindowSize(width, height);
-    
+    ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
+
     // Add Spear and StaticOpponent
 }
 
