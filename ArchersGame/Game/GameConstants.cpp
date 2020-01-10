@@ -28,7 +28,7 @@ class GameConstants{
         float fireworksVolume = 100.0;
         float backgroundVolume = 100.0;
     // Opponent spawn rate
-        float opponentRate = 1.0;
-        float staticOpponentRate = 1.0;
-        float spearRate = 1.0;
+        float opponentRate = 1.f;
+        float staticOpponentRate = 35.f;
+        float spearRate = 40.f;
 };
