@@ -8,6 +8,7 @@ public:
     int filenamelen = 10;
     int spearlen = 10;
     float spearSpeed = 200.f;
+    float maxHealth = 100.f;
 
 
     SpearConstants(){

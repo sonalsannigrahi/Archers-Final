@@ -16,7 +16,9 @@ private:
     std::vector<sf::Sprite> statSprites;
     sf::Sprite* defeat = new sf::Sprite();
     sf::Sprite* defback = new sf::Sprite();
+    //sf::Sprite* headshot = new sf::Sprite();
     sf::RectangleShape hitboxHead, hitboxBody;
+    sf::RectangleShape healthbar;
     bool isHitboxDrawn = true;
 
     Player* player;

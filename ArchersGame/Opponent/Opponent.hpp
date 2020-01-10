@@ -16,9 +16,9 @@ private:
     std::vector<sf::Sprite> oppSprites;
     sf::Sprite* defeat = new sf::Sprite();
     sf::Sprite* defback = new sf::Sprite();
-
+    sf::RectangleShape healthbar;
     sf::RectangleShape hitboxHead, hitboxBody;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
 
     Player* player;
     double counter = 0;

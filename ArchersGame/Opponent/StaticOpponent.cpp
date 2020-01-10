@@ -9,6 +9,10 @@ StaticOpponent::StaticOpponent(Player* player){
     sf::Texture* background = new sf::Texture();
     background -> loadFromFile("Opponent/Assets/defback.png");
     defback -> setTexture(*background);
+    /*
+    sf::Texture* heads = new sf::Texture();
+    heads -> loadFromFile("Opponent/Assets/headshot.png");
+    headshot -> setTexture(*heads); */
     for (int i = 0; i < statconstant.filenamelen; i++){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Opponent/Assets/"+ statconstant.filename[i]);
@@ -24,6 +28,10 @@ StaticOpponent::StaticOpponent(Player* player){
     hitboxHead.setSize(sf::Vector2f(30, 30));
     hitboxHead.setOutlineColor(sf::Color::Red);
     hitboxHead.setOutlineThickness(5);
+
+    //HealthBar
+    healthbar.setSize(sf::Vector2f(30,30));
+    healthbar.setFillColor(sf::Color::Green);
 }
 
 void StaticOpponent::setWindow(sf::RenderWindow* gameWindow){
@@ -35,7 +43,7 @@ void StaticOpponent::setSize(int width, int height){
     windowHeight = height;
 
     float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
-    posX = rand()%(width/2) + float(width)/8;
+    posX = rand()%(width/2) + float(width)/6;
     posY = -rand()%(height/3) + float(height)/2;
     for (int i =0; i < statconstant.filenamelen; i++){
       statSprites[i].setPosition(posX,posY);
@@ -57,15 +65,25 @@ void StaticOpponent::updateFrame(double time) {
         alive = false;
     }
 
+    healthbar.setPosition(posX + 3, posY - 18);
+
+    healthbar.setSize(sf::Vector2f((health/100)*60, 10));
+
+    if (health <= 50){
+        healthbar.setFillColor(sf::Color::Red);
+    }
+    
     if (alive) {
         if (isHitboxDrawn){
             hitboxHead.setPosition(posX + 18, posY);
             hitboxBody.setPosition(posX + 18, posY);
-            window -> draw(hitboxBody);
-            window -> draw(hitboxHead);
+            //window -> draw(hitboxBody);
+            //window -> draw(hitboxHead);
         }
+        window -> draw(healthbar);
         window -> draw(statSprites[current]);
     }
+
 }
 
 bool StaticOpponent::shoot(float x, float y){
