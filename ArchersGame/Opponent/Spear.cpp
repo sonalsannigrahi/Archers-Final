@@ -25,6 +25,8 @@ Spear::Spear(Player* player){
     hitboxHead.setOutlineColor(sf::Color::Red);
     hitboxHead.setOutlineThickness(5);
 
+    posX = -1;
+
     //HealthBar
     healthbar.setSize(sf::Vector2f(30,30));
     healthbar.setFillColor(sf::Color::Green);
@@ -38,12 +40,15 @@ void Spear::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
 
-    float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
-    posX = rand()%(width/2) + float(width)/8;
-    posY = -rand()%(height/3) + float(height)/2;
-    for (int i =0; i < spearconstant.filenamelen; i++){
-      spearSprites[i].setPosition(posX,posY);
+    if (posX == -1){
+        float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
+        posX = rand()%(width/2) + float(width)/2;
+        posY = -rand()%(height/3) + float(height)/2;
+        for (int i =0; i < spearconstant.filenamelen; i++){
+            spearSprites[i].setPosition(posX,posY);
+        }
     }
+
     defeat -> setScale(0.8f, 0.8f);
     defeat -> setPosition(windowWidth/4.7, windowHeight/8);
     defback -> setScale(windowWidth, windowHeight);
@@ -97,4 +102,8 @@ bool Spear::shoot(float x, float y){
 
 bool Spear::isAlive(){
     return alive;
+}
+
+float Spear::getHealth(){
+  return health;
 }

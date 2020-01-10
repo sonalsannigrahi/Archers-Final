@@ -22,6 +22,7 @@ class Texts{
     sf::Sprite Startsprite;
     sf::Sprite Titlesprite;
     sf::RectangleShape box;
+    sf::Text PressEnter;
 
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;

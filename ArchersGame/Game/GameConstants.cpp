@@ -43,6 +43,9 @@ class GameConstants{
     // Best score
         string BestPlayer = "eu";
         int BestScore = 0;
+    
+    //font
+        std::string filename  = "Game/asset/font.TTF";
 
     GameConstants(Encrypt* enc){
         BestPlayer = enc -> get_item_string("BestPlayer");
