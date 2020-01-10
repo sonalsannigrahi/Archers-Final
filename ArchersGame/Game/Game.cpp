@@ -43,6 +43,17 @@ Game::Game(){
 
     // Start rain audio
     if (gameConstants.isRaining) gameRain.playAudio();
+    
+    //loading font for texts
+    if (!font.loadFromFile(gameConstants.filename))
+    {
+        std::cout << "Error text file" << std::endl;
+    }
+    
+    ScoreView.setFont(font);
+    ScoreView.setPosition(10,10);
+    ScoreView.setString(std::to_string(score));
+    ScoreView.setCharacterSize(20);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -241,6 +252,11 @@ void Game::UpdateFrame(){
             }
             else removeOpponent(id);
         }
+    }
+    
+    //Show Score
+    if(text.bruh ==0) {
+        window->draw(ScoreView);
     }
 
     // Draw Arrow (test)
