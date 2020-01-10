@@ -67,16 +67,22 @@ void Arrow::updateFrame(double time){
     
 
     if (posX >= 0 && posX <= windowWidth && posY >= 0 && posY <= windowHeight){
+        //std::cout << 1 << std::endl;
+        
         arrowSprite -> setPosition(posX, posY);
         arrowSprite -> setRotation(angle);
         window -> draw(*arrowSprite);
 
         if (angle < 0) angle += 360;
 
+        //std::cout << 2 << std::endl;
+
         // Arrow head
         float headX, headY;
         if (angle > 90 && angle <= 270) headX = posX - arrowSprite -> getGlobalBounds().width; else headX = posX + arrowSprite -> getGlobalBounds().width;
         if (angle <= 180) headY = posY + arrowSprite -> getGlobalBounds().height; else headY = posY - arrowSprite -> getGlobalBounds().height;
+
+        //std::cout << 3 << std::endl;
 
         // Draw hitbox
         if (isHitboxDrawn){
@@ -84,20 +90,28 @@ void Arrow::updateFrame(double time){
             window -> draw(hitbox);
         }
 
+        //std::cout << 4 << std::endl;
+
         // Check if arrow hit something
         if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
+        //std::cout << 5 << std::endl;
         if (alive && texts ->box_hit(headX,headY)) alive = false;
+        //std::cout << 6 << std::endl;
         for (int i = 0; i < opponent -> size(); i++){
             if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;   
         }
+        //std::cout << 7 << std::endl;
         for (int i = 0; i < statico -> size(); i++){
             if (alive && (*statico)[i] -> shoot(headX, headY)) alive = false;
         }
+        //std::cout << 8 << std::endl;
         for (int i = 0; i < spear -> size(); i++){
             if (alive && (*spear)[i] -> shoot(headX, headY)) alive = false;
         }
+        //std::cout << 9 << std::endl;
         if (alive && player -> shoot(headX, headY)) alive = false;
-        if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
+
+        //std::cout << 10 << std::endl;
     }
      else {
         alive = false;

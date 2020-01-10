@@ -24,7 +24,7 @@ private:
     std::vector<Spear*>* spear;
     std::vector<StaticOpponent*>* statico;
     sf::RectangleShape hitbox;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
     
     int windowWidth, windowHeight;
     bool alive = true;

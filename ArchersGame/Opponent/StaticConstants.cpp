@@ -3,7 +3,7 @@
 
 class StaticConstants {
 public:
-    double changetime = 0.1;
+    double changetime = 0.3;
     std::string filename[10];
     int filenamelen = 10;
     int statlen = 10;

@@ -31,14 +31,14 @@ class GameConstants{
         float fireworksVolume = 100.0;
         float backgroundVolume = 100.0;
     // Opponent spawn rate
-        float opponentRate = 10.0;
-        float opponentRateOrigin = 10.0;
+        float opponentRate = 5.0;
+        float opponentRateOrigin = 5.0;
         float opponentRateDecay = 0.01;
-        float staticOpponentRate = 25.0;
-        float staticOpponentRateOrigin = 25.0;
+        float staticOpponentRate = 10.0;
+        float staticOpponentRateOrigin = 10.0;
         float staticOpponentRateDecay = 0.02;
-        float spearRate = 60.0;
-        float spearRateOrigin = 60.0;
+        float spearRate = 15.0;
+        float spearRateOrigin = 15.0;
         float spearRateDecay = 0.03;
     // Best score
         string BestPlayer = "eu";

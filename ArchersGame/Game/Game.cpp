@@ -364,7 +364,7 @@ void Game::GameOver(){
 }
 
 void Game::createStaticOpponent(){
-    StaticOpponent* sta = new StaticOpponent(player);
+    StaticOpponent* sta = new StaticOpponent(player, &text);
     sta -> setWindow(window);
     sta -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     staticOpponent.push_back(sta);
