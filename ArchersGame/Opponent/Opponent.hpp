@@ -7,6 +7,8 @@
 #include <SFML/Graphics.hpp>
 #include "OpponentConstants.cpp"
 
+class Player;
+
 class Opponent{
 private:
     CharConstants charconstant = CharConstants();
@@ -14,19 +16,26 @@ private:
     std::vector<sf::Sprite> oppSprites;
     sf::Sprite* defeat = new sf::Sprite();
     sf::Sprite* defback = new sf::Sprite();
+    sf::RectangleShape healthbar;
+    sf::RectangleShape hitboxHead, hitboxBody;
+    bool isHitboxDrawn = false;
+
+    Player* player;
     double counter = 0;
     int current = 0;
     int direction = 0;
     int windowWidth, windowHeight;
     bool alive = true;
     float posX, posY, comparison;
+    float health;
 public:
     
-    Opponent();
+    Opponent(Player* player);
     
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
-    bool isShot(float X, float Y); //will call in arrow class
+
+    bool shoot(float x, float y); //will call in arrow class
 };

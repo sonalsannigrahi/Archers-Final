@@ -1,24 +1,34 @@
 class GameConstants{
     public:
+        bool isrunning = false;
     // Window setting
         int WINDOW_HEIGHT = 600;
         int WINDOW_WIDTH = 900;
-    // Spawning rate
+    // Neutral spawning rate
         float birdRate = 2.5;
         float balloonRate = 5.0;
         float fireworkRate = 0.5;
     // Game setting
+        bool isRunning = false;
         bool isRaining = false;
-        bool isLightning = true;
+        bool isLightning = false;
         bool isBirds = true;
+        bool isPlayer = false;
         bool isBalloon = false;
-        bool isFireworks = true;
-        bool isBlackhole = false;
+        bool isFireworks = false;
+        bool isBlackhole = true;
+        bool isOpponent = false;
+        bool isSpear = false;
+        bool isStatic = false;
     // Volume
-        float masterVolume = 100.0;
+        float masterVolume = 0.0;
         float rainVolume = 100.0;
         float thunderVolume = 100.0;
         float birdsVolume = 100.0;
         float fireworksVolume = 100.0;
         float backgroundVolume = 100.0;
+    // Opponent spawn rate
+        float opponentRate = 1.f;
+        float staticOpponentRate = 35.f;
+        float spearRate = 40.f;
 };
