@@ -141,7 +141,7 @@ void Game::UpdateFrame(){
     if (window -> getSize().x != gameConstants.WINDOW_WIDTH || window -> getSize().y != gameConstants.WINDOW_HEIGHT)
         setWindowSize(resolution.x, resolution.y);
 
-    cout<<text.bruh<<endl;
+    //cout<<text.bruh<<endl;
     if (text.bruh==-1){
         text.updateFrame(time);
         sf::Text name = sf::Text( UserName, text.font, 20);
@@ -553,6 +553,7 @@ void Game::changeBackgroundPicture(int chosen){
 }
 
 void Game::setWindowSize(int width, int height){
+    window -> setSize(sf::Vector2u(width, height));
     sf::View* view = new sf::View(sf::FloatRect(window -> getView().getViewport().left, window -> getView().getViewport().top, width, height));
     window -> setView(*view);
 
