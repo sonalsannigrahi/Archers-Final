@@ -49,11 +49,10 @@ Game::Game(){
     {
         std::cout << "Error text file" << std::endl;
     }
-    
+    //Settings for the score
     ScoreView.setFont(font);
-    ScoreView.setPosition(10,10);
-    ScoreView.setString(std::to_string(score));
-    ScoreView.setCharacterSize(20);
+    ScoreView.setPosition(gameConstants.WINDOW_WIDTH/80,gameConstants.WINDOW_HEIGHT/80);
+    ScoreView.setCharacterSize(30);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -256,6 +255,7 @@ void Game::UpdateFrame(){
     
     //Show Score
     if(text.bruh ==0) {
+        ScoreView.setString(std::to_string(score));
         window->draw(ScoreView);
     }
 
