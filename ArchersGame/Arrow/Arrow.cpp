@@ -94,7 +94,9 @@ void Arrow::updateFrame(double time){
         for (int i = 0; i < statico -> size(); i++){
             if (alive && (*statico)[i] -> shoot(headX, headY)) alive = false;
         }
-
+        for (int i = 0; i < spear -> size(); i++){
+            if (alive && (*spear)[i] -> shoot(headX, headY)) alive = false;
+        }
         if (alive && player -> shoot(headX, headY)) alive = false;
         if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
     }
