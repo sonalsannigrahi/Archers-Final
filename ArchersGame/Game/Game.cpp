@@ -43,6 +43,17 @@ Game::Game(){
 
     // Start rain audio
     if (gameConstants.isRaining) gameRain.playAudio();
+    
+    //loading font for texts
+    if (!font.loadFromFile(gameConstants.filename))
+    {
+        std::cout << "Error text file" << std::endl;
+    }
+    //Settings for the score
+    ScoreView.setFont(font);
+    ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
+    ScoreView.setCharacterSize(50);
+    ScoreView.setFillColor(sf::Color::Black);
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
@@ -125,12 +136,11 @@ void Game::StartGame(){
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
     
-    
-
-    // Calculate time has passed since the last UpdateFrame
     if(!gameConstants.isRunning){
         gameConstants.isOpponent = false;
     }
+
+    // Calculate time has passed since the last UpdateFrame
     double time = 0;
     if (!isGamePaused) time = double(clock() - elapsedTime) / CLOCKS_PER_SEC;
     elapsedTime = clock();
@@ -167,7 +177,7 @@ void Game::UpdateFrame(){
         createBalloon();
 
     // Creating Fireworks
-    if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks) 
+    if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks)
         createFireworks();
     
     //Creating Static 
@@ -270,22 +280,11 @@ void Game::UpdateFrame(){
             else removeSpear(id);
         }
     }
-    // Draw Arrow (test)
-    // arrow.updateFrame(time);
-
-    // Draw Water
-    gameWater.updateFrame(time);
-
-    // Draw Opponents
-    if (opponent.size() > 0){
-        int id = 0;
-        while (id < opponent.size()){
-            if (opponent[id] -> isAlive()){
-                opponent[id] -> updateFrame(time);
-                id++;
-            }
-            else removeOpponent(id);
-        }
+    
+    //Show Score
+    if(text.bruh ==0) {
+        ScoreView.setString(std::to_string(score));
+        window->draw(ScoreView);
     }
 
     // Draw Arrow (test)
@@ -334,16 +333,16 @@ void Game::UpdateFrame(){
         gameConstants.isStatic = true;
         gameConstants.isRunning = true;
     }
-    }  
+    }
 }
 
 void Game::GameOver(){
     // Update best score
     enc -> add_data<int>("BestScore", max(gameConstants.BestScore, score));
-    if(max(gameConstants.BestScore, score) > score){
-        enc -> add_data_string("BestPlayer",UserName );
-    }
-    cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
+    // if(max(gameConstants.BestScore, score) > score){
+    //     enc -> add_data_string("BestPlayer", UserName);
+    // }
+    // cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
     enc -> updatefile();
     // Paused Game
     pauseGame();
@@ -353,6 +352,10 @@ void Game::GameOver(){
         // Reset score and player's health
         player -> resetHealth();
         score = 0;
+        // Remove all opponents
+        while (opponent.size() > 0) removeOpponent(0);
+        while (spear.size() > 0) removeSpear(0);
+        while (staticOpponent.size() > 0) removeStaticOpponent(0);
         // Reset spawn rate
         gameConstants.opponentRate = gameConstants.opponentRateOrigin;
         gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
@@ -369,6 +372,9 @@ void Game::createStaticOpponent(){
 
 void Game::removeStaticOpponent(int id){
     if (staticOpponent.size() > id){
+        // Add 1 point if the opponent was killed by player
+        if (staticOpponent[id] -> getHealth() <= 0) score++;
+        
         delete staticOpponent[id];
         staticOpponent[id] = staticOpponent[staticOpponent.size() -1];
         staticOpponent.pop_back();
@@ -385,7 +391,7 @@ void Game::createOpponent(){
 void Game::removeOpponent(int id){
     if (opponent.size() > id){
         // Add 1 point if the opponent was killed by player
-        if (opponent[id] -> getHealth() == 0) score++;
+        if (opponent[id] -> getHealth() <= 0) score++;
         
         delete opponent[id];
         opponent[id] = opponent[opponent.size() - 1];
@@ -402,6 +408,9 @@ void Game::createSpear(){
 
 void Game::removeSpear(int id){
     if (spear.size() > id){
+        // Add 1 point if the opponent was killed by player
+        if (spear[id] -> getHealth() <= 0) score++;
+        
         delete spear[id];
         spear[id] = spear[spear.size() - 1];
         spear.pop_back();
@@ -613,7 +622,7 @@ void Game::setBirdsVolume(float volume){
     enc -> add_data<float>("birdsVolume", volume);
     enc -> updatefile();
 
-    for (int i = 0; i < birds.size(); i++) 
+    for (int i = 0; i < birds.size(); i++)
         birds[i] -> change_volume_bird(volume * gameConstants.masterVolume);
 }
 
@@ -649,7 +658,7 @@ void Game::setWindowSize(int width, int height){
     gameLightning.setSize(width, height);
     gameRain.setSize(width, height);
     gameWater.setSize(width, height);
-    for (int i = 0; i < birds.size(); i++) 
+    for (int i = 0; i < birds.size(); i++)
         birds[i] -> setSize(width, height);
     for (int i = 0; i < fireworks.size(); i++)
         fireworks[i] -> setSize(width, height);
@@ -661,10 +670,13 @@ void Game::setWindowSize(int width, int height){
     player -> setSize(width, height);
     for (int i = 0; i < opponent.size(); i++)
         opponent[i] -> setSize(width, height);
+    for (int i = 0; i < spear.size(); i++)
+        spear[i] -> setSize(width, height);
+    for (int i = 0; i < staticOpponent.size(); i++)
+        staticOpponent[i] -> setSize(width, height);
 
     text.setWindowSize(width, height);
-    
-    // Add Spear and StaticOpponent
+    ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
 }
 
 void Game::pauseGame(){
@@ -673,7 +685,7 @@ void Game::pauseGame(){
         gameBackground.changeBackgroundVolume(0);
         gameRain.change_volume_rain(0);
         gameLightning.change_volume_lightning(0);
-        for (int i = 0; i < birds.size(); i++) 
+        for (int i = 0; i < birds.size(); i++)
             birds[i] -> change_volume_bird(0);
         for (int i = 0; i < fireworks.size(); i++)
             fireworks[i] -> change_volume_fireworks(0);

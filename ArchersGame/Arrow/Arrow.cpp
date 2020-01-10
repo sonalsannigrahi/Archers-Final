@@ -85,12 +85,11 @@ void Arrow::updateFrame(double time){
         }
 
         // Check if arrow hit something
+        if (alive && (texts->bruh == 1) && texts->loadgame(headX, headY)) alive = false;
+        if (alive && texts ->box_hit(headX,headY)) alive = false;
         for (int i = 0; i < opponent -> size(); i++){
-            
-            if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;
-            
+            if (alive && (*opponent)[i] -> shoot(headX, headY)) alive = false;   
         }
-
         for (int i = 0; i < statico -> size(); i++){
             if (alive && (*statico)[i] -> shoot(headX, headY)) alive = false;
         }

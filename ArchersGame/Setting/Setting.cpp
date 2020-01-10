@@ -109,7 +109,7 @@ void Setting::updateFrame(double time){
         for (int i = 0; i < 4; i++) 
             if (resChoices[i].getGlobalBounds().contains(mousePosition.x, mousePosition.y)){
                 resChoices[i].setFillColor(sf::Color::Blue);
-                std::cout << "Hover above " << i << std::endl;
+                //std::cout << "Hover above " << i << std::endl;
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
                     if (i == 0) game -> setWindowSize(900, 600);
                     if (i == 1) game -> setWindowSize(1024, 768);

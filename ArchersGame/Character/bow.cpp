@@ -65,11 +65,11 @@ void Player::updateFrame(double time){
     handSize = spriteh -> getGlobalBounds();
     bodySize = spriteb -> getGlobalBounds();
 
-    spriteh -> setOrigin(float(handSize.width)/2,float(handSize.height)/2);
+    spriteh -> setOrigin(float(handSize.width) / 2,float(handSize.height)/ 2);
 
     spriteb -> setPosition(float(winWidth)/25, float(winHeight)/1.8);      
 
-    spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/2.5 ,spriteb -> getPosition().y + float(bodySize.height)/4);
+    spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/3 ,spriteb -> getPosition().y + float(bodySize.height)/4.6);
     
     playerPosition = spriteh -> getPosition();
     /*
@@ -182,6 +182,7 @@ void Player::pierced(float x, float y){
 
 void Player::resetHealth(){
     health = maxHealth;
+    healthbar.setFillColor(sf::Color::Green);
 }
 
 float Player::getHealth(){

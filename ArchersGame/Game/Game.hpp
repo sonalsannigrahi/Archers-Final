@@ -68,6 +68,9 @@ class Game {
 
         bool isGamePaused = false;
         int score = 0;
+    
+        //score viewer
+        sf::Text ScoreView;
 
         // Spawning opponents
         void createOpponent();
@@ -138,4 +141,6 @@ class Game {
         void pauseGame();
         void unpauseGame();
         bool getIsGamePaused();
+    
+        sf::Font font;
 };
