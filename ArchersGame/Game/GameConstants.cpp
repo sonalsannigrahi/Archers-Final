@@ -19,10 +19,12 @@ class GameConstants{
         bool isPlayer = false;
         bool isBalloon = false;
         bool isFireworks = false;
-        bool isBlackhole = false;
+        bool isBlackhole = true;
         bool isOpponent = false;
+        bool isSpear = false;
+        bool isStatic = false;
     // Volume
-        float masterVolume = 100.0;
+        float masterVolume = 0.0;
         float rainVolume = 100.0;
         float thunderVolume = 100.0;
         float birdsVolume = 100.0;

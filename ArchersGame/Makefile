@@ -84,7 +84,10 @@ Spear.o: Opponent/Spear.cpp Opponent/Spear.hpp SpearConstants.o
 	$(CXX) -c Opponent/Spear.cpp $(Dependencies)
 
 
-StaticOpponent.o: Opponent/StaticOpponent.cpp Opponent/StaticOpponent.hpp 
+StaticConstants.o: Opponent/StaticConstants.cpp
+	$(CXX) -c Opponent/StaticConstants.cpp
+
+StaticOpponent.o: Opponent/StaticOpponent.cpp Opponent/StaticOpponent.hpp StaticConstants.o
 	$(CXX) -c Opponent/StaticOpponent.cpp $(Dependencies)
 
 

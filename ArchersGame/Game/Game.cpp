@@ -170,10 +170,16 @@ void Game::UpdateFrame(){
     if ((((double) rand() / RAND_MAX) * gameConstants.fireworkRate < time) && gameConstants.isFireworks) 
         createFireworks();
     
+    //Creating Static 
+    if (((float) rand() / RAND_MAX) * gameConstants.staticOpponentRate < time && gameConstants.isStatic) 
+        createStaticOpponent();
     //Creating Opponent
-    if ((((double) rand() / RAND_MAX) * gameConstants.opponentRate < time) && gameConstants.isOpponent) 
+    if (((float) rand() / RAND_MAX) * gameConstants.opponentRate < time && gameConstants.isOpponent) 
         createOpponent();
 
+    //Creating Spear Opponent
+    if (((float) rand() / RAND_MAX) * gameConstants.spearRate < time && gameConstants.isSpear) 
+        createSpear();
     //std::cout << rand() << " " << RAND_MAX << std::endl;
 
     // Draw Background
@@ -230,6 +236,45 @@ void Game::UpdateFrame(){
     //Draw text
     text.updateFrame(time);
 
+    //Draw Static Opp
+    if (staticOpponent.size() > 0){
+        int id = 0;
+        while (id < staticOpponent.size()){
+            if (staticOpponent[id] -> isAlive()){
+                staticOpponent[id] -> updateFrame(time);
+                id++;
+            }
+            else removeStaticOpponent(id);
+        }
+    }
+
+    // Draw Opponents
+    if (opponent.size() > 0){
+        int id = 0;
+        while (id < opponent.size()){
+            if (opponent[id] -> isAlive()){
+                opponent[id] -> updateFrame(time);
+                id++;
+            }
+            else removeOpponent(id);
+        }
+    }
+    //Draw Spear
+    if (spear.size()>0){
+        int id=0;
+        while(id<spear.size()){
+            if(spear[id] -> isAlive()){
+                spear[id] -> updateFrame(time);
+                id++;
+            }
+            else removeSpear(id);
+        }
+    }
+    // Draw Arrow (test)
+    // arrow.updateFrame(time);
+
+    // Draw Water
+    gameWater.updateFrame(time);
 
     // Draw Opponents
     if (opponent.size() > 0){
@@ -285,6 +330,8 @@ void Game::UpdateFrame(){
     }
     if (text.bruh == 0) {
         gameConstants.isOpponent = true;
+        gameConstants.isSpear = true;
+        gameConstants.isStatic = true;
         gameConstants.isRunning = true;
     }
     }  
@@ -313,6 +360,21 @@ void Game::GameOver(){
     }
 }
 
+void Game::createStaticOpponent(){
+    StaticOpponent* sta = new StaticOpponent(player);
+    sta -> setWindow(window);
+    sta -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    staticOpponent.push_back(sta);
+}
+
+void Game::removeStaticOpponent(int id){
+    if (staticOpponent.size() > id){
+        delete staticOpponent[id];
+        staticOpponent[id] = staticOpponent[staticOpponent.size() -1];
+        staticOpponent.pop_back();
+    }
+}
+
 void Game::createOpponent(){
     Opponent* opp = new Opponent(player);
     opp -> setWindow(window);
@@ -331,6 +393,20 @@ void Game::removeOpponent(int id){
     }
 }
 
+void Game::createSpear(){
+    Spear* sp = new Spear(player);
+    sp -> setWindow(window);
+    sp -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
+    spear.push_back(sp);
+}
+
+void Game::removeSpear(int id){
+    if (spear.size() > id){
+        delete spear[id];
+        spear[id] = spear[spear.size() - 1];
+        spear.pop_back();
+    }
+}
 void Game::createBird(){
     Birds* bird = new Birds();
     bird -> setWindow(window);

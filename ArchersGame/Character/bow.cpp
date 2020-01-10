@@ -1,8 +1,10 @@
 #include "bow.hpp"
 
-Player::Player(std::vector<Opponent*>* opponent, Texts* texts){
+Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts){
     this -> texts = texts;
     this -> opponent = opponent;
+    this -> statico = statico;
+    this -> spear = spear;
 
     health = maxHealth;
     //creating three textures for the arm, body, arrow
@@ -21,6 +23,10 @@ Player::Player(std::vector<Opponent*>* opponent, Texts* texts){
     hitboxHead.setSize(sf::Vector2f(30, 30));
     hitboxHead.setOutlineColor(sf::Color::Red);
     hitboxHead.setOutlineThickness(5);
+
+    //HealthBar
+    healthbar.setSize(sf::Vector2f(30,30));
+    healthbar.setFillColor(sf::Color::Green);
 }
 
 
@@ -86,7 +92,7 @@ void Player::updateFrame(double time){
 
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-        if (angle < 0 && angle > -50){
+        if (angle < 0 && angle > -55){
             spriteh -> setRotation(angle);
             lastAngle = angle;
             lastPower += time;
@@ -117,24 +123,29 @@ void Player::updateFrame(double time){
         }
     }
 
-    /*
-    arrowComponents.x  = arrowSpeed*cos(30);
-    arrowComponents.y =  arrowSpeed*sin(30) - 9.7*time;
-    spritea -> setRotation(angle);
-    spritea -> move(4 , 4 - 0.5*9.7* (time + 0.1));
-    */
-
     if (isHitboxDrawn){
         window -> draw(hitboxBody);
         window -> draw(hitboxHead);
+    };
+
+
+    healthbar.setPosition(playerPosition.x - 20, playerPosition.y - 50);
+
+    healthbar.setSize(sf::Vector2f((health/100)*60, 10));
+
+    if (health <= 50){
+      healthbar.setFillColor(sf::Color::Red);
+    }
+    if (health >= 0){
+        window -> draw(healthbar);
     }
 
     window -> draw(*spriteh);
     window -> draw(*spriteb);
-    }
+}
 
 void Player::createArrow(float posX, float posY, float vX, float vY){
-    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, texts);
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts);
     arrow -> setWindow(window);
     arrow -> setSize(winWidth, winHeight);
     arrows.push_back(arrow);
@@ -163,6 +174,10 @@ bool Player::shoot(float x, float y){
 
 void Player::stab(){
     health -= 70;
+}
+
+void Player::pierced(float x, float y){
+    health -= 100;
 }
 
 void Player::resetHealth(){

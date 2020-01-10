@@ -10,6 +10,8 @@
 #include "../Arrow/Arrow.hpp"
 #include "../Text/text.hpp"
 class Opponent;
+class Spear;
+class StaticOpponent;
 
 class Player{
 private:
@@ -29,13 +31,16 @@ private:
     double lastPower = 0;
 
     float maxHealth = 100.f;
+    sf::RectangleShape healthbar;
     float health;
     Texts* texts;
     std::vector<Opponent*>* opponent;
+    std::vector<Spear*>* spear;
+    std::vector<StaticOpponent*>* statico;
 
 public:
     
-    Player(std::vector<Opponent*>* opponent,Texts* texts);
+    Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear,  std::vector<StaticOpponent*>* statico, Texts* texts);
     
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);
@@ -46,6 +51,7 @@ public:
 
     bool shoot(float x, float y);
     void stab();
+    void pierced(float x, float y);
 
     float getHealth();
     void resetHealth();
