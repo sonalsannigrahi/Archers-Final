@@ -95,18 +95,20 @@ void Player::updateFrame(double time){
         if (angle < 0 && angle > -55){
             spriteh -> setRotation(angle);
             lastAngle = angle;
+            lastPower += time;
             //arrow -> setRotation(angle);
         }
     } else {
         if (lastAngle != NULL){
             float dX = std::abs(spriteh -> getPosition().x - mousePosition.x + windowPosition.x);
             float dY = std::abs(spriteh -> getPosition().y - mousePosition.y + windowPosition.y);
-            float power = std::sqrt(dX * dX + dY * dY) * 2;
+            float power = lastPower * 1000 + 100;
             float vX = power * std::cos(lastAngle * 3.14159265359 / 180);
             float vY = power * std::sin(lastAngle * 3.14159265359 / 180);
             createArrow(spriteh -> getPosition().x + spriteh -> getGlobalBounds().width / 2, spriteh -> getPosition().y + spriteh -> getGlobalBounds().height / 4, vX, vY);
         }
         lastAngle = NULL;
+        lastPower = 0;
     }
 
     // Draw arrows

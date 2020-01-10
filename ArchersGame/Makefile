@@ -1,8 +1,11 @@
 CXX = g++
 Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
-Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o
+Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o Encryption.o
 
-BackgroundConstants.o: Background/BackgroundConstants.cpp
+Encryption.o: Encryption/Encryption.cpp
+	$(CXX) -c Encryption/Encryption.cpp
+
+BackgroundConstants.o: Background/BackgroundConstants.cpp Encryption.o
 	$(CXX) -c Background/BackgroundConstants.cpp
 
 Background.o: Background/Background.cpp Background/Background.hpp BackgroundConstants.o
@@ -74,13 +77,6 @@ Opponent.o: Opponent/Opponent.cpp Opponent/Opponent.hpp OpponentConstants.o
 	$(CXX) -c Opponent/Opponent.cpp $(Dependencies)
 
 
-OpponentConstants.o: Opponent/OpponentConstants.cpp
-	$(CXX) -c Opponent/OpponentConstants.cpp
-
-Opponent.o: Opponent/Opponent.cpp Opponent/Opponent.hpp OpponentConstants.o
-	$(CXX) -c Opponent/Opponent.cpp $(Dependencies)
-
-
 SpearConstants.o: Opponent/SpearConstants.cpp
 	$(CXX) -c Opponent/SpearConstants.cpp
 
@@ -88,11 +84,12 @@ Spear.o: Opponent/Spear.cpp Opponent/Spear.hpp SpearConstants.o
 	$(CXX) -c Opponent/Spear.cpp $(Dependencies)
 
 
-StaticOpponent.o: Opponent/StaticOpponent.cpp Opponent/StaticOpponent.hpp 
-	$(CXX) -c Opponent/StaticOpponent.cpp $(Dependencies)
-
 StaticConstants.o: Opponent/StaticConstants.cpp
 	$(CXX) -c Opponent/StaticConstants.cpp
+
+StaticOpponent.o: Opponent/StaticOpponent.cpp Opponent/StaticOpponent.hpp StaticConstants.o
+	$(CXX) -c Opponent/StaticOpponent.cpp $(Dependencies)
+
 
 ArrowConstants.o: Arrow/ArrowConstants.cpp
 	$(CXX) -c Arrow/ArrowConstants.cpp

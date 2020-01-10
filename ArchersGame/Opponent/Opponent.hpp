@@ -36,6 +36,7 @@ public:
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();
+    float getHealth();
 
     bool shoot(float x, float y); //will call in arrow class
 };

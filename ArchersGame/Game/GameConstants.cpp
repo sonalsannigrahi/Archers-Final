@@ -1,13 +1,16 @@
+#include "../Encryption/Encryption.hpp"
+#include <string>
+
 class GameConstants{
     public:
         bool isrunning = false;
     // Window setting
-        int WINDOW_HEIGHT = 600;
-        int WINDOW_WIDTH = 900;
+        int WINDOW_HEIGHT = 1000;
+        int WINDOW_WIDTH = 1900;
     // Neutral spawning rate
-        float birdRate = 2.5;
-        float balloonRate = 5.0;
-        float fireworkRate = 0.5;
+        float birdRate = 12.5;
+        float balloonRate = 15.0;
+        float fireworkRate = 1.0;
     // Game setting
         bool isRunning = false;
         bool isRaining = false;
@@ -28,7 +31,35 @@ class GameConstants{
         float fireworksVolume = 100.0;
         float backgroundVolume = 100.0;
     // Opponent spawn rate
-        float opponentRate = 1.f;
-        float staticOpponentRate = 35.f;
-        float spearRate = 40.f;
+        float opponentRate = 10.0;
+        float opponentRateOrigin = 10.0;
+        float opponentRateDecay = 0.01;
+        float staticOpponentRate = 25.0;
+        float staticOpponentRateOrigin = 25.0;
+        float staticOpponentRateDecay = 0.02;
+        float spearRate = 60.0;
+        float spearRateOrigin = 60.0;
+        float spearRateDecay = 0.03;
+    // Best score
+        string BestPlayer = "eu";
+        int BestScore = 0;
+
+    GameConstants(Encrypt* enc){
+        BestPlayer = enc -> get_item_string("BestPlayer");
+        BestScore = enc -> get_item<int>("BestScore");
+        WINDOW_HEIGHT = enc -> get_item<int>("WINDOW_HEIGHT");
+        WINDOW_WIDTH = enc -> get_item<int>("WINDOW_WIDTH");
+        isRaining = (enc -> get_item<int>("isRaining") == 1);
+        isLightning = (enc -> get_item<int>("isLightning") == 1);
+        isBirds = (enc -> get_item<int>("isBirds") == 1);
+        isBalloon = (enc -> get_item<int>("isBalloon") == 1);
+        isFireworks = (enc -> get_item<int>("isFireworks") == 1);
+        isBlackhole = (enc -> get_item<int>("isBlackhole") == 1);
+        masterVolume = enc -> get_item<float>("masterVolume");
+        rainVolume = enc -> get_item<float>("rainVolume");
+        thunderVolume = enc -> get_item<float>("thunderVolume");
+        birdsVolume = enc -> get_item<float>("birdsVolume");
+        fireworksVolume = enc -> get_item<float>("fireworksVolume");    
+        backgroundVolume = enc -> get_item<float>("backgroundVolume");
+    }
 };

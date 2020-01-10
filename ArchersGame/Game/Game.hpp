@@ -24,12 +24,18 @@
 #include "../Opponent/StaticOpponent.hpp"
 #include "../Arrow/Arrow.hpp"
 #include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
 
 
 class Game {
     private:
+        //Username
+        sf::String UserName;
+        // Encryption
+        Encrypt* enc = new Encrypt();
+
         // Add constants to the class
-        GameConstants gameConstants = GameConstants();
+        GameConstants gameConstants = GameConstants(enc);
 
         // All other classes
         // ...
@@ -47,8 +53,7 @@ class Game {
         std::vector<Spear*> spear;  
         std::vector<StaticOpponent*> staticOpponent; 
         Player* player = new Player(&opponent, &spear, &staticOpponent, &text);
-                           // Not implemented
-          // Not implemented
+                 
         //Arrow arrow = Arrow(); // Test arrow
         EndGame endgame = EndGame();
 
@@ -57,18 +62,20 @@ class Game {
 
         // Game Window
         sf::RenderWindow* window;
+        
         // A circle
         // sf::CircleShape* circle;
 
         bool isGamePaused = false;
+        int score = 0;
 
         // Spawning opponents
         void createOpponent();
         void removeOpponent(int id);
-        void createSpear();  // Not implemented
-        void removeSpear(int id); // Not implemented
-        void createStaticOpponent(); // Not implemented
-        void removeStaticOpponent(int id); // Not implemented
+        void createSpear();  
+        void removeSpear(int id); 
+        void createStaticOpponent(); 
+        void removeStaticOpponent(int id); 
 
     public:
     

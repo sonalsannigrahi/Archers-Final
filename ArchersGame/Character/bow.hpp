@@ -28,6 +28,7 @@ private:
     double timer;
     int counter = 0;
     float lastAngle;
+    double lastPower = 0;
 
     float maxHealth = 100.f;
     sf::RectangleShape healthbar;

@@ -104,7 +104,3 @@ void Arrow::updateFrame(double time){
         alive = false;
     }
 }
-
-
-
-

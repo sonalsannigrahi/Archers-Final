@@ -19,6 +19,19 @@ Birds::Birds(){
         birdsSprites.push_back(*sprite);
     }   
 
+
+    birdType = rand() % birdconstant.birdTypeCount;
+    current = birdconstant.birdlen * birdType;
+    direction = rand() % 2;
+    if (direction == 0){
+        posX = 0.0;
+        for (int i = 0; i < birdconstant.filenamelen; i++) 
+            birdsSprites[i].setScale(-1.f, 1.f); // Flip the bird
+    } else {
+        posX = (float) -1.0;
+    }
+    posY = -1.0;
+
     // Add sound
     music.openFromFile("Birds/Assets/" + birdconstant.musicfile);
     music.setLoop(true);
@@ -32,17 +45,8 @@ void Birds::setWindow(sf::RenderWindow* gameWindow){
 void Birds::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
-    birdType = rand() % birdconstant.birdTypeCount;
-    current = birdconstant.birdlen * birdType;
-    direction = rand() % 2;
-    if (direction == 0){
-        posX = 0.0;
-        for (int i = 0; i < birdconstant.filenamelen; i++) 
-            birdsSprites[i].setScale(-1.f, 1.f); // Flip the bird
-    } else {
-        posX = (float) width;
-    }
-    posY = rand() % ((int) (height * birdconstant.skylimit));
+    if (posY == -1.0) posY = rand() % ((int) (height * birdconstant.skylimit));
+    if (posX == -1.0) posX = width;
 }
 
 void Birds::updateFrame(double time) {
