@@ -14,6 +14,7 @@ class Texts{
     sf::Text text;
     sf::Text play;
     sf::Text tutorial;
+    sf::Text BestScore;
     sf::Text quit;
     sf::Text ChooseUserName;
     double counter = 0;

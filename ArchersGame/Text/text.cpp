@@ -18,6 +18,7 @@ Texts::Texts(){
     //setting font
     text.setFont(font);
     play.setFont(font);
+    BestScore.setFont(font);
     quit.setFont(font);
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
@@ -70,6 +71,9 @@ void Texts::setposition(float x, float y){
 void Texts::updateFrame(double time) {
 
     counter += time;
+    if(bruh == -2){
+
+    }
     if(bruh == -1){
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
@@ -113,13 +117,19 @@ void Texts::updateFrame(double time) {
 
         quit.setString("Quit");
         quit.setCharacterSize(30);
-        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 60);
+        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 90);
+
+        BestScore.setString("Best Score");
+        BestScore.setCharacterSize(30);
+        BestScore.setPosition(windowWidth/2-75,5*windowHeight/16 + 60);
 
         textconstants.condition0 = false;
 
         window -> draw(play);
         window -> draw(tutorial);
         window -> draw(quit);
+        window -> draw(BestScore);
+        
         a = mousePosition.x; 
         b = mousePosition.y; 
         
@@ -156,6 +166,7 @@ void Texts::updateFrame(double time) {
         else{
             quit.setColor(sf::Color::White);
         }
+        
 
     }
     if (bruh==2)

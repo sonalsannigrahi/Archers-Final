@@ -3,6 +3,8 @@
 #include <sstream>
 #include <string>
 using namespace std;
+
+
 int main(){
     Encrypt enc;
 
@@ -27,7 +29,9 @@ int main(){
         float backgroundVolume = 100.0;
     // BestScore
         int BestScore = 0;
-
+        string BestPlayer = "New Player";
+    
+    enc.add_data_string("BestPlayer", BestPlayer);
     enc.add_data<int>("BestScore", BestScore);
     enc.add_data<int>("background",background);
     enc.add_data<int>("WINDOW_HEIGHT",WINDOW_HEIGHT);
@@ -46,6 +50,7 @@ int main(){
     enc.add_data<float>("backgroundVolume",backgroundVolume);
     enc.updatefile();
 
+    cout<<"BestPlayer = "<<enc.get_item_string("BestPlayer")<<'\n';
     cout<<"BestScore = "<<enc.get_item<int>("BestScore")<<'\n';
     cout<<"background = "<<enc.get_item<int>("background")<<'\n';
     cout<<"WINDOW_HEIGHT = "<<enc.get_item<int>("WINDOW_HEIGHT")<<'\n';
@@ -62,6 +67,8 @@ int main(){
     cout<<"birdsVolume = "<<enc.get_item<float>("birdsVolume")<<"\n";
     cout<<"fireworksVolume = "<<enc.get_item<float>("fireworksVolume")<<"\n";    
     cout<<"backgroundVolume = "<<enc.get_item<float>("backgroundVolume")<<"\n";
-
+    
+    
+   
     return 0;
 }

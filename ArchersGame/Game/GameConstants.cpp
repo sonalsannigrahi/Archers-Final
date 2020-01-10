@@ -38,8 +38,13 @@ class GameConstants{
         float spearRate = 60.0;
         float spearRateOrigin = 60.0;
         float spearRateDecay = 0.03;
+    // Best score
+        string BestPlayer = "eu";
+        int BestScore = 0;
 
     GameConstants(Encrypt* enc){
+        BestPlayer = enc -> get_item_string("BestPlayer");
+        BestScore = enc -> get_item<int>("BestScore");
         WINDOW_HEIGHT = enc -> get_item<int>("WINDOW_HEIGHT");
         WINDOW_WIDTH = enc -> get_item<int>("WINDOW_WIDTH");
         isRaining = (enc -> get_item<int>("isRaining") == 1);

@@ -292,7 +292,11 @@ void Game::UpdateFrame(){
 
 void Game::GameOver(){
     // Update best score
-    enc -> add_data<int>("BestScore", max(enc -> get_item<int>("BestScore"), score));
+    enc -> add_data<int>("BestScore", max(gameConstants.BestScore, score));
+    if(max(gameConstants.BestScore, score) > score){
+        enc -> add_data_string("BestPlayer",UserName );
+    }
+    cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
     enc -> updatefile();
     // Paused Game
     pauseGame();
