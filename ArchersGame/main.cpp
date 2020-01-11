@@ -33,9 +33,9 @@ int main()
             state = retroGame.run();
         }
     }
-    **/
 
     game->StartGame();
-
+    **/
+    
     return 0;
 }
