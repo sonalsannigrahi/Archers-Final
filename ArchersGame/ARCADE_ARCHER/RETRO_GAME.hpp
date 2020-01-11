@@ -4,6 +4,7 @@
 #include "fire_balls.hpp"
 #include "player_box.hpp"
 #include "targets.hpp"
+#include "BOX_PARTICLES.hpp"
 
 #include "STATES.hpp"
 
@@ -19,6 +20,8 @@ private:
     FIRE_BALLS fireBalls;
     Targets targets;
     PLayerBox playerBox;
+
+    BoxParticles boxParticles;
 
     clock_t time;
 

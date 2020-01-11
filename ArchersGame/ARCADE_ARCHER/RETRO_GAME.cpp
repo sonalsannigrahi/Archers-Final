@@ -3,7 +3,8 @@
 RetroGame::RetroGame(sf::RenderWindow* window):
     fireBalls(window),
     targets(window,50.0),
-    playerBox(window,100.0,30.0,60.0,800.0,600.0)
+    playerBox(window,100.0,30.0,60.0,800.0,600.0),
+    boxParticles(window)
 {
     this->window = window;
 
