@@ -50,8 +50,8 @@ class GameConstants{
         float spearRateOrigin = 1000000.0;
         float spearRateDecay = 0.03;
     // Best score
-        string BestPlayer;
-        int BestScore;
+        string BestPlayer = "VisNic";
+        int BestScore = 0;
     
     //font
         std::string filename  = "Game/asset/font.TTF";

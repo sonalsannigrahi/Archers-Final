@@ -363,7 +363,6 @@ int Encrypt::updatefile(){
 }
 
 void Encrypt::add_data_string(string key, string value){
-    
         for (map<string, string>::iterator itr = sstring.begin(); itr != sstring.end(); ++itr) {
             if (itr->first== this->encrypt(key)){
                 sstring.erase(this->encrypt(key));
@@ -373,12 +372,10 @@ void Encrypt::add_data_string(string key, string value){
         sstring.insert(pair<string, string> ( encrypt(key) , encrypt(value) ));
 }
 string Encrypt::get_item_string(string key){
-
         for (map<string, string>::iterator itr = sstring.begin(); itr != sstring.end(); ++itr) {
             if (itr->first== this->encrypt(key)){
                 return this->decrypt(itr->second);
             }
         }
-    
 }
 
