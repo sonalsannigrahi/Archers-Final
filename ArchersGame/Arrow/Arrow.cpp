@@ -119,8 +119,11 @@ void Arrow::updateFrame(double time){
         //std::cout << 3 << std::endl;
 
         // Draw hitbox
+    
         if (isHitboxDrawn){
             hitbox.setPosition(headX, headY);
+        
+
             window -> draw(hitbox);
         }
 
