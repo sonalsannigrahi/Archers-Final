@@ -1,5 +1,11 @@
 #include "Game.hpp"
 
+
+sf::RenderWindow* Game::getWindow()
+{
+    return this->window;
+}
+
 Game::Game(){
     srand(time(NULL)); // Randomize
     gameConstants.isRunning = false;
@@ -57,13 +63,12 @@ Game::Game(){
 
     // Start game
     std::cout << "Starting Game ..." << std::endl;
-    StartGame();
 }
 
 Game::~Game(){
 }
 
-void Game::StartGame(){
+STATES::STATES_ENUM Game::StartGame(){
     // CIRCLE TEST
 
     // Draw a circle
@@ -103,6 +108,11 @@ void Game::StartGame(){
             }
 
             else if (event.type == sf::Event::KeyPressed){
+                if(event.key.code == sf::Keyboard::S)
+                {
+                    return STATES::GAME_RETRO;
+                }
+                
                 if(text.bruh==-1 && event.key.code == sf::Keyboard::Return ){
                     if(UserName.getSize() == 0){
                         UserName = "New Player";

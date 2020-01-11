@@ -9,8 +9,6 @@ int main()
 {
     Game* game = new Game();
     
-    /**
-    
     sf::RenderWindow* window = game->getWindow();
 
     RetroGame retroGame = RetroGame(window);
@@ -35,7 +33,7 @@ int main()
     }
 
     game->StartGame();
-    **/
+
     
     return 0;
 }
