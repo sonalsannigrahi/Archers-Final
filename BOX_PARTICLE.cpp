@@ -1,5 +1,7 @@
 #include "BOX_PARTICLE.hpp"
 
+
+
 BoxParticle::BoxParticle(sf::RenderWindow* cwindow, double length, double mass, Vector2D cPos, Vector2D cVel, double angle, double angle_vel):
     window(cwindow),
     Pos(cPos),
