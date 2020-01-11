@@ -5,8 +5,17 @@ class GameConstants{
     public:
         bool isrunning = false;
     // Window setting
+        /**
+        
+        FOR SOME TIME
+        
         int WINDOW_HEIGHT = 1000;
         int WINDOW_WIDTH = 1900;
+        **/
+        int WINDOW_HEIGHT = 600;
+        int WINDOW_WIDTH = 800;
+    
+        
     // Neutral spawning rate
         float birdRate = 12.5;
         float balloonRate = 15.0;
@@ -25,20 +34,20 @@ class GameConstants{
         bool isStatic = false;
     // Volume
         float masterVolume = 0.0;
-        float rainVolume = 100.0;
-        float thunderVolume = 100.0;
-        float birdsVolume = 100.0;
-        float fireworksVolume = 100.0;
-        float backgroundVolume = 100.0;
+        float rainVolume = 0.0;
+        float thunderVolume = 0.0;
+        float birdsVolume = 0.0;
+        float fireworksVolume = 0.0;
+        float backgroundVolume = 0.0;
     // Opponent spawn rate
-        float opponentRate = 10.0;
-        float opponentRateOrigin = 10.0;
+        float opponentRate = 5.0;
+        float opponentRateOrigin = 5.0;
         float opponentRateDecay = 0.01;
-        float staticOpponentRate = 25.0;
-        float staticOpponentRateOrigin = 25.0;
+        float staticOpponentRate = 10.0;
+        float staticOpponentRateOrigin = 10.0;
         float staticOpponentRateDecay = 0.02;
-        float spearRate = 60.0;
-        float spearRateOrigin = 60.0;
+        float spearRate = 1.0;
+        float spearRateOrigin = 10.0;
         float spearRateDecay = 0.03;
     // Best score
         string BestPlayer = "eu";
