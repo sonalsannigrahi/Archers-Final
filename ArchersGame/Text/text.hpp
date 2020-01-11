@@ -10,7 +10,6 @@ class Texts{
     private:
     sf::RenderWindow* window;
     int windowWidth, windowHeight;
-    TextConstants textconstants = TextConstants();
     sf::Text text;
     sf::Text play;
     sf::Text tutorial;
@@ -28,6 +27,7 @@ class Texts{
     sf::Sound sound;
 
     public:
+    TextConstants textconstants = TextConstants();
     sf::Font font;
     void loadgame();
     int bruh;

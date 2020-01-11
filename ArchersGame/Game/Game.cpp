@@ -363,6 +363,14 @@ void Game::GameOver(){
         gameConstants.opponentRate = gameConstants.opponentRateOrigin;
         gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
         gameConstants.spearRate = gameConstants.spearRateOrigin;
+
+        // text.bruh = 1;
+        // text.textconstants.conditionplay = true;
+        // text.textconstants.condition0 = false;
+        // text.textconstants.condition1 = false;
+        // text.textconstants.condition2 = false;
+        // text.textconstants.condition3 = false;
+        // text.textconstants.condition4 = false;
     }
 }
 
