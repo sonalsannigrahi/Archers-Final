@@ -199,8 +199,7 @@ void Texts::updateFrame(double time) {
         if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 97 && b<=5*windowHeight/16+118){
             quit.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                bruh = 3;
-                textconstants.conditionplay = false;
+                window -> close();
             }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
         }
         else{

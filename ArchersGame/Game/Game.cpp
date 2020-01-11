@@ -34,9 +34,9 @@ Game::Game(){
     gameSetting.setGame(this);
 
     // Set initialize volume
-    gameBackground.changeBackgroundVolume(gameConstants.backgroundVolume * gameConstants.masterVolume);
-    gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume);
-    gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume);
+    gameBackground.changeBackgroundVolume(gameConstants.backgroundVolume * gameConstants.masterVolume / 100);
+    gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume / 100);
+    gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume / 100);
 
     // Set background
     changeBackgroundPicture(enc -> get_item<int>("background"));
@@ -359,14 +359,14 @@ void Game::UpdateFrame(){
 
 void Game::GameOver(){
     // Update best score
-    std::cout<<score<<endl;
-    std::cout<<gameConstants.BestScore<<std::endl;
-    std::cout<<gameConstants.BestPlayer<<std::endl;
+    //std::cout<<score<<endl;
+    //std::cout<<gameConstants.BestScore<<std::endl;
+    //std::cout<<gameConstants.BestPlayer<<std::endl;
     enc -> add_data<int>("BestScore", max(gameConstants.BestScore, score));
     if(max(gameConstants.BestScore, score) > gameConstants.BestScore){
-         //enc -> add_data_string("BestPlayer", UserName);
+         enc -> add_data_string("BestPlayer", UserName);
     }
-    std::cout<<enc->get_item_string("BestPlayer")<< " got "<<enc->get_item<int>("BestScore")<<std::endl;
+    //std::cout<<enc->get_item_string("BestPlayer")<< " got "<<enc->get_item<int>("BestScore")<<std::endl;
     enc -> updatefile();
     // Paused Game
     pauseGame();
@@ -452,7 +452,7 @@ void Game::createBird(){
     Birds* bird = new Birds();
     bird -> setWindow(window);
     bird -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-    bird -> change_volume_bird(gameConstants.birdsVolume * gameConstants.masterVolume);
+    bird -> change_volume_bird(gameConstants.birdsVolume * gameConstants.masterVolume / 100);
     birds.push_back(bird);
 }
 
@@ -483,7 +483,7 @@ void Game::createFireworks(){
     Fireworks* firework = new Fireworks();
     firework -> setWindow(window);
     firework -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-    firework -> change_volume_fireworks(gameConstants.fireworksVolume * gameConstants.masterVolume);
+    firework -> change_volume_fireworks(gameConstants.fireworksVolume * gameConstants.masterVolume / 100);
     fireworks.push_back(firework);
 }
 

@@ -96,7 +96,7 @@ void Player::updateFrame(double time){
             mousePosition = sf::Mouse::getPosition();
             a1 = mousePosition.x - windowPosition.x;
             b1 = mousePosition.y - windowPosition.y;
-            std::cout<< a1 << ' ' << b1 << std::endl;
+            //std::cout<< a1 << ' ' << b1 << std::endl;
             //angle = atan((b0-b1)/(a0-a1)) * 180 / 3.14159265359;
             //std::cout << angle << std::endl;
             spriteh -> setRotation(angle);
@@ -110,7 +110,7 @@ void Player::updateFrame(double time){
             angle = 0; //(atan2(a0, b0) * 180 - 180)/3.14159265359;
             lastAngle = 0;
             firstclick = false;
-            std::cout << '-' << a0 << ' ' << b0 << std::endl;
+            //std::cout << '-' << a0 << ' ' << b0 << std::endl;
         }
     } else {
         if (lastAngle != NULL){
