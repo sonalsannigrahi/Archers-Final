@@ -143,7 +143,7 @@ void Arrow::updateFrame(double time){
             if (alive && (*spear)[i] -> shoot(headX, headY)) alive = false;
         }
         //std::cout << 9 << std::endl;
-        if (alive && player -> shoot(headX, headY, index)) alive = false;
+        if (alive && player -> shoot(headX, headY)) alive = false;
 
         //std::cout << 10 << std::endl;
     }
