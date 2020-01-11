@@ -1,6 +1,6 @@
 # Archers
 
-## Quick Referrences
+## Quick References
 
 
 1. [Description](#project)
