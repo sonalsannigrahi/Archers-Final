@@ -163,7 +163,7 @@ void Texts::updateFrame(double time) {
         else{
             tutorial.setColor(sf::Color::White);
         }
-        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
+        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 97 && b<=5*windowHeight/16+118){
             quit.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 bruh = 3;
@@ -173,7 +173,16 @@ void Texts::updateFrame(double time) {
         else{
             quit.setColor(sf::Color::White);
         }
-        
+        if (a >=windowWidth/2-75 && a<=windowWidth/2+75  && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
+            BestScore.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                bruh = 4;
+                textconstants.conditionplay = false;
+            }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            BestScore.setColor(sf::Color::White);
+        }
 
     }
     if (bruh==2)

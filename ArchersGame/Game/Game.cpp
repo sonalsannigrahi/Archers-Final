@@ -135,7 +135,7 @@ void Game::StartGame(){
 
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
-    
+    //std::cout<<gameConstants.BestPlayer<<"\n";
     if(!gameConstants.isRunning){
         gameConstants.isOpponent = false;
     }
@@ -338,11 +338,14 @@ void Game::UpdateFrame(){
 
 void Game::GameOver(){
     // Update best score
+    cout<<score<<endl;
+    cout<<gameConstants.BestScore<<endl;
+    cout<<gameConstants.BestPlayer<<endl;
     enc -> add_data<int>("BestScore", max(gameConstants.BestScore, score));
-    // if(max(gameConstants.BestScore, score) > score){
-    //     enc -> add_data_string("BestPlayer", UserName);
-    // }
-    // cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
+    if(max(gameConstants.BestScore, score) > gameConstants.BestScore){
+         enc -> add_data_string("BestPlayer", UserName);
+    }
+    cout<<enc->get_item_string("BestPlayer")<< " got "<<enc->get_item<int>("BestScore")<<endl;
     enc -> updatefile();
     // Paused Game
     pauseGame();
@@ -360,6 +363,14 @@ void Game::GameOver(){
         gameConstants.opponentRate = gameConstants.opponentRateOrigin;
         gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
         gameConstants.spearRate = gameConstants.spearRateOrigin;
+
+        // text.bruh = 1;
+        // text.textconstants.conditionplay = true;
+        // text.textconstants.condition0 = false;
+        // text.textconstants.condition1 = false;
+        // text.textconstants.condition2 = false;
+        // text.textconstants.condition3 = false;
+        // text.textconstants.condition4 = false;
     }
 }
 
