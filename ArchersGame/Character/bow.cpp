@@ -159,35 +159,21 @@ void Player::removeArrow(int id){
         arrows.pop_back();
     }
 }
+bool Player::shoot(float x, float y){
+    //std::cout <<  index << std::endl;
+    
+    if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
+        hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
+            health -= 50;
+            return true;
+        } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
+                   hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
+                        health -= 35;
+                        return true;
+                    }
 
-bool Player::shoot(float x, float y, int index){
-    std::cout <<  index << std::endl;
-    
-    if (index ==1){
-        if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
-            hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
-                health -= 50;
-                return true;
-            } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
-                        hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
-                            health -= 35;
-                            return true;
-                        }
-    }
 
-    else if (index ==0){
-        if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
-            hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
-                health -= 100;
-                return true;
-            } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
-                        hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
-                            health -= 100;
-                            return true;
-                        } 
-    }
-    
-    
+
     return false;
 }
 

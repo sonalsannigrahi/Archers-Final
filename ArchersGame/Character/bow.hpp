@@ -52,7 +52,7 @@ public:
     void createArrow(float posX, float posY, float vX, float vY);
     void removeArrow(int id);
 
-    bool shoot(float x, float y, int index);
+    bool shoot(float x, float y);
     void stab();
     void pierced(float x, float y);
 
