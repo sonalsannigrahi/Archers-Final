@@ -345,22 +345,78 @@ void Game::GameOver(){
     // cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
     enc -> updatefile();
     // Paused Game
-    pauseGame();
+    //pauseGame(); //Didn't pause game because settings page pops up then.
     endgame.updateFrame(0);
+    sf::Vector2i windowPosition;
+    sf::Vector2i mousePosition;
+    mousePosition = sf::Mouse::getPosition(*window);
+    //Change Score View
+    ScoreView.setFillColor(sf::Color::White);
+    ScoreView.setCharacterSize(70);
+    ScoreView.setPosition(float(gameConstants.WINDOW_WIDTH)/2, float(gameConstants.WINDOW_HEIGHT)/2);
+    window -> draw(ScoreView);
+    //Stop Spwaning Characters
+    gameConstants.isOpponent = false;
+    gameConstants.isSpear = false;
+    gameConstants.isStatic = false;
+    gameConstants.isRunning = false;
+
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-        unpauseGame();
-        // Reset score and player's health
-        player -> resetHealth();
-        score = 0;
-        // Remove all opponents
-        while (opponent.size() > 0) removeOpponent(0);
-        while (spear.size() > 0) removeSpear(0);
-        while (staticOpponent.size() > 0) removeStaticOpponent(0);
-        // Reset spawn rate
-        gameConstants.opponentRate = gameConstants.opponentRateOrigin;
-        gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
-        gameConstants.spearRate = gameConstants.spearRateOrigin;
+        //std::cout << "i am here" << std::endl;
+        //std::cout << (mousePosition.x, mousePosition.y) << std::endl;
+        if (endgame.replay -> getGlobalBounds().contains(mousePosition.x,mousePosition.y)){
+            //std::cout << "i clicked exit" << std::endl;
+            //unpauseGame();
+            // Reset score, score position, and player's health
+            ScoreView.setPosition(float(gameConstants.WINDOW_WIDTH)/40, float(gameConstants.WINDOW_HEIGHT)/80);
+            ScoreView.setFillColor(sf::Color::Black);
+            ScoreView.setCharacterSize(50);
+            player -> resetHealth();
+            score = 0;
+            //ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
+            // Remove all opponents
+            while (opponent.size() > 0) removeOpponent(0);
+            while (spear.size() > 0) removeSpear(0);
+            while (staticOpponent.size() > 0) removeStaticOpponent(0);
+            // Reset spawn rate
+            gameConstants.opponentRate = gameConstants.opponentRateOrigin;
+            gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
+            gameConstants.spearRate = gameConstants.spearRateOrigin;
+        }
     }
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        //std::cout << "i am here" << std::endl;
+        //std::cout << endgame.exit -> getGlobalBounds() << std::endl;
+        //std::cout << (mousePosition.x, mousePosition.y) << std::endl;
+        if(endgame.exit -> getGlobalBounds().contains(mousePosition.x,mousePosition.y)){
+            std::cout << "i clicked exit" << std::endl;
+            //unpauseGame();
+            // Reset score and player's health
+            ScoreView.setPosition(float(gameConstants.WINDOW_WIDTH)/40, float(gameConstants.WINDOW_HEIGHT)/80);
+            ScoreView.setFillColor(sf::Color::Black);
+            ScoreView.setCharacterSize(50);
+            player -> resetHealth();
+            score = 0;
+            //ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
+            // Remove all opponents
+            while (opponent.size() > 0) removeOpponent(0);
+            while (spear.size() > 0) removeSpear(0);
+            while (staticOpponent.size() > 0) removeStaticOpponent(0);
+            // Reset spawn rate
+            gameConstants.opponentRate = gameConstants.opponentRateOrigin;
+            gameConstants.staticOpponentRate = gameConstants.staticOpponentRateOrigin;
+            gameConstants.spearRate = gameConstants.spearRateOrigin;
+            text.bruh = 1;
+            text.textconstants.conditionplay = true;
+            text.textconstants.condition0 = false;
+            text.textconstants.condition1 = false;
+            text.textconstants.condition2 = false;
+            text.textconstants.condition3 = false;
+            text.textconstants.condition4 = false;
+        }
+    }
+
 }
 
 void Game::createStaticOpponent(){
@@ -676,7 +732,7 @@ void Game::setWindowSize(int width, int height){
         staticOpponent[i] -> setSize(width, height);
 
     text.setWindowSize(width, height);
-    ScoreView.setPosition((float) gameConstants.WINDOW_WIDTH / 40, (float) gameConstants.WINDOW_HEIGHT / 80);
+    ScoreView.setPosition(float(width)/40,float(height)/80);
 }
 
 void Game::pauseGame(){
