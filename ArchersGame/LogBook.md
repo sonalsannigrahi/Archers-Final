@@ -115,4 +115,31 @@ Saba Tavdgiridze and Nícolas Lopes - Implemented the rectangle class( Rigid obj
 Hoang Anh Ngo - This week, I finished the implementation of the class of buttons of the state screens. Next week, I will start on implementing on the game over screen and the layout of different parts of each state screen (settings, options, etc.).
 
 Sunho Hwang - This week we began planning on the general game design and what it would require. Our first goal would be to figure out the game map, the animations required, etc.s
+## Week 5 (15th Dec - 20th Dec)
+
+Xingjian Zhang - Worked with Diego and began implementation of a tutorial level. Added instructional texts with custom fonts to the game and created sprites for dummy targets and arrow pointers. Next week, I will implement the dummy targets and add more features to the tutorial.
+
+Saba Tavdgiridze and Nicolas Lopes - finished rectangle class( except collisions ) which has to be integrated with graphics team. 
+
+Jiwon Park - Worked with Sonal to implement the rotation of the bow with the mouse click. Implemented the speared opponents.
+
+Alexandre Hirsch - Worked with Minh Tuan on the in game pause/settings menu. Will work on implementing the actual settings in the following week.
+
+Sonal Sannigrahi - Finished the player class and created sprites for a spear throwing opponent, running opponent, fire throwing opponent. I also created graphics for the title screen, levels screen, and buttons for endless and campaign mode. Worked on game design to integrate the spear throwing character. Implemented the running character and generally worked on integrating different parts of the game together. Over the holidays, I will work on a score counter and some more small graphics to enhance the game as well as complete the opponents.
+
+Tarcisio Teixeira - This week I fixed a small bug that I found on encryption class and start again the implementation of the start screen class, since we changed a bit the initial plan. During this weekend I intend to keep working and finish the start screen class.
+
+Sunho Hwang - This week I tested some part of the classes I had worked on so far and I did some final adjustments. I also helped merging this class with the entire code. After the holidays I will be working on the tutorial class with diego.  
+
+Diego Gomez: This week I finished polishing some classes I’ve been working on, and I added a class to put text at will on the screen, I will use this class to build a tutorial for the game.
+
+Minh Tuan Nguyen - This week, I managed to merge the characters with the game, creating hitboxes, arrow and characters interaction, finished the basic part of the game. Next week, I will help finish the final version of the game.
+
+Alice Aubert - This week I finalized the implementation of arrows as rectangle objects from the physics team’s code, working with Saba to make the implementation smooth. Some bug remains so next week I plan on making sure the arrows work bug free. 
+
+Maëlys Solal - This week I implemented a static opponent and added it to the game class in order to test its implementation. I will now create new opponents, specifically, one that shoots arrows. I will also try to add the health bar to the game class and implement the functions to increase and decrease the health. 
+
+André Renom - I spent the early part of the week implementing flux-based air resistance for the rectangle physics class, and the latter part of the week coordinating with the character team with regards to the implementation of said class to the arrow drawable.
+
+Hoang Anh Ngo - This week, I finished the implementation of buttons. I will finish the start screen with Tarcisio next week.
 

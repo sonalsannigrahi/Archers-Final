@@ -24,7 +24,7 @@ private:
     std::vector<Spear*>* spear;
     std::vector<StaticOpponent*>* statico;
     sf::RectangleShape hitbox;
-    bool isHitboxDrawn = true;
+    bool isHitboxDrawn = false;
     
     int windowWidth, windowHeight;
     bool alive = true;
@@ -36,6 +36,7 @@ public:
     
     Arrow();
     Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear,std::vector<StaticOpponent*>* statico, Texts* texts);
+    Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts, std::string filename);
 
     void setWindow(sf::RenderWindow* gameWindow);
     void setSize(int width, int height);

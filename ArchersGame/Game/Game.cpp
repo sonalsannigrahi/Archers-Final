@@ -294,7 +294,7 @@ void Game::UpdateFrame(){
     gameWater.updateFrame(time);
 
     // Draw Setting
-    gameSetting.updateFrame(time);
+    if (player -> getHealth() > 0) gameSetting.updateFrame(time);
     
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
@@ -367,7 +367,7 @@ void Game::GameOver(){
 }
 
 void Game::createStaticOpponent(){
-    StaticOpponent* sta = new StaticOpponent(player);
+    StaticOpponent* sta = new StaticOpponent(player, &text);
     sta -> setWindow(window);
     sta -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
     staticOpponent.push_back(sta);

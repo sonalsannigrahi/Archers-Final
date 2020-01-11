@@ -69,7 +69,7 @@ void Player::updateFrame(double time){
 
     spriteb -> setPosition(float(winWidth)/25, float(winHeight)/1.8);      
 
-    spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/3 ,spriteb -> getPosition().y + float(bodySize.height)/4.6);
+    spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/3 ,spriteb -> getPosition().y + float(bodySize.height)/4);
     
     playerPosition = spriteh -> getPosition();
     /*
