@@ -1,5 +1,12 @@
 #include "target.hpp"
 
+double fRand(double fMin, double fMax)
+{
+    double f = (double)rand() / RAND_MAX;
+    return fMin + f * (fMax - fMin);
+}
+
+
 Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* window)
 {
     ///std::cout << "CREATE NEW ONE" << std::endl;
@@ -21,7 +28,7 @@ void Target::update(double duration)
 
     ///std::cout << duration << std::endl;
     ///std::cout << Age << " " << MaxAge << std::endl;
-    
+
     this->Age += duration;
     if(Age > MaxAge)
     {
@@ -64,9 +71,9 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     for(int i=0;i<lines.size();i++){
         Vector2D point_a = lines[i].first;
         Vector2D point_b = lines[i].second;
-        
+
         double distance;
-        
+
         if( (center - point_a) * (point_b - point_a) < 0 ){
             distance = (center - point_a).len();
         }
@@ -85,12 +92,41 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     {
         std::cout << "HIT!!!" << std::endl;
         std::cout << "HIT!!!" << std::endl;
-        
+
         isAlive = false;
         for(;;);
     }
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
+
+    double X = pos_x - length/2;
+    double Y = pos_y - length/2;
+
+    int N_B = 5;
+
+    for(int i=0;i<N_B;i++)
+    {
+        for(int j=0;j<N_B;j++)
+        {
+            double cnt_x = (length/N_B)*(i+0.5);
+            double cnt_y = (length/N_B)*(j+0.5);
+            srand(time(NULL));
+
+            double angle_vel = fRand(-0.5, 0.5);
+
+            Vector2D Vel = ball->getVel();
+
+            double scaling_factor = fRand(1.0, 1.5);
+            Vel = Vel * scaling_factor;
+
+            double theta = fRand(-pi/4, pi/4);
+
+            Vel.turn(theta);
+
+            BoxParticle* box_particle = new BoxParticle(window, length/N_B, 20.0, Vector2D(cnt_x,cnt_y), Vel, 0.0, angle_vel);
+        }
+    }
+
     return ans;
 }
 
