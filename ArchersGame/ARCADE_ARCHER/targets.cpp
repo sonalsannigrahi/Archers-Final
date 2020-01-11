@@ -21,11 +21,33 @@ Targets::Targets(sf::RenderWindow* window, double target_length):
     this->target_length = target_length;
 }
 
-void Targets::update(double duration)
+void Targets::update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles)
 {
     for(int i=0;i<targets.size();i++){
         targets[i]->update(duration);
     }
+
+    for(int i=0;i<targets.size();i++){
+        if(targets[i]->isAlive()){
+            std::vector<FIRE_BALL*> balls = fireBalls.getBALLS();
+
+            for(int j=0;j<balls.size();j++){
+                std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > resolve = targets[i]->resolve(balls[j]);
+                if(resolve.first.size() > 0){
+                    for(int h=0;h<resolve.second.size();h++){
+                        boxParticles.addBoxParticle(resolve.second[h]);
+                    }
+                    for(int h=0;h<resolve.first.size();h++){
+                        fireBalls.AddBall(resolve.first[h]);
+                    }
+                    fireBalls.RemBall(balls[j]);
+                    balls[j] = balls[balls.size() - 1];
+                    balls.pop_back();
+                }
+            }
+        }
+    }
+
 }
 
 int Targets::nAlive()
