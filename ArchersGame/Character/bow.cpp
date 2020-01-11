@@ -5,7 +5,8 @@ Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std
     this -> opponent = opponent;
     this -> statico = statico;
     this -> spear = spear;
-
+    filename = "arrow.png";
+    scale = 0.02;
     health = maxHealth;
     //creating three textures for the arm, body, arrow
 	sf::Texture* body = new sf::Texture();
@@ -161,7 +162,7 @@ void Player::updateFrame(double time){
 }
 
 void Player::createArrow(float posX, float posY, float vX, float vY){
-    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts);
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts, filename, scale);
     arrow -> setWindow(window);
     arrow -> setSize(winWidth, winHeight);
     arrows.push_back(arrow);
@@ -174,17 +175,21 @@ void Player::removeArrow(int id){
         arrows.pop_back();
     }
 }
-
 bool Player::shoot(float x, float y){
+    //std::cout <<  index << std::endl;
+    
     if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&
         hitboxHead.getPosition().y <= y && y <= hitboxHead.getPosition().y + hitboxHead.getSize().y){
             health -= 50;
             return true;
         } else if (hitboxBody.getPosition().x <= x && x <= hitboxBody.getPosition().x + hitboxBody.getSize().x &&
-                    hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
+                   hitboxBody.getPosition().y <= y && y <= hitboxBody.getPosition().y + hitboxBody.getSize().y){
                         health -= 35;
                         return true;
                     }
+
+
+
     return false;
 }
 

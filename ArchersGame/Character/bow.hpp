@@ -34,6 +34,9 @@ private:
     sf::RectangleShape healthbar;
     float health;
     Texts* texts;
+    std::string filename;
+    float scale;
+    int index;
     std::vector<Opponent*>* opponent;
     std::vector<Spear*>* spear;
     std::vector<StaticOpponent*>* statico;

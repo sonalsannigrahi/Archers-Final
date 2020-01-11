@@ -48,6 +48,7 @@ class Game {
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
         Texts text;
+        bool isMouseDown = false;
         Setting gameSetting = Setting();
         std::vector<Opponent*> opponent;
         std::vector<Spear*> spear;  
