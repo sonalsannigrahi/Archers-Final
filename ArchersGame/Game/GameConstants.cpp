@@ -5,8 +5,17 @@ class GameConstants{
     public:
         bool isrunning = false;
     // Window setting
+        /**
+        
+        FOR SOME TIME
+        
         int WINDOW_HEIGHT = 1000;
         int WINDOW_WIDTH = 1900;
+        **/
+        int WINDOW_HEIGHT = 600;
+        int WINDOW_WIDTH = 800;
+    
+        
     // Neutral spawning rate
         float birdRate = 12.5;
         float balloonRate = 15.0;
