@@ -598,7 +598,7 @@ void Game::setBackgroundVolume(float volume){
     enc -> add_data<float>("backgroundVolume", volume);
     enc -> updatefile();
 
-    gameBackground.changeBackgroundVolume(volume * gameConstants.masterVolume);
+    gameBackground.changeBackgroundVolume(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setRainVolume(float volume){
@@ -606,7 +606,7 @@ void Game::setRainVolume(float volume){
     enc -> add_data<float>("rainVolume", volume);
     enc -> updatefile();
 
-    gameRain.change_volume_rain(volume * gameConstants.masterVolume);
+    gameRain.change_volume_rain(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setThunderVolume(float volume){
@@ -614,7 +614,7 @@ void Game::setThunderVolume(float volume){
     enc -> add_data<float>("thunderVolume", volume);
     enc -> updatefile();
 
-    gameLightning.change_volume_lightning(volume * gameConstants.masterVolume);
+    gameLightning.change_volume_lightning(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setBirdsVolume(float volume){
@@ -623,7 +623,7 @@ void Game::setBirdsVolume(float volume){
     enc -> updatefile();
 
     for (int i = 0; i < birds.size(); i++)
-        birds[i] -> change_volume_bird(volume * gameConstants.masterVolume);
+        birds[i] -> change_volume_bird(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setFireworksVolume(float volume){
@@ -632,7 +632,7 @@ void Game::setFireworksVolume(float volume){
     enc -> updatefile();
 
     for (int i = 0; i < fireworks.size(); i++)
-        fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume);
+        fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::changeBackgroundPicture(int chosen){
