@@ -294,7 +294,7 @@ void Game::UpdateFrame(){
     gameWater.updateFrame(time);
 
     // Draw Setting
-    gameSetting.updateFrame(time);
+    if (player -> getHealth() > 0) gameSetting.updateFrame(time);
     
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);

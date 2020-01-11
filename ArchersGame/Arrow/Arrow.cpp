@@ -46,6 +46,31 @@ Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::ve
     hitbox.setOutlineThickness(5);
 }
 
+Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts, std::string filename){
+    this -> texts = texts;
+    this -> player = player;
+    this -> opponent = opponent;
+    this -> statico = statico;
+    this -> spear = spear;
+
+    arrowConstants.filename = filename;
+
+    sf::Texture* texture = new sf::Texture();
+    texture -> loadFromFile("Arrow/Assets/" + arrowConstants.filename);
+    arrowSprite = new sf::Sprite(*texture); 
+    arrowSprite -> setScale(arrowConstants.scale, arrowConstants.scale);
+
+    this -> posX = posX;
+    this -> posY = posY;
+    this -> vX = vX;
+    this -> vY = vY;
+
+    // Hitbox
+    hitbox.setSize(sf::Vector2f(2, 2));
+    hitbox.setOutlineColor(sf::Color::Blue);
+    hitbox.setOutlineThickness(5);
+}
+
 void Arrow::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
