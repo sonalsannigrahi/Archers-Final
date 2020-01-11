@@ -2,10 +2,11 @@
 
 Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* window)
 {
+    ///std::cout << "CREATE NEW ONE" << std::endl;
     this->Age = 0.0;
     this->MaxAge = 100.0;
 
-    bool isAlive = true;
+    isAlive = true;
 
     this->pos_x = pos_x;
     this->pos_y = pos_y;
@@ -16,9 +17,18 @@ Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* wind
 
 void Target::update(double duration)
 {
+    ///std::cout<<"HOoooooooooo"<<std::endl;
+
+    ///std::cout << duration << std::endl;
+    ///std::cout << Age << " " << MaxAge << std::endl;
+    
     this->Age += duration;
     if(Age > MaxAge)
+    {
+        ///std::cout <<  " owoiwueio uie " << Age << " " << duration << std::endl;
+
         isAlive = false;
+    }
 }
 
 bool Target::alive()
@@ -28,7 +38,7 @@ bool Target::alive()
 
 std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(FIRE_BALL* ball)
 {
-    std::cout << "resolving " << std::endl;
+    ///std::cout << "resolving " << std::endl;
     std::vector<FIRE_BALL*> fire_balls_vect;
     std::vector<BoxParticle*> box_particles_vect;
 
@@ -42,37 +52,40 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     Vector2D e_x(1.0,0.0);
     Vector2D e_y(0.0,1.0);
 
-    lines.push_back(std::make_pair(point_1,e_x));
-    lines.push_back(std::make_pair(point_1,e_y));
-    lines.push_back(std::make_pair(point_3,e_x));
-    lines.push_back(std::make_pair(point_3,e_y));
+    lines.push_back(std::make_pair(point_1,point_2));
+    lines.push_back(std::make_pair(point_2,point_3));
+    lines.push_back(std::make_pair(point_3,point_4));
+    lines.push_back(std::make_pair(point_4,point_1));
 
-    double dist = -1;
+    double dist = INFINITY;
     Vector2D center(ball->getPos());
     double radius = ball->getRadius();
 
     for(int i=0;i<lines.size();i++){
-        Vector2D point = lines[i].first;
-        Vector2D direction = lines[i].second;
-
-        Vector2D R = center - point;
-
-        double distance = (R - (R * direction) * direction).len();
-        if(dist == -1){
-            dist = distance;
+        Vector2D point_a = lines[i].first;
+        Vector2D point_b = lines[i].second;
+        
+        double distance;
+        
+        if( (center - point_a) * (point_b - point_a) < 0 ){
+            distance = (center - point_a).len();
+        }
+        if( (center - point_b) * (point_a - point_b) < 0 ){
+            distance = (center - point_b).len();
         }
         else{
-            dist = std::min(distance, dist);
+            distance = ( (center - point_a) - ( ((center - point_a) * (point_b - point_a)) / (point_b - point_a).len() ) * (point_b - point_a) ).len();
         }
-
+        dist = std::min(dist, distance);
     }
 
-    std::cout<< dist << std::endl;
+    std::cout<< dist << " " << radius <<  std::endl;
 
     if( dist < radius )
     {
         std::cout << "HIT!!!" << std::endl;
         isAlive = false;
+        for(;;);
     }
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);

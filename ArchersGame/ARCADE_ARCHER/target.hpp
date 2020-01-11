@@ -9,8 +9,8 @@
 #include<bits/stdc++.h>
 
 class Target: public sf::Drawable{
-private:
-
+///private:
+public:
     double Age, MaxAge;
     bool isAlive;
 
