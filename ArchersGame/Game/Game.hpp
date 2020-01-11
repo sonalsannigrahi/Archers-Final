@@ -50,9 +50,10 @@ class Game {
         Texts text;
         Setting gameSetting = Setting();
         std::vector<Opponent*> opponent;
-        Player* player = new Player(&opponent, &text);
-        // std::vector<Spear*> spear;                     // Not implemented
-        // std::vector<StaticOpponent*> staticOpponent;   // Not implemented
+        std::vector<Spear*> spear;  
+        std::vector<StaticOpponent*> staticOpponent; 
+        Player* player = new Player(&opponent, &spear, &staticOpponent, &text);
+                 
         //Arrow arrow = Arrow(); // Test arrow
         EndGame endgame = EndGame();
 
@@ -67,14 +68,17 @@ class Game {
 
         bool isGamePaused = false;
         int score = 0;
+    
+        //score viewer
+        sf::Text ScoreView;
 
         // Spawning opponents
         void createOpponent();
         void removeOpponent(int id);
-        // void createSpear();  // Not implemented
-        // void removeSpear(int id); // Not implemented
-        // void createStaticOpponent(); // Not implemented
-        // void removeStaticOpponent(int id); // Not implemented
+        void createSpear();  
+        void removeSpear(int id); 
+        void createStaticOpponent(); 
+        void removeStaticOpponent(int id); 
 
     public:
     
@@ -137,4 +141,6 @@ class Game {
         void pauseGame();
         void unpauseGame();
         bool getIsGamePaused();
+    
+        sf::Font font;
 };

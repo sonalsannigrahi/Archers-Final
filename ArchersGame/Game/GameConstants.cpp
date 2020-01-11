@@ -19,10 +19,12 @@ class GameConstants{
         bool isPlayer = false;
         bool isBalloon = false;
         bool isFireworks = false;
-        bool isBlackhole = false;
+        bool isBlackhole = true;
         bool isOpponent = false;
+        bool isSpear = false;
+        bool isStatic = false;
     // Volume
-        float masterVolume = 100.0;
+        float masterVolume = 0.0;
         float rainVolume = 100.0;
         float thunderVolume = 100.0;
         float birdsVolume = 100.0;
@@ -39,8 +41,11 @@ class GameConstants{
         float spearRateOrigin = 60.0;
         float spearRateDecay = 0.03;
     // Best score
-        string BestPlayer = "eu";
-        int BestScore = 0;
+        string BestPlayer;
+        int BestScore;
+    
+    //font
+        std::string filename  = "Game/asset/font.TTF";
 
     GameConstants(Encrypt* enc){
         BestPlayer = enc -> get_item_string("BestPlayer");
