@@ -109,7 +109,7 @@ First, clone the project into the local repository renaming it to 'Archers'. Nex
     
 This script should make the project and result in an SFML window with the game running.
 
-The above script will equally make and build the project, creating the necessary executables, and download a pre-trained model.
+The above script will make and build the project, creating the necessary executables, and compiling all the dependencies.
 
 Once you have the excutable game window, choose your username and press 'Enter' to begin the game. 
 
