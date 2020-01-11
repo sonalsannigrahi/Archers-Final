@@ -3,7 +3,7 @@
 Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* window)
 {
     this->Age = 0.0;
-    this->MaxAge = 4.0;
+    this->MaxAge = 100.0;
 
     bool isAlive = true;
 
@@ -17,18 +17,18 @@ Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* wind
 void Target::update(double duration)
 {
     this->Age += duration;
+    if(Age > MaxAge)
+        isAlive = false;
 }
 
 bool Target::alive()
 {
-    if(Age >= MaxAge){
-        return false;
-    }
-    return true;
+    return isAlive;
 }
 
 std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(FIRE_BALL* ball)
 {
+    std::cout << "resolving " << std::endl;
     std::vector<FIRE_BALL*> fire_balls_vect;
     std::vector<BoxParticle*> box_particles_vect;
 
@@ -67,12 +67,16 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
 
     }
 
+    std::cout<< dist << std::endl;
+
     if( dist < radius )
     {
         std::cout << "HIT!!!" << std::endl;
+        isAlive = false;
     }
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
+    return ans;
 }
 
 

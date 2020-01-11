@@ -105,10 +105,10 @@ STATES::STATES_ENUM RetroGame::run()
         for(int i=0;i<N;i++)
         {
             ///std::cout<<fireBalls.BALLS.size()<<std::endl;
-            fireBalls.update(ElapsedTime);
+            fireBalls.update(ElapsedTime/N);
         }
         fireBalls.show();
-        targets.run(ElapsedTime, *fireBalls, *boxParticles);
+        targets.run(ElapsedTime/N, fireBalls, boxParticles);
 
         window->draw(playerBox);
 

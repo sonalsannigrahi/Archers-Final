@@ -1,15 +1,15 @@
 CXX = g++
 Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
-all_but_main = collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o
+all_but_main = collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o BOX_PARTICLE.o BOX_PARTICLES.o
 
-HPPFILES = ARCADE_ARCHER/collision.hpp ARCADE_ARCHER/fire_ball.hpp ARCADE_ARCHER/fire_balls.hpp ARCADE_ARCHER/gravity.hpp ARCADE_ARCHER/player_box.hpp ARCADE_ARCHER/RETRO_GAME.hpp ARCADE_ARCHER/RETRO_GAME_SETTINGS.hpp ARCADE_ARCHER/STATES.hpp ARCADE_ARCHER/target.hpp ARCADE_ARCHER/target_creator.hpp ARCADE_ARCHER/targets.hpp ARCADE_ARCHER/trace.hpp ARCADE_ARCHER/trace_constants.hpp ARCADE_ARCHER/VECTOR_2D.hpp 
+HPPFILES = ARCADE_ARCHER/collision.hpp ARCADE_ARCHER/fire_ball.hpp ARCADE_ARCHER/fire_balls.hpp ARCADE_ARCHER/gravity.hpp ARCADE_ARCHER/player_box.hpp ARCADE_ARCHER/RETRO_GAME.hpp ARCADE_ARCHER/RETRO_GAME_SETTINGS.hpp ARCADE_ARCHER/STATES.hpp ARCADE_ARCHER/target.hpp ARCADE_ARCHER/target_creator.hpp ARCADE_ARCHER/targets.hpp ARCADE_ARCHER/trace.hpp ARCADE_ARCHER/trace_constants.hpp ARCADE_ARCHER/VECTOR_2D.hpp ARCADE_ARCHER/BOX_PARTICLE.hpp ARCADE_ARCHER/BOX_PARTICLES.hpp
 
 
 Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o Encryption.o $(all_but_main)
 
 
-all : collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o archer
+all : collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o BOX_PARTICLE.o BOX_PARTICLES.o archer
 
 
 Encryption.o: Encryption/Encryption.cpp
@@ -164,6 +164,11 @@ trace_constants.o : ARCADE_ARCHER/trace_constants.cpp $(HPPFILES)
 VECTOR_2D.o : ARCADE_ARCHER/VECTOR_2D.cpp $(HPPFILES)
 	$(CXX) -c ARCADE_ARCHER/VECTOR_2D.cpp  $(Dependencies)
 
+BOX_PARTICLE.o : ARCADE_ARCHER/BOX_PARTICLE.cpp $(HPPFILES)
+	$(CXX) -c ARCADE_ARCHER/BOX_PARTICLE.cpp $(Dependencies)
+
+BOX_PARTICLES.o : ARCADE_ARCHER/BOX_PARTICLES.cpp $(HPPFILES)
+	$(CXX) -c ARCADE_ARCHER/BOX_PARTICLES.cpp $(Dependencies)
 
 
 
