@@ -108,7 +108,7 @@ STATES::STATES_ENUM RetroGame::run()
             fireBalls.update(ElapsedTime);
         }
         fireBalls.show();
-        targets.run(ElapsedTime);
+        targets.run(ElapsedTime, *fireBalls, *boxParticles);
 
         window->draw(playerBox);
 
