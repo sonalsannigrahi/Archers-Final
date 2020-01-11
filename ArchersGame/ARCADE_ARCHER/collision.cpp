@@ -9,14 +9,19 @@ double fRand(double fMin, double fMax)
 }
 
 
-CollisionGenerator::CollisionGenerator(sf::RenderTarget& target)
+CollisionGenerator::CollisionGenerator(sf::RenderWindow* target)
 {
-    W = target.getSize().x;
-    H = target.getSize().y;
+    this->target = target;
+    W = target->getSize().x;
+    H = target->getSize().y;
 }
 
 void CollisionGenerator::ResCollsWithFrame(FIRE_BALL& ball)
 {
+
+    W = target->getSize().x;
+    H = target->getSize().y;
+
     double eps = 1e-6;
 
     double RestitutionCoeff = 0.8;
@@ -53,6 +58,8 @@ void CollisionGenerator::ResCollsWithFrame(FIRE_BALL& ball)
 
 std::vector<FIRE_BALL*> CollisionGenerator::ResCollsWithFrame_explode(FIRE_BALL& ball)
 {
+    W = target->getSize().x;
+    H = target->getSize().y;
 
     std::vector<FIRE_BALL*> n_balls;
 

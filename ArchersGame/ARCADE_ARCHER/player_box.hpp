@@ -40,7 +40,7 @@ public:
         int color = (int)((angriness/100.0) * 255);
 
         shape.setFillColor(sf::Color(color,100,0));
-        shape.setPosition(pos_x - length/2, H - (pos_y + length/2) );
+        shape.setPosition(pos_x - length/2, window->getSize().y - (pos_y + length/2) );
 
         target.draw(shape);
     }

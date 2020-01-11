@@ -1,7 +1,7 @@
 #include "fire_balls.hpp"
 
 FIRE_BALLS::FIRE_BALLS(sf::RenderWindow* window):
-    collisionGenerator(*window)
+    collisionGenerator(window)
 {
     this->window = window;
 

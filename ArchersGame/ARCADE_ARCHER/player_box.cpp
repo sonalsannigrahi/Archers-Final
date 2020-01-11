@@ -64,7 +64,7 @@ void PLayerBox::resolve_event(sf::Event event, double mouse_x, double mouse_y)
                     double dist = sqrt( pow(mouse_x - pos_x, 2.0) + pow(mouse_y - pos_y, 2.0) );
                     if(dist < 200.0){
 
-                        std::cout<<"YO5"<<std::endl;
+                        ///std::cout<<"YO5"<<std::endl;
 
                         under_pressure = true;
                     }

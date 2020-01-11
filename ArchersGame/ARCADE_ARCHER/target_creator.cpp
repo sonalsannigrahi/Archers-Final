@@ -24,6 +24,9 @@ Target* TargetCreator::createTarget()
 {
     srand(time(NULL));
 
+    W = window->getSize().x;
+    H = window->getSize().y;
+
     int W_N = (int)(W/(2*length));
     int H_N = (int)(H/(2*length));
 
