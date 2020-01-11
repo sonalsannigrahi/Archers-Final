@@ -117,8 +117,8 @@ void Player::updateFrame(double time){
             mousePosition = sf::Mouse::getPosition();
             a1 = mousePosition.x - windowPosition.x;
             b1 = mousePosition.y - windowPosition.y;
-            float vY = (b0-b1)*1.5;
-            float vX = std::max(5.0,a0-a1)*1.5 + 50;
+            float vY = std::min(0.0,b0-b1)*1.5;
+            float vX = std::max(0.0,a0-a1)*1.5 + 200;
             createArrow(spriteh -> getPosition().x + spriteh -> getGlobalBounds().width / 2, spriteh -> getPosition().y + spriteh -> getGlobalBounds().height / 4, vX, vY);
             
         }
