@@ -9,6 +9,17 @@ Setting::Setting(){
     settingScreen -> setFillColor(sf::Color(240, 240, 240, 240));
     settingScreen -> setOutlineColor(sf::Color::Black);
     settingScreen -> setOutlineThickness(5);
+    // Volume sliders
+    for (int i = 0; i < 3; i++){
+        volumeSlide[i] = new sf::RectangleShape();
+        volumeButton[i] = new sf::CircleShape();
+        volumeSlide[i] -> setSize(sf::Vector2f(500, 20));
+        volumeSlide[i] -> setFillColor(sf::Color(240, 240, 240, 240));
+        volumeSlide[i] -> setOutlineColor(sf::Color::Black);
+        volumeSlide[i] -> setOutlineThickness(3);
+        volumeButton[i] -> setRadius(15);
+        volumeButton[i] -> setFillColor(sf::Color::Black);
+    }
     // Background Sprites
     for (int i = 0; i < settingConstants.filename_length; i++){
         sf::Texture* bgtexture = new sf::Texture();
@@ -37,6 +48,9 @@ Setting::Setting(){
     volumeMaster.setFont(roboto_font);
     volumeMusic.setFont(roboto_font);
     volumeGame.setFont(roboto_font);
+    volumeGameValue.setFont(roboto_font);
+    volumeMusicValue.setFont(roboto_font);
+    volumeMasterValue.setFont(roboto_font);
     for (int i = 0; i < 4; i++){
         resChoices[i].setFont(roboto_font);
     }
@@ -71,6 +85,9 @@ Setting::Setting(){
     for (int i = 0; i < 4; i++){
         resChoices[i].setCharacterSize(30);
     }
+    volumeMasterValue.setCharacterSize(30);
+    volumeGameValue.setCharacterSize(30);
+    volumeMusicValue.setCharacterSize(30);
     // Set text color
     title.setFillColor(sf::Color::Black);
     resolution.setFillColor(sf::Color::Blue);
@@ -78,6 +95,9 @@ Setting::Setting(){
     volumeMaster.setFillColor(sf::Color::Black);
     volumeGame.setFillColor(sf::Color::Black);
     volumeMusic.setFillColor(sf::Color::Black);
+    volumeGameValue.setFillColor(sf::Color::Black);
+    volumeMasterValue.setFillColor(sf::Color::Black);
+    volumeMusicValue.setFillColor(sf::Color::Black);
 }
 
 void Setting::setWindow(sf::RenderWindow* window){
@@ -102,6 +122,12 @@ void Setting::setSize(int width, int height){
     volumeMaster.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 480);
     volumeGame.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 520);
     volumeMusic.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 560);
+    volumeMasterValue.setPosition(settingScreenBound.left + settingScreenBound.width - 100, settingScreenBound.top + 480);
+    volumeGameValue.setPosition(settingScreenBound.left + settingScreenBound.width - 100, settingScreenBound.top + 520);
+    volumeMusicValue.setPosition(settingScreenBound.left + settingScreenBound.width - 100, settingScreenBound.top + 560);
+    volumeSlide[0] -> setPosition(settingScreenBound.left + 250, settingScreenBound.top + 490);
+    volumeSlide[1] -> setPosition(settingScreenBound.left + 250, settingScreenBound.top + 530);
+    volumeSlide[2] -> setPosition(settingScreenBound.left + 250, settingScreenBound.top + 570);
 }
 
 void Setting::setGame(Game* game){  
@@ -126,6 +152,25 @@ void Setting::updateFrame(double time){
     //std::cout << isMouseDown <<std::endl;
 
     if (game -> getIsGamePaused()){
+        volumeMasterValue.setString(std::to_string((int) game -> getMasterVolume()));
+        volumeMusicValue.setString(std::to_string((int) game -> getBackgroundVolume()));
+        volumeGameValue.setString(std::to_string((int) game -> getBirdsVolume()));
+        // Check if volume is changed
+        for (int i = 0; i < 3; i++)
+            if (volumeSlide[i] -> getGlobalBounds().contains(mousePosition.x, mousePosition.y)){
+                //std::cout << "Hover above " << i << std::endl;
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                    float volume = (float) (mousePosition.x - volumeSlide[i] -> getGlobalBounds().left) / volumeSlide[i] -> getGlobalBounds().width;
+                    if (i == 0) game -> setMasterVolume(std::max(std::min(volume * 100, (float) 100), (float) 0));
+                    if (i == 1){
+                        game -> setRainVolume(std::max(std::min(volume * 100, (float) 100), (float) 0));
+                        game -> setBirdsVolume(std::max(std::min(volume * 100, (float) 100), (float) 0));
+                        game -> setThunderVolume(std::max(std::min(volume * 100, (float) 100), (float) 0));
+                        game -> setFireworksVolume(std::max(std::min(volume * 100, (float) 100), (float) 0));
+                    }
+                    if (i == 2) game -> setBackgroundVolume(std::max(std::min(volume * 100, (float) 100), (float) 0));
+                }
+            } 
         // Check if resolution is hovered
         for (int i = 0; i < 4; i++) 
             if (resChoices[i].getGlobalBounds().contains(mousePosition.x, mousePosition.y)){
@@ -152,14 +197,25 @@ void Setting::updateFrame(double time){
         window -> draw(title);
         //window -> draw(resolution);
         //window -> draw(background);
-        window -> draw(birds);
-        window -> draw(rain);
-        window -> draw(lightning);
-        window -> draw(balloons);
-        window -> draw(fireworks);
+        //window -> draw(birds);
+        //window -> draw(rain);
+        //window -> draw(lightning);
+        //window -> draw(balloons);
+        //window -> draw(fireworks);
         window -> draw(volumeMaster);
         window -> draw(volumeGame);
         window -> draw(volumeMusic);
+        window -> draw(volumeMasterValue);
+        window -> draw(volumeGameValue);
+        window -> draw(volumeMusicValue);
+        // Draw slides
+        for (int i = 0; i < 3; i++) window -> draw(*volumeSlide[i]);
+        volumeButton[0] -> setPosition(volumeSlide[0] -> getGlobalBounds().left + volumeSlide[0] -> getGlobalBounds().width * (game -> getMasterVolume() / 100) - 15, volumeSlide[0] -> getGlobalBounds().top - 2);
+        window -> draw(*volumeButton[0]);
+        volumeButton[1] -> setPosition(volumeSlide[1] -> getGlobalBounds().left + volumeSlide[1] -> getGlobalBounds().width * (game -> getBirdsVolume() / 100) - 15, volumeSlide[1] -> getGlobalBounds().top - 2);
+        window -> draw(*volumeButton[1]);
+        volumeButton[2] -> setPosition(volumeSlide[2] -> getGlobalBounds().left + volumeSlide[2] -> getGlobalBounds().width * (game -> getBackgroundVolume() / 100) - 15, volumeSlide[2] -> getGlobalBounds().top - 2);
+        window -> draw(*volumeButton[2]);
         // Draw resolution
         for (int i = 0; i < 4; i++) window -> draw(resChoices[i]);
         for (int i = 0; i < settingConstants.filename_length; i++) window -> draw(*backgroundPreviews[i]);

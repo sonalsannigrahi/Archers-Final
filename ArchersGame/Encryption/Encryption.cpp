@@ -19,7 +19,7 @@ Encrypt::Encrypt(){
             for (int k=0; k<10; ++k){
                 temp1.push_back(k);
             }
-            random_shuffle ( temp1.begin(), temp1.end() );
+            //random_shuffle ( temp1.begin(), temp1.end() );
             vect.push_back(temp1);
         }
         else{
@@ -40,7 +40,7 @@ Encrypt::Encrypt(){
             for (char k=32; k<127; ++k){
                 temp_1.push_back(k);
             }
-            random_shuffle ( temp_1.begin(), temp_1.end() );
+            //random_shuffle ( temp_1.begin(), temp_1.end() );
             vecto.push_back(temp_1);
         }
         else{
