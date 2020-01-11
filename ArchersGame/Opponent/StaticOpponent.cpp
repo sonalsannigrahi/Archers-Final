@@ -4,7 +4,7 @@ StaticOpponent::StaticOpponent(Player* player, Texts* text){
     srand(time(NULL)); // Randomize
     this -> player = player;
     this -> text = text;
-    filename = "arrow";
+    filename = "arrow.png";
     sf::Texture* texture = new sf::Texture();
     health = statconstant.maxHealth;
     texture -> loadFromFile("Opponent/Assets/defeat.png");
