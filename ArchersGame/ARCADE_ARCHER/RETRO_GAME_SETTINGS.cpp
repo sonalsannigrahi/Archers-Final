@@ -16,7 +16,7 @@ STATES::STATES_ENUM RetroGameSettings::run()
             }
             else if(event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::S){
-                    return STATES::GAME;
+                    return STATES::GAME_RETRO;
                 }
             }
         }

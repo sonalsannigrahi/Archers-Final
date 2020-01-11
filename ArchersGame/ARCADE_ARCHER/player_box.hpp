@@ -28,10 +28,10 @@ public:
     void move_to_right();
     void move_to_left();
 
-    /**
+    
     double IntTime;
     double IntTime_margin;
-    **/
+    
 
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -41,8 +41,27 @@ public:
 
         shape.setFillColor(sf::Color(color,100,0));
         shape.setPosition(pos_x - length/2, window->getSize().y - (pos_y + length/2) );
+        ///WRITING ANGRINESS
+        /**
+        sf::Font font;
+        font.loadFromFile("ARCADE_ARCHER/font.TTF");
+        sf::Text text;
+        text.setFont(font);
+        text.setString(std::to_string( (int)round(angriness) ));
+        text.setFillColor(sf::Color::Red);
+        
+        
+        int char_size = 5;
+        text.setCharacterSize(char_size);
+        
+        double W_MIN = text.getLocalBounds().width;
+        double H_MIN = text.getLocalBounds().height;
 
+        text.scale(length/W_MIN, length/H_MIN);
+        text.setPosition(pos_x - length/2, target.getSize().y - ( pos_y + length/2 ) );
+        **/
         target.draw(shape);
+        ///target.draw(text);
     }
 
 public:
@@ -55,7 +74,7 @@ public:
 
     void update(double duration);
 
-    ///void DRAW_PATH(double mouse_x, double mous_y);
+    void DRAW_ARROW(double mouse_x, double mous_y);
 
     FIRE_BALL* run(double duration, double mouse_x, double mouse_y);
 

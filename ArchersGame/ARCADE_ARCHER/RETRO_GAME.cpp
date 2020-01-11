@@ -48,7 +48,7 @@ STATES::STATES_ENUM RetroGame::run()
                 return STATES::DEAD;
             }
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S){
-                return STATES::GAME_CLASSIC;
+                return STATES::SETTINGS;
             }
             else{
                 double mouse_x = sf::Mouse::getPosition(*window).x;

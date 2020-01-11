@@ -13,7 +13,9 @@ int main()
 
     RetroGame retroGame = RetroGame(window);
     
-    STATES::STATES_ENUM state = STATES::GAME_CLASSIC;
+    RetroGameSettings retroGameSettings = RetroGameSettings(window);
+
+    STATES::STATES_ENUM state = STATES::SETTINGS;
 
     while(true)
     {
@@ -30,10 +32,14 @@ int main()
         {
             state = retroGame.run();
         }
+        else if(state == STATES::SETTINGS)
+        {
+            state = retroGameSettings.run();
+        }
     }
 
     game->StartGame();
 
-    
+
     return 0;
 }
