@@ -84,6 +84,8 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     if( dist < radius )
     {
         std::cout << "HIT!!!" << std::endl;
+        std::cout << "HIT!!!" << std::endl;
+        
         isAlive = false;
         for(;;);
     }
