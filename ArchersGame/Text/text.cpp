@@ -188,28 +188,32 @@ void Texts::updateFrame(double time) {
         textconstants.condition0 = false;
         counter = 0;
     }
-    if (counter > 5 && counter < 7 && !(textconstants.is_box) && textconstants.hits == 0)
+    if (counter > 6 && counter <= 9 && !(textconstants.is_box) && textconstants.hits == 0)
     {
-        textconstants.condition1 = true;
-    }
-    if (textconstants.condition1)
-    {
+        setposition((float) windowWidth/5, (float) windowHeight/2);
         setstring(textconstants.txt1);
-        //setposition((float) windowWidth/4, (float) windowHeight/2);
-        textconstants.condition1 = false;
+        //textconstants.condition1 =true;
+        
+    }
+    //if (textconstants.condition1)
+    {
+
+        
     }
 
-    if (counter > 10 && counter < 12 && !(textconstants.is_box)&& textconstants.hits == 0)
+    if (counter > 9 && counter < 12 && !(textconstants.is_box)&& textconstants.hits == 0)
     {
+        textconstants.condition1 = false;
         textconstants.condition2 = true;
         setstring(textconstants.txt2);
+        
     }
 
 
     if (textconstants.condition2)
     {
         
-        //setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
+        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         int xbox = rand() % (windowWidth / 3) + (windowWidth / 3);
         int ybox = rand() % (windowHeight / 3) + windowHeight - (windowHeight / 2);
         
@@ -228,7 +232,7 @@ void Texts::updateFrame(double time) {
     if (textconstants.hits == 5)
     {
         setstring(textconstants.txt4);
-        //setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
+        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
         text.setColor(sf::Color::Red);
         if(textconstants.is_box){
             counter = 0;
