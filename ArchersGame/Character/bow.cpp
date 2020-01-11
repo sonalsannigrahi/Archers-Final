@@ -5,7 +5,7 @@ Player::Player(std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std
     this -> opponent = opponent;
     this -> statico = statico;
     this -> spear = spear;
-
+    filename = "arrow.png";
     health = maxHealth;
     //creating three textures for the arm, body, arrow
 	sf::Texture* body = new sf::Texture();
@@ -69,7 +69,7 @@ void Player::updateFrame(double time){
 
     spriteb -> setPosition(float(winWidth)/25, float(winHeight)/1.8);      
 
-    spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/3 ,spriteb -> getPosition().y + float(bodySize.height)/4.6);
+    spriteh -> setPosition(spriteb -> getPosition().x + float(bodySize.width)/3 ,spriteb -> getPosition().y + float(bodySize.height)/4);
     
     playerPosition = spriteh -> getPosition();
     /*
@@ -145,7 +145,7 @@ void Player::updateFrame(double time){
 }
 
 void Player::createArrow(float posX, float posY, float vX, float vY){
-    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts);
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, this, opponent, spear, statico, texts, filename);
     arrow -> setWindow(window);
     arrow -> setSize(winWidth, winHeight);
     arrows.push_back(arrow);
