@@ -90,7 +90,7 @@ void Game::StartGame(){
         sf::Event event;
         while (window -> pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed || text.bruh == 3)
                 window -> close();
             else if (text.bruh==-1 && event.type == sf::Event::TextEntered){
                 if(event.text.unicode >=32 &&  event.text.unicode <= 126){
@@ -159,6 +159,8 @@ void Game::UpdateFrame(){
         name.setPosition(gameConstants.WINDOW_WIDTH/2- lettersnumber*(7,5),5*gameConstants.WINDOW_HEIGHT/16 + 60);
         window->draw(name);
     }
+
+
     else {
     // Spawn Rate Decay - Increase difficulty
     gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
@@ -332,6 +334,25 @@ void Game::UpdateFrame(){
         gameConstants.isSpear = true;
         gameConstants.isStatic = true;
         gameConstants.isRunning = true;
+    }
+    if(text.bruh == 4){
+        gameConstants.isOpponent = false;
+        gameConstants.isSpear = false;
+        gameConstants.isStatic = false;
+        gameConstants.isRunning = false;
+        text.updateFrame(time);
+        sf::Text best_pont =  sf::Text( std::to_string(gameConstants.BestScore), text.font, 50);
+        sf::String s = to_string(gameConstants.BestScore);
+        int n = s.getSize();
+        best_pont.setPosition(gameConstants.WINDOW_WIDTH/2 - (n)*(3)*(7,5), 5*gameConstants.WINDOW_HEIGHT/16);
+        best_pont.setFillColor(sf::Color::White);
+        window->draw(best_pont);
+        sf::String sentence =  "by " + gameConstants.BestPlayer;
+        sf::Text best = sf::Text( sentence, text.font, 20);
+        int lettersnumber = sentence.getSize();
+        best.setPosition(gameConstants.WINDOW_WIDTH/2- lettersnumber*(7,5),5*gameConstants.WINDOW_HEIGHT/16 + 80);
+        window->draw(best);
+       
     }
     }
 }
