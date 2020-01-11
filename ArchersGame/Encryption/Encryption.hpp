@@ -118,7 +118,7 @@ template <typename U> void Encrypt::add_data(string key, U value){
                 sfloat.erase(this->encrypt(key));
             }
         }
-         cout<<typeid(this->encrypt(value)).name()<<endl;
+         //cout<<typeid(this->encrypt(value)).name()<<endl;
         sfloat.insert(pair<string,float> (this->encrypt(key),this->encrypt(value)));
     }
     else if (typeid(value)==typeid(double_)){

@@ -34,9 +34,9 @@ Game::Game(){
     gameSetting.setGame(this);
 
     // Set initialize volume
-    gameBackground.changeBackgroundVolume(gameConstants.backgroundVolume * gameConstants.masterVolume);
-    gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume);
-    gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume);
+    gameBackground.changeBackgroundVolume(gameConstants.backgroundVolume * gameConstants.masterVolume / 100);
+    gameRain.change_volume_rain(gameConstants.rainVolume * gameConstants.masterVolume / 100);
+    gameLightning.change_volume_lightning(gameConstants.thunderVolume * gameConstants.masterVolume / 100);
 
     // Set background
     changeBackgroundPicture(enc -> get_item<int>("background"));
@@ -90,7 +90,7 @@ void Game::StartGame(){
         sf::Event event;
         while (window -> pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed || text.bruh == 3)
                 window -> close();
             else if (text.bruh==-1 && event.type == sf::Event::TextEntered){
                 if(event.text.unicode >=32 &&  event.text.unicode <= 126){
@@ -135,7 +135,7 @@ void Game::StartGame(){
 
 void Game::UpdateFrame(){
     // std::cout << "Updating Frame at " << double(elapsedTime) / CLOCKS_PER_SEC << std::endl;
-    
+    //std::cout<<gameConstants.BestPlayer<<"\n";
     if(!gameConstants.isRunning){
         gameConstants.isOpponent = false;
     }
@@ -159,6 +159,8 @@ void Game::UpdateFrame(){
         name.setPosition(gameConstants.WINDOW_WIDTH/2- lettersnumber*(7,5),5*gameConstants.WINDOW_HEIGHT/16 + 60);
         window->draw(name);
     }
+
+
     else {
     // Spawn Rate Decay - Increase difficulty
     gameConstants.opponentRate = max(0.1, gameConstants.opponentRate - gameConstants.opponentRateDecay * time);
@@ -294,7 +296,7 @@ void Game::UpdateFrame(){
     gameWater.updateFrame(time);
 
     // Draw Setting
-    gameSetting.updateFrame(time);
+    if (player -> getHealth() > 0) gameSetting.updateFrame(time);
     
     // Update FPS counter
     gameFPS.UpdateFPS(double(elapsedTime) / CLOCKS_PER_SEC);
@@ -333,16 +335,38 @@ void Game::UpdateFrame(){
         gameConstants.isStatic = true;
         gameConstants.isRunning = true;
     }
+    if(text.bruh == 4){
+        gameConstants.isOpponent = false;
+        gameConstants.isSpear = false;
+        gameConstants.isStatic = false;
+        gameConstants.isRunning = false;
+        text.updateFrame(time);
+        sf::Text best_pont =  sf::Text( std::to_string(gameConstants.BestScore), text.font, 50);
+        sf::String s = to_string(gameConstants.BestScore);
+        int n = s.getSize();
+        best_pont.setPosition(gameConstants.WINDOW_WIDTH/2 - (n)*(3)*(7,5), 5*gameConstants.WINDOW_HEIGHT/16);
+        best_pont.setFillColor(sf::Color::White);
+        window->draw(best_pont);
+        sf::String sentence =  "by " + gameConstants.BestPlayer;
+        sf::Text best = sf::Text( sentence, text.font, 20);
+        int lettersnumber = sentence.getSize();
+        best.setPosition(gameConstants.WINDOW_WIDTH/2- lettersnumber*(7,5),5*gameConstants.WINDOW_HEIGHT/16 + 80);
+        window->draw(best);
+       
+    }
     }
 }
 
 void Game::GameOver(){
     // Update best score
+    //std::cout<<score<<endl;
+    //std::cout<<gameConstants.BestScore<<std::endl;
+    //std::cout<<gameConstants.BestPlayer<<std::endl;
     enc -> add_data<int>("BestScore", max(gameConstants.BestScore, score));
-    // if(max(gameConstants.BestScore, score) > score){
-    //     enc -> add_data_string("BestPlayer", UserName);
-    // }
-    // cout<<gameConstants.BestPlayer<< " got "<<gameConstants.BestScore;
+    if(max(gameConstants.BestScore, score) > gameConstants.BestScore){
+         enc -> add_data_string("BestPlayer", UserName);
+    }
+    //std::cout<<enc->get_item_string("BestPlayer")<< " got "<<enc->get_item<int>("BestScore")<<std::endl;
     enc -> updatefile();
     // Paused Game
     //pauseGame(); //Didn't pause game because settings page pops up then.
@@ -390,7 +414,7 @@ void Game::GameOver(){
         //std::cout << endgame.exit -> getGlobalBounds() << std::endl;
         //std::cout << (mousePosition.x, mousePosition.y) << std::endl;
         if(endgame.exit -> getGlobalBounds().contains(mousePosition.x,mousePosition.y)){
-            std::cout << "i clicked exit" << std::endl;
+            //std::cout << "i clicked exit" << std::endl;
             //unpauseGame();
             // Reset score and player's health
             ScoreView.setPosition(float(gameConstants.WINDOW_WIDTH)/40, float(gameConstants.WINDOW_HEIGHT)/80);
@@ -476,7 +500,7 @@ void Game::createBird(){
     Birds* bird = new Birds();
     bird -> setWindow(window);
     bird -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-    bird -> change_volume_bird(gameConstants.birdsVolume * gameConstants.masterVolume);
+    bird -> change_volume_bird(gameConstants.birdsVolume * gameConstants.masterVolume / 100);
     birds.push_back(bird);
 }
 
@@ -507,7 +531,7 @@ void Game::createFireworks(){
     Fireworks* firework = new Fireworks();
     firework -> setWindow(window);
     firework -> setSize(gameConstants.WINDOW_WIDTH, gameConstants.WINDOW_HEIGHT);
-    firework -> change_volume_fireworks(gameConstants.fireworksVolume * gameConstants.masterVolume);
+    firework -> change_volume_fireworks(gameConstants.fireworksVolume * gameConstants.masterVolume / 100);
     fireworks.push_back(firework);
 }
 
@@ -654,7 +678,7 @@ void Game::setBackgroundVolume(float volume){
     enc -> add_data<float>("backgroundVolume", volume);
     enc -> updatefile();
 
-    gameBackground.changeBackgroundVolume(volume * gameConstants.masterVolume);
+    gameBackground.changeBackgroundVolume(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setRainVolume(float volume){
@@ -662,7 +686,7 @@ void Game::setRainVolume(float volume){
     enc -> add_data<float>("rainVolume", volume);
     enc -> updatefile();
 
-    gameRain.change_volume_rain(volume * gameConstants.masterVolume);
+    gameRain.change_volume_rain(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setThunderVolume(float volume){
@@ -670,7 +694,7 @@ void Game::setThunderVolume(float volume){
     enc -> add_data<float>("thunderVolume", volume);
     enc -> updatefile();
 
-    gameLightning.change_volume_lightning(volume * gameConstants.masterVolume);
+    gameLightning.change_volume_lightning(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setBirdsVolume(float volume){
@@ -679,7 +703,7 @@ void Game::setBirdsVolume(float volume){
     enc -> updatefile();
 
     for (int i = 0; i < birds.size(); i++)
-        birds[i] -> change_volume_bird(volume * gameConstants.masterVolume);
+        birds[i] -> change_volume_bird(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::setFireworksVolume(float volume){
@@ -688,7 +712,7 @@ void Game::setFireworksVolume(float volume){
     enc -> updatefile();
 
     for (int i = 0; i < fireworks.size(); i++)
-        fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume);
+        fireworks[i] -> change_volume_fireworks(volume * gameConstants.masterVolume / 100);
 }
 
 void Game::changeBackgroundPicture(int chosen){

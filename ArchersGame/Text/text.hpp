@@ -16,6 +16,7 @@ class Texts{
     sf::Text BestScore;
     sf::Text quit;
     sf::Text ChooseUserName;
+    sf::Text HighestScore;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
@@ -27,10 +28,10 @@ class Texts{
     sf::Sound sound;
 
     public:
+    TextConstants textconstants = TextConstants();
     sf::Font font;
     void loadgame();
     int bruh;
-    TextConstants textconstants = TextConstants();
     Texts();
     bool loadgame(float x, float y);
     bool box_hit(float x,float y);

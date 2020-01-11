@@ -46,11 +46,11 @@ class GameConstants{
         float staticOpponentRate = 10.0;
         float staticOpponentRateOrigin = 10.0;
         float staticOpponentRateDecay = 0.02;
-        float spearRate = 1000.0;
-        float spearRateOrigin = 1000.0;
+        float spearRate = 30.0;
+        float spearRateOrigin = 30.0;
         float spearRateDecay = 0.03;
     // Best score
-        string BestPlayer = "eu";
+        string BestPlayer = "VisNic";
         int BestScore = 0;
     
     //font

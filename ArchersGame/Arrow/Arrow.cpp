@@ -72,6 +72,7 @@ Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::ve
     hitbox.setOutlineColor(sf::Color::Blue);
     hitbox.setOutlineThickness(5);
 }
+
 void Arrow::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
