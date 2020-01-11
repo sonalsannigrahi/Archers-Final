@@ -62,7 +62,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
             dist = distance;
         }
         else{
-            dist = min(distance, dist);
+            dist = std::min(distance, dist);
         }
 
     }

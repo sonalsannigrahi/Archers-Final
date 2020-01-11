@@ -28,7 +28,7 @@ void Targets::update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxPa
     }
 
     for(int i=0;i<targets.size();i++){
-        if(targets[i]->isAlive()){
+        if(targets[i]->alive()){
             std::vector<FIRE_BALL*> balls = fireBalls.getBALLS();
 
             for(int j=0;j<balls.size();j++){
@@ -70,9 +70,9 @@ void Targets::show()
 
 
 
-void Targets::run(double duration)
+void Targets::run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles)
 {
-    update(duration);
+    update(duration, fireBalls, boxParticles);
 
     for(int i=0;i<targets.size();i++){
         if(targets[i]->alive() == false){

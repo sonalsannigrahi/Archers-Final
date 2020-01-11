@@ -20,13 +20,13 @@ private:
 public:
     Targets(sf::RenderWindow* window, double target_length);
 
-    void update(double duration,FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
+    void update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
 
     int nAlive();
 
     void show();
 
-    void run(double duration);
+    void run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
 };
 
 #endif // TARGETS_HPP_INCLUDED
