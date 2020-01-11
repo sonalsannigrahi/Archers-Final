@@ -13,7 +13,7 @@
 <a name="project"></a>
 ## 1. Description 
 
-In this project, we aimed to create our version of the Archers 2D game for desktop. Here, there is one player who shoots at several opponents. In the original game, there are several different opponents. In our version, we have chosen to implement 3 types: a running opponent that stabs the player, a standard opponent that shoots back, and a spear throwing opponent. In our version, it's in endless mode and is set to player v computer where the player controls the character using the mouse. 
+In this project, we aimed to create our version of the Archers 2D game for desktop. Here, there is one player who shoots at several opponents. In our version, we have chosen to implement 3 types: a running opponent that stabs the player, a standard opponent that shoots back, and a spear throwing opponent. In our version, it's in endless mode and is set to player v computer where the player controls the character using the mouse. 
 
 
 <a name="team"></a>
