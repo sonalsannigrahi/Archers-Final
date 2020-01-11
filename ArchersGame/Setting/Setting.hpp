@@ -26,7 +26,7 @@ private:
     sf::Text birds, rain, lightning, fireworks, balloons;
     sf::Text volumeMaster, volumeMusic, volumeGame; 
     sf::Text volumeMasterValue, volumeMusicValue, volumeGameValue;
-
+    sf::Sprite* objChoices[5];
     sf::Text resChoices[4];
     sf::Sprite* backgroundPreviews[10];
     sf::RectangleShape* volumeSlide[3];

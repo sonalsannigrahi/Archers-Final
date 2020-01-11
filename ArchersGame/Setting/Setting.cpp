@@ -26,6 +26,40 @@ Setting::Setting(){
         bgtexture -> loadFromFile(settingConstants.filename[i], sf::IntRect(10, 10, 80, 150));
         backgroundPreviews[i] = new sf::Sprite(*bgtexture);
     }
+
+    // Object Sprites
+    sf::Texture* birdTexture = new sf::Texture();
+    sf::Texture* rainTexture = new sf::Texture();
+    sf::Texture* lightingTexture = new sf::Texture();
+    sf::Texture* fireworksTexture = new sf::Texture();
+    sf::Texture* balloonsTexture = new sf::Texture();
+
+    birdTexture -> loadFromFile("Birds/Assets/bird2.png");
+    rainTexture -> loadFromFile("Setting/Asset/rain.png");
+    lightingTexture -> loadFromFile("Setting/Asset/lightning.png");
+    fireworksTexture -> loadFromFile("Fireworks/asset/frame_apngframe9.png");
+    balloonsTexture -> loadFromFile("Balloon/Asset/ballon2.png");
+
+    objChoices[0] = new sf::Sprite(*birdTexture);
+    objChoices[1] = new sf::Sprite(*rainTexture);
+    objChoices[2] = new sf::Sprite(*lightingTexture);
+    objChoices[3] = new sf::Sprite(*fireworksTexture);
+    objChoices[4] = new sf::Sprite(*balloonsTexture);
+    for (int i; i<5; i++){
+        objChoices[i] -> setScale(sf::Vector2f(100/(objChoices[i] -> getGlobalBounds().width),100/(objChoices[i] -> getGlobalBounds().height)));
+    }
+/*
+    if (game -> getIsBirds()){
+        objChoices[0] -> setColor(sf::Color::Green);}
+    if (game -> getIsRaining()){
+        objChoices[1] -> setColor(sf::Color::Green);}
+    if (game -> getIsLightning()){
+        objChoices[2] -> setColor(sf::Color::Green);}
+    if (game -> getIsFireworks()){
+        objChoices[3] -> setColor(sf::Color::Green);}
+    if (game -> getIsBalloons()){
+        objChoices[4] -> setColor(sf::Color::Green);}
+*/
     // Set 
     //loading font
     if (!font.loadFromFile(settingConstants.fontfile))
@@ -94,7 +128,7 @@ Setting::Setting(){
     background.setFillColor(sf::Color::Blue);
     volumeMaster.setFillColor(sf::Color::Black);
     volumeGame.setFillColor(sf::Color::Black);
-    volumeMusic.setFillColor(sf::Color::Black);
+    volumeMusic.setFillColor(sf::Color::Black);        std::cout << "problem 4" << std::endl;
     volumeGameValue.setFillColor(sf::Color::Black);
     volumeMasterValue.setFillColor(sf::Color::Black);
     volumeMusicValue.setFillColor(sf::Color::Black);
@@ -119,6 +153,9 @@ void Setting::setSize(int width, int height){
     background.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 200);
     for (int i = 0; i < settingConstants.filename_length; i++)
         backgroundPreviews[i] -> setPosition(settingScreenBound.left + 27 + i * 85, settingScreenBound.top + 170);
+    for (int i = 0; i < 5;i++){
+        objChoices[i] -> setPosition(settingScreenBound.left + 27 + i*170, settingScreenBound.top + 350);
+    }
     volumeMaster.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 480);
     volumeGame.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 520);
     volumeMusic.setPosition(settingScreenBound.left + 15, settingScreenBound.top + 560);
@@ -192,6 +229,36 @@ void Setting::updateFrame(double time){
                 }
             } else backgroundPreviews[i] -> setScale(1, 1);
 
+        // Check if objects are hovered
+
+        
+        for (int i = 0; i < 5; i++)
+            if (objChoices[i] -> getGlobalBounds().contains(mousePosition.x,mousePosition.y)){
+                if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                    if (i==0){
+                        game -> toggleBirds();
+                        if (game -> getIsBirds()){objChoices[0] -> setColor(sf::Color::Green);}
+                        else {objChoices[0] -> setColor(sf::Color::White);}}
+                    if (i==1){
+                        game -> toggleRain();
+                        if (game -> getIsRaining()){objChoices[1] -> setColor(sf::Color::Green);}
+                        else {objChoices[1] -> setColor(sf::Color::White);}}
+                    if (i==2){
+                        game -> toggleLightning();
+                        if (game -> getIsLightning()){objChoices[2] -> setColor(sf::Color::Green);}
+                        else {objChoices[2] -> setColor(sf::Color::White);}}
+                    if (i==3){
+                        game -> toggleFireworks();
+                        if (game -> getIsFireworks()){objChoices[3] -> setColor(sf::Color::Green);}
+                        else {objChoices[3] -> setColor(sf::Color::White);}}
+                    if (i==4){
+                        game -> toggleBalloons();
+                        if (game -> getIsBalloons()){objChoices[4] -> setColor(sf::Color::Green);}
+                        else {objChoices[4] -> setColor(sf::Color::White);}}
+                    }
+                    
+                }
+
         window -> draw(*settingScreen);
         // Draw text
         window -> draw(title);
@@ -219,6 +286,7 @@ void Setting::updateFrame(double time){
         // Draw resolution
         for (int i = 0; i < 4; i++) window -> draw(resChoices[i]);
         for (int i = 0; i < settingConstants.filename_length; i++) window -> draw(*backgroundPreviews[i]);
+        for (int i = 0; i < 5; i++) window -> draw(*objChoices[i]);
     }
     /*
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
