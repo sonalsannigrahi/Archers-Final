@@ -46,7 +46,7 @@
     hitbox.setOutlineThickness(5);
 }*/
 
-Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts, std::string filename){
+Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::vector<Opponent*>* opponent, std::vector<Spear*>* spear, std::vector<StaticOpponent*>* statico, Texts* texts, std::string filename, float scale){
     this -> texts = texts;
     this -> player = player;
     this -> opponent = opponent;
@@ -56,6 +56,7 @@ Arrow::Arrow(float posX, float posY, float vX, float vY, Player* player, std::ve
     sf::Texture* texture = new sf::Texture();
 
     arrowConstants.filename = filename;
+    arrowConstants.scale = scale;
 
     texture -> loadFromFile("Arrow/Assets/" + arrowConstants.filename);
     arrowSprite = new sf::Sprite(*texture); 
@@ -101,7 +102,15 @@ void Arrow::updateFrame(double time){
         if (angle < 0) angle += 360;
 
         //std::cout << 2 << std::endl;
+        //setting type of arrow
 
+        if (filename == "arrow.png"){
+            index == 1;
+        }
+
+        if (filename == "spear.png"){
+            index == 0;
+        }
         // Arrow head
         float headX, headY;
         if (angle > 90 && angle <= 270) headX = posX - arrowSprite -> getGlobalBounds().width; else headX = posX + arrowSprite -> getGlobalBounds().width;
@@ -134,7 +143,7 @@ void Arrow::updateFrame(double time){
             if (alive && (*spear)[i] -> shoot(headX, headY)) alive = false;
         }
         //std::cout << 9 << std::endl;
-        if (alive && player -> shoot(headX, headY)) alive = false;
+        if (alive && player -> shoot(headX, headY, index)) alive = false;
 
         //std::cout << 10 << std::endl;
     }
