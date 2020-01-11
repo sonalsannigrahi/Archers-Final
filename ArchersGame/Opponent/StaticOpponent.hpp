@@ -25,6 +25,7 @@ private:
     sf::RectangleShape hitboxHead, hitboxBody;
     sf::RectangleShape healthbar;
     std::string filename;
+    float scale;
     bool isHitboxDrawn = false;
 
     Player* player;

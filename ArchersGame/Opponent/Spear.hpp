@@ -23,6 +23,7 @@ private:
     sf::Sprite* defback = new sf::Sprite();
     sf::RectangleShape hitboxHead, hitboxBody;
     sf::RectangleShape healthbar;
+
     bool isHitboxDrawn = false;
 
     Player* player;   
@@ -31,6 +32,7 @@ private:
     std::vector<StaticOpponent*>* statOpponent = new std::vector<StaticOpponent*>();
     Texts* text;
     std::string filename;
+    float scale;
     std::vector<Arrow*> arrows;
     double counter = 0;
     int current = 0;

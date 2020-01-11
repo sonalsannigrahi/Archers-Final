@@ -5,6 +5,7 @@ StaticOpponent::StaticOpponent(Player* player, Texts* text){
     this -> player = player;
     this -> text = text;
     filename = "arrow.png";
+    scale = 0.02;
     sf::Texture* texture = new sf::Texture();
     health = statconstant.maxHealth;
     texture -> loadFromFile("Opponent/Assets/defeat.png");
@@ -128,7 +129,7 @@ void StaticOpponent::updateFrame(double time) {
 
 void StaticOpponent::createArrow(float posX, float posY, float vX, float vY){
     //std::cout << posX << " " << posY << " " << vX << " " << vY << std::endl;
-    Arrow* arrow = new Arrow(posX, posY, vX, vY, player, opponent, spear, statOpponent, text, filename);
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, player, opponent, spear, statOpponent, text, filename, scale);
     arrow -> setWindow(window);
     arrow -> setSize(windowWidth, windowHeight);
     arrows.push_back(arrow);

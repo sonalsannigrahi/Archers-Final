@@ -4,7 +4,8 @@ Spear::Spear(Player* player, Texts* text){
     srand(time(NULL));
     this -> player = player;
     this -> text = text; 
-    filename = "arrow.png";
+    filename = "spear.png";
+    scale = 1.2;
     sf::Texture* texture = new sf::Texture();
     health = spearconstant.maxHealth;
     texture -> loadFromFile("Opponent/Assets/defeat.png");
@@ -111,7 +112,7 @@ void Spear::updateFrame(double time) {
 };
 
 void Spear::createArrow(float posX, float posY, float vX, float vY){
-    Arrow* arrow = new Arrow(posX + 104, posY + 30, vX, vY, player, opponent, spear, statOpponent, text, filename);
+    Arrow* arrow = new Arrow(posX + 104, posY + 30, vX, vY, player, opponent, spear, statOpponent, text, filename, scale);
     arrow -> setWindow(window);
     arrow -> setSize(windowWidth, windowHeight);
     arrows.push_back(arrow);
