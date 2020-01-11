@@ -10,7 +10,6 @@ class Texts{
     private:
     sf::RenderWindow* window;
     int windowWidth, windowHeight;
-    TextConstants textconstants = TextConstants();
     sf::Text text;
     sf::Text play;
     sf::Text tutorial;
@@ -31,6 +30,7 @@ class Texts{
     sf::Font font;
     void loadgame();
     int bruh;
+    TextConstants textconstants = TextConstants();
     Texts();
     bool loadgame(float x, float y);
     bool box_hit(float x,float y);
