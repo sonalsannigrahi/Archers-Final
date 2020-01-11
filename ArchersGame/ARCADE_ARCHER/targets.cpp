@@ -23,15 +23,21 @@ Targets::Targets(sf::RenderWindow* window, double target_length):
 
 void Targets::update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles)
 {
-    std::cout << targets.size() << std::endl;
+    ///std::cout << "target size          " <<  targets.size() << std::endl;
     for(int i=0;i<targets.size();i++){
+
+        ///std::cout << targets[i]->Age << " ";
+
         targets[i]->update(duration);
     }
+    ///std::cout << std::endl;
+    ///std::cout << "target ---  size          " <<  targets.size() << std::endl;
+    
     for(int i=0;i<targets.size();i++){
         if(targets[i]->alive()){
             std::vector<FIRE_BALL*> balls = fireBalls.getBALLS();
             
-            std::cout <<  " " << balls.size() << std::endl;
+            ///std::cout <<  " " << balls.size() << std::endl;
 
             for(int j=0;j<balls.size();j++){
                 
@@ -42,6 +48,9 @@ void Targets::update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxPa
 
 
                 if(resolve.first.size() > 0){
+
+                    ///std::cout << "HOOH" << std::endl;
+
                     for(int h=0;h<resolve.second.size();h++){
                         boxParticles.addBoxParticle(resolve.second[h]);
                     }
@@ -80,17 +89,28 @@ void Targets::show()
 
 void Targets::run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles)
 {
+    ///std::cout << " before         " << nAlive() << std::endl;
     update(duration, fireBalls, boxParticles);
+    ///std::cout << "gogogo" << std::endl;
+    /**
+    for(int i=0;i<targets.size();i++){
+        std::cout << targets[i]->alive() << " ";
+    }
+    std::cout << std::endl;
+    std::cout << " after         " << nAlive() << std::endl;
+    
+    **/
 
     for(int i=0;i<targets.size();i++){
         if(targets[i]->alive() == false){
+            ///std::cout << "YLEEEEEEEEE" << std::endl;
             delete targets[i];
 
             targets[i] = targets[ targets.size() - 1 ];
             targets.pop_back();
         }
     }
-
+    ///std::cout << " after  after       " << nAlive() << std::endl;
     if(nAlive() == 0){
         targets.push_back(targetCreator.createTarget());
     }
