@@ -1,7 +1,10 @@
 #include "StaticOpponent.hpp"
-#include "../Character/bow.hpp"
 
-StaticOpponent::StaticOpponent(Player* player){
+StaticOpponent::StaticOpponent(Player* player, Texts* text){
+    srand(time(NULL)); // Randomize
+    this -> player = player;
+    this -> text = text;
+    filename = "arrow";
     sf::Texture* texture = new sf::Texture();
     health = statconstant.maxHealth;
     texture -> loadFromFile("Opponent/Assets/defeat.png");
@@ -13,6 +16,11 @@ StaticOpponent::StaticOpponent(Player* player){
     sf::Texture* heads = new sf::Texture();
     heads -> loadFromFile("Opponent/Assets/headshot.png");
     headshot -> setTexture(*heads); */
+	sf::Texture* hand = new sf::Texture();
+	hand -> loadFromFile("Opponent/Assets/hand_o.png");
+	spriteh -> setTexture(*hand);
+    spriteh -> setScale(0.25f,0.25f);
+    spriteh -> setOrigin(float(spriteh -> getGlobalBounds().width) / 2,float(spriteh -> getGlobalBounds().height)/ 2);
     for (int i = 0; i < statconstant.filenamelen; i++){
         sf::Texture* texture = new sf::Texture();
         texture -> loadFromFile("Opponent/Assets/"+ statconstant.filename[i]);
@@ -45,12 +53,12 @@ void StaticOpponent::setSize(int width, int height){
     windowHeight = height;
 
     if (posX == -1){
-        float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
-        posX = rand()%(width/2) + float(width)/2;
+        posX = rand()%(width/2) + float(width)/3;
         posY = -rand()%(height/3) + float(height)/2;
         for (int i =0; i < statconstant.filenamelen; i++){
             statSprites[i].setPosition(posX,posY);
         }
+        spriteh -> setPosition(posX, posY + statSprites[0].getGlobalBounds().height / 4);
     }
     defeat -> setScale(0.8f, 0.8f);
     defeat -> setPosition(windowWidth/4.7, windowHeight/8);
@@ -58,11 +66,38 @@ void StaticOpponent::setSize(int width, int height){
 }
 
 void StaticOpponent::updateFrame(double time) {
+    sf::Vector2i mousePosition;
+    sf::Vector2i windowPosition;
+    mousePosition = sf::Mouse::getPosition();
+    windowPosition = window -> getPosition();
+
     counter = counter + time;
     if (counter >= statconstant.changetime){
         counter -= statconstant.changetime;
         current += 1;
-        if (current >= statconstant.filenamelen) current = 0;
+        if (current >= statconstant.filenamelen){
+            current = 0;
+            //Shoot an arrow
+            float dX = std::abs(spriteh -> getPosition().x - mousePosition.x + windowPosition.x);
+            float dY = std::abs(spriteh -> getPosition().y - mousePosition.y + windowPosition.y);
+            float power = rand()%1000 + 100;
+            //float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
+            float vX = - power;
+            float vY = 0;
+            createArrow(spriteh -> getPosition().x + spriteh -> getGlobalBounds().width / 2, spriteh -> getPosition().y + spriteh -> getGlobalBounds().height / 4, vX, vY);
+        }
+    }
+
+    // Draw arrows
+    if (arrows.size() > 0){
+        int id = 0;
+        while (id < arrows.size()){
+            if (arrows[id] -> isAlive()){
+                arrows[id] -> updateFrame(time);
+                id++;
+            }
+            else removeArrow(id);
+        }
     }
 
     if (health <= 0){
@@ -78,16 +113,33 @@ void StaticOpponent::updateFrame(double time) {
     }
     
     if (alive) {
+        hitboxHead.setPosition(posX + 18, posY);
+        hitboxBody.setPosition(posX + 18, posY);
         if (isHitboxDrawn){
-            hitboxHead.setPosition(posX + 18, posY);
-            hitboxBody.setPosition(posX + 18, posY);
-            //window -> draw(hitboxBody);
-            //window -> draw(hitboxHead);
+            window -> draw(hitboxBody);
+            window -> draw(hitboxHead);
         }
         window -> draw(healthbar);
         window -> draw(statSprites[current]);
+        window -> draw(*spriteh);
     }
 
+}
+
+void StaticOpponent::createArrow(float posX, float posY, float vX, float vY){
+    //std::cout << posX << " " << posY << " " << vX << " " << vY << std::endl;
+    Arrow* arrow = new Arrow(posX, posY, vX, vY, player, opponent, spear, statOpponent, text, filename);
+    arrow -> setWindow(window);
+    arrow -> setSize(windowWidth, windowHeight);
+    arrows.push_back(arrow);
+}
+
+void StaticOpponent::removeArrow(int id){
+    if (arrows.size() > id){
+        delete arrows[id];
+        arrows[id] = arrows[arrows.size() - 1];
+        arrows.pop_back();
+    }
 }
 
 bool StaticOpponent::shoot(float x, float y){
