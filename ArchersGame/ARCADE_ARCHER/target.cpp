@@ -120,7 +120,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
 
                 Vel.turn(theta);
 
-                BoxParticle* box_particle = new BoxParticle(window, length/N_B, 20.0, Vector2D(X + cnt_x,Y + cnt_y), Vel, 0.0, angle_vel);
+                BoxParticle* box_particle = new BoxParticle(window, length/N_B, 100.0, Vector2D(X + cnt_x,Y + cnt_y), Vel, 0.0, angle_vel);
                 ans.second.push_back(box_particle);
             }
         }
