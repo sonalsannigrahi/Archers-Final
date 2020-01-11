@@ -18,6 +18,7 @@ private:
     int windowWidth;
     int windowHeight;
     bool isMouseDown = false;
+    bool isMouseDown2[5];
 
     sf::Font font, roboto_font;
 
