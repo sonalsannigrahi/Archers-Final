@@ -18,6 +18,19 @@ private:
     int windowWidth;
     int windowHeight;
     bool isMouseDown = false;
+
+    sf::Font font, roboto_font;
+
+    sf::Text title;
+    sf::Text resolution, background;
+    sf::Text birds, rain, lightning, fireworks, balloons;
+    sf::Text volumeMaster, volumeMusic, volumeGame; 
+    sf::Text volumeMasterValue, volumeMusicValue, volumeGameValue;
+
+    sf::Text resChoices[4];
+    sf::Sprite* backgroundPreviews[10];
+    sf::RectangleShape* volumeSlide[3];
+    sf::CircleShape* volumeButton[3];
 public:
     
     Setting();

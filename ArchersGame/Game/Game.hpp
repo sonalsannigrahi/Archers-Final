@@ -17,12 +17,25 @@
 #include "../Balloon/Balloon.hpp"
 #include "../Fireworks/fireworks.hpp"
 #include "../Character/bow.hpp"
+#include "../Text/text.hpp"
 #include "../Setting/Setting.hpp"
+#include "../Opponent/Opponent.hpp"
+#include "../Opponent/Spear.hpp"
+#include "../Opponent/StaticOpponent.hpp"
+#include "../Arrow/Arrow.hpp"
+#include "../EndGame/EndGame.hpp"
+#include "../Encryption/Encryption.hpp"
+
 
 class Game {
     private:
+        //Username
+        sf::String UserName;
+        // Encryption
+        Encrypt* enc = new Encrypt();
+
         // Add constants to the class
-        GameConstants gameConstants = GameConstants();
+        GameConstants gameConstants = GameConstants(enc);
 
         // All other classes
         // ...
@@ -34,18 +47,38 @@ class Game {
         std::vector<Birds*> birds;
         std::vector<Balloon*> balloons;
         std::vector<Fireworks*> fireworks;
-        Player player = Player();
+        Texts text;
         Setting gameSetting = Setting();
+        std::vector<Opponent*> opponent;
+        std::vector<Spear*> spear;  
+        std::vector<StaticOpponent*> staticOpponent; 
+        Player* player = new Player(&opponent, &spear, &staticOpponent, &text);
+                 
+        //Arrow arrow = Arrow(); // Test arrow
+        EndGame endgame = EndGame();
 
         // Elapsed time
         clock_t elapsedTime;
 
         // Game Window
         sf::RenderWindow* window;
+        
         // A circle
         // sf::CircleShape* circle;
 
         bool isGamePaused = false;
+        int score = 0;
+    
+        //score viewer
+        sf::Text ScoreView;
+
+        // Spawning opponents
+        void createOpponent();
+        void removeOpponent(int id);
+        void createSpear();  
+        void removeSpear(int id); 
+        void createStaticOpponent(); 
+        void removeStaticOpponent(int id); 
 
     public:
     
@@ -54,7 +87,7 @@ class Game {
 
         void StartGame();
         void UpdateFrame();
-        void EndGame();
+        void GameOver();
 
         void createBird();
         void removeBird(int id);
@@ -108,4 +141,6 @@ class Game {
         void pauseGame();
         void unpauseGame();
         bool getIsGamePaused();
+    
+        sf::Font font;
 };

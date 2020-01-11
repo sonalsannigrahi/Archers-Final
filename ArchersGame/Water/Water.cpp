@@ -25,7 +25,8 @@ void Water::setSize(int width, int height){
     windowWidth = width;
     windowHeight = height;
     for (int i = 0; i < waterconstants.filename_len; i++){
-        waterSprites[i].setScale((float) width / waterSprites[i].getGlobalBounds().width, waterconstants.heightScale * (float) height / waterSprites[i].getGlobalBounds().height);
+        waterSprites[i].setScale((float) width / waterSprites[i].getGlobalBounds().width * waterSprites[i].getScale().x, 
+                                waterconstants.heightScale * (float) height / waterSprites[i].getGlobalBounds().height * waterSprites[i].getScale().y);
         waterSprites[i].setPosition(0.0, height - waterSprites[i].getGlobalBounds().height);
     }
 }
