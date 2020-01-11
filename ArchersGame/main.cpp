@@ -8,6 +8,9 @@
 int main()
 {
     Game* game = new Game();
+    
+    /**
+    
     sf::RenderWindow* window = game->getWindow();
 
     RetroGame retroGame = RetroGame(window);
@@ -30,7 +33,7 @@ int main()
             state = retroGame.run();
         }
     }
-    
+    **/
 
     game->StartGame();
 
