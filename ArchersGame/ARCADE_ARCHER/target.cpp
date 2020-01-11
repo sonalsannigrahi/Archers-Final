@@ -1,11 +1,5 @@
 #include "target.hpp"
 
-double fRand(double fMin, double fMax)
-{
-    double f = (double)rand() / RAND_MAX;
-    return fMin + f * (fMax - fMin);
-}
-
 
 Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* window)
 {
@@ -88,43 +82,77 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
 
     std::cout<< dist << " " << radius <<  std::endl;
 
-    if( dist < radius )
+    std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
+    
+
+    if(ball->getRadius() > 15.0  && dist < radius )
     {
         std::cout << "HIT!!!" << std::endl;
         std::cout << "HIT!!!" << std::endl;
 
         isAlive = false;
-        for(;;);
-    }
+        ///for(;;);
 
-    std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
+        
+        double X = pos_x - length/2;
+        double Y = pos_y - length/2;
 
-    double X = pos_x - length/2;
-    double Y = pos_y - length/2;
+        int N_B = 5;
+        
+        srand(time(NULL));
 
-    int N_B = 5;
-
-    for(int i=0;i<N_B;i++)
-    {
-        for(int j=0;j<N_B;j++)
+        for(int i=0;i<N_B;i++)
         {
-            double cnt_x = (length/N_B)*(i+0.5);
-            double cnt_y = (length/N_B)*(j+0.5);
-            srand(time(NULL));
+            for(int j=0;j<N_B;j++)
+            {
+                double cnt_x = (length/N_B)*(i+0.5);
+                double cnt_y = (length/N_B)*(j+0.5);
+                
 
-            double angle_vel = fRand(-0.5, 0.5);
+                double angle_vel = fRand(-0.5, 0.5);
 
-            Vector2D Vel = ball->getVel();
+                Vector2D Vel = ball->getVel();
 
-            double scaling_factor = fRand(1.0, 1.5);
-            Vel = Vel * scaling_factor;
+                double scaling_factor = fRand(5.0, 10);
+                Vel = Vel * scaling_factor;
 
-            double theta = fRand(-pi/4, pi/4);
+                double theta = fRand(-pi/4, pi/4);
 
-            Vel.turn(theta);
+                Vel.turn(theta);
 
-            BoxParticle* box_particle = new BoxParticle(window, length/N_B, 20.0, Vector2D(cnt_x,cnt_y), Vel, 0.0, angle_vel);
+                BoxParticle* box_particle = new BoxParticle(window, length/N_B, 20.0, Vector2D(X + cnt_x,Y + cnt_y), Vel, 0.0, angle_vel);
+                ans.second.push_back(box_particle);
+            }
         }
+
+        int N_cnt = 5;
+        
+        for(int i=0;i<N_cnt;i++){
+            /// RANDOM COLORS
+            int R = rand()%255 + 1;
+            int G = rand()%255 + 1;
+            int B = rand()%255 + 1;
+
+            double RADIUS = ball->getRadius();
+
+            Vector2D pos = Vector2D( fRand(-RADIUS,RADIUS), fRand(-RADIUS,RADIUS) );
+            pos += ball->getPos();
+
+            /// IN RADIANS
+
+            double theta_max = 10 * ( 2 * pi / 360 );
+
+            double theta = fRand(-theta_max, theta_max);
+
+            Vector2D vel = ball->getVel();
+            vel.turn(theta);
+
+            FIRE_BALL* n_ball = new FIRE_BALL(ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            ans.first.push_back(n_ball);
+        }
+
+
+
     }
 
     return ans;

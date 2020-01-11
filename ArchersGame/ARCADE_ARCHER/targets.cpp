@@ -47,19 +47,21 @@ void Targets::update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxPa
                 
 
 
-                if(resolve.first.size() > 0){
+                if(resolve.second.size() > 0){
 
                     ///std::cout << "HOOH" << std::endl;
 
                     for(int h=0;h<resolve.second.size();h++){
                         boxParticles.addBoxParticle(resolve.second[h]);
                     }
+                    
                     for(int h=0;h<resolve.first.size();h++){
                         fireBalls.AddBall(resolve.first[h]);
                     }
                     fireBalls.RemBall(balls[j]);
                     balls[j] = balls[balls.size() - 1];
                     balls.pop_back();
+                    
                 }
             }
         }
