@@ -5,7 +5,7 @@ Spear::Spear(Player* player, Texts* text){
     this -> player = player;
     this -> text = text; 
     filename = "spear.png";
-    scale = 1.2;
+    scale = 0.35;
     sf::Texture* texture = new sf::Texture();
     health = spearconstant.maxHealth;
     texture -> loadFromFile("Opponent/Assets/defeat.png");
