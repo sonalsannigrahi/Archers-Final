@@ -115,7 +115,7 @@ Once you have the excutable game window, choose your username and press 'Enter' 
 
 <a name="characters"></a>
 
-## 4. Character Specifications in Classic Version
+## 4. Character Specifications
 
 In this section, we explain the features we currently have in the game with regard to the characters and how you can control the movement of the player. First, here are the specifications for the main player:
 
