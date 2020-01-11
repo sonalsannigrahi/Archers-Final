@@ -35,6 +35,8 @@ private:
     float health;
     Texts* texts;
     std::string filename;
+    float scale;
+    int index;
     std::vector<Opponent*>* opponent;
     std::vector<Spear*>* spear;
     std::vector<StaticOpponent*>* statico;
@@ -50,7 +52,7 @@ public:
     void createArrow(float posX, float posY, float vX, float vY);
     void removeArrow(int id);
 
-    bool shoot(float x, float y);
+    bool shoot(float x, float y, int index);
     void stab();
     void pierced(float x, float y);
 
