@@ -5,7 +5,7 @@
 
 1. [Description](#project)
 2. [Team Composition](#team)
-2. [Project Compilation](#run)
+2. [Running the Project](#run)
 3. [Character Specification](#characters)
 4. [Additional Features](#further)
 
@@ -77,7 +77,7 @@ Here are the members, their teams and roles:
 
 
 <a name="run"></a>
-## 3. Project Compilation 
+## 3. Running the Project 
 
 In our project, we have chosen to use the [SFML](https://www.sfml-dev.org/) library. To install it, do the following:
 
