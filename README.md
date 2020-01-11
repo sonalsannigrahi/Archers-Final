@@ -128,6 +128,15 @@ Players starts in a fixed position, bottom left, of the screen. It initialises t
 Standard opponent. Appears in a randomised position, will continue shooting until dead. Will choose a random angle and shoot, again dies if shot in the head or shot anywhere else twice.
 
 
+<<<<<<< HEAD
+### Type 2
+
+Running opponent. Starts from one end of the screen and runs towards the player. Dies with same specifications however opponenet can't shoot. The weapon here is a knife, so it stabs the player if it reaches the player.
+
+### Type 3
+
+Spear throwing opponent. Appears in a randomised position, will continue throwing spears until dead. If the spear hits player, player dies immediately. 
+=======
 #### Type 2
 
 Running opponent. Starts from one end of the screen and runs towards the player. Dies with same specifications however opponenet can't shoot. The weapon here is a knife, so it stabs the player if it reaches the player.
@@ -138,3 +147,4 @@ Spear throwing opponent. Appears in a randomised position, will continue throwin
 
 <a name="further"></a>
 ## 5. Additional Features
+>>>>>>> RetroGame-Saba
