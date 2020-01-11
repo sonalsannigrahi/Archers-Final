@@ -1,8 +1,25 @@
 # Archers
 
-This is a 2d archer game, where the user controls an immobile player character which can shoot arrows with varying power and angle. The aim is to add enemies that will shoot back at the player.
+## Quick Referrences
 
-## Team Composition:
+
+1. [Description](#project)
+2. [Team Composition](#team)
+2. [Project Compilation](#run)
+3. [Character Specification](#characters)
+4. [Additional Features](#further)
+
+
+<a name="project"></a>
+## 1. Description 
+
+In this project, we aimed to create our version of the Archers 2D game for desktop. Here, there is one player who shoots at several opponents. In the original game, there are several different opponents. In our version, we have chosen to implement 3 types: a running opponent that stabs the player, a standard opponent that shoots back, and a spear throwing opponent. In our version, it's in endless mode and is set to player v computer where the player controls the character using the mouse. 
+
+
+<a name="team"></a>
+## 2. Team Composition
+
+Here are the members, their teams and roles:
 
   Saba Tavdgiridze (Team Leader) 
   
@@ -58,13 +75,49 @@ This is a 2d archer game, where the user controls an immobile player character w
   Soares,
   Ngo
 
-## Installing Relevant Libraries
-Our game uses SFML as its graphics library. The following is a link to the different tutorials on how to install it across all supported operating systems https://www.sfml-dev.org/tutorials/2.5/#getting-started. 
 
-Here we provide a tutorial for how to install it on Linux.
+<a name="run"></a>
+## 3. Project Compilation 
 
-First, one must open the terminal and input the following command: sudo apt-get install libsfml-dev. After inputing the relevant passwords, SFML should be installed. 
+In our project, we have chosen to use the [SFML](https://www.sfml-dev.org/) library. To install it, do the following:
 
-Now one must compile the .cpp files and make the main method an executable sfml application. To do this, we first compile all relevant files (including the one contaning the main method) using the normal g++ compiler. Once that is complete, we make the main method executable using the following command: g++ (mainMethodFileName).o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+## Installing SFML
 
-Now the program is an executable game which runs after typing the following command: ./sfml-app
+On the virtual machines (Linux) , write the following command in terminal:
+
+    $> sudo apt-get install libsfml-dev
+
+Enter the relevant passwords, and it should be installed. 
+
+Consult the following for additional information on installing the library:
+
+1. [macOS XCode](https://www.sfml-dev.org/tutorials/2.5/start-osx.php)
+
+2. [Visual Studio](https://www.sfml-dev.org/tutorials/2.5/start-vc.php)
+
+3. [Code Blocks](https://www.sfml-dev.org/tutorials/2.5/start-cb.php)
+
+## Building and Running the Project
+
+First, clone the project into the local repository renaming it to 'Archers'. Next type in the following commands to run the project:
+
+    $> cd Archers
+    $> cd ArchersGame
+    $> make clean
+    $> make -j8 archer
+    $> ./archer
+    
+This script should make the project and result in an SFML window with the game running.
+
+The above script will equally make and build the project, creating the necessary executables, and download a pre-trained model.
+
+<a name="characters"></a>
+
+## 4. Character Specifications
+
+In this section, we explain the features we currently have in the game with regard to the characters. First, here are the specifications for the main player:
+
+##NEED TO FINISH 
+
+<a name="further"></a>
+## 5. Additional Features
