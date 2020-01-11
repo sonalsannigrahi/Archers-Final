@@ -34,3 +34,10 @@ void BoxParticles::show()
         window->draw(*particles[i]);
     }
 }
+
+void BoxParticles::run(double duration)
+{
+    check_update();
+    update(duration);
+    show();
+}

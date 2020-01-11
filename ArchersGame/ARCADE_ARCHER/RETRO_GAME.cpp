@@ -110,7 +110,11 @@ STATES::STATES_ENUM RetroGame::run()
         fireBalls.show();
         targets.run(ElapsedTime, fireBalls, boxParticles);
 
+        boxParticles.run(ElapsedTime);
+
         window->draw(playerBox);
+
+
 
         window->display();
         ///std::cout << "YeS" << std::endl;

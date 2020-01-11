@@ -23,6 +23,7 @@ public:
     void update(double duration);
     void show();
     void check_update();
+    void run(double duration);
 };
 
 
