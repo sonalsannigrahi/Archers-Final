@@ -16,6 +16,7 @@ class Texts{
     sf::Text BestScore;
     sf::Text quit;
     sf::Text ChooseUserName;
+    sf::Text HighestScore;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
