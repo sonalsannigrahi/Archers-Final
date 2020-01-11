@@ -12,13 +12,13 @@ void HealthBar::set_health(int health)
     this->health = health;
 }
 
-void inc_health(int inc)
+void HealthBar::inc_health(int inc)
 {
     this->health += inc;
 }
 
 
-void show()
+void HealthBar::show()
 {
     double W = window->getSize().x;
     double H = window->getSize().y;
