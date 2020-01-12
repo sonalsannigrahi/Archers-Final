@@ -4,7 +4,7 @@ HealthBar::HealthBar(sf::RenderWindow* window)
 {
     this->window = window;
 
-    this->health = 60;
+    this->health = 100;
 }
 
 void HealthBar::set_health(int health)

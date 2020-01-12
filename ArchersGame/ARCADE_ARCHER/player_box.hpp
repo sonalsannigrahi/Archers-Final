@@ -2,6 +2,7 @@
 #define PLAYER_BOX_HPP_INCLUDED
 
 #include "fire_balls.hpp"
+#include "HEALTH_BAR.hpp"
 
 #include<SFML/Graphics.hpp>
 #include<bits/stdc++.h>
@@ -9,6 +10,8 @@
 class PLayerBox: public sf::Drawable{
 public:
     sf::RenderWindow* window;
+
+    HealthBar healthBar;
 
     double W;
     double H;
@@ -75,7 +78,7 @@ public:
     std::vector<FIRE_BALL*> resolve_collision(FIRE_BALL* ball);
 
     void resolve_collisions(FIRE_BALLS& fireBalls);
-
+    void show_health();
 
     void update(double duration);
 

@@ -1,6 +1,7 @@
 #include "player_box.hpp"
 
-PLayerBox::PLayerBox(sf::RenderWindow* window, double pos_x, double pos_y, double length, double W, double H)
+PLayerBox::PLayerBox(sf::RenderWindow* window, double pos_x, double pos_y, double length, double W, double H):
+    healthBar(window)
 {
     this->window = window;
     this->pos_x = pos_x;
@@ -215,6 +216,7 @@ std::vector<FIRE_BALL*> PLayerBox::resolve_collision(FIRE_BALL* ball)
             FIRE_BALL* n_ball = new FIRE_BALL("Opponent" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
             fire_balls_vect.push_back(n_ball);
         }
+        healthBar.inc_health(-20);
     }
     return fire_balls_vect;
 }
@@ -274,7 +276,10 @@ FIRE_BALL* PLayerBox::run(double duration, double mouse_x, double mouse_y)
 
 
 
-
+void PLayerBox::show_health()
+{
+    healthBar.show();
+}
 
 
 

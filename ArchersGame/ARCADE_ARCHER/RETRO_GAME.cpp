@@ -5,7 +5,7 @@ RetroGame::RetroGame(sf::RenderWindow* window):
     targets(window,50.0),
     playerBox(window,100.0,30.0,60.0,800.0,600.0),
     boxParticles(window),
-    healthBar(window)
+    ///healthBar(window)
 {
     this->window = window;
 
@@ -116,8 +116,8 @@ STATES::STATES_ENUM RetroGame::run()
         boxParticles.run(ElapsedTime);
 
         window->draw(playerBox);
-
-        healthBar.show();
+        playerBox.show_health();
+        ///healthBar.show();
 
         window->display();
         ///std::cout << "YeS" << std::endl;
