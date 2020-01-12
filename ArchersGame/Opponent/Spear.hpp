@@ -6,8 +6,13 @@
 #include <time.h>       /* time */
 #include <SFML/Graphics.hpp>
 #include "SpearConstants.cpp"
+#include "../Arrow/Arrow.hpp"
 
 class Player;
+class Opponent;
+class StaticOpponent;
+class Texts;
+
 
 class Spear{
 private:
@@ -18,9 +23,17 @@ private:
     sf::Sprite* defback = new sf::Sprite();
     sf::RectangleShape hitboxHead, hitboxBody;
     sf::RectangleShape healthbar;
+
     bool isHitboxDrawn = false;
 
-    Player* player;
+    Player* player;   
+    std::vector<Opponent*>* opponent = new std::vector<Opponent*>();
+    std::vector<Spear*>* spear = new std::vector<Spear*>();
+    std::vector<StaticOpponent*>* statOpponent = new std::vector<StaticOpponent*>();
+    Texts* text;
+    std::string filename;
+    float scale;
+    std::vector<Arrow*> arrows;
     double counter = 0;
     int current = 0;
     int windowWidth, windowHeight;
@@ -29,9 +42,11 @@ private:
     float posX, posY;
 public:
 
-    Spear(Player* player);
+    Spear(Player* player, Texts* texts);
 
     void setWindow(sf::RenderWindow* gameWindow);
+    void createArrow(float posX, float posY, float vX, float vY);
+    void removeArrow(int id);
     void setSize(int width, int height);
     void updateFrame(double time);
     bool isAlive();

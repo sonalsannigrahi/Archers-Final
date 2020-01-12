@@ -9,7 +9,7 @@ HPPFILES = ARCADE_ARCHER/collision.hpp ARCADE_ARCHER/fire_ball.hpp ARCADE_ARCHER
 Classes = Background.o Water.o Birds.o Lightning.o Rain.o Balloon.o fireworks.o bow.o Opponent.o Spear.o StaticOpponent.o Setting.o Arrow.o text.o EndGame.o Encryption.o $(all_but_main)
 
 
-all : collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o BOX_PARTICLE.o BOX_PARTICLES.o HEALTH_BAR.o archer
+RetroGame = collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o BOX_PARTICLE.o BOX_PARTICLES.o HEALTH_BAR.o
 
 
 Encryption.o: Encryption/Encryption.cpp
@@ -181,7 +181,7 @@ main.o: main.cpp Game.o ARCADE_ARCHER/RETRO_GAME.o ARCADE_ARCHER/RETRO_GAME_SETT
 
 
 
-archer: main.o
+archer: main.o $(RetroGame)
 
 	$(CXX) main.o Game.o $(Classes) -o archer $(Dependencies)
 

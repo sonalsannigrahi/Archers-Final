@@ -1,7 +1,11 @@
 #include "Spear.hpp"
-#include "../Character/bow.hpp"
 
-Spear::Spear(Player* player){
+Spear::Spear(Player* player, Texts* text){
+    srand(time(NULL));
+    this -> player = player;
+    this -> text = text; 
+    filename = "spear.png";
+    scale = 0.35;
     sf::Texture* texture = new sf::Texture();
     health = spearconstant.maxHealth;
     texture -> loadFromFile("Opponent/Assets/defeat.png");
@@ -41,7 +45,7 @@ void Spear::setSize(int width, int height){
     windowHeight = height;
 
     if (posX == -1){
-        float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
+        //float angle = -60 + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(120)));
         posX = rand()%(width/2) + float(width)/3;
         posY = -rand()%(height/3) + float(height)/2;
         for (int i =0; i < spearconstant.filenamelen; i++){
@@ -59,7 +63,27 @@ void Spear::updateFrame(double time) {
     if (counter >= spearconstant.changetime){
       counter -= spearconstant.changetime;
       current += 1;
-      if (current >= spearconstant.filenamelen) current = 0;
+      if (current >= spearconstant.filenamelen){ 
+            float dX = std::abs(posX);
+            float dY = std::abs(posY);
+            float power = rand()%1000 + 100;
+            float vX = - power;
+            float vY = 0;
+            createArrow(posX + spearSprites[current].getGlobalBounds().width / 2, posY + spearSprites[current].getGlobalBounds().height / 4, vX, vY);
+            current = 0;
+      }
+    }
+
+    // Draw arrows
+    if (arrows.size() > 0){
+        int id = 0;
+        while (id < arrows.size()){
+            if (arrows[id] -> isAlive()){
+                arrows[id] -> updateFrame(time);
+                id++;
+            }
+            else removeArrow(id);
+        }
     }
   
     if (health <= 0){
@@ -86,6 +110,21 @@ void Spear::updateFrame(double time) {
     }
 
 };
+
+void Spear::createArrow(float posX, float posY, float vX, float vY){
+    Arrow* arrow = new Arrow(posX + 104, posY + 30, vX, vY, player, opponent, spear, statOpponent, text, filename, scale);
+    arrow -> setWindow(window);
+    arrow -> setSize(windowWidth, windowHeight);
+    arrows.push_back(arrow);
+}
+
+void Spear::removeArrow(int id){
+    if (arrows.size() > id){
+        delete arrows[id];
+        arrows[id] = arrows[arrows.size() - 1];
+        arrows.pop_back();
+    }
+}
 
 bool Spear::shoot(float x, float y){
     if (hitboxHead.getPosition().x <= x && x <= hitboxHead.getPosition().x + hitboxHead.getSize().x &&

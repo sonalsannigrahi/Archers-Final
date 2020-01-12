@@ -34,9 +34,17 @@ private:
     sf::RectangleShape healthbar;
     float health;
     Texts* texts;
+    std::string filename;
+    float scale;
+    int index;
     std::vector<Opponent*>* opponent;
     std::vector<Spear*>* spear;
     std::vector<StaticOpponent*>* statico;
+
+    // arrow-shooting constants
+    bool firstclick = true;
+    double a0, b0;
+    double a1, b1;
 
 public:
     
