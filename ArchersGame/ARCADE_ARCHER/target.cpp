@@ -197,7 +197,7 @@ FIRE_BALL* Target::hurl()
 
         srand(time(NULL));
 
-        double max_magnitude = 50.0;
+        double max_magnitude = 100.0;
         double magnitude = fRand(max_magnitude/2.0, max_magnitude);
 
         double theta_min = pi/6;
@@ -257,6 +257,9 @@ FIRE_BALL* Target::hurl()
         }
 
         double theta = fRand(l_theta, r_theta);
+
+        Vector2D Vel(0.0, magnitude);
+        Vel.turn(theta);
 
         FIRE_BALL* nBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
         return nBall;
