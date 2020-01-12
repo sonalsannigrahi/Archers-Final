@@ -3,13 +3,14 @@
 
 #include "VECTOR_2D.hpp"
 #include<SFML/Graphics.hpp>
+#include<bits/stdc++.h>
 
 class CollisionGenerator;
 
 class FIRE_BALL: public sf::Drawable{
 private:
 
-    string WHO_THROWED_IT;
+    std::string WHO_THROWED_IT;
 
     double MASS;
     double RADIUS;
@@ -57,12 +58,12 @@ public:
 
     friend CollisionGenerator;
 
-    FIRE_BALL(string WHO_THROWED_IT, double MASS, double RADIUS, Vector2D Pos, Vector2D Vel,sf::Color color);
+    FIRE_BALL(std::string WHO_THROWED_IT, double MASS, double RADIUS, Vector2D Pos, Vector2D Vel,sf::Color color);
 
     double getMass() const;
     double getRadius() const;
 
-    string getWhoThrowedIt();
+    std::string getWhoThrowedIt();
 
     Vector2D getPos() const;
     Vector2D getVel() const;

@@ -5,7 +5,7 @@
 
 
 
-FIRE_BALL::FIRE_BALL(string WHO_THROWED_IT, double MASS, double RADIUS, Vector2D Pos, Vector2D Vel,sf::Color color)
+FIRE_BALL::FIRE_BALL(std::string WHO_THROWED_IT, double MASS, double RADIUS, Vector2D Pos, Vector2D Vel,sf::Color color)
 {
     this->WHO_THROWED_IT = WHO_THROWED_IT;
 
@@ -59,7 +59,7 @@ void FIRE_BALL::update(double duration)
 }
 
 
-string FIRE_BALL::getWhoThrowedIt()
+std::string FIRE_BALL::getWhoThrowedIt()
 {
     return this->WHO_THROWED_IT;
 }

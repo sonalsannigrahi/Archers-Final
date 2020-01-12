@@ -18,11 +18,13 @@ void CollisionGenerator::ResCollsWithFrame(FIRE_BALL& ball)
     double eps = 1e-6;
 
     double RestitutionCoeff = 0.8;
-
+    /**
     if(ball.Pos.get_y() + ball.RADIUS > H && ball.Vel.get_y() > 0)
     {
         ball.Vel.set_y(-ball.Vel.get_y());
     }
+    **/
+   
     if(ball.Pos.get_y() - ball.RADIUS < 0 && ball.Vel.get_y() < 0)
     {
         if(ball.Vel.get_y() > -eps)
@@ -59,11 +61,12 @@ std::vector<FIRE_BALL*> CollisionGenerator::ResCollsWithFrame_explode(FIRE_BALL&
     double eps = 1e-6;
 
     double RestitutionCoeff = 0.8;
-
+    /**
     if(ball.Pos.get_y() + ball.RADIUS > H && ball.Vel.get_y() > 0)
     {
         ball.Vel.set_y(-ball.Vel.get_y());
     }
+    **/
     if(ball.Pos.get_y() - ball.RADIUS < 0 && ball.Vel.get_y() < 0)
     {
         if(ball.Vel.get_y() > -eps)
