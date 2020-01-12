@@ -154,7 +154,7 @@ The second type of opponent is a running opponent which runs across the screen a
 The last type of opponent is a spear throwing opponent which throws spears at randomised power levels. The spear opponents spawn rate is set quite high so as to ensure a progressive difficulty. Further, the speared opponenet also has a decay rate which allows the spawn rate to decrease with time, making it appear more and more often in the game as the player continues. 
 
 <a name="further"></a>
-## 5. Additional Features
+## 6. Additional Features
 
 #### Start and End Screen
 
