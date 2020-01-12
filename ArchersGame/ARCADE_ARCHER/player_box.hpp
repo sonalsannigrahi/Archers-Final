@@ -28,10 +28,10 @@ public:
     void move_to_right();
     void move_to_left();
 
-    
+
     double IntTime;
     double IntTime_margin;
-    
+
 
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -49,11 +49,11 @@ public:
         text.setFont(font);
         text.setString(std::to_string( (int)round(angriness) ));
         text.setFillColor(sf::Color::Red);
-        
-        
+
+
         int char_size = 5;
         text.setCharacterSize(char_size);
-        
+
         double W_MIN = text.getLocalBounds().width;
         double H_MIN = text.getLocalBounds().height;
 
@@ -71,6 +71,11 @@ public:
     bool will_throw();
 
     FIRE_BALL* hurl(double mouse_x, double mouse_y);
+
+    std::vector<FIRE_BALL*> resolve_collision(FIRE_BALL* ball);
+
+    void resolve_collisions(FIRE_BALLS& fireBalls);
+
 
     void update(double duration);
 

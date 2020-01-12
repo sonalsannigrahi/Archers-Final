@@ -146,6 +146,100 @@ void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
 
 
 
+std::vector<FIRE_BALL*> PLayerBox::resolve_collision(FIRE_BALL* ball)
+{
+    std::vector<FIRE_BALL*> fire_balls_vect;
+
+    std::vector< std::pair<Vector2D, Vector2D> > lines;
+
+    Vector2D point_1(pos_x + length/2, pos_y + length/2);
+    Vector2D point_2(pos_x - length/2, pos_y + length/2);
+    Vector2D point_3(pos_x - length/2, pos_y - length/2);
+    Vector2D point_4(pos_x + length/2, pos_y - length/2);
+
+    Vector2D e_x(1.0,0.0);
+    Vector2D e_y(0.0,1.0);
+
+    lines.push_back(std::make_pair(point_1,point_2));
+    lines.push_back(std::make_pair(point_2,point_3));
+    lines.push_back(std::make_pair(point_3,point_4));
+    lines.push_back(std::make_pair(point_4,point_1));
+
+    double dist = INFINITY;
+    Vector2D center(ball->getPos());
+    double radius = ball->getRadius();
+
+    for(int i=0;i<lines.size();i++){
+        Vector2D point_a = lines[i].first;
+        Vector2D point_b = lines[i].second;
+
+        double distance;
+
+        if( (center - point_a) * (point_b - point_a) < 0 ){
+            distance = (center - point_a).len();
+        }
+        if( (center - point_b) * (point_a - point_b) < 0 ){
+            distance = (center - point_b).len();
+        }
+        else{
+            distance = ( (center - point_a) - ( ((center - point_a) * (point_b - point_a)) / (point_b - point_a).len() ) * (point_b - point_a) ).len();
+        }
+        dist = std::min(dist, distance);
+    }
+    std::cout<< dist << " " << radius <<  std::endl;
+
+    if(ball->getWhoThrowedIt() == "Opponent" && ball->getRadius() > 15.0 && dist < radius)
+    {
+        int N_cnt = 5;
+
+        for(int i=0;i<N_cnt;i++){
+            /// RANDOM COLORS
+            int R = rand()%255 + 1;
+            int G = rand()%255 + 1;
+            int B = rand()%255 + 1;
+
+            double RADIUS = ball->getRadius();
+
+            Vector2D pos = Vector2D( fRand(-RADIUS,RADIUS), fRand(-RADIUS,RADIUS) );
+            pos += ball->getPos();
+
+            /// IN RADIANS
+
+            double theta_max = 10 * ( 2 * pi / 360 );
+
+            double theta = fRand(-theta_max, theta_max);
+
+            Vector2D vel = ball->getVel();
+            vel.turn(theta);
+
+            FIRE_BALL* n_ball = new FIRE_BALL("Opponent" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            fire_balls_vect.push_back(n_ball);
+        }
+    }
+    return fire_balls_vect;
+}
+
+void PLayerBox::resolve_collisions(FIRE_BALLS& fireBalls)
+{
+    std::vector<FIRE_BALL*> fire_balls = fireBalls.getBALLS();
+    for(int i=0;i<fire_ball.size();i++)
+    {
+        std::vector<FIRE_BALL* > fire_ball_vect = resolve_collision(fire_balls[i]);
+        if(fire_ball_vect.size() > 0)
+        {
+            for(int j=0;j<fire_ball_vect.size();j++){
+                fireBalls.AddBall(fire_ball_vect[i]);
+            }
+            fireBalls.RemBall(fire_balls[i]);
+            fire_balls[i] = fire_balls[ fire_balls.size() - 1 ];
+            fire_balls.pop_back();
+        }
+    }
+}
+
+
+
+
 
 FIRE_BALL* PLayerBox::run(double duration, double mouse_x, double mouse_y)
 {
@@ -167,6 +261,8 @@ FIRE_BALL* PLayerBox::run(double duration, double mouse_x, double mouse_y)
     else
         return nullptr;
 }
+
+
 
 
 

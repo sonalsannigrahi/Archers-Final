@@ -111,6 +111,8 @@ STATES::STATES_ENUM RetroGame::run()
         fireBalls.show();
         targets.run(ElapsedTime, fireBalls, boxParticles);
 
+        playerBox.resolve_collisions(fireBalls);
+
         boxParticles.run(ElapsedTime);
 
         window->draw(playerBox);
