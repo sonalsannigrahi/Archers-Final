@@ -186,7 +186,7 @@ std::vector<FIRE_BALL*> PLayerBox::resolve_collision(FIRE_BALL* ball)
         }
         dist = std::min(dist, distance);
     }
-    std::cout<< dist << " " << radius <<  std::endl;
+    ///std::cout<< dist << " " << radius <<  std::endl;
 
     if(ball->getWhoThrowedIt() == "Opponent" && ball->getRadius() > 15.0 && dist < radius)
     {
@@ -222,17 +222,23 @@ std::vector<FIRE_BALL*> PLayerBox::resolve_collision(FIRE_BALL* ball)
 void PLayerBox::resolve_collisions(FIRE_BALLS& fireBalls)
 {
     std::vector<FIRE_BALL*> fire_balls = fireBalls.getBALLS();
-    for(int i=0;i<fire_ball.size();i++)
+    for(int i=0;i<fire_balls.size();i++)
     {
+        std::cout << 1 << std::endl;
         std::vector<FIRE_BALL* > fire_ball_vect = resolve_collision(fire_balls[i]);
+        std::cout << 2 << std::endl;
         if(fire_ball_vect.size() > 0)
         {
+            std::cout<<  "HOHOHOHOHO" <<std::endl;
             for(int j=0;j<fire_ball_vect.size();j++){
-                fireBalls.AddBall(fire_ball_vect[i]);
+                fireBalls.AddBall(fire_ball_vect[j]);
             }
+            std::cout << 3 << std::endl;
             fireBalls.RemBall(fire_balls[i]);
+            std::cout << 4 << std::endl;
             fire_balls[i] = fire_balls[ fire_balls.size() - 1 ];
             fire_balls.pop_back();
+            std::cout << 5 << std::endl;
         }
     }
 }
