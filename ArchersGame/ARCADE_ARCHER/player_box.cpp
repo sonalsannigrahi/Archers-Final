@@ -202,6 +202,12 @@ void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
 
 
 
+int PLayerBox::getHealth()
+{
+    return this->healthBar.getHealth();
+}
+
+
 std::vector<FIRE_BALL*> PLayerBox::resolve_collision(FIRE_BALL* ball)
 {
     std::vector<FIRE_BALL*> fire_balls_vect;

@@ -141,6 +141,9 @@ STATES::STATES_ENUM RetroGame::run()
 
         window->display();
         ///std::cout << "YeS" << std::endl;
+        if( playerBox.getHealth() <= 0 ){
+            return STATES::SETTINGS;
+        }
     }
 }
 

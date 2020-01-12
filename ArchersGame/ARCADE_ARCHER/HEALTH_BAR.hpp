@@ -14,6 +14,9 @@ public:
     HealthBar(sf::RenderWindow* window);
     void set_health(int health);
     void inc_health(int inc);
+
+    int getHealth();
+
     void show();
 };
 

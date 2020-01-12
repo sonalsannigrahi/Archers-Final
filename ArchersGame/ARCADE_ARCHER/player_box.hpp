@@ -81,6 +81,7 @@ public:
 
     void resolve_collisions(FIRE_BALLS& fireBalls);
     void show_health();
+    int getHealth();
 
     void score_inc();
     int  get_score();

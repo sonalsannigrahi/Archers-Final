@@ -31,3 +31,8 @@ void HealthBar::show()
     window->draw(rectangle);
 
 }
+
+int HealthBar::getHealth()
+{
+    return health;
+}
