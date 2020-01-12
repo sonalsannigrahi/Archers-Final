@@ -25,11 +25,24 @@ FIRE_BALL::FIRE_BALL(double MAX_AGE, std::string WHO_THROWED_IT, double MASS, do
 
 bool FIRE_BALL::isAlive()
 {
+    double ENERGY = (MASS/2) * (Vel * Vel) + MASS * 10 * Pos.get_y();
+
+    double EPS = 5.0;
+    /**
+    if(std::abs(ENERGY) < EPS && AGE > MAX_AGE){
+        return false;
+    }
+    else{
+        return true;
+    }
+    **/
+    
     if( AGE < MAX_AGE ){
         return true;
     }
     else
         return false;
+    
 }
 
 double FIRE_BALL::getMass() const

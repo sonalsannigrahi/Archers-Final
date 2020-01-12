@@ -106,7 +106,7 @@ FIRE_BALL* PLayerBox::hurl(double mouse_x, double mouse_y)
     int G = rand()%255 + 1;
     int B = rand()%255 + 1;
 
-    FIRE_BALL* nball = new FIRE_BALL("PLAYER", 20.0,30.0,pos,vel,sf::Color(R,G,B));
+    FIRE_BALL* nball = new FIRE_BALL(1000000.0, "PLAYER", 20.0,30.0,pos,vel,sf::Color(R,G,B));
     return nball;
 }
 
@@ -213,7 +213,7 @@ std::vector<FIRE_BALL*> PLayerBox::resolve_collision(FIRE_BALL* ball)
             Vector2D vel = ball->getVel();
             vel.turn(theta);
 
-            FIRE_BALL* n_ball = new FIRE_BALL("Opponent" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            FIRE_BALL* n_ball = new FIRE_BALL(2.0 * 10 , "Opponent" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
             fire_balls_vect.push_back(n_ball);
         }
         healthBar.inc_health(-20);

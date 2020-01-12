@@ -80,6 +80,13 @@ void FIRE_BALLS::update(double duration)
     {
         BALLS[i]->update(duration);
     }
+    for(int i=0;i<BALLS.size();i++){
+        if(!BALLS[i]->isAlive()){
+            delete BALLS[i];
+            BALLS[i] = BALLS[ BALLS.size() - 1 ];
+            BALLS.pop_back();
+        }
+    }
 
 }
 

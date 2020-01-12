@@ -29,7 +29,7 @@ private:
     {
         sf::CircleShape shape(RADIUS);
 
-        int opaqueness = std::max(255 - std::round(255.0 * (AGE/MAX_AGE)),0);
+        int opaqueness = std::max(255 - (int)std::round(255.0 * (AGE/MAX_AGE)),0);
 
         sf::Color color_add(0, 0, 0, opaqueness);
 

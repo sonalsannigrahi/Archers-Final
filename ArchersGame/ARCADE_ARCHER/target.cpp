@@ -3,7 +3,7 @@
 
 double SIMULATE(Vector2D Pos, Vector2D Vel)
 {
-    FIRE_BALL* simulBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
+    FIRE_BALL* simulBall = new FIRE_BALL(0.0, "Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
 
     UniformGravity* gravity = new UniformGravity();
 
@@ -148,7 +148,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
 
                 Vel.turn(theta);
 
-                BoxParticle* box_particle = new BoxParticle(window, length/N_B, 100.0, Vector2D(X + cnt_x,Y + cnt_y), Vel, 0.0, angle_vel);
+                BoxParticle* box_particle = new BoxParticle(window, length/N_B, 500.0, Vector2D(X + cnt_x,Y + cnt_y), Vel, 0.0, angle_vel);
                 ans.second.push_back(box_particle);
             }
         }
@@ -175,7 +175,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
             Vector2D vel = ball->getVel();
             vel.turn(theta);
 
-            FIRE_BALL* n_ball = new FIRE_BALL("PLAYER" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            FIRE_BALL* n_ball = new FIRE_BALL(2.0 * 10, "PLAYER" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
             ans.first.push_back(n_ball);
         }
 
@@ -261,7 +261,7 @@ FIRE_BALL* Target::hurl(PLayerBox& playerBox)
         Vector2D Vel(0.0, magnitude);
         Vel.turn(theta);
 
-        FIRE_BALL* nBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
+        FIRE_BALL* nBall = new FIRE_BALL(10000.0, "Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
         return nBall;
     }
     else{

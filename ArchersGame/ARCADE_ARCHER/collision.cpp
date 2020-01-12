@@ -107,7 +107,7 @@ std::vector<FIRE_BALL*> CollisionGenerator::ResCollsWithFrame_explode(FIRE_BALL&
             Vector2D vel = ball.getVel();
             vel.turn(theta);
 
-            FIRE_BALL* n_ball = new FIRE_BALL(ball.getWhoThrowedIt(), ball.getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            FIRE_BALL* n_ball = new FIRE_BALL(2.0 * 10 , ball.getWhoThrowedIt(), ball.getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
             n_balls.push_back(n_ball);
         }
 
@@ -115,7 +115,36 @@ std::vector<FIRE_BALL*> CollisionGenerator::ResCollsWithFrame_explode(FIRE_BALL&
     if(ball.Pos.get_x() - ball.RADIUS < 0 && ball.Vel.get_x() < 0)
     {
         ///std::cout<<"WHAT?"<<std::endl;
-        ball.Vel.set_x( - RestitutionCoeff * ball.Vel.get_x());
+        ///ball.Vel.set_x( - RestitutionCoeff * ball.Vel.get_x());
+
+
+        int N_cnt = 5;
+        srand(time(NULL));
+
+        for(int i=0;i<N_cnt;i++){
+            /// RANDOM COLORS
+            int R = rand()%255 + 1;
+            int G = rand()%255 + 1;
+            int B = rand()%255 + 1;
+
+            double RADIUS = ball.getRadius();
+
+            Vector2D pos = Vector2D( fRand(-RADIUS,RADIUS), fRand(-RADIUS,RADIUS) );
+            pos += ball.getPos();
+
+            /// IN RADIANS
+
+            double theta_max = 10 * ( 2 * pi / 360 );
+
+            double theta = fRand(-theta_max, theta_max);
+
+            Vector2D vel = ball.getVel();
+            vel.turn(theta);
+
+            FIRE_BALL* n_ball = new FIRE_BALL(2.0 * 10 , ball.getWhoThrowedIt(), ball.getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            n_balls.push_back(n_ball);
+        }
+
     }
 
     return n_balls;
@@ -147,6 +176,8 @@ bool CollisionGenerator::Collide(FIRE_BALL& ball_1, FIRE_BALL& ball_2)
 
 void CollisionGenerator::ResCollision(FIRE_BALL& ball_1,FIRE_BALL& ball_2)
 {
+    if(  std::abs( ball_1.getRadius() - ball_2.getRadius() ) > 5.0 )
+        return;
     if(!this->Collide(ball_1,ball_2))
         return;
     ///std::cout<<"MISSED!"<<std::endl;
