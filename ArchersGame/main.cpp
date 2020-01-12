@@ -30,6 +30,8 @@ int main()
         }
         else if(state == STATES::GAME_RETRO)
         {
+            retroGame = RetroGame(window);
+
             state = retroGame.run();
         }
         else if(state == STATES::SETTINGS)
