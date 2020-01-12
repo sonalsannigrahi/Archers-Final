@@ -5,9 +5,10 @@
 
 1. [Description](#project)
 2. [Team Composition](#team)
-2. [Running the Project](#run)
-3. [Character Specification](#characters)
-4. [Additional Features](#further)
+3. [Running the Project](#run)
+4. [Game Screenshots](#screenshot)
+5. [Character Specification](#characters)
+6. [Additional Features](#further)
 
 
 <a name="project"></a>
@@ -113,9 +114,23 @@ The above script will make and build the project, creating the necessary executa
 
 Once you have the excutable game window, choose your username and press 'Enter' to begin the game. During the game, press 'esc' to pause the game. Here, the settings page will pop up. Once you unpause the game, you can resume playing. 
 
+<a name="screenshot"></a>
+
+## 4. Game Screenshots
+
+In this section, we show some stills from the game:
+
+#### Screens
+
+#### Game
+
+#### Settings
+
+
+
 <a name="characters"></a>
 
-## 4. Character Specifications
+## 5. Character Specifications
 
 In this section, we explain the features we currently have in the game with regard to the characters and how you can control the movement of the player. First, here are the specifications for the main player:
 
