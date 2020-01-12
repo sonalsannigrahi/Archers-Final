@@ -2,6 +2,9 @@
 #define TARGETS_HPP_INCLUDED
 
 #include "target_creator.hpp"
+#include "BOX_PARTICLES.hpp"
+#include "fire_balls.hpp"
+#include "player_box.hpp"
 
 #include<bits/stdc++.h>
 #include<SFML/Graphics.hpp>
@@ -17,13 +20,13 @@ private:
 public:
     Targets(sf::RenderWindow* window, double target_length);
 
-    void update(double duration);
+    void update(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
 
     int nAlive();
 
     void show();
 
-    void run(double duration);
+    void run(double duration,PLayerBox& playerBox, FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
 };
 
 #endif // TARGETS_HPP_INCLUDED

@@ -16,11 +16,26 @@ STATES::STATES_ENUM RetroGameSettings::run()
             }
             else if(event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::S){
-                    return STATES::GAME;
+                    return STATES::GAME_RETRO;
                 }
             }
         }
         window->clear();
+
+
+        sf::Font font;
+        font.loadFromFile("ARCADE_ARCHER/font.TTF");
+
+        sf::Text text;
+        text.setFont(font);
+
+        text.setString(" TO START THE GAME PRESS S \n ( TO RETURN TO THIS PAGE,\n ALSO PRESS S )");
+        text.setCharacterSize(50);
+        text.setFillColor(sf::Color::Red);
+        text.setPosition(0.0, window->getSize().y/6 );
+        window->draw(text);
+
+
         window->display();
     }
 }

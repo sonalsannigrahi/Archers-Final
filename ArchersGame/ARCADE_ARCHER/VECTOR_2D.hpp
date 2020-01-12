@@ -6,6 +6,8 @@
 
 const double pi = 3.141592653589793;
 
+double fRand(double fMin, double fMax);
+
 class Vector2D
 {
 private:

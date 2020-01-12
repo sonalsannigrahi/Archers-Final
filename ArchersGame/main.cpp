@@ -9,33 +9,39 @@ int main()
 {
     Game* game = new Game();
     
-    /**
-    
-    sf::RenderWindow* window = game->getWindow();
+    // sf::RenderWindow* window = game->getWindow();
 
-    RetroGame retroGame = RetroGame(window);
+    // RetroGame retroGame = RetroGame(window);
     
-    STATES::STATES_ENUM state = STATES::GAME_CLASSIC;
+    // RetroGameSettings retroGameSettings = RetroGameSettings(window);
 
-    while(true)
-    {
-        if( state == STATES::DEAD )
-        {
-            window->close();
-            break;
-        }
-        else if(state == STATES::GAME_CLASSIC)
-        {
-            state = game->StartGame();
-        }
-        else if(state == STATES::GAME_RETRO)
-        {
-            state = retroGame.run();
-        }
-    }
+    // STATES::STATES_ENUM state = STATES::SETTINGS;
 
-    game->StartGame();
-    **/
-    
+    // while(true)
+    // {
+    //     if( state == STATES::DEAD )
+    //     {
+    //         window->close();
+    //         break;
+    //     }
+    //     else if(state == STATES::GAME_CLASSIC)
+    //     {
+    //         state = game->StartGame();
+    //     }
+    //     else if(state == STATES::GAME_RETRO)
+    //     {
+    //         retroGame = RetroGame(window);
+
+    //         state = retroGame.run();
+    //     }
+    //     else if(state == STATES::SETTINGS)
+    //     {
+    //         state = retroGameSettings.run();
+    //     }
+    // }
+
+    // game->StartGame();
+
+
     return 0;
 }

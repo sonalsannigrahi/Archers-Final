@@ -39,7 +39,8 @@ Texts::Texts(){
     startbutton.setFillColor(sf::Color::Cyan);
     startbutton.setOutlineColor(sf::Color::Black);
     startbutton.setOutlineThickness(5);
-
+    text.setColor(sf::Color::Black);
+    
     //box
     sf::Texture* texture_box = new sf::Texture();
     texture_box -> loadFromFile(textconstants.boxfilename);
@@ -197,8 +198,33 @@ void Texts::updateFrame(double time) {
         if (a >=windowWidth/2-75 && a<=windowWidth/2+75 && b>=5*windowHeight/16 + 37 && b<=5*windowHeight/16+58){
             retro.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
-                bruh = 0;
-                //textconstants.conditionplay = false;
+                
+                sf::RenderWindow* retroWindow = new sf::RenderWindow(sf::VideoMode(800, 600), "TEST!",sf::Style::Default);;
+
+                RetroGame retroGame = RetroGame(retroWindow);
+                
+                RetroGameSettings retroGameSettings = RetroGameSettings(retroWindow);
+
+                STATES::STATES_ENUM state = STATES::SETTINGS;
+
+                while(true)
+                {
+                    if( state == STATES::DEAD )
+                    {
+                        retroWindow->close();
+                        break;
+                    }
+                    else if(state == STATES::GAME_RETRO)
+                    {
+                        retroGame = RetroGame(retroWindow);
+
+                        state = retroGame.run();
+                    }
+                    else if(state == STATES::SETTINGS)
+                    {
+                        state = retroGameSettings.run();
+                    }
+                }
             } //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
         }
         else{
@@ -248,7 +274,7 @@ void Texts::updateFrame(double time) {
     }
     if (counter > 6 && counter <= 9 && !(textconstants.is_box) && textconstants.hits == 0)
     {
-        setposition((float) windowWidth/5, (float) windowHeight/2);
+        setposition((float) windowWidth/7, (float) windowHeight/2);
         setstring(textconstants.txt1);
         //textconstants.condition1 =true;
         
@@ -270,10 +296,10 @@ void Texts::updateFrame(double time) {
 
     if (textconstants.condition2)
     {
-        
-        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
-        int xbox = rand() % (windowWidth / 3) + (windowWidth / 3);
-        int ybox = rand() % (windowHeight / 3) + windowHeight - (windowHeight / 2);
+        setposition((float) 1/2* windowWidth, (float) windowHeight - (float) 6/9 * windowHeight);
+        //setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
+        int xbox = rand() % (windowWidth *2/3) + (windowWidth / 4);
+        int ybox = rand() % (windowHeight *1/2) + (windowHeight *1/4);
         
         box.setPosition(xbox,ybox);
         box.setOutlineThickness(0);
@@ -290,7 +316,9 @@ void Texts::updateFrame(double time) {
     if (textconstants.hits == 5)
     {
         setstring(textconstants.txt4);
-        setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
+        setposition((float) 1/2* windowWidth, (float) windowHeight - (float) 6/9 * windowHeight);
+        //setposition((float) 300 / 900 * windowWidth, (float) windowHeight - (float) 350 / 600 * windowHeight);
+        setsize(70);
         text.setColor(sf::Color::Red);
         if(textconstants.is_box){
             counter = 0;
@@ -306,7 +334,8 @@ void Texts::updateFrame(double time) {
         textconstants.condition3 = false;
         textconstants.condition4 = false;
         textconstants.hits = 0;
-        text.setColor(sf::Color::White);
+        text.setColor(sf::Color::Black);
+        setsize(textconstants.size);
 
     }
 

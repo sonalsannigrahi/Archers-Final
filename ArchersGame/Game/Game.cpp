@@ -1,5 +1,11 @@
 #include "Game.hpp"
 
+
+sf::RenderWindow* Game::getWindow()
+{
+    return this->window;
+}
+
 Game::Game(){
     srand(time(NULL)); // Randomize
     gameConstants.isRunning = false;
@@ -103,7 +109,7 @@ void Game::StartGame(){
                 
             }
 
-            else if (event.type == sf::Event::KeyPressed){
+            else if (event.type == sf::Event::KeyPressed){                
                 if(text.bruh==-1 && event.key.code == sf::Keyboard::Return ){
                     if(UserName.getSize() == 0){
                         UserName = "New Player";

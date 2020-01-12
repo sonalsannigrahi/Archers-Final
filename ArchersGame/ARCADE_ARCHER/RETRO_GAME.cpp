@@ -3,7 +3,9 @@
 RetroGame::RetroGame(sf::RenderWindow* window):
     fireBalls(window),
     targets(window,50.0),
-    playerBox(window,100.0,30.0,60.0,800.0,600.0)
+    playerBox(window,100.0,30.0,60.0,800.0,600.0),
+    boxParticles(window)
+    ///,healthBar(window)
 {
     this->window = window;
 
@@ -48,7 +50,7 @@ STATES::STATES_ENUM RetroGame::run()
                 return STATES::DEAD;
             }
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S){
-                return STATES::GAME_CLASSIC;
+                return STATES::SETTINGS;
             }
             else{
                 double mouse_x = sf::Mouse::getPosition(*window).x;
@@ -58,10 +60,6 @@ STATES::STATES_ENUM RetroGame::run()
         }
         double mouse_x = sf::Mouse::getPosition(*window).x;
         double mouse_y = window->getSize().y - sf::Mouse::getPosition(*window).y;
-        FIRE_BALL* nball = playerBox.run(ElapsedTime, mouse_x, mouse_y);
-        if( nball != nullptr ){
-            fireBalls.AddBall(nball);
-        }
 
 
         time_for_trace += ElapsedTime;
@@ -96,6 +94,13 @@ STATES::STATES_ENUM RetroGame::run()
         {
             ///std::cout<<"HA"<<std::endl;
             window->draw(*traces[i]);
+        }  
+
+        ///std::cout << "HA" << std::endl;
+
+        FIRE_BALL* nball = playerBox.run(ElapsedTime, mouse_x, mouse_y);
+        if( nball != nullptr ){
+            fireBalls.AddBall(nball);
         }
 
         ///TRACING
@@ -107,11 +112,38 @@ STATES::STATES_ENUM RetroGame::run()
             fireBalls.update(ElapsedTime);
         }
         fireBalls.show();
-        targets.run(ElapsedTime);
+        targets.run(ElapsedTime, playerBox, fireBalls, boxParticles);
+
+        playerBox.resolve_collisions(fireBalls);
+
+        boxParticles.run(ElapsedTime);
 
         window->draw(playerBox);
+        playerBox.show_health();
+        
+        ///healthBar.show();
+
+        /** drawing some text **/
+
+        sf::Font font;
+        font.loadFromFile("ARCADE_ARCHER/font.TTF");
+
+        sf::Text text;
+        text.setFont(font);
+
+        text.setString("SCORE :  " + std::to_string(playerBox.get_score()));
+        text.setCharacterSize(40);
+        text.setFillColor(sf::Color::Red);
+        text.setPosition(0.0, window->getSize().y / 20 );
+        window->draw(text);
+
+        /** finished drawing some text **/
 
         window->display();
+        ///std::cout << "YeS" << std::endl;
+        if( playerBox.getHealth() <= 0 ){
+            return STATES::SETTINGS;
+        }
     }
 }
 

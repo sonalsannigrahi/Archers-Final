@@ -26,6 +26,8 @@
 #include "../EndGame/EndGame.hpp"
 #include "../Encryption/Encryption.hpp"
 
+#include "../ARCADE_ARCHER/STATES.hpp"
+
 
 class Game {
     private:
@@ -89,6 +91,8 @@ class Game {
         void StartGame();
         void UpdateFrame();
         void GameOver();
+
+        sf::RenderWindow* getWindow();
 
         void createBird();
         void removeBird(int id);
