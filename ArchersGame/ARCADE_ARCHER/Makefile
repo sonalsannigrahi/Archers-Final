@@ -1,10 +1,10 @@
 Dependencies = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
-HPPFILES = collision.hpp fire_ball.hpp fire_balls.hpp gravity.hpp player_box.hpp RETRO_GAME.hpp RETRO_GAME_SETTINGS.hpp STATES.hpp target.hpp target_creator.hpp targets.hpp trace.hpp trace_constants.hpp VECTOR_2D.hpp 
+HPPFILES = ARCADE_ARCHER/collision.hpp ARCADE_ARCHER/fire_ball.hpp ARCADE_ARCHER/fire_balls.hpp ARCADE_ARCHER/gravity.hpp ARCADE_ARCHER/player_box.hpp ARCADE_ARCHER/RETRO_GAME.hpp ARCADE_ARCHER/RETRO_GAME_SETTINGS.hpp ARCADE_ARCHER/STATES.hpp ARCADE_ARCHER/target.hpp ARCADE_ARCHER/target_creator.hpp ARCADE_ARCHER/targets.hpp ARCADE_ARCHER/trace.hpp ARCADE_ARCHER/trace_constants.hpp ARCADE_ARCHER/VECTOR_2D.hpp ARCADE_ARCHER/BOX_PARTICLE.hpp ARCADE_ARCHER/BOX_PARTICLES.hpp
 
-all_but_main = collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o STATES.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o main.o
+all_but_main = collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o BOX_PARTICLE.o BOX_PARTICLES.o main.o
 
-all : collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o STATES.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o main.o main
+all : collision.o fire_ball.o fire_balls.o gravity.o player_box.o RETRO_GAME.o RETRO_GAME_SETTINGS.o target.o target_creator.o targets.o trace.o trace_constants.o VECTOR_2D.o BOX_PARTICLE.o BOX_PARTICLES.o main.o main
 
 GCC = g++
 
@@ -59,3 +59,8 @@ main : $(all_but_main)
 clean: $(all_but_main)
 	rm *.o
 
+BOX_PARTICLE.o : ARCADE_ARCHER/BOX_PARTICLE.cpp $(HPPFILES)
+	$(CXX) -c ARCADE_ARCHER/BOX_PARTICLE.cpp $(Dependencies)
+
+BOX_PARTICLES.o : ARCADE_ARCHER/BOX_PARTICLES.cpp $(HPPFILES)
+	$(CXX) -c ARCADE_ARCHER/BOX_PARTICLES.cpp $(Dependencies)

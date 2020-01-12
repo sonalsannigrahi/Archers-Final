@@ -2,6 +2,7 @@
 #define PLAYER_BOX_HPP_INCLUDED
 
 #include "fire_balls.hpp"
+#include "HEALTH_BAR.hpp"
 
 #include<SFML/Graphics.hpp>
 #include<bits/stdc++.h>
@@ -10,8 +11,12 @@ class PLayerBox: public sf::Drawable{
 public:
     sf::RenderWindow* window;
 
+    HealthBar healthBar;
+
     double W;
     double H;
+
+    int score;
 
     double pos_x;
     double pos_y;
@@ -28,10 +33,10 @@ public:
     void move_to_right();
     void move_to_left();
 
-    /**
+
     double IntTime;
     double IntTime_margin;
-    **/
+
 
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -40,9 +45,28 @@ public:
         int color = (int)((angriness/100.0) * 255);
 
         shape.setFillColor(sf::Color(color,100,0));
-        shape.setPosition(pos_x - length/2, H - (pos_y + length/2) );
+        shape.setPosition(pos_x - length/2, window->getSize().y - (pos_y + length/2) );
+        ///WRITING ANGRINESS
+        /**
+        sf::Font font;
+        font.loadFromFile("ARCADE_ARCHER/font.TTF");
+        sf::Text text;
+        text.setFont(font);
+        text.setString(std::to_string( (int)round(angriness) ));
+        text.setFillColor(sf::Color::Red);
 
+
+        int char_size = 5;
+        text.setCharacterSize(char_size);
+
+        double W_MIN = text.getLocalBounds().width;
+        double H_MIN = text.getLocalBounds().height;
+
+        text.scale(length/W_MIN, length/H_MIN);
+        text.setPosition(pos_x - length/2, target.getSize().y - ( pos_y + length/2 ) );
+        **/
         target.draw(shape);
+        ///target.draw(text);
     }
 
 public:
@@ -53,9 +77,17 @@ public:
 
     FIRE_BALL* hurl(double mouse_x, double mouse_y);
 
+    std::vector<FIRE_BALL*> resolve_collision(FIRE_BALL* ball);
+
+    void resolve_collisions(FIRE_BALLS& fireBalls);
+    void show_health();
+    int getHealth();
+
+    void score_inc();
+    int  get_score();
     void update(double duration);
 
-    ///void DRAW_PATH(double mouse_x, double mous_y);
+    void DRAW_ARROW(double mouse_x, double mous_y);
 
     FIRE_BALL* run(double duration, double mouse_x, double mouse_y);
 

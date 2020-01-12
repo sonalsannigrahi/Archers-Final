@@ -10,8 +10,9 @@
 class CollisionGenerator{
 private:
     double W,H;
+    sf::RenderWindow* target;
 public:
-    CollisionGenerator(sf::RenderTarget& target);
+    CollisionGenerator(sf::RenderWindow* target);
 
     void ResCollsWithFrame(FIRE_BALL& ball);
 

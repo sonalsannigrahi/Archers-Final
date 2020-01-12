@@ -198,8 +198,33 @@ void Texts::updateFrame(double time) {
         if (a >=windowWidth/2-75 && a<=windowWidth/2+75 && b>=5*windowHeight/16 + 37 && b<=5*windowHeight/16+58){
             retro.setColor(sf::Color::Blue);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
-                bruh = 0;
-                //textconstants.conditionplay = false;
+                
+                sf::RenderWindow* retroWindow = new sf::RenderWindow(sf::VideoMode(800, 600), "TEST!",sf::Style::Default);;
+
+                RetroGame retroGame = RetroGame(retroWindow);
+                
+                RetroGameSettings retroGameSettings = RetroGameSettings(retroWindow);
+
+                STATES::STATES_ENUM state = STATES::SETTINGS;
+
+                while(true)
+                {
+                    if( state == STATES::DEAD )
+                    {
+                        retroWindow->close();
+                        break;
+                    }
+                    else if(state == STATES::GAME_RETRO)
+                    {
+                        retroGame = RetroGame(retroWindow);
+
+                        state = retroGame.run();
+                    }
+                    else if(state == STATES::SETTINGS)
+                    {
+                        state = retroGameSettings.run();
+                    }
+                }
             } //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
         }
         else{

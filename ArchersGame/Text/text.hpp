@@ -5,6 +5,8 @@
 #include <SFML/Audio.hpp>
 #include "textconstants.cpp"
 #include <stdlib.h> 
+#include "../ARCADE_ARCHER/RETRO_GAME.hpp"
+#include "../ARCADE_ARCHER/RETRO_GAME_SETTINGS.hpp"
 
 class Texts{
     private:

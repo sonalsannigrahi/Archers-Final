@@ -24,10 +24,13 @@ private:
 public:
     FIRE_BALLS(sf::RenderWindow* window);
     void AddBall(FIRE_BALL* ball);
+    void RemBall(FIRE_BALL* ball);
     void draw();
     void show();
 
     void update(double duration);
+
+    std::vector<FIRE_BALL*> getBALLS();
 
     std::vector<Trace*> genTrace(TraceConstants& traceConstants);
 

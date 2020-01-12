@@ -1,7 +1,7 @@
 #include "fire_balls.hpp"
 
 FIRE_BALLS::FIRE_BALLS(sf::RenderWindow* window):
-    collisionGenerator(*window)
+    collisionGenerator(window)
 {
     this->window = window;
 
@@ -13,6 +13,19 @@ void FIRE_BALLS::AddBall(FIRE_BALL* ball)
 {
     BALLS.push_back(ball);
 }
+
+
+void FIRE_BALLS::RemBall(FIRE_BALL* ball)
+{
+    for(int i=0;i<BALLS.size();i++){
+        if(BALLS[i] == ball){
+            delete BALLS[i];
+            BALLS[i] = BALLS[BALLS.size() - 1];
+            BALLS.pop_back();
+        }
+    }
+}
+
 void FIRE_BALLS::draw()
 {
     for(int i=0;i<BALLS.size();i++)
@@ -67,7 +80,19 @@ void FIRE_BALLS::update(double duration)
     {
         BALLS[i]->update(duration);
     }
+    for(int i=0;i<BALLS.size();i++){
+        if(!BALLS[i]->isAlive()){
+            delete BALLS[i];
+            BALLS[i] = BALLS[ BALLS.size() - 1 ];
+            BALLS.pop_back();
+        }
+    }
 
+}
+
+std::vector<FIRE_BALL*> FIRE_BALLS::getBALLS()
+{
+    return this->BALLS;
 }
 
 std::vector<Trace*> FIRE_BALLS::genTrace(TraceConstants& traceConstants)

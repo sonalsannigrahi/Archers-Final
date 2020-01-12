@@ -1,5 +1,14 @@
 #include "VECTOR_2D.hpp"
 
+
+
+double fRand(double fMin, double fMax)
+{
+    double f = (double)rand() / RAND_MAX;
+    return fMin + f * (fMax - fMin);
+}
+
+
 Vector2D::Vector2D()
 {
     this->x = 0.0;
