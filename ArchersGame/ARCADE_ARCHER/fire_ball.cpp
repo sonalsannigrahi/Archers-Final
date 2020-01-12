@@ -5,8 +5,11 @@
 
 
 
-FIRE_BALL::FIRE_BALL(std::string WHO_THROWED_IT, double MASS, double RADIUS, Vector2D Pos, Vector2D Vel,sf::Color color)
+FIRE_BALL::FIRE_BALL(double MAX_AGE, std::string WHO_THROWED_IT, double MASS, double RADIUS, Vector2D Pos, Vector2D Vel,sf::Color color)
 {
+    this->AGE = 0.0;
+    this->MAX_AGE = MAX_AGE;
+
     this->WHO_THROWED_IT = WHO_THROWED_IT;
 
     this->MASS = MASS;
@@ -18,6 +21,15 @@ FIRE_BALL::FIRE_BALL(std::string WHO_THROWED_IT, double MASS, double RADIUS, Vec
     this->Vel = Vector2D(Vel);
 
     this->ForceTot = Vector2D(0.0,0.0);
+}
+
+bool FIRE_BALL::isAlive()
+{
+    if( AGE < MAX_AGE ){
+        return true;
+    }
+    else
+        return false;
 }
 
 double FIRE_BALL::getMass() const
@@ -56,6 +68,8 @@ void FIRE_BALL::update(double duration)
 {
     Pos += Vel * duration;
     Vel += ForceTot/MASS * duration;
+
+    AGE += duration;
 }
 
 
