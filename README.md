@@ -114,6 +114,15 @@ The above script will make and build the project, creating the necessary executa
 
 Once you have the excutable game window, choose your username and press 'Enter' to begin the game. During the game, press 'esc' to pause the game. Here, the settings page will pop up. Once you unpause the game, you can resume playing. 
 
+## For the mac user
+The game is written to work on the linux, hence some of the functions used in the project are from libraries, namely functions from bits/stdc++.h, that are GNU GCC extension. Hence as mac is using libc++ and clang, the game will not compile on mac. In order to compile it on Mac, you have to manually add those libraries into the system. Also, few of us had an issue of compiling files written with SFML library as well. It is due to SFML library not getting recognized as an unidentified developer on mac OS, thus you can use the workaround.sh file to give permission to the system to use the SFML library:
+  
+    $> cd paths/to/the/file
+    $> chmod +x workaround.sh
+    $> sudo ./workaround.sh
+   
+The SFML library should work with mac os after giving the permission with the workaround.sh file. 
+
 <a name="screenshot"></a>
 
 ## 4. Game Screenshots
