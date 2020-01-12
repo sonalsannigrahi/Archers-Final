@@ -64,6 +64,7 @@ Game::~Game(){
 }
 
 void Game::StartGame(){
+    
     // CIRCLE TEST
 
     // Draw a circle
@@ -761,6 +762,7 @@ void Game::setWindowSize(int width, int height){
 
 void Game::pauseGame(){
     if (!isGamePaused){
+        text.textconstants.isSettingOpen = true;
         isGamePaused = true;
         gameBackground.changeBackgroundVolume(0);
         gameRain.change_volume_rain(0);
@@ -774,6 +776,7 @@ void Game::pauseGame(){
 
 void Game::unpauseGame(){
     if (isGamePaused){
+        text.textconstants.isSettingOpen = false;
         isGamePaused = false;
         setMasterVolume(gameConstants.masterVolume);
     }

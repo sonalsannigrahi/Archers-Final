@@ -15,12 +15,14 @@ class Texts{
     sf::Text tutorial;
     sf::Text BestScore;
     sf::Text quit;
+    sf::Text retro;
     sf::Text ChooseUserName;
     sf::Text HighestScore;
     double counter = 0;
     sf::RectangleShape startbutton;
     sf::Sprite Startsprite;
     sf::Sprite Titlesprite;
+    sf::Sprite Titlesprite1;
     sf::RectangleShape box;
     sf::Text PressEnter;
 
