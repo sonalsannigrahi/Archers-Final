@@ -30,7 +30,7 @@ STATES::STATES_ENUM RetroGameSettings::run()
         text.setFont(font);
 
         text.setString(" TO START THE GAME PRESS S \n ( TO RETURN TO THIS PAGE,\n ALSO PRESS S )");
-        text.setCharacterSize(60);
+        text.setCharacterSize(50);
         text.setFillColor(sf::Color::Red);
         text.setPosition(0.0, window->getSize().y/6 );
         window->draw(text);

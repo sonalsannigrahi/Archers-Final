@@ -70,7 +70,7 @@ void PLayerBox::resolve_event(sf::Event event, double mouse_x, double mouse_y)
             if(under_pressure == false){
                 ///std::cout<<"YO3"<<std::endl;
 
-                if(mouse_x > pos_x && mouse_y > pos_y){
+                if(mouse_y > pos_y){
                     ///std::cout<<"YO4"<<std::endl;
 
                     double dist = sqrt( pow(mouse_x - pos_x, 2.0) + pow(mouse_y - pos_y, 2.0) );
@@ -149,11 +149,12 @@ void PLayerBox::update(double duration)
 
 void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
 {
+    
     if(under_pressure == false)
         return;
     if(angriness < 50.0)
         return;
-
+    
 
     double radius = 200;
 
@@ -165,6 +166,8 @@ void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
 
 
     Vector2D point = radius * (angriness / 100) * e_n;
+
+    std::cout << point.get_x() << " " << point.get_y() << std::endl;
 
     double arrow_width = 10;
     double arrow_height = 40;
@@ -187,14 +190,14 @@ void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
     std::cout << point_top.get_x() << " " << point_top.get_y() << std::endl; 
 
     // define the points
-    convex.setPoint(0, sf::Vector2f(point_l.get_x(), point_l.get_y()));
-    convex.setPoint(1, sf::Vector2f(point_top.get_x(), point_top.get_y()));
-    convex.setPoint(2, sf::Vector2f(point_r.get_x(), point_r.get_y()));
+    convex.setPoint(0, sf::Vector2f(pos_x + point_l.get_x(), window->getSize().y - (pos_y + point_l.get_y()   )       ));
+    convex.setPoint(1, sf::Vector2f(pos_x + point_top.get_x(), window->getSize().y - (pos_y + point_top.get_y()    )    ));
+    convex.setPoint(2, sf::Vector2f(pos_x + point_r.get_x(), window->getSize().y - (pos_y + point_r.get_y()  )           ));
 
-    convex.setFillColor(sf::Color(0,0,255,100));
+    convex.setFillColor(sf::Color(255,255,0,100));
 
     window->draw(convex);
-    std::cout << "DRAWING" << std::endl;
+    ///std::cout << "DRAWING" << std::endl;
 }
 
 
@@ -306,13 +309,15 @@ FIRE_BALL* PLayerBox::run(double duration, double mouse_x, double mouse_y)
     ///std::cout << angriness << std::endl;
     update(duration);
 
-
+    /**
     IntTime += duration;
     if( IntTime > IntTime_margin ){
         IntTime -= IntTime_margin;
         DRAW_ARROW(mouse_x, mouse_y);
     }
+    **/
 
+    DRAW_ARROW(mouse_x, mouse_y);
 
 
     if(will_throw()){

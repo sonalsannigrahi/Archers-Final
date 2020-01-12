@@ -95,6 +95,9 @@ STATES::STATES_ENUM RetroGame::run()
             ///std::cout<<"HA"<<std::endl;
             window->draw(*traces[i]);
         }  
+
+        ///std::cout << "HA" << std::endl;
+
         FIRE_BALL* nball = playerBox.run(ElapsedTime, mouse_x, mouse_y);
         if( nball != nullptr ){
             fireBalls.AddBall(nball);
