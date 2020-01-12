@@ -1,9 +1,31 @@
 #include "target.hpp"
 
 
-Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* window)
+double SIMULATE(Vector2D Pos, Vector2D Vel)
+{
+    FIRE_BALL* simulBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
+
+    UniformGravity* gravity = new UniformGravity();
+
+    double DT = 0.005;
+    while(simulBall->getPos().get_y() > 0)
+    {
+        simulBall->ResetForce();
+
+        gravity->force_generate(*simulBall);
+
+        simulBall->update(DT);
+    }
+
+    return simulBall->getPos().get_x();
+}
+
+
+Target::Target(int Level, double pos_x, double pos_y, double length, sf::RenderWindow* window)
 {
     ///std::cout << "CREATE NEW ONE" << std::endl;
+    this->Level = Level;
+
     this->Age = 0.0;
     this->MaxAge = 10.0;
 
@@ -178,32 +200,63 @@ FIRE_BALL* Target::hurl()
         double max_magnitude = 50.0;
         double magnitude = fRand(max_magnitude/2.0, max_magnitude);
 
-        double theta_min = pi/3;
+        double theta_min = pi/6;
         double theta_max = pi/2;
 
-        double theta = fRand(theta_min,theta_max);
+        /// double theta = fRand(theta_min,theta_max);
 
-        Vector2D Vel(0.0, magnitude);
-        Vel.turn(theta);
 
+        ///TERNARY search for optimal theta, assuming UNImodality
+
+        double l_theta = theta_min;
+        double r_theta = theta_max;
+
+        double EPS = 0.1;
+
+        while( r_theta - l_theta > EPS )
         {
-            FIRE_BALL* simulBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
+            double m_first_theta = l_theta + (r_theta - l_theta) * (1.0/3);
+            double m_second_theta = l_theta + (r_theta - l_theta) * (2.0/3);
 
-            UniformGravity* gravity = new UniformGravity();
+            Vector2D Vel_L(0.0, magnitude);
+            Vel_L.turn(l_theta);
 
-            double DT = 0.005;
-            while(simulBall->getPos().get_y() > 0)
-            {
-                simulBall->ResetForce();
-                
-                gravity->force_generate(*simulBall);
+            Vector2D Vel_M_first(0.0, magnitude);
+            Vel_M_first.turn(m_first_theta);
 
-                simulBall->update(DT);
+            Vector2D Vel_M_second(0.0, magnitude);
+            Vel_M_second.turn(m_second_theta);
+
+            Vector2D Vel_R(0.0, magnitude);
+            Vel_R.turn(r_theta);
+
+            double pos_L = SIMULATE(Pos,Vel_L);
+            double pos_M_first = SIMULATE(Pos,Vel_M_first);
+            double pos_M_second = SIMULATE(Pos,Vel_M_second);
+            double pos_R = SIMULATE(Pos,Vel_R);
+
+            double X_TARGET = 100.0;
+
+            double dist_L = std::abs( X_TARGET - pos_L );
+            double dist_M_first = std::abs( X_TARGET - pos_M_first );
+            double dist_M_second = std::abs( X_TARGET - pos_M_second );
+            double dist_R = std::abs( X_TARGET - pos_R );
+
+            if(dist_M_first < dist_M_second){
+                r_theta = m_second_theta;
             }
-            
-            std::cout<< simulBall->getPos().get_x() << std::endl;
+            else if(dist_M_first > dist_M_second){
+                l_theta = m_first_theta;
+            }
+            else{
+                l_theta = m_first_theta;
+                r_theta = m_second_theta;
+            }
+
+
         }
 
+        double theta = fRand(l_theta, r_theta);
 
         FIRE_BALL* nBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
         return nBall;

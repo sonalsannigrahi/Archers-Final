@@ -11,6 +11,9 @@
 class Target: public sf::Drawable{
 ///private:
 public:
+
+    int Level;
+
     double Age, MaxAge;
     bool isAlive;
 
@@ -31,7 +34,7 @@ public:
     }
 
 public:
-    Target(double pos_x, double pos_y, double length, sf::RenderWindow* window);
+    Target(int Level, double pos_x, double pos_y, double length, sf::RenderWindow* window);
     void update(double duration);
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > resolve(FIRE_BALL* ball);

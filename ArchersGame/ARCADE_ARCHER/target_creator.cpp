@@ -33,7 +33,9 @@ Target* TargetCreator::createTarget()
     int W_POS = rand()%W_N;
     int H_POS = rand()%H_N;
 
-    Target* nTarget = new Target(W/2 + (W_POS + 0.5) * length, H/2 + (H_POS + 0.5) * length, length, window);
+    int Level = 10;
+
+    Target* nTarget = new Target(Level, W/2 + (W_POS + 0.5) * length, H/2 + (H_POS + 0.5) * length, length, window);
     return nTarget;
 
 }
