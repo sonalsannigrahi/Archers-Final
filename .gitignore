@@ -30,4 +30,7 @@
 *.exe
 *.out
 *.app
-Archer_game/test
+
+# Text files
+*.txt
+archer
