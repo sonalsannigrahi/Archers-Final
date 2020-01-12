@@ -14,6 +14,9 @@ public:
     double Age, MaxAge;
     bool isAlive;
 
+    double counter_for_hurling;
+    double interval_for_hurling;
+
     double pos_x,pos_y;
     double length;
 
@@ -32,6 +35,8 @@ public:
     void update(double duration);
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > resolve(FIRE_BALL* ball);
+
+    FIRE_BALL* hurl();
 
     bool alive();
 };

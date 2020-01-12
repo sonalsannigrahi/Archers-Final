@@ -5,9 +5,13 @@ Target::Target(double pos_x, double pos_y, double length, sf::RenderWindow* wind
 {
     ///std::cout << "CREATE NEW ONE" << std::endl;
     this->Age = 0.0;
-    this->MaxAge = 100.0;
+    this->MaxAge = 10.0;
 
     isAlive = true;
+
+
+    counter_for_hurling = 0.0;
+    interval_for_hurling = 3.0;
 
     this->pos_x = pos_x;
     this->pos_y = pos_y;
@@ -30,6 +34,8 @@ void Target::update(double duration)
 
         isAlive = false;
     }
+
+    this->counter_for_hurling += duration;
 }
 
 bool Target::alive()
@@ -83,7 +89,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     std::cout<< dist << " " << radius <<  std::endl;
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
-    
+
 
     if(ball->getRadius() > 15.0  && dist < radius )
     {
@@ -93,12 +99,12 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
         isAlive = false;
         ///for(;;);
 
-        
+
         double X = pos_x - length/2;
         double Y = pos_y - length/2;
 
         int N_B = 5;
-        
+
         srand(time(NULL));
 
         for(int i=0;i<N_B;i++)
@@ -107,7 +113,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
             {
                 double cnt_x = (length/N_B)*(i+0.5);
                 double cnt_y = (length/N_B)*(j+0.5);
-                
+
 
                 double angle_vel = fRand(-0.5, 0.5);
 
@@ -126,7 +132,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
         }
 
         int N_cnt = 5;
-        
+
         for(int i=0;i<N_cnt;i++){
             /// RANDOM COLORS
             int R = rand()%255 + 1;
@@ -158,7 +164,35 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     return ans;
 }
 
+FIRE_BALL* Target::hurl()
+{
+    if( counter_for_hurling > interval_for_hurling )
+    {
+        counter_for_hurling -= inteval_for_hurling;
 
+
+        Vector2D Pos(pos_x, pos_y);
+
+        srand(time(NULL));
+
+        double max_magnitude = 100.0;
+        double magnitude = fRand(max_magnitude/2.0, max_magnitude);
+
+        double theta_min = pi/8;
+        double theta_max = pi/2;
+
+        double theta = fRand(theta_min,theta_max);
+
+        Vector2D Vel(0.0, magnitude);
+        Vel.turn(theta);
+
+        FIRE_BALL* nBall = new FIRE_BALL(2.0,30.0,Pos,Vel,sf::Color(255,255,255));
+        return nBall;
+    }
+    else{
+        return nullptr;
+    }
+}
 
 
 
