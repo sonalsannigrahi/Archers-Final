@@ -106,7 +106,7 @@ FIRE_BALL* PLayerBox::hurl(double mouse_x, double mouse_y)
     int G = rand()%255 + 1;
     int B = rand()%255 + 1;
 
-    FIRE_BALL* nball = new FIRE_BALL("Player", 20.0,30.0,pos,vel,sf::Color(R,G,B));
+    FIRE_BALL* nball = new FIRE_BALL("PLAYER", 20.0,30.0,pos,vel,sf::Color(R,G,B));
     return nball;
 }
 

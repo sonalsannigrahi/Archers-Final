@@ -22,8 +22,6 @@ private:
     Targets targets;
     PLayerBox playerBox;
 
-    HealthBar healthBar;
-
     BoxParticles boxParticles;
 
     clock_t time;
