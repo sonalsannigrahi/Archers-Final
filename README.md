@@ -147,7 +147,7 @@ In order to make the game more user friendly, we have included a tutorial for th
 
 #### Settings
 
-The settings page appears either if the user clicks on the settings button on the top right corner of the screen or if the game has been paused (esc button). In the settings, the user can choose the size of the game, control the volume (game volume and volume of rain, birds, fireworks, etc.), choose different backgrounds for the game, choose if the birds, fireworks, balloons, and rain appears or not. By default, we have set the birds to true. The settings page also makes use of encryption to remember the settings that that user had chosen before. So if I choose a certain background the first time, the second time I run the game the background is remembered. 
+The settings page appears either if the user clicks on the settings button on the top right corner of the screen or if the game has been paused (esc button). In the settings, the user can choose the size of the game, control the volume (game volume and volume of rain, birds, fireworks, etc.), choose different backgrounds for the game, choose if the birds, fireworks, balloons, and rain appears or not. By default, we have set the birds to true. The settings page also makes use of encryption to remember the settings that the user had chosen before. So if I choose a certain background the first time, the second time I run the game the background is remembered. 
 
 #### Best Scores
 
