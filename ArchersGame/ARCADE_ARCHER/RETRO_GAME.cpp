@@ -60,10 +60,6 @@ STATES::STATES_ENUM RetroGame::run()
         }
         double mouse_x = sf::Mouse::getPosition(*window).x;
         double mouse_y = window->getSize().y - sf::Mouse::getPosition(*window).y;
-        FIRE_BALL* nball = playerBox.run(ElapsedTime, mouse_x, mouse_y);
-        if( nball != nullptr ){
-            fireBalls.AddBall(nball);
-        }
 
 
         time_for_trace += ElapsedTime;
@@ -98,6 +94,10 @@ STATES::STATES_ENUM RetroGame::run()
         {
             ///std::cout<<"HA"<<std::endl;
             window->draw(*traces[i]);
+        }  
+        FIRE_BALL* nball = playerBox.run(ElapsedTime, mouse_x, mouse_y);
+        if( nball != nullptr ){
+            fireBalls.AddBall(nball);
         }
 
         ///TRACING
@@ -117,7 +117,24 @@ STATES::STATES_ENUM RetroGame::run()
 
         window->draw(playerBox);
         playerBox.show_health();
+        
         ///healthBar.show();
+
+        /** drawing some text **/
+
+        sf::Font font;
+        font.loadFromFile("ARCADE_ARCHER/font.TTF");
+
+        sf::Text text;
+        text.setFont(font);
+
+        text.setString("SCORE :  " + std::to_string(playerBox.get_score()));
+        text.setCharacterSize(40);
+        text.setFillColor(sf::Color::Red);
+        text.setPosition(0.0, window->getSize().y / 20 );
+        window->draw(text);
+
+        /** finished drawing some text **/
 
         window->display();
         ///std::cout << "YeS" << std::endl;

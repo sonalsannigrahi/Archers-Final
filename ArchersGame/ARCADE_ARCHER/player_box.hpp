@@ -16,6 +16,8 @@ public:
     double W;
     double H;
 
+    int score;
+
     double pos_x;
     double pos_y;
 
@@ -80,6 +82,8 @@ public:
     void resolve_collisions(FIRE_BALLS& fireBalls);
     void show_health();
 
+    void score_inc();
+    int  get_score();
     void update(double duration);
 
     void DRAW_ARROW(double mouse_x, double mous_y);

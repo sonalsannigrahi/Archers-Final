@@ -110,6 +110,7 @@ void Targets::run(double duration, PLayerBox& playerBox, FIRE_BALLS& fireBalls, 
 
             targets[i] = targets[ targets.size() - 1 ];
             targets.pop_back();
+            playerBox.score_inc();
         }
     }
     ///std::cout << " after  after       " << nAlive() << std::endl;

@@ -3,6 +3,8 @@
 PLayerBox::PLayerBox(sf::RenderWindow* window, double pos_x, double pos_y, double length, double W, double H):
     healthBar(window)
 {
+    this->score = 0;
+
     this->window = window;
     this->pos_x = pos_x;
     this->pos_y = pos_y;
@@ -21,6 +23,15 @@ PLayerBox::PLayerBox(sf::RenderWindow* window, double pos_x, double pos_y, doubl
     this->under_pressure = false;
 }
 
+void PLayerBox::score_inc()
+{
+    score += 1;
+}
+
+int PLayerBox::get_score()
+{
+    return score;
+}
 
 void PLayerBox::move_to_left()
 {
@@ -166,18 +177,24 @@ void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
     ///DRAWING
 
 
+
     sf::ConvexShape convex;
 
     // resize it to 5 points
     convex.setPointCount(3);
+
+
+    std::cout << point_top.get_x() << " " << point_top.get_y() << std::endl; 
 
     // define the points
     convex.setPoint(0, sf::Vector2f(point_l.get_x(), point_l.get_y()));
     convex.setPoint(1, sf::Vector2f(point_top.get_x(), point_top.get_y()));
     convex.setPoint(2, sf::Vector2f(point_r.get_x(), point_r.get_y()));
 
-    draw(convex);
+    convex.setFillColor(sf::Color(0,0,255,100));
 
+    window->draw(convex);
+    std::cout << "DRAWING" << std::endl;
 }
 
 
@@ -261,21 +278,21 @@ void PLayerBox::resolve_collisions(FIRE_BALLS& fireBalls)
     std::vector<FIRE_BALL*> fire_balls = fireBalls.getBALLS();
     for(int i=0;i<fire_balls.size();i++)
     {
-        std::cout << 1 << std::endl;
+        ///std::cout << 1 << std::endl;
         std::vector<FIRE_BALL* > fire_ball_vect = resolve_collision(fire_balls[i]);
-        std::cout << 2 << std::endl;
+        ///std::cout << 2 << std::endl;
         if(fire_ball_vect.size() > 0)
         {
-            std::cout<<  "HOHOHOHOHO" <<std::endl;
+            ///std::cout<<  "HOHOHOHOHO" <<std::endl;
             for(int j=0;j<fire_ball_vect.size();j++){
                 fireBalls.AddBall(fire_ball_vect[j]);
             }
-            std::cout << 3 << std::endl;
+            ///std::cout << 3 << std::endl;
             fireBalls.RemBall(fire_balls[i]);
-            std::cout << 4 << std::endl;
+            ///std::cout << 4 << std::endl;
             fire_balls[i] = fire_balls[ fire_balls.size() - 1 ];
             fire_balls.pop_back();
-            std::cout << 5 << std::endl;
+            ///std::cout << 5 << std::endl;
         }
     }
 }
