@@ -186,7 +186,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     return ans;
 }
 
-FIRE_BALL* Target::hurl()
+FIRE_BALL* Target::hurl(PLayerBox& playerBox)
 {
     if( counter_for_hurling > interval_for_hurling )
     {
@@ -235,7 +235,7 @@ FIRE_BALL* Target::hurl()
             double pos_M_second = SIMULATE(Pos,Vel_M_second);
             double pos_R = SIMULATE(Pos,Vel_R);
 
-            double X_TARGET = 100.0;
+            double X_TARGET = playerBox.pos_x;
 
             double dist_L = std::abs( X_TARGET - pos_L );
             double dist_M_first = std::abs( X_TARGET - pos_M_first );

@@ -89,7 +89,7 @@ void Targets::show()
 
 
 
-void Targets::run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles)
+void Targets::run(double duration, PLayerBox& playerBox, FIRE_BALLS& fireBalls, BoxParticles& boxParticles)
 {
     ///std::cout << " before         " << nAlive() << std::endl;
     update(duration, fireBalls, boxParticles);
@@ -118,7 +118,7 @@ void Targets::run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParti
     }
 
     for(int i=0;i<targets.size();i++){
-        FIRE_BALL* nBall = targets[i]->hurl();
+        FIRE_BALL* nBall = targets[i]->hurl(playerBox);
         if(nBall == nullptr)
             continue;
         else{

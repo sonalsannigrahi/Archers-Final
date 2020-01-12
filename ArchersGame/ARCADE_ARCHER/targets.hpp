@@ -4,7 +4,7 @@
 #include "target_creator.hpp"
 #include "BOX_PARTICLES.hpp"
 #include "fire_balls.hpp"
-
+#include "player_box.hpp"
 
 #include<bits/stdc++.h>
 #include<SFML/Graphics.hpp>
@@ -26,7 +26,7 @@ public:
 
     void show();
 
-    void run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
+    void run(double duration,PLayerBox& playerBox, FIRE_BALLS& fireBalls, BoxParticles& boxParticles);
 };
 
 #endif // TARGETS_HPP_INCLUDED
