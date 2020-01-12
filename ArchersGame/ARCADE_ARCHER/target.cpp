@@ -168,7 +168,7 @@ FIRE_BALL* Target::hurl()
 {
     if( counter_for_hurling > interval_for_hurling )
     {
-        counter_for_hurling -= inteval_for_hurling;
+        counter_for_hurling -= interval_for_hurling;
 
 
         Vector2D Pos(pos_x, pos_y);

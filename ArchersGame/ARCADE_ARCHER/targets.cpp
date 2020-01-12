@@ -122,7 +122,7 @@ void Targets::run(double duration, FIRE_BALLS& fireBalls, BoxParticles& boxParti
         if(nBall == nullptr)
             continue;
         else{
-            targets.push_back(nBall);
+            fireBalls.AddBall(nBall);
         }
     }
 
