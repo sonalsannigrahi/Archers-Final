@@ -122,12 +122,38 @@ In this section, we show some stills from the game:
 
 #### Screens
 
-![](images/...)
+![](images/startscreen.png)
+
+
+
+![](images/endgame.png)
+
+
+![](images/gameover.png)
+
+
 
 
 #### Game
 
+
+![](images/ingame1.png)
+
+
+![](images/ingame2.png)
+
+
 #### Settings
+
+![](images/settingscreen.png)
+
+
+#### Additional Functions
+
+![](images/choose_username.png)
+
+
+![](images/tutorial.png)
 
 
 
