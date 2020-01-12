@@ -140,9 +140,44 @@ void PLayerBox::DRAW_ARROW(double mouse_x, double mouse_y)
 {
     if(under_pressure == false)
         return;
-
     if(angriness < 50.0)
         return;
+
+
+    double radius = 200;
+
+    Vector2D e_n(mouse_x - pos_x, mouse_y - pos_y);
+    e_n.normalize();
+
+    Vector2D e_t = e_n;
+    e_t.turn(pi/2);
+
+
+    Vector2D point = radius * (angriness / 100) * e_n;
+
+    double arrow_width = 10;
+    double arrow_height = 40;
+
+    Vector2D point_r = point - arrow_width * e_t;
+    Vector2D point_l = point + arrow_width * e_t;
+
+    Vector2D point_top = point + arrow_height * e_n;
+
+    ///DRAWING
+
+
+    sf::ConvexShape convex;
+
+    // resize it to 5 points
+    convex.setPointCount(3);
+
+    // define the points
+    convex.setPoint(0, sf::Vector2f(point_l.get_x(), point_l.get_y()));
+    convex.setPoint(1, sf::Vector2f(point_top.get_x(), point_top.get_y()));
+    convex.setPoint(2, sf::Vector2f(point_r.get_x(), point_r.get_y()));
+
+    draw(convex);
+
 }
 
 
