@@ -19,7 +19,7 @@ Encrypt::Encrypt(){
             for (int k=0; k<10; ++k){
                 temp1.push_back(k);
             }
-            random_shuffle ( temp1.begin(), temp1.end() );
+            //random_shuffle ( temp1.begin(), temp1.end() );
             vect.push_back(temp1);
         }
         else{
@@ -40,7 +40,7 @@ Encrypt::Encrypt(){
             for (char k=32; k<127; ++k){
                 temp_1.push_back(k);
             }
-            random_shuffle ( temp_1.begin(), temp_1.end() );
+            //random_shuffle ( temp_1.begin(), temp_1.end() );
             vecto.push_back(temp_1);
         }
         else{
@@ -131,6 +131,12 @@ Encrypt::Encrypt(){
                 sllong.insert(pair<string,long long> (ss.str(),temp));
 
         }
+        
+        else if (tt.str()=="string"){
+                sstring.insert(pair<string,string> (ss.str(),nn.str()));
+
+        }
+        
 
 
     }
@@ -300,6 +306,7 @@ int Encrypt::updatefile(){
     map<string, float>::iterator itrf;
     map<string, long long>::iterator itrll;
     map<string, double>::iterator itrd;
+    map<string, string>::iterator itrs;
     ostringstream ss;
     string en;
     for (itri=sint.begin(); itri!=sint.end(); ++itri) {
@@ -340,8 +347,35 @@ int Encrypt::updatefile(){
         ss.str("");
         ss.clear();
         }
+    
+    for (itrs=sstring.begin(); itrs!=sstring.end(); ++itrs) {
+        ss << itrs->first << " = " << itrs->second << "typ" << "string";
+        //cout<<ss.str()<<endl;
+        en = this->encrypt(ss.str());
+        outdata << en << endl;
+        //outdata<< ss.str()<< endl;
+        ss.str("");
+        ss.clear();
+        }
+    
     outdata.close();
     return 0;
 }
 
+void Encrypt::add_data_string(string key, string value){
+        for (map<string, string>::iterator itr = sstring.begin(); itr != sstring.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                sstring.erase(this->encrypt(key));
+            }
+        }
+        //string y = this->encrypt(value);
+        sstring.insert(pair<string, string> ( encrypt(key) , encrypt(value) ));
+}
+string Encrypt::get_item_string(string key){
+        for (map<string, string>::iterator itr = sstring.begin(); itr != sstring.end(); ++itr) {
+            if (itr->first== this->encrypt(key)){
+                return this->decrypt(itr->second);
+            }
+        }
+}
 

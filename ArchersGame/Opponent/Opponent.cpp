@@ -31,6 +31,11 @@ Opponent::Opponent(Player* player){
     hitboxHead.setSize(sf::Vector2f(30, 30));
     hitboxHead.setOutlineColor(sf::Color::Red);
     hitboxHead.setOutlineThickness(5);
+
+    //Healthbar
+    healthbar.setSize(sf::Vector2f(30,30));
+    healthbar.setFillColor(sf::Color::Green);    
+
 }
 
 void Opponent::setWindow(sf::RenderWindow* gameWindow){
@@ -83,7 +88,16 @@ void Opponent::updateFrame(double time) {
             window -> draw(hitboxBody);
             window -> draw(hitboxHead);
         }
+        healthbar.setPosition(posX, posY - 18);
 
+        healthbar.setSize(sf::Vector2f((health/100)*60, 10));
+
+        if (health <= 50){
+            healthbar.setFillColor(sf::Color::Red);
+        }
+
+        window -> draw(healthbar);
+  
         oppSprites[current].setPosition(posX, posY);
         window -> draw(oppSprites[current]);
     }

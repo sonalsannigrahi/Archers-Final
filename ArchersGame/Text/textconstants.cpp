@@ -36,5 +36,6 @@ class TextConstants{
     bool condition2 = false;
     bool condition3 = false;
     bool condition4 = false;
+    bool isSettingOpen = false;
     //bool condition8 = false;
 };

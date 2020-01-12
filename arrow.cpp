@@ -3,7 +3,7 @@
 
 Arrow::Arrow(): Rectangle(0,0,0,0,0,0,10,20, distr){}
 
-Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, double m = 20.0, std::string filename = "arrow.png"): Rectangle(X_CM, Y_CM, V_X_CM, V_Y_CM, angle, ang_acc, a,  b, distr){
+Arrow::Arrow(double X_CM, double Y_CM, double V_X_CM, double V_Y_CM, double angle, double ang_acc, double a, double b, double m, std::string filename): Rectangle(X_CM, Y_CM, V_X_CM, V_Y_CM, angle, ang_acc, a,  b, distr){
     if (!this->texture.loadFromFile(filename)){
         std::cout << "Load failed" << std::endl;
     }
@@ -29,6 +29,10 @@ void Arrow::update(double time){
     //If the arrow isn't being shot, the Character object will call its change angle function, so when it
     //is updated, it just gets drawn as a drawable
     
+}
+
+double Arrow::inflictDamage(){
+    return damage;
 }
 
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const

@@ -17,6 +17,7 @@ private:
     map<string,float> sfloat;
     map<string,double> sdouble;
     map<string,long long> sllong;
+    map<string,string> sstring;
 
 
     //
@@ -26,6 +27,7 @@ public:
     Encrypt();
 
     ~Encrypt();
+     string encrypt(string word);
     //encrypt an integer
     int encrypt(int number);
     //encrypt a float
@@ -35,7 +37,7 @@ public:
     //encrypt a long long
     long long encrypt(long long number);
     //encrypt a string
-    string encrypt(string word);
+   
     //decrypt an integer
     int decrypt(int number);
     //decrypt a float
@@ -47,8 +49,10 @@ public:
     //decrypt a string
     string decrypt(string word);
     // get the decrypted data back
+    string get_item_string(string key);
     template <typename T> T get_item(string key);
     //add data
+    void add_data_string(string key, string value);
     template <typename U> void add_data(string key, U value);
     int updatefile();
 };
@@ -58,7 +62,7 @@ template <typename T> T Encrypt::get_item(string key){
     float float_;
     double double_;
     long long long_long;
-    string string_;
+    string string_ = "";
     if (typeid(type)==typeid(int_)){
         for (map<string, int>::iterator itr = sint.begin(); itr != sint.end(); ++itr) {
             if (itr->first== this->encrypt(key)){
@@ -87,9 +91,13 @@ template <typename T> T Encrypt::get_item(string key){
             }
         }
     }
+    
+    
+    
 
 }
 template <typename U> void Encrypt::add_data(string key, U value){
+    U type;
     int int_;
     float float_;
     double double_;
@@ -101,6 +109,7 @@ template <typename U> void Encrypt::add_data(string key, U value){
                 sint.erase(this->encrypt(key));
             }
         }
+
         sint.insert(pair<string,int> (this->encrypt(key),this->encrypt(value)));
     }
     else if (typeid(value)==typeid(float_)){
@@ -109,6 +118,7 @@ template <typename U> void Encrypt::add_data(string key, U value){
                 sfloat.erase(this->encrypt(key));
             }
         }
+         //cout<<typeid(this->encrypt(value)).name()<<endl;
         sfloat.insert(pair<string,float> (this->encrypt(key),this->encrypt(value)));
     }
     else if (typeid(value)==typeid(double_)){
@@ -125,6 +135,10 @@ template <typename U> void Encrypt::add_data(string key, U value){
                 sllong.erase(this->encrypt(key));
             }
         }
+       
         sllong.insert(pair<string,long long> (this->encrypt(key),this->encrypt(value)));
     }
+
+    
+    
 }

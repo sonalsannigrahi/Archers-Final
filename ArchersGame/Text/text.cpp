@@ -22,9 +22,12 @@ Texts::Texts(){
     text.setFont(font);
     play.setFont(font);
     retro.setFont(font);
+    BestScore.setFont(font);
     quit.setFont(font);
     tutorial.setFont(font);
     ChooseUserName.setFont(font);
+    PressEnter.setFont(font);
+    HighestScore.setFont(font);
         
 
     //setting size
@@ -74,6 +77,9 @@ void Texts::setposition(float x, float y){
 void Texts::updateFrame(double time) {
 
     counter += time;
+    if(bruh == -2){
+
+    }
     if(bruh == -1){
         Titlesprite1.setPosition( (float) 450 / 900 * windowWidth - Titlesprite1.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite1.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
@@ -82,8 +88,46 @@ void Texts::updateFrame(double time) {
         ChooseUserName.setCharacterSize(30);
         ChooseUserName.setPosition(windowWidth/2-22*7.5,5*windowHeight/16);       
         window->draw(ChooseUserName);
+        PressEnter.setString("Press Enter to Play");
+        PressEnter.setCharacterSize(25);
+        PressEnter.setPosition(windowWidth/2-22*5.0,5*windowHeight/10);
+        if (counter > 5.0) {
+            window->draw(PressEnter);
+        }
     }
     else{
+    if(bruh==4){
+        
+    
+        HighestScore.setString("Highest Score");
+        HighestScore.setCharacterSize(50);
+        HighestScore.setPosition(windowWidth/2-(50)*(3.5),2*windowHeight/16 );
+        window -> draw(HighestScore);
+        quit.setString("Back");
+        quit.setCharacterSize(30);
+        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 150);
+        window -> draw(quit);
+        sf::Vector2i mousePosition;
+    //mousePosition = sf::Mouse::getPosition();
+    float a;
+    float b;
+    sf::Vector2i windowPosition;
+    windowPosition = window -> getPosition();
+    mousePosition = sf::Mouse::getPosition(*window);
+    a = mousePosition.x; 
+    b = mousePosition.y; 
+    if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 157 && b<=5*windowHeight/16+178){
+            quit.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                bruh = 1;
+                
+            }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            quit.setColor(sf::Color::White);
+        }
+
+    }
     if (bruh==1 ){
         Titlesprite.setPosition( (float) 450 / 900 * windowWidth - Titlesprite.getGlobalBounds().width / 2, (float) windowHeight - (float) 550 / 600 * windowHeight);
         Titlesprite.setScale(textconstants.xtitlescale, textconstants.ytitlescale);
@@ -105,7 +149,7 @@ void Texts::updateFrame(double time) {
     sf::Vector2i windowPosition;
     windowPosition = window -> getPosition();
     mousePosition = sf::Mouse::getPosition(*window);
-    if (textconstants.conditionplay)
+    if (bruh ==1 || textconstants.conditionplay)
     {
         play.setString("Play");
         play.setCharacterSize(30);
@@ -119,15 +163,20 @@ void Texts::updateFrame(double time) {
         tutorial.setCharacterSize(30);
         tutorial.setPosition(windowWidth/2-60,5*windowHeight/16 + 60);
 
+        BestScore.setString("Best Score");
+        BestScore.setCharacterSize(30);
+        BestScore.setPosition(windowWidth/2-75,5*windowHeight/16 + 90);
+
         quit.setString("Quit");
         quit.setCharacterSize(30);
-        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 90);
+        quit.setPosition(windowWidth/2-30,5*windowHeight/16 + 120);
 
         textconstants.condition0 = false;
 
         window -> draw(play);
         window -> draw(retro);
         window -> draw(tutorial);
+        window -> draw(BestScore);
         window -> draw(quit);
         
         a = mousePosition.x; 
@@ -137,7 +186,7 @@ void Texts::updateFrame(double time) {
         //std::cout<< bruh << '('<<play.getPosition().x<< ','<<play.getPosition().y <<')'<<std::endl;
         if (a >=windowWidth/2-30 && a<=windowWidth/2+30 && b>=5*windowHeight/16 + 7 && b<=5*windowHeight/16+28){
             play.setColor(sf::Color::Blue);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
                 bruh = 0;
                 textconstants.conditionplay = false;
             }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
@@ -147,7 +196,7 @@ void Texts::updateFrame(double time) {
         }
         if (a >=windowWidth/2-75 && a<=windowWidth/2+75 && b>=5*windowHeight/16 + 37 && b<=5*windowHeight/16+58){
             retro.setColor(sf::Color::Blue);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
                 bruh = 0;
                 //textconstants.conditionplay = false;
             } //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
@@ -157,7 +206,7 @@ void Texts::updateFrame(double time) {
         }
         if (a >=windowWidth/2-60 && a<=windowWidth/2+60 && b>=5*windowHeight/16 + 67 && b<=5*windowHeight/16+88){
             tutorial.setColor(sf::Color::Blue);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
                 bruh = 2;
                 textconstants.condition0 = true;
                 textconstants.conditionplay = false;
@@ -166,11 +215,20 @@ void Texts::updateFrame(double time) {
         else{
             tutorial.setColor(sf::Color::White);
         }
-        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 97 && b<=5*windowHeight/16+118){
-            quit.setColor(sf::Color::Blue);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                bruh = 3;
+        if (a >=windowWidth/2-75 && a<=windowWidth/2+75  && b>=5*windowHeight/16 + 97 && b<=5*windowHeight/16+118){
+            BestScore.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
+                bruh = 4;
                 textconstants.conditionplay = false;
+            }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
+        }
+        else{
+            BestScore.setColor(sf::Color::White);
+        }
+        if (a >=windowWidth/2-30 && a<=windowWidth/2+30  && b>=5*windowHeight/16 + 127 && b<=5*windowHeight/16+148){
+            quit.setColor(sf::Color::Blue);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && !textconstants.isSettingOpen) {
+                window -> close();
             }    //std::cout<< bruh << '('<<a<< ','<<b <<')'<<" I was here"<<std::endl;
         }
         else{
