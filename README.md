@@ -129,18 +129,16 @@ The SFML library should work with mac os after giving the permission with the wo
 
 In this section, we show some stills from the game:
 
-#### Screens
+#### Start Screen
+
 
 ![](images/startscreen.png)
 
 
-
-![](images/endgame.png)
-
-
-![](images/gameover.png)
+#### Tutorial
 
 
+![](images/tutorial.png)
 
 
 #### Game
@@ -152,17 +150,28 @@ In this section, we show some stills from the game:
 ![](images/ingame2.png)
 
 
+#### Game Over
+
+
+![](images/gameover.png)
+
+
+#### Best Score
+
+
+![](images/endgame.png)
+
+
 #### Settings
+
 
 ![](images/settingscreen.png)
 
 
 #### Additional Functions
 
+
 ![](images/choose_username.png)
-
-
-![](images/tutorial.png)
 
 
 
