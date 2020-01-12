@@ -141,6 +141,12 @@ The last type of opponent is a spear throwing opponent which throws spears at ra
 <a name="further"></a>
 ## 5. Additional Features
 
+#### Start and End Screen
+
+In the start screen, the user can choose a player name which will be used to display the best scores. After choosing a name, we have a main menu where you can choose to start the game, view best scores, train on the tutorial, or quit the game. 
+
+In the end screen, the user can see their current score and then choose to reither replay the game or exit and go back to the main menu. 
+
 #### Tutorial
 
 In order to make the game more user friendly, we have included a tutorial for the game. In the tutorial, the player gets to practice shooting at 5 randomised targets in order to get used to the game structure. The tutorial also points out features such as the healthbar.
