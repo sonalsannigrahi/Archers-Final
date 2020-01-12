@@ -132,6 +132,9 @@ In this section, we show some stills from the game:
 #### Start Screen
 
 
+![](images/choose_username.png)
+
+
 ![](images/startscreen.png)
 
 
@@ -166,12 +169,6 @@ In this section, we show some stills from the game:
 
 
 ![](images/settingscreen.png)
-
-
-#### Additional Functions
-
-
-![](images/choose_username.png)
 
 
 
