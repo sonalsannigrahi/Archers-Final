@@ -91,7 +91,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
 
 
-    if(ball->getRadius() > 15.0  && dist < radius )
+    if(ball->WHO_THROWED_IT == "PLAYER" && ball->getRadius() > 15.0  && dist < radius )
     {
         std::cout << "HIT!!!" << std::endl;
         std::cout << "HIT!!!" << std::endl;
@@ -153,7 +153,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
             Vector2D vel = ball->getVel();
             vel.turn(theta);
 
-            FIRE_BALL* n_ball = new FIRE_BALL(ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            FIRE_BALL* n_ball = new FIRE_BALL("PLAYER" ,ball->getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
             ans.first.push_back(n_ball);
         }
 
@@ -186,7 +186,7 @@ FIRE_BALL* Target::hurl()
         Vector2D Vel(0.0, magnitude);
         Vel.turn(theta);
 
-        FIRE_BALL* nBall = new FIRE_BALL(2.0,30.0,Pos,Vel,sf::Color(255,255,255));
+        FIRE_BALL* nBall = new FIRE_BALL("Opponent", 2.0,30.0,Pos,Vel,sf::Color(255,255,255));
         return nBall;
     }
     else{

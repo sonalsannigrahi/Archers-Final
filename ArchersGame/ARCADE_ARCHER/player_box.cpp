@@ -9,10 +9,10 @@ PLayerBox::PLayerBox(sf::RenderWindow* window, double pos_x, double pos_y, doubl
 
     this->W = W;
     this->H = H;
-    
+
     this->IntTime = 0.0;
     this->IntTime_margin = 0.5;
-    
+
     this->angriness = 0.0;
     this->MAX_SPEED = 120.0;
     this->MAX_TIME_TO_ANGRY = 2.0;
@@ -105,7 +105,7 @@ FIRE_BALL* PLayerBox::hurl(double mouse_x, double mouse_y)
     int G = rand()%255 + 1;
     int B = rand()%255 + 1;
 
-    FIRE_BALL* nball = new FIRE_BALL(20.0,30.0,pos,vel,sf::Color(R,G,B));
+    FIRE_BALL* nball = new FIRE_BALL("Player", 20.0,30.0,pos,vel,sf::Color(R,G,B));
     return nball;
 }
 
@@ -151,14 +151,14 @@ FIRE_BALL* PLayerBox::run(double duration, double mouse_x, double mouse_y)
 {
     ///std::cout << angriness << std::endl;
     update(duration);
-    
+
 
     IntTime += duration;
     if( IntTime > IntTime_margin ){
         IntTime -= IntTime_margin;
         DRAW_ARROW(mouse_x, mouse_y);
     }
-    
+
 
 
     if(will_throw()){

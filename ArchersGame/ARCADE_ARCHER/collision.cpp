@@ -104,7 +104,7 @@ std::vector<FIRE_BALL*> CollisionGenerator::ResCollsWithFrame_explode(FIRE_BALL&
             Vector2D vel = ball.getVel();
             vel.turn(theta);
 
-            FIRE_BALL* n_ball = new FIRE_BALL(ball.getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
+            FIRE_BALL* n_ball = new FIRE_BALL(ball.getWhoThrowedIt(), ball.getMass()/N_cnt, 10.0, pos, vel, sf::Color(R,G,B));
             n_balls.push_back(n_ball);
         }
 
