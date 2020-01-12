@@ -48,7 +48,7 @@ Here are the members, their teams and roles:
   
   Maëlys Solal
   
-  Chris Zhang
+  Xingjian(Chris) Zhang
   
   
 ## Teams:
