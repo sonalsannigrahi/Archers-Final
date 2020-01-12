@@ -108,7 +108,7 @@ std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > Target::resolve(
         dist = std::min(dist, distance);
     }
 
-    std::cout<< dist << " " << radius <<  std::endl;
+    ///std::cout<< dist << " " << radius <<  std::endl;
 
     std::pair< std::vector<FIRE_BALL*>, std::vector<BoxParticle*> > ans(fire_balls_vect, box_particles_vect);
 
