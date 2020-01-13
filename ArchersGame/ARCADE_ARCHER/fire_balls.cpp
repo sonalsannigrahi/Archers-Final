@@ -5,8 +5,20 @@ FIRE_BALLS::FIRE_BALLS(sf::RenderWindow* window):
 {
     this->window = window;
 
+
     UniformGravity* uniformGravity = new UniformGravity();
+    
+    /// BlackHole to appear
+
+    double GAMA = 1e5;
+    
+    Vector2D pos_Black_Hole(window->getSize().x/2, window->getSize().y/2);
+
+    BlackHole* blackHole = new BlackHole(pos_Black_Hole, GAMA);
+    
+
     gravity.add_gravityGenerator(*uniformGravity);
+    gravity.add_gravityGenerator(*blackHole);
 }
 
 void FIRE_BALLS::AddBall(FIRE_BALL* ball)
@@ -32,6 +44,7 @@ void FIRE_BALLS::draw()
     {
         window->draw(*BALLS[i]);
     }
+    this->gravity.show(window);
 }
 
 void FIRE_BALLS::show()
