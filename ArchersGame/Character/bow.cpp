@@ -89,18 +89,11 @@ void Player::updateFrame(double time){
 
     a = mousePosition.x - windowPosition.x;
     b = mousePosition.y - windowPosition.y;
-    angle = std::min(0.0,-(-atan2(a, b) * 180 + 180)/3.14159265359);
+    angle = std::min(70.0,std::max(0.0,-(-atan( (b-b0)/(a0-a) ) * 180)/3.14159265359));
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         if (firstclick == false){
-            // update position vector
-            mousePosition = sf::Mouse::getPosition();
-            a1 = mousePosition.x - windowPosition.x;
-            b1 = mousePosition.y - windowPosition.y;
-            //std::cout<< a1 << ' ' << b1 << std::endl;
-            //angle = atan((b0-b1)/(a0-a1)) * 180 / 3.14159265359;
-            //std::cout << angle << std::endl;
-            spriteh -> setRotation(angle);
+            spriteh -> setRotation(-angle);
             lastAngle = angle;
             lastPower = sqrt(pow(a0-a1, 2) + pow(b0-b1,2));
             //arrow -> setRotation(angle);
