@@ -223,4 +223,6 @@ Each user gets attributed a certain score and in the home page, the user can cho
 
 If the user chooses retro mode, the user gets directed to an arcade version of the game. In this version, we have the following features:
 
+S will begin and pause the game.
+
 #### TO COMPLETE RETRO MODE
