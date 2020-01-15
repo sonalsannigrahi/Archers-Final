@@ -225,4 +225,6 @@ If the user chooses retro mode, the user gets directed to an arcade version of t
 
 S will begin and pause the game.
 
+While in game, the player may use the left and right arrow keys to move the block.
+
 #### TO COMPLETE RETRO MODE
