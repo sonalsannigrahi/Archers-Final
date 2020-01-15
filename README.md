@@ -227,4 +227,4 @@ S will begin and pause the game.
 
 While in game, the player may use the left and right arrow keys to move the block.
 
-#### TO COMPLETE RETRO MODE
+In order to fire, the player should click on or above the player cube. You will observe a change in colour that corresponds to an increase in power, as well as a small arrow that indicates the direction. You may move the mouse after clicking to change direction.
