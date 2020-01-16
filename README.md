@@ -179,13 +179,13 @@ In this section, we explain the features we currently have in the game with rega
 
 ### Players 
 
-The player is set at a fixed position, towards the bottom left of the screen. This player can set an angle for the bow based on the movement of the mouse, and then add aditional force with how far back you pull the mouse. Then, an arrow gets released which follows projectile motion. The player also has a healthbar on the screen which changes at when health is at 100% and at 50%. The player will be defeated in the game if it has been hit twice by the running opponenet, once in the head by a spear or an arrow, or twice in the body by a spear or an arrow. In this game, the objective is to get the highest kill count or score.
+The player is set at a fixed position, towards the bottom left of the screen. This player can set an angle for the bow based on the movement of the mouse, and then add aditional force with how far back you pull the mouse. Then, an arrow gets released which follows projectile motion. The player also has a healthbar on the screen which changes at when health is at 100% and at 50%. The player will be defeated in the game if it has been hit twice by the running opponenet, twice in the head by a spear or an arrow, or a few times (health deacrease by 35 units with each hit) in the body by a spear or an arrow. In this game, the objective is to get the highest kill count or score.
 
 ### Opponents
 
 #### Type 1
 
-This is the standard opponent which behaves exactly like the main player. However, as an opponent this character chooses a randomised angle each time instead of being controlled by the cursor movements. Like the player, this opponenet has a healthbar and will die if it shot once in the head or twice in the body. 
+This is the standard opponent which behaves exactly like the main player. However, as an opponent this character chooses a randomised angle each time instead of being controlled by the cursor movements. This opponenet has a healthbar and will die if it shot once in the head or twice in the body. 
 
 
 #### Type 2
