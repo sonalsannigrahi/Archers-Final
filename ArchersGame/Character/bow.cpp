@@ -89,7 +89,7 @@ void Player::updateFrame(double time){
 
     a = mousePosition.x - windowPosition.x;
     b = mousePosition.y - windowPosition.y;
-    angle = std::min(55.0,std::max(0.0,-(-atan( (b-b0)/(a0-a) ) * 180)/3.14159265359));
+    angle = std::min(65.0,std::max(0.0,-(-atan( (b-b0)/(a0-a) ) * 180)/3.14159265359));
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         if (firstclick == false){
